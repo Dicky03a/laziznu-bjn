@@ -161,9 +161,9 @@
                   <!-- CTA Button -->
                   <div class="hidden lg:block">
                         <a href="{{ url('/donasi/sekarang') }}"
-                              class="bg-green-600 text-white px-6 py-2.5 rounded-xl text-sm font-semibold
+                              class="bg-green-400 text-white px-6 py-2.5 rounded-xl text-sm font-semibold
                    shadow-md hover:shadow-xl
-                   hover:bg-green-700 hover:-translate-y-0.5
+                   hover:bg-green-500 hover:-translate-y-0.5
                    transition-all duration-300">
                               Kalkulator Zakat
                         </a>
