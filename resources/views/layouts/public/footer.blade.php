@@ -8,7 +8,7 @@
                         <div class="flex items-center space-x-3 mb-4">
                               <img class="h-12 w-auto" src="{{ asset('asset/laziznulogo.svg') }}" alt="Laziznu" onerror="this.style.display='none'">
                               <div class="flex flex-col">
-                                    <span class="text-2xl font-bold text-white">LAZIZNU</span>
+                                    <span class="text-2xl font-bold text-green-600">LAZIZNU</span>
                                     <span class="text-xs text-gray-400">Bojonegoro</span>
                               </div>
                         </div>
@@ -44,39 +44,39 @@
                         <h3 class="text-white text-lg font-semibold mb-4 border-b border-gray-700 pb-2">Link Cepat</h3>
                         <ul class="space-y-3">
                               <li>
-                                    <a href="{{ url('/') }}" class="text-sm hover:text-green-400 transition duration-300 flex items-center group">
+                                    <a href="{{ route('home') }}" class="text-sm hover:text-green-400 transition duration-300 flex items-center group">
                                           <span class="mr-2 text-green-500 group-hover:translate-x-1 transition-transform duration-300">›</span>
                                           Beranda
                                     </a>
                               </li>
                               <li>
-                                    <a href="{{ url('/tentang') }}" class="text-sm hover:text-green-400 transition duration-300 flex items-center group">
+                                    <a href="{{ route('profile') }}" class="text-sm hover:text-green-400 transition duration-300 flex items-center group">
                                           <span class="mr-2 text-green-500 group-hover:translate-x-1 transition-transform duration-300">›</span>
                                           Tentang Kami
                                     </a>
                               </li>
                               <li>
-                                    <a href="{{ url('/program') }}" class="text-sm hover:text-green-400 transition duration-300 flex items-center group">
+                                    <a href="{{ route('program') }}" class="text-sm hover:text-green-400 transition duration-300 flex items-center group">
                                           <span class="mr-2 text-green-500 group-hover:translate-x-1 transition-transform duration-300">›</span>
                                           Program Kami
                                     </a>
                               </li>
                               <li>
-                                    <a href="{{ url('/donasi') }}" class="text-sm hover:text-green-400 transition duration-300 flex items-center group">
+                                    <a href="{{ route('donasi') }}" class="text-sm hover:text-green-400 transition duration-300 flex items-center group">
                                           <span class="mr-2 text-green-500 group-hover:translate-x-1 transition-transform duration-300">›</span>
                                           Donasi
                                     </a>
                               </li>
                               <li>
-                                    <a href="{{ url('/berita') }}" class="text-sm hover:text-green-400 transition duration-300 flex items-center group">
+                                    <a href="{{ route('press-release') }}" class="text-sm hover:text-green-400 transition duration-300 flex items-center group">
                                           <span class="mr-2 text-green-500 group-hover:translate-x-1 transition-transform duration-300">›</span>
                                           Berita
                                     </a>
                               </li>
                               <li>
-                                    <a href="{{ url('/galeri') }}" class="text-sm hover:text-green-400 transition duration-300 flex items-center group">
+                                    <a href="{{ route('program') }}" class="text-sm hover:text-green-400 transition duration-300 flex items-center group">
                                           <span class="mr-2 text-green-500 group-hover:translate-x-1 transition-transform duration-300">›</span>
-                                          Galeri
+                                          Program
                                     </a>
                               </li>
                         </ul>
@@ -87,39 +87,21 @@
                         <h3 class="text-white text-lg font-semibold mb-4 border-b border-gray-700 pb-2">Program Kami</h3>
                         <ul class="space-y-3">
                               <li>
-                                    <a href="{{ url('/program/zakat') }}" class="text-sm hover:text-green-400 transition duration-300 flex items-center group">
+                                    <a href="{{ route('zakat') }}" class="text-sm hover:text-green-400 transition duration-300 flex items-center group">
                                           <span class="mr-2 text-green-500 group-hover:translate-x-1 transition-transform duration-300">›</span>
                                           Zakat
                                     </a>
                               </li>
                               <li>
-                                    <a href="{{ url('/program/infaq') }}" class="text-sm hover:text-green-400 transition duration-300 flex items-center group">
+                                    <a href="{{ route('infaq') }}" class="text-sm hover:text-green-400 transition duration-300 flex items-center group">
                                           <span class="mr-2 text-green-500 group-hover:translate-x-1 transition-transform duration-300">›</span>
                                           Infaq & Sedekah
                                     </a>
                               </li>
                               <li>
-                                    <a href="{{ url('/program/sosial') }}" class="text-sm hover:text-green-400 transition duration-300 flex items-center group">
+                                    <a href="{{ route('donasi') }}" class="text-sm hover:text-green-400 transition duration-300 flex items-center group">
                                           <span class="mr-2 text-green-500 group-hover:translate-x-1 transition-transform duration-300">›</span>
                                           Program Sosial
-                                    </a>
-                              </li>
-                              <li>
-                                    <a href="{{ url('/program/pendidikan') }}" class="text-sm hover:text-green-400 transition duration-300 flex items-center group">
-                                          <span class="mr-2 text-green-500 group-hover:translate-x-1 transition-transform duration-300">›</span>
-                                          Pendidikan
-                                    </a>
-                              </li>
-                              <li>
-                                    <a href="{{ url('/program/kesehatan') }}" class="text-sm hover:text-green-400 transition duration-300 flex items-center group">
-                                          <span class="mr-2 text-green-500 group-hover:translate-x-1 transition-transform duration-300">›</span>
-                                          Kesehatan
-                                    </a>
-                              </li>
-                              <li>
-                                    <a href="{{ url('/program/ekonomi') }}" class="text-sm hover:text-green-400 transition duration-300 flex items-center group">
-                                          <span class="mr-2 text-green-500 group-hover:translate-x-1 transition-transform duration-300">›</span>
-                                          Pemberdayaan Ekonomi
                                     </a>
                               </li>
                         </ul>
@@ -173,11 +155,11 @@
                               &copy; {{ date('Y') }} LAZIZNU Bojonegoro. All rights reserved.
                         </div>
                         <div class="flex flex-wrap justify-center md:justify-end items-center gap-4 text-sm text-gray-400">
-                              <a href="{{ url('/privacy-policy') }}" class="hover:text-green-400 transition duration-300">Privacy Policy</a>
+                              <a href="{{ route('kebijakan-privasi') }}" class="hover:text-green-400 transition duration-300">Privacy Policy</a>
                               <span class="text-gray-600">|</span>
-                              <a href="{{ url('/terms-conditions') }}" class="hover:text-green-400 transition duration-300">Terms & Conditions</a>
+                              <a href="{{ route('terms-conditions') }}" class="hover:text-green-400 transition duration-300">Terms & Conditions</a>
                               <span class="text-gray-600">|</span>
-                              <a href="{{ url('/faq') }}" class="hover:text-green-400 transition duration-300">FAQ</a>
+                              <a href="{{ route('disclaimer') }}" class="hover:text-green-400 transition duration-300">Disclaimer</a>
                         </div>
                   </div>
             </div>

@@ -4,598 +4,527 @@
 @section('content')
 
 <!-- HERO SECTION -->
-<section class="max-w-7xl mx-auto mt-10 px-6">
-      <div class="relative rounded-3xl overflow-hidden bg-white shadow-lg">
+<section class="max-w-7xl mx-auto mt-8 md:mt-12 px-4 sm:px-6 lg:px-8">
+      <div class="relative rounded-2xl md:rounded-3xl overflow-hidden bg-gradient-to-br from-slate-900 to-slate-800 shadow-xl">
 
-            <!-- Background Image -->
-            <img src="{{ asset('asset/hero.jpg') }}"
-                  class="w-full h-[420px] object-cover"
-                  alt="Hero">
-
-            <!-- Green Overlay -->
-            <div class="absolute inset-0 bg-gradient-to-r from-green-700/80 to-green-400/60"></div>
+            <!-- Background Image with Overlay -->
+            <div class="absolute inset-0">
+                  <img src="{{ asset('asset/hero.png') }}"
+                        class="w-full h-full object-cover opacity-40"
+                        alt="Hero Background"
+                        loading="eager">
+                  <div class="absolute inset-0 bg-gradient-to-r from-emerald-900/90 via-emerald-800/80 to-transparent"></div>
+            </div>
 
             <!-- Content -->
-            <div class="absolute inset-0 flex items-center justify-between px-16">
-                  <div class="text-white max-w-xl ml-auto">
-                        <h1 class="text-4xl font-bold mb-4">
-                              CSR Partner Anda
+            <div class="relative px-6 sm:px-12 lg:px-16 py-20 sm:py-24 lg:py-32">
+                  <div class="max-w-2xl">
+                        <div class="inline-block mb-4 px-4 py-1.5 bg-emerald-500/20 backdrop-blur-sm rounded-full border border-emerald-400/30">
+                              <span class="text-emerald-200 text-sm font-medium">CSR Partner Anda</span>
+                        </div>
+
+                        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight tracking-tight">
+                              Bersama Membangun<br />
+                              Kemandirian Umat
                         </h1>
-                        <p class="text-lg leading-relaxed">
-                              Bersama dalam gerakan kemandirian umat
-                              dengan tujuan pembangunan berkelanjutan
-                              program Kampung Nusantara
+
+                        <p class="text-base sm:text-lg text-emerald-100/90 leading-relaxed max-w-xl mb-8">
+                              Program Kampung Nusantara untuk pembangunan berkelanjutan dan pemberdayaan masyarakat.
                         </p>
+
+                        <div class="flex flex-wrap gap-4">
+                              <a href="{{ route('donasi') }}" class="group px-6 py-3 bg-white text-emerald-900 rounded-lg font-semibold hover:bg-emerald-50 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+                                    Mulai Berdonasi
+                                    <span class="inline-block ml-2 transition-transform duration-200 group-hover:translate-x-1">→</span>
+                              </a>
+                              </button>
+                              <button class="px-6 py-3 bg-transparent border-2 border-white/30 text-white rounded-lg font-semibold hover:bg-white/10 backdrop-blur-sm transition-all duration-200">
+                                    Pelajari Lebih Lanjut
+                              </button>
+                        </div>
                   </div>
             </div>
-
-            <!-- Arrow Navigation -->
-            <div class="absolute bottom-6 right-6 flex gap-4">
-                  <button class="w-12 h-12 rounded-full border border-white text-white flex items-center justify-center hover:bg-white hover:text-green-700 transition">
-                        ❮
-                  </button>
-                  <button class="w-12 h-12 rounded-full border border-white text-white flex items-center justify-center hover:bg-white hover:text-green-700 transition">
-                        ❯
-                  </button>
-            </div>
-
       </div>
 </section>
 
-<section class="max-w-7xl mx-auto py-24 px-6">
-
-      <div class="bg-white rounded-3xl border-2 border-gray-200 p-12">
+<!-- QUICK ACCESS MENU -->
+<section class="max-w-7xl mx-auto py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-2xl border border-slate-200/60 p-8 sm:p-10 lg:p-12 shadow-sm hover:shadow-md transition-shadow duration-300">
 
             <!-- Grid Menu -->
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-10 text-center">
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-6 lg:gap-8">
 
-                  <!-- Item -->
-                  <div class="group cursor-pointer">
-                        <div class="w-20 h-20 mx-auto rounded-full 
-                            bg-gradient-to-br from-green-500 to-green-700
-                            flex items-center justify-center
-                            shadow-md shadow-green-500/30
-                            transition duration-300
-                            group-hover:-translate-y-2 group-hover:shadow-xl">
-
-                              <span class="text-2xl text-white">💰</span>
+                  <!-- Menu Item -->
+                  <a href="{{ route('infaq') }}" class="group flex flex-col items-center text-center">
+                        <div class="w-16 h-16 sm:w-18 sm:h-18 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 
+                                    flex items-center justify-center shadow-lg shadow-emerald-500/20
+                                    transition-all duration-300 ease-out
+                                    group-hover:shadow-xl group-hover:shadow-emerald-500/30 
+                                    group-hover:-translate-y-1 group-hover:scale-105">
+                              <span class="text-2xl">💰</span>
                         </div>
-                        <p class="mt-4 text-sm font-semibold text-gray-700 
-                          group-hover:text-green-700 transition">
+                        <p class="mt-3 text-sm font-semibold text-slate-700 group-hover:text-emerald-600 transition-colors duration-200">
                               Infaq Sedekah
                         </p>
-                  </div>
+                  </a>
 
-                  <div class="group cursor-pointer">
-                        <div class="w-20 h-20 mx-auto rounded-full 
-                            bg-gradient-to-br from-green-500 to-green-700
-                            flex items-center justify-center
-                            shadow-md shadow-green-500/30
-                            transition duration-300
-                            group-hover:-translate-y-2 group-hover:shadow-xl">
-                              <span class="text-2xl text-white">🕌</span>
+                  <a href="{{ route('zakat') }}" class="group flex flex-col items-center text-center">
+                        <div class="w-16 h-16 sm:w-18 sm:h-18 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 
+                                    flex items-center justify-center shadow-lg shadow-emerald-500/20
+                                    transition-all duration-300 ease-out
+                                    group-hover:shadow-xl group-hover:shadow-emerald-500/30 
+                                    group-hover:-translate-y-1 group-hover:scale-105">
+                              <span class="text-2xl">🕌</span>
                         </div>
-                        <p class="mt-4 text-sm font-semibold text-gray-700 group-hover:text-green-700 transition">
+                        <p class="mt-3 text-sm font-semibold text-slate-700 group-hover:text-emerald-600 transition-colors duration-200">
                               Zakat
                         </p>
-                  </div>
+                  </a>
 
-                  <div class="group cursor-pointer">
-                        <div class="w-20 h-20 mx-auto rounded-full 
-                            bg-gradient-to-br from-green-500 to-green-700
-                            flex items-center justify-center
-                            shadow-md shadow-green-500/30
-                            transition duration-300
-                            group-hover:-translate-y-2 group-hover:shadow-xl">
-                              <span class="text-2xl text-white">🧮</span>
+                  <a href="{{ route('kalkulator-zakat') }}" class="group flex flex-col items-center text-center">
+                        <div class="w-16 h-16 sm:w-18 sm:h-18 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 
+                                    flex items-center justify-center shadow-lg shadow-emerald-500/20
+                                    transition-all duration-300 ease-out
+                                    group-hover:shadow-xl group-hover:shadow-emerald-500/30 
+                                    group-hover:-translate-y-1 group-hover:scale-105">
+                              <span class="text-2xl">🧮</span>
                         </div>
-                        <p class="mt-4 text-sm font-semibold text-gray-700 group-hover:text-green-700 transition">
+                        <p class="mt-3 text-sm font-semibold text-slate-700 group-hover:text-emerald-600 transition-colors duration-200">
                               Kalkulator Zakat
                         </p>
-                  </div>
+                  </a>
 
-                  <div class="group cursor-pointer">
-                        <div class="w-20 h-20 mx-auto rounded-full 
-                            bg-gradient-to-br from-green-500 to-green-700
-                            flex items-center justify-center
-                            shadow-md shadow-green-500/30
-                            transition duration-300
-                            group-hover:-translate-y-2 group-hover:shadow-xl">
-                              <span class="text-2xl text-white">🏠</span>
+                  <a href="{{ route('donasi') }}" class="group flex flex-col items-center text-center">
+                        <div class="w-16 h-16 sm:w-18 sm:h-18 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 
+                                    flex items-center justify-center shadow-lg shadow-emerald-500/20
+                                    transition-all duration-300 ease-out
+                                    group-hover:shadow-xl group-hover:shadow-emerald-500/30 
+                                    group-hover:-translate-y-1 group-hover:scale-105">
+                              <span class="text-2xl">🏠</span>
                         </div>
-                        <p class="mt-4 text-sm font-semibold text-gray-700 group-hover:text-green-700 transition">
+                        <p class="mt-3 text-sm font-semibold text-slate-700 group-hover:text-emerald-600 transition-colors duration-200">
                               Peduli Bencana
                         </p>
-                  </div>
+                  </a>
 
-                  <div class="group cursor-pointer">
-                        <div class="w-20 h-20 mx-auto rounded-full 
-                            bg-gradient-to-br from-green-500 to-green-700
-                            flex items-center justify-center
-                            shadow-md shadow-green-500/30
-                            transition duration-300
-                            group-hover:-translate-y-2 group-hover:shadow-xl">
-                              <span class="text-2xl text-white">🚑</span>
+                  <a href="#" class="group flex flex-col items-center text-center">
+                        <div class="w-16 h-16 sm:w-18 sm:h-18 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 
+                                    flex items-center justify-center shadow-lg shadow-emerald-500/20
+                                    transition-all duration-300 ease-out
+                                    group-hover:shadow-xl group-hover:shadow-emerald-500/30 
+                                    group-hover:-translate-y-1 group-hover:scale-105">
+                              <span class="text-2xl">🚑</span>
                         </div>
-                        <p class="mt-4 text-sm font-semibold text-gray-700 group-hover:text-green-700 transition">
+                        <p class="mt-3 text-sm font-semibold text-slate-700 group-hover:text-emerald-600 transition-colors duration-200">
                               Mobil Sehat NU
                         </p>
-                  </div>
+                  </a>
 
-                  <div class="group cursor-pointer">
-                        <div class="w-20 h-20 mx-auto rounded-full 
-                            bg-gradient-to-br from-green-500 to-green-700
-                            flex items-center justify-center
-                            shadow-md shadow-green-500/30
-                            transition duration-300
-                            group-hover:-translate-y-2 group-hover:shadow-xl">
-                              <span class="text-2xl text-white">🌙</span>
+                  <a href="#" class="group flex flex-col items-center text-center">
+                        <div class="w-16 h-16 sm:w-18 sm:h-18 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 
+                                    flex items-center justify-center shadow-lg shadow-emerald-500/20
+                                    transition-all duration-300 ease-out
+                                    group-hover:shadow-xl group-hover:shadow-emerald-500/30 
+                                    group-hover:-translate-y-1 group-hover:scale-105">
+                              <span class="text-2xl">🌙</span>
                         </div>
-                        <p class="mt-4 text-sm font-semibold text-gray-700 group-hover:text-green-700 transition">
+                        <p class="mt-3 text-sm font-semibold text-slate-700 group-hover:text-emerald-600 transition-colors duration-200">
                               Ramadhan
                         </p>
-                  </div>
+                  </a>
 
-                  <div class="group cursor-pointer">
-                        <div class="w-20 h-20 mx-auto rounded-full 
-                            bg-gradient-to-br from-green-500 to-green-700
-                            flex items-center justify-center
-                            shadow-md shadow-green-500/30
-                            transition duration-300
-                            group-hover:-translate-y-2 group-hover:shadow-xl">
-                              <span class="text-2xl text-white">🐄</span>
+                  <a href="#" class="group flex flex-col items-center text-center">
+                        <div class="w-16 h-16 sm:w-18 sm:h-18 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 
+                                    flex items-center justify-center shadow-lg shadow-emerald-500/20
+                                    transition-all duration-300 ease-out
+                                    group-hover:shadow-xl group-hover:shadow-emerald-500/30 
+                                    group-hover:-translate-y-1 group-hover:scale-105">
+                              <span class="text-2xl">🐄</span>
                         </div>
-                        <p class="mt-4 text-sm font-semibold text-gray-700 group-hover:text-green-700 transition">
+                        <p class="mt-3 text-sm font-semibold text-slate-700 group-hover:text-emerald-600 transition-colors duration-200">
                               Qurban
                         </p>
-                  </div>
+                  </a>
 
             </div>
-
       </div>
-
 </section>
 
-<!-- HERO SECTION -->
+<!-- DONATION PROGRAMS -->
+<section class="w-full bg-slate-50/50 py-16 sm:py-20 lg:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
+            <!-- Section Header -->
+            <div class="text-center max-w-2xl mx-auto mb-12 lg:mb-16">
+                  <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight mb-4">
+                        Ayo Berinfaq di LAZISNU
+                  </h2>
+                  <p class="text-base sm:text-lg text-slate-600 leading-relaxed">
+                        Tunaikan zakat, infaq, dan shadaqah melalui LAZISNU dengan berbagai program kemanfaatan untuk ummat.
+                  </p>
+            </div>
 
-<!-- Infaq Section -->
-<section class="w-full bg-gray-50 py-24">
-
-      <!-- Heading -->
-      <div class="text-center max-w-3xl mx-auto px-6">
-            <h2 class="text-4xl font-bold bg-gradient-to-r from-green-700 to-green-500 bg-clip-text text-transparent">
-                  AYO BERINFAQ DI LAZISNU
-            </h2>
-
-            <p class="mt-4 text-gray-600 leading-relaxed">
-                  Tunaikan zakat, infaq, dan shadaqah melalui LAZISNU dengan berbagai
-                  program kemanfaatan untuk ummat.
-            </p>
-      </div>
-
-
-      <!-- Cards -->
-      <div class="max-w-7xl mx-auto mt-16 px-6">
-            <div class="grid md:grid-cols-3 gap-10">
+            <!-- Program Cards Grid -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
 
                   <!-- CARD 1 -->
-                  <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden group">
-
-                        <div class="relative">
+                  <article class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-slate-100 hover:border-emerald-100">
+                        <div class="relative overflow-hidden aspect-[16/10]">
                               <img src="{{ asset('asset/program1.jpg') }}"
-                                    class="w-full h-56 object-cover group-hover:scale-105 transition duration-500"
-                                    alt="">
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    alt="Wujudkan Santripreneur Terampil Berwirausaha"
+                                    loading="lazy">
+                              <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
 
                         <div class="p-6">
-                              <h3 class="font-semibold text-lg">
+                              <div class="mb-3">
+                                    <span class="inline-block px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-semibold rounded-full">
+                                          LAZISNU JEPARA
+                                    </span>
+                              </div>
+
+                              <h3 class="font-semibold text-lg text-slate-900 mb-4 leading-snug group-hover:text-emerald-600 transition-colors duration-200">
                                     Wujudkan Santripreneur Terampil Berwirausaha
                               </h3>
 
-                              <p class="text-sm text-gray-500 mt-2">
-                                    LAZISNU JEPARA
-                              </p>
-
-                              <!-- Progress -->
-                              <div class="mt-4">
-                                    <div class="flex justify-between text-sm text-gray-600 mb-1">
-                                          <span>Rp 0</span>
-                                          <span>Target Rp 10.000.000</span>
+                              <!-- Progress Section -->
+                              <div class="space-y-3">
+                                    <div class="flex justify-between items-baseline text-sm">
+                                          <span class="text-slate-600">Terkumpul</span>
+                                          <span class="font-semibold text-slate-900">Rp 0</span>
                                     </div>
 
-                                    <div class="w-full bg-gray-200 h-2 rounded-full">
-                                          <div class="bg-green-600 h-2 rounded-full w-[10%]"></div>
+                                    <div class="relative w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                                          <div class="absolute inset-y-0 left-0 bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-full transition-all duration-500 w-[10%]"></div>
+                                    </div>
+
+                                    <div class="flex justify-between items-baseline text-xs text-slate-500">
+                                          <span>10% tercapai</span>
+                                          <span>Target Rp 10.000.000</span>
                                     </div>
                               </div>
 
-                              <button class="w-full mt-6 bg-green-400 hover:bg-green-700 text-white py-3 rounded-lg transition">
-                                    Salurkan Niat Baik
+                              <button class="mt-6 w-full px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-sm hover:shadow-md hover:-translate-y-0.5">
+                                    Salurkan Donasi
                               </button>
                         </div>
-                  </div>
-
+                  </article>
 
                   <!-- CARD 2 -->
-                  <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden group">
-
-                        <div class="relative">
+                  <article class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-slate-100 hover:border-emerald-100">
+                        <div class="relative overflow-hidden aspect-[16/10]">
                               <img src="{{ asset('asset/program2.jpg') }}"
-                                    class="w-full h-56 object-cover group-hover:scale-105 transition duration-500"
-                                    alt="">
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    alt="Bantu Guru Membangun Masa Depan Pendidikan"
+                                    loading="lazy">
+                              <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
 
                         <div class="p-6">
-                              <h3 class="font-semibold text-lg">
+                              <div class="mb-3">
+                                    <span class="inline-block px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-semibold rounded-full">
+                                          LAZISNU JEPARA
+                                    </span>
+                              </div>
+
+                              <h3 class="font-semibold text-lg text-slate-900 mb-4 leading-snug group-hover:text-emerald-600 transition-colors duration-200">
                                     Bantu Guru Membangun Masa Depan Pendidikan
                               </h3>
 
-                              <p class="text-sm text-gray-500 mt-2">
-                                    LAZISNU JEPARA
-                              </p>
-
-                              <div class="mt-4">
-                                    <div class="flex justify-between text-sm text-gray-600 mb-1">
-                                          <span>Rp 150.000</span>
-                                          <span>Target Rp 5.000.000</span>
+                              <div class="space-y-3">
+                                    <div class="flex justify-between items-baseline text-sm">
+                                          <span class="text-slate-600">Terkumpul</span>
+                                          <span class="font-semibold text-slate-900">Rp 150.000</span>
                                     </div>
 
-                                    <div class="w-full bg-gray-200 h-2 rounded-full">
-                                          <div class="bg-green-600 h-2 rounded-full w-[30%]"></div>
+                                    <div class="relative w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                                          <div class="absolute inset-y-0 left-0 bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-full transition-all duration-500 w-[30%]"></div>
+                                    </div>
+
+                                    <div class="flex justify-between items-baseline text-xs text-slate-500">
+                                          <span>30% tercapai</span>
+                                          <span>Target Rp 5.000.000</span>
                                     </div>
                               </div>
 
-                              <button class="w-full mt-6 bg-green-400 hover:bg-green-700 text-white py-3 rounded-lg transition">
-                                    Salurkan Niat Baik
+                              <button class="mt-6 w-full px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-sm hover:shadow-md hover:-translate-y-0.5">
+                                    Salurkan Donasi
                               </button>
                         </div>
-                  </div>
-
+                  </article>
 
                   <!-- CARD 3 -->
-                  <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden group">
-
-                        <div class="relative">
+                  <article class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-slate-100 hover:border-emerald-100">
+                        <div class="relative overflow-hidden aspect-[16/10]">
                               <img src="{{ asset('asset/program3.jpg') }}"
-                                    class="w-full h-56 object-cover group-hover:scale-105 transition duration-500"
-                                    alt="">
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    alt="Beasiswa Santri dan Siswa Nusantara"
+                                    loading="lazy">
+                              <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
 
                         <div class="p-6">
-                              <h3 class="font-semibold text-lg">
+                              <div class="mb-3">
+                                    <span class="inline-block px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-semibold rounded-full">
+                                          LAZISNU JEPARA
+                                    </span>
+                              </div>
+
+                              <h3 class="font-semibold text-lg text-slate-900 mb-4 leading-snug group-hover:text-emerald-600 transition-colors duration-200">
                                     Beasiswa Santri dan Siswa Nusantara
                               </h3>
 
-                              <p class="text-sm text-gray-500 mt-2">
-                                    LAZISNU JEPARA
-                              </p>
-
-                              <div class="mt-4">
-                                    <div class="flex justify-between text-sm text-gray-600 mb-1">
-                                          <span>Rp 0</span>
-                                          <span>Target Rp 8.000.000</span>
+                              <div class="space-y-3">
+                                    <div class="flex justify-between items-baseline text-sm">
+                                          <span class="text-slate-600">Terkumpul</span>
+                                          <span class="font-semibold text-slate-900">Rp 0</span>
                                     </div>
 
-                                    <div class="w-full bg-gray-200 h-2 rounded-full">
-                                          <div class="bg-green-600 h-2 rounded-full w-[5%]"></div>
+                                    <div class="relative w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                                          <div class="absolute inset-y-0 left-0 bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-full transition-all duration-500 w-[5%]"></div>
+                                    </div>
+
+                                    <div class="flex justify-between items-baseline text-xs text-slate-500">
+                                          <span>5% tercapai</span>
+                                          <span>Target Rp 8.000.000</span>
                                     </div>
                               </div>
 
-                              <button class="w-full mt-6 bg-green-400 hover:bg-green-700 text-white py-3 rounded-lg transition">
-                                    Salurkan Niat Baik
+                              <button class="mt-6 w-full px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-sm hover:shadow-md hover:-translate-y-0.5">
+                                    Salurkan Donasi
                               </button>
                         </div>
-                  </div>
+                  </article>
 
             </div>
+
+            <!-- View All Button -->
+            <div class="text-center mt-12 lg:mt-16">
+                  <button class="inline-flex items-center gap-2 px-8 py-3 bg-white border-2 border-slate-200 text-slate-900 font-semibold rounded-lg hover:border-emerald-500 hover:text-emerald-600 transition-all duration-200 shadow-sm hover:shadow-md">
+                        Lihat Semua Program
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                  </button>
+            </div>
       </div>
-
-
-      <!-- Button Lihat Semua -->
-      <div class="text-center mt-16">
-            <button class="bg-green-400 hover:bg-green-700 text-white px-8 py-3 rounded-xl shadow-md transition">
-                  Lihat Semua Program
-            </button>
-      </div>
-
 </section>
-<!-- Infaq Section -->
 
-<!-- Pres Release -->
-<section class="w-full bg-gray-50 py-24">
+<!-- PRESS RELEASE -->
+<section class="w-full bg-white py-16 sm:py-20 lg:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-      <!-- Heading -->
-      <div class="text-center max-w-3xl mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold tracking-wide
-                   bg-gradient-to-r from-green-700 to-green-500 
-                   bg-clip-text text-transparent">
-                  PRESS RELEASE
-            </h2>
+            <!-- Section Header -->
+            <div class="text-center mb-12 lg:mb-16">
+                  <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight mb-3">
+                        Press Release
+                  </h2>
+                  <div class="w-16 h-1 bg-gradient-to-r from-emerald-500 to-emerald-600 mx-auto rounded-full"></div>
+            </div>
 
-            <div class="w-24 h-1 bg-green-600 mx-auto mt-4 rounded-full"></div>
-      </div>
+            <!-- News Grid -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
 
-
-      <!-- Cards -->
-      <div class="max-w-7xl mx-auto mt-16 px-6 md:px-16">
-            <div class="grid md:grid-cols-3 gap-10">
-
-                  <!-- CARD 1 -->
-                  <div class="group bg-white rounded-2xl shadow-md hover:shadow-xl 
-                        transition duration-500 overflow-hidden">
-
-                        <div class="overflow-hidden">
+                  <!-- NEWS CARD 1 -->
+                  <article class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-slate-100 hover:border-emerald-100">
+                        <div class="relative overflow-hidden aspect-[16/11]">
                               <img src="{{ asset('asset/press1.jpg') }}"
-                                    class="w-full h-60 object-cover 
-                               group-hover:scale-105 transition duration-700"
-                                    alt="">
+                                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                    alt="Ribuan Relawan NU Berkumpul"
+                                    loading="lazy">
                         </div>
 
                         <div class="p-6">
-                              <h3 class="text-lg font-semibold text-green-700 
-                               group-hover:text-green-600 transition">
+                              <h3 class="font-semibold text-lg text-slate-900 mb-3 leading-snug group-hover:text-emerald-600 transition-colors duration-200 line-clamp-2">
                                     Ribuan Relawan NU Berkumpul di Batang, PCNU Jepara
                               </h3>
 
-                              <p class="text-gray-600 text-sm mt-3 leading-relaxed">
-                                    Ribuan relawan Nahdlatul Ulama dari berbagai daerah
-                                    di Jawa Tengah berkumpul dalam aksi sosial...
+                              <p class="text-sm text-slate-600 leading-relaxed mb-4 line-clamp-3">
+                                    Ribuan relawan Nahdlatul Ulama dari berbagai daerah di Jawa Tengah berkumpul dalam aksi sosial...
                               </p>
 
-                              <div class="flex items-center gap-2 mt-4 text-sm text-gray-400">
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                          class="w-4 h-4" fill="none"
-                                          viewBox="0 0 24 24" stroke="currentColor">
-                                          <path stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="2"
-                                                d="M8 7V3m8 4V3m-9 8h10m-11 9h12a2 2 0 002-2V7a2 2 0 00-2-2H6a2 2 0 00-2 2v11a2 2 0 002 2z" />
+                              <div class="flex items-center gap-2 text-xs text-slate-500">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                     </svg>
-                                    01/02/2026
+                                    <time datetime="2026-02-01">01 Februari 2026</time>
                               </div>
                         </div>
-                  </div>
+                  </article>
 
-
-                  <!-- CARD 2 -->
-                  <div class="group bg-white rounded-2xl shadow-md hover:shadow-xl 
-                        transition duration-500 overflow-hidden">
-
-                        <div class="overflow-hidden">
+                  <!-- NEWS CARD 2 -->
+                  <article class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-slate-100 hover:border-emerald-100">
+                        <div class="relative overflow-hidden aspect-[16/11]">
                               <img src="{{ asset('asset/press2.jpg') }}"
-                                    class="w-full h-60 object-cover 
-                               group-hover:scale-105 transition duration-700"
-                                    alt="">
+                                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                    alt="NU Peduli Jepara"
+                                    loading="lazy">
                         </div>
 
                         <div class="p-6">
-                              <h3 class="text-lg font-semibold text-green-700 
-                               group-hover:text-green-600 transition">
+                              <h3 class="font-semibold text-lg text-slate-900 mb-3 leading-snug group-hover:text-emerald-600 transition-colors duration-200 line-clamp-2">
                                     NU Peduli Jepara Sambangi Warga Terdampak Cuaca Ekstrim
                               </h3>
 
-                              <p class="text-gray-600 text-sm mt-3 leading-relaxed">
-                                    NU Peduli dan LAZISNU PCNU Jepara menyalurkan bantuan
-                                    kebencanaan kepada warga terdampak...
+                              <p class="text-sm text-slate-600 leading-relaxed mb-4 line-clamp-3">
+                                    NU Peduli dan LAZISNU PCNU Jepara menyalurkan bantuan kebencanaan kepada warga terdampak...
                               </p>
 
-                              <div class="flex items-center gap-2 mt-4 text-sm text-gray-400">
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                          class="w-4 h-4" fill="none"
-                                          viewBox="0 0 24 24" stroke="currentColor">
-                                          <path stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="2"
-                                                d="M8 7V3m8 4V3m-9 8h10m-11 9h12a2 2 0 002-2V7a2 2 0 00-2-2H6a2 2 0 00-2 2v11a2 2 0 002 2z" />
+                              <div class="flex items-center gap-2 text-xs text-slate-500">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                     </svg>
-                                    31/01/2026
+                                    <time datetime="2026-01-31">31 Januari 2026</time>
                               </div>
                         </div>
-                  </div>
+                  </article>
 
-
-                  <!-- CARD 3 -->
-                  <div class="group bg-white rounded-2xl shadow-md hover:shadow-xl 
-                        transition duration-500 overflow-hidden">
-
-                        <div class="overflow-hidden">
+                  <!-- NEWS CARD 3 -->
+                  <article class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-slate-100 hover:border-emerald-100">
+                        <div class="relative overflow-hidden aspect-[16/11]">
                               <img src="{{ asset('asset/press3.jpg') }}"
-                                    class="w-full h-60 object-cover 
-                               group-hover:scale-105 transition duration-700"
-                                    alt="">
+                                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                    alt="Peduli Bencana PCNU Jepara"
+                                    loading="lazy">
                         </div>
 
                         <div class="p-6">
-                              <h3 class="text-lg font-semibold text-green-700 
-                               group-hover:text-green-600 transition">
-                                    Peduli Bencana, PCNU Jepara Salurkan Bantuan ke Tiga
+                              <h3 class="font-semibold text-lg text-slate-900 mb-3 leading-snug group-hover:text-emerald-600 transition-colors duration-200 line-clamp-2">
+                                    Peduli Bencana, PCNU Jepara Salurkan Bantuan ke Tiga Lokasi
                               </h3>
 
-                              <p class="text-gray-600 text-sm mt-3 leading-relaxed">
-                                    PCNU Jepara melalui NU Peduli Bencana menyalurkan
-                                    bantuan sembako, pendidikan, dan santunan...
+                              <p class="text-sm text-slate-600 leading-relaxed mb-4 line-clamp-3">
+                                    PCNU Jepara melalui NU Peduli Bencana menyalurkan bantuan sembako, pendidikan, dan santunan...
                               </p>
 
-                              <div class="flex items-center gap-2 mt-4 text-sm text-gray-400">
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                          class="w-4 h-4" fill="none"
-                                          viewBox="0 0 24 24" stroke="currentColor">
-                                          <path stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="2"
-                                                d="M8 7V3m8 4V3m-9 8h10m-11 9h12a2 2 0 002-2V7a2 2 0 00-2-2H6a2 2 0 00-2 2v11a2 2 0 002 2z" />
+                              <div class="flex items-center gap-2 text-xs text-slate-500">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                     </svg>
-                                    29/01/2026
+                                    <time datetime="2026-01-29">29 Januari 2026</time>
                               </div>
                         </div>
+                  </article>
+
+            </div>
+
+            <!-- View More Button -->
+            <div class="text-center mt-12 lg:mt-16">
+                  <button class="inline-flex items-center gap-2 px-8 py-3 bg-white border-2 border-slate-200 text-slate-900 font-semibold rounded-lg hover:border-emerald-500 hover:text-emerald-600 transition-all duration-200 shadow-sm hover:shadow-md">
+                        Lebih Banyak
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                  </button>
+            </div>
+      </div>
+</section>
+
+<!-- 5 PILLARS -->
+<section class="w-full bg-gradient-to-br from-emerald-600 to-emerald-700 py-16 sm:py-20 lg:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Section Header -->
+            <div class="text-center mb-12 lg:mb-16">
+                  <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-3">
+                        5 Pilar Program
+                  </h2>
+                  <p class="text-emerald-100 max-w-2xl mx-auto">
+                        Program pemberdayaan masyarakat untuk kesejahteraan berkelanjutan
+                  </p>
+            </div>
+
+            <!-- Pillars Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-6">
+
+                  <!-- PILLAR 1 -->
+                  <div class="group text-center">
+                        <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 mb-6 transition-all duration-300 group-hover:bg-white/20 group-hover:scale-110 group-hover:-translate-y-1">
+                              <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                              </svg>
+                        </div>
+
+                        <h3 class="text-lg font-bold text-white mb-3">
+                              NUCARE CERDAS
+                        </h3>
+
+                        <p class="text-sm text-emerald-100 leading-relaxed">
+                              Memberikan akses pendidikan berkualitas bagi siswa yatim-dhuafa dan berprestasi.
+                        </p>
+                  </div>
+
+                  <!-- PILLAR 2 -->
+                  <div class="group text-center">
+                        <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 mb-6 transition-all duration-300 group-hover:bg-white/20 group-hover:scale-110 group-hover:-translate-y-1">
+                              <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
+                              </svg>
+                        </div>
+
+                        <h3 class="text-lg font-bold text-white mb-3">
+                              NUCARE BERDAYA
+                        </h3>
+
+                        <p class="text-sm text-emerald-100 leading-relaxed">
+                              Mendorong kemandirian ekonomi melalui kewirausahaan dan pemberdayaan usaha.
+                        </p>
+                  </div>
+
+                  <!-- PILLAR 3 -->
+                  <div class="group text-center">
+                        <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 mb-6 transition-all duration-300 group-hover:bg-white/20 group-hover:scale-110 group-hover:-translate-y-1">
+                              <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                              </svg>
+                        </div>
+
+                        <h3 class="text-lg font-bold text-white mb-3">
+                              NUCARE SEHAT
+                        </h3>
+
+                        <p class="text-sm text-emerald-100 leading-relaxed">
+                              Meningkatkan layanan kesehatan masyarakat melalui tindakan kuratif dan preventif.
+                        </p>
+                  </div>
+
+                  <!-- PILLAR 4 -->
+                  <div class="group text-center">
+                        <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 mb-6 transition-all duration-300 group-hover:bg-white/20 group-hover:scale-110 group-hover:-translate-y-1">
+                              <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                              </svg>
+                        </div>
+
+                        <h3 class="text-lg font-bold text-white mb-3">
+                              NUCARE DAMAI
+                        </h3>
+
+                        <p class="text-sm text-emerald-100 leading-relaxed">
+                              Meningkatkan layanan sosial melalui bantuan kebencanaan dan aksi kemanusiaan.
+                        </p>
+                  </div>
+
+                  <!-- PILLAR 5 -->
+                  <div class="group text-center">
+                        <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 mb-6 transition-all duration-300 group-hover:bg-white/20 group-hover:scale-110 group-hover:-translate-y-1">
+                              <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+                              </svg>
+                        </div>
+
+                        <h3 class="text-lg font-bold text-white mb-3">
+                              NUCARE HIJAU
+                        </h3>
+
+                        <p class="text-sm text-emerald-100 leading-relaxed">
+                              Memelihara lingkungan dan mendorong keberlanjutan sumber daya alam.
+                        </p>
                   </div>
 
             </div>
       </div>
-
-
-      <!-- Button -->
-      <div class="text-center mt-16">
-            <button class="bg-green-400 hover:bg-green-700 
-                       text-white px-8 py-3 rounded-xl 
-                       shadow-md hover:shadow-lg 
-                       transition duration-300">
-                  Lebih Banyak
-            </button>
-      </div>
-
 </section>
-<!-- Pres Release -->
-
-<!-- 5 Pilar -->
-<section class="w-full bg-green-400 py-24">
-
-      <!-- Heading -->
-      <div class="text-center mb-16 px-6">
-            <h2 class="text-3xl md:text-4xl font-bold tracking-wide">
-                  <span class="text-yellow-400">5 PILAR</span>
-                  <span class="text-white">PROGRAM</span>
-            </h2>
-      </div>
-
-
-      <!-- Content -->
-      <div class="max-w-7xl mx-auto px-6 md:px-12">
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-12 text-center">
-
-                  <!-- ITEM -->
-                  <div class="group">
-                        <div class="w-28 h-28 mx-auto rounded-full 
-                            bg-green-700/50 backdrop-blur 
-                            flex items-center justify-center 
-                            mb-6 transition duration-300 
-                            group-hover:scale-110">
-
-                              <!-- ICON -->
-                              <svg class="w-12 h-12 text-white opacity-90" fill="none" stroke="currentColor" stroke-width="1.8"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                          d="M12 14l9-5-9-5-9 5 9 5z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                          d="M12 14l6.16-3.422M12 14v7m0-7L5.84 10.578" />
-                              </svg>
-                        </div>
-
-                        <h3 class="text-lg font-semibold text-white">
-                              NUCARE <span class="text-yellow-400">CERDAS</span>
-                        </h3>
-
-                        <p class="text-green-100 text-sm mt-4 leading-relaxed">
-                              Membantu memberikan akses pendidikan berkualitas yang merata serta membuka kesempatan belajar bagi semua orang khususnya bagi siswa yatim-dhuafa dan berprestasi.
-                        </p>
-                  </div>
-
-
-                  <!-- ITEM -->
-                  <div class="group">
-                        <div class="w-28 h-28 mx-auto rounded-full 
-                            bg-green-700/50 backdrop-blur 
-                            flex items-center justify-center 
-                            mb-6 transition duration-300 
-                            group-hover:scale-110">
-
-                              <svg class="w-12 h-12 text-white opacity-90" fill="none" stroke="currentColor" stroke-width="1.8"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                          d="M3 10h18M7 10V6a5 5 0 0110 0v4" />
-                              </svg>
-                        </div>
-
-                        <h3 class="text-lg font-semibold text-white">
-                              NUCARE <span class="text-yellow-400">BERDAYA</span>
-                        </h3>
-
-                        <p class="text-green-100 text-sm mt-4 leading-relaxed">
-                              Mendorong kemandirian dan meningkatkan pendapatan, kesejahteraan serta semangat kewirausahaan melalui kegiatan ekonomi dan pembentukan usaha.
-                        </p>
-                  </div>
-
-
-                  <!-- ITEM -->
-                  <div class="group">
-                        <div class="w-28 h-28 mx-auto rounded-full 
-                            bg-green-700/50 backdrop-blur 
-                            flex items-center justify-center 
-                            mb-6 transition duration-300 
-                            group-hover:scale-110">
-
-                              <svg class="w-12 h-12 text-white opacity-90" fill="none" stroke="currentColor" stroke-width="1.8"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                          d="M12 21c-4.97-4.97-8-8-8-11a4 4 0 018 0 4 4 0 018 0c0 3-3.03 6.03-8 11z" />
-                              </svg>
-                        </div>
-
-                        <h3 class="text-lg font-semibold text-white">
-                              NUCARE <span class="text-yellow-400">SEHAT</span>
-                        </h3>
-
-                        <p class="text-green-100 text-sm mt-4 leading-relaxed">
-                              Bertujuan meningkatkan layanan di bidang kesehatan masyarakat, khususnya keluarga kurang mampu melalui tindakan kuratif maupun preventif.
-                        </p>
-                  </div>
-
-
-                  <!-- ITEM -->
-                  <div class="group">
-                        <div class="w-28 h-28 mx-auto rounded-full 
-                            bg-green-700/50 backdrop-blur 
-                            flex items-center justify-center 
-                            mb-6 transition duration-300 
-                            group-hover:scale-110">
-
-                              <svg class="w-12 h-12 text-white opacity-90" fill="none" stroke="currentColor" stroke-width="1.8"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                          d="M12 8c-1.5-2-4-2-5 0-1.5 2 0 5 5 9 5-4 6.5-7 5-9-1-2-3.5-2-5 0z" />
-                              </svg>
-                        </div>
-
-                        <h3 class="text-lg font-semibold text-white">
-                              NUCARE <span class="text-yellow-400">DAMAI</span>
-                        </h3>
-
-                        <p class="text-green-100 text-sm mt-4 leading-relaxed">
-                              Meningkatkan layanan sosial dengan semangat dakwah Islam Ahlussunnah wal Jama’ah melalui bantuan kebencanaan dan aksi sosial.
-                        </p>
-                  </div>
-
-
-                  <!-- ITEM -->
-                  <div class="group">
-                        <div class="w-28 h-28 mx-auto rounded-full 
-                            bg-green-700/50 backdrop-blur 
-                            flex items-center justify-center 
-                            mb-6 transition duration-300 
-                            group-hover:scale-110">
-
-                              <svg class="w-12 h-12 text-white opacity-90" fill="none" stroke="currentColor" stroke-width="1.8"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                          d="M9 19V6l12-2v13" />
-                              </svg>
-                        </div>
-
-                        <h3 class="text-lg font-semibold text-white">
-                              NUCARE <span class="text-yellow-400">HIJAU</span>
-                        </h3>
-
-                        <p class="text-green-100 text-sm mt-4 leading-relaxed">
-                              Program untuk memelihara lingkungan dan sumber daya alam serta mendorong keberlanjutan sebagai sumber penghidupan masyarakat.
-                        </p>
-                  </div>
-
-            </div>
-
-      </div>
-
-</section>
-<!-- 5 Pilar -->
-
-
-
 
 @endsection

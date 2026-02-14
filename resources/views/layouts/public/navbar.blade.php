@@ -14,7 +14,7 @@
                   <div class="hidden lg:flex lg:items-center lg:space-x-10">
 
                         <!-- Menu Item -->
-                        <a href="{{ url('/') }}"
+                        <a href="{{ route('home') }}"
                               class="relative text-gray-700 text-sm font-medium transition-colors duration-300 hover:text-green-600 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-green-600 after:transition-all after:duration-300 hover:after:w-full">
                               Beranda
                         </a>
@@ -33,35 +33,35 @@
                                 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
                                 transition-all duration-300 ease-out p-2">
 
-                                    <a href="{{ url('/program/zakat') }}"
+                                    <a href="{{ route('profile') }}"
                                           class="block px-4 py-3 rounded-xl text-sm text-gray-600
                            hover:bg-green-50 hover:text-green-600 hover:translate-x-1
                            transition-all duration-200">
                                           Sekilas NU Care Laziznu
                                     </a>
 
-                                    <a href="{{ url('/program/infaq') }}"
+                                    <a href="{{ route('pengurus-laziznu-bojonegoro') }}"
                                           class="block px-4 py-3 rounded-xl text-sm text-gray-600
                            hover:bg-green-50 hover:text-green-600 hover:translate-x-1
                            transition-all duration-200">
                                           Pengurus Laziznu PCNU Bojonegoro
                                     </a>
 
-                                    <a href="{{ url('/program/sosial') }}"
+                                    <a href="{{ route('rekening-lengkap') }}"
                                           class="block px-4 py-3 rounded-xl text-sm text-gray-600
                            hover:bg-green-50 hover:text-green-600 hover:translate-x-1
                            transition-all duration-200">
                                           Rekening Lengkap
                                     </a>
 
-                                    <a href="{{ url('/program/pendidikan') }}"
+                                    <a href="{{ route('dokumen') }}"
                                           class="block px-4 py-3 rounded-xl text-sm text-gray-600
                            hover:bg-green-50 hover:text-green-600 hover:translate-x-1
                            transition-all duration-200">
                                           Unduh Dokumen
                                     </a>
 
-                                    <a href="{{ url('/program/pendidikan') }}"
+                                    <a href="{{ route('press-release') }}"
                                           class="block px-4 py-3 rounded-xl text-sm text-gray-600
                            hover:bg-green-50 hover:text-green-600 hover:translate-x-1
                            transition-all duration-200">
@@ -71,7 +71,7 @@
                         </div>
 
                         <!-- Program -->
-                        <a href="{{ url('/') }}"
+                        <a href="{{ route('program') }}"
                               class="relative text-gray-700 text-sm font-medium transition-colors duration-300 hover:text-green-600 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-green-600 after:transition-all after:duration-300 hover:after:w-full">
                               Program
                         </a>
@@ -90,32 +90,25 @@
                                 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
                                 transition-all duration-300 ease-out p-2">
 
-                                    <a href="{{ url('/program/zakat') }}"
+                                    <a href="{{ route('zakat') }}"
                                           class="block px-4 py-3 rounded-xl text-sm text-gray-600
                            hover:bg-green-50 hover:text-green-600 hover:translate-x-1
                            transition-all duration-200">
                                           Zakat
                                     </a>
 
-                                    <a href="{{ url('/program/infaq') }}"
+                                    <a href="{{ route('infaq') }}"
                                           class="block px-4 py-3 rounded-xl text-sm text-gray-600
                            hover:bg-green-50 hover:text-green-600 hover:translate-x-1
                            transition-all duration-200">
                                           Infaq & Sedekah
                                     </a>
 
-                                    <a href="{{ url('/program/sosial') }}"
+                                    <a href="{{ route('donasi') }}"
                                           class="block px-4 py-3 rounded-xl text-sm text-gray-600
                            hover:bg-green-50 hover:text-green-600 hover:translate-x-1
                            transition-all duration-200">
                                           Program Sosial
-                                    </a>
-
-                                    <a href="{{ url('/program/pendidikan') }}"
-                                          class="block px-4 py-3 rounded-xl text-sm text-gray-600
-                           hover:bg-green-50 hover:text-green-600 hover:translate-x-1
-                           transition-all duration-200">
-                                          Pendidikan
                                     </a>
                               </div>
                         </div>
@@ -134,25 +127,25 @@
                                 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
                                 transition-all duration-300 ease-out p-2">
 
-                                    <a href="{{ url('/program/zakat') }}"
+                                    <a href="{{ route('laporan-bulanan') }}"
                                           class="block px-4 py-3 rounded-xl text-sm text-gray-600
                            hover:bg-green-50 hover:text-green-600 hover:translate-x-1
                            transition-all duration-200">
                                           Laporan Bulanan
                                     </a>
 
-                                    <a href="{{ url('/program/infaq') }}"
+                                    <a href="{{ route('status-mwc-ranting') }}"
                                           class="block px-4 py-3 rounded-xl text-sm text-gray-600
                            hover:bg-green-50 hover:text-green-600 hover:translate-x-1
                            transition-all duration-200">
                                           Status Laporan MWC & Ranting
                                     </a>
 
-                                    <a href="{{ url('/program/sosial') }}"
+                                    <a href="{{ route('laporan-tahunan') }}"
                                           class="block px-4 py-3 rounded-xl text-sm text-gray-600
                            hover:bg-green-50 hover:text-green-600 hover:translate-x-1
                            transition-all duration-200">
-                                          Formulir Laporan Bulanan
+                                          Formulir Laporan Tahunan
                                     </a>
                               </div>
                         </div>
@@ -160,10 +153,10 @@
 
                   <!-- CTA Button -->
                   <div class="hidden lg:block">
-                        <a href="{{ url('/donasi/sekarang') }}"
-                              class="bg-green-400 text-white px-6 py-2.5 rounded-xl text-sm font-semibold
+                        <a href="{{ route('kalkulator-zakat') }}"
+                              class="bg-gradient-to-br from-emerald-600 to-emerald-700 text-white px-6 py-2.5 rounded-xl text-sm font-semibold
                    shadow-md hover:shadow-xl
-                   hover:bg-green-500 hover:-translate-y-0.5
+                   hover:bg-emerald-500 hover:-translate-y-0.5
                    transition-all duration-300">
                               Kalkulator Zakat
                         </a>
@@ -191,7 +184,7 @@
             <div class="px-6 py-6 space-y-2 text-base">
 
                   <!-- Beranda -->
-                  <a href="{{ url('/') }}"
+                  <a href="{{ route('home') }}"
                         class="block px-4 py-3 rounded-xl text-gray-700
                   hover:bg-green-50 hover:text-green-600
                   transition-all duration-200">
@@ -211,21 +204,40 @@
                         </button>
 
                         <div class="mobile-content hidden pl-4 mt-1 space-y-1">
-                              <a href="#" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Sekilas NU Care</a>
-                              <a href="#" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Pengurus Laziznu</a>
-                              <a href="#" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Rekening Lengkap</a>
-                              <a href="#" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Unduh Dokumen</a>
-                              <a href="#" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Press Release</a>
+                              <a href="{{ route('profile') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Sekilas NU Care</a>
+                              <a href="{{ route('pengurus-laziznu-bojonegoro') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Pengurus Laziznu</a>
+                              <a href="{{ route('rekening-lengkap') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Rekening Lengkap</a>
+                              <a href="{{ route('dokumen') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Unduh Dokumen</a>
+                              <a href="{{ route('press-release') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Press Release</a>
                         </div>
                   </div>
 
                   <!-- Program -->
-                  <a href="{{ url('/') }}"
+                  <a href="{{ route('program') }}"
                         class="block px-4 py-3 rounded-xl text-gray-700
                   hover:bg-green-50 hover:text-green-600
                   transition-all duration-200">
                         Program
                   </a>
+
+                  <!-- Layanan Dropdown -->
+                  <div>
+                        <button class="mobile-dropdown flex justify-between items-center w-full px-4 py-3 rounded-xl text-gray-700 hover:bg-green-50 hover:text-green-600 transition-all duration-200">
+                              Layanan
+                              <svg class="mobile-icon h-4 w-4 transition-transform duration-300"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          stroke-width="2"
+                                          d="M19 9l-7 7-7-7" />
+                              </svg>
+                        </button>
+
+                        <div class="mobile-content hidden pl-4 mt-1 space-y-1">
+                              <a href="{{ route('zakat') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Zakat</a>
+                              <a href="{{ route('infaq') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Infaq & Sedekah</a>
+                              <a href="{{ route('donasi') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Program Sosial</a>
+                        </div>
+                  </div>
 
                   <!-- Laporan Dropdown -->
                   <div>
@@ -240,16 +252,16 @@
                         </button>
 
                         <div class="mobile-content hidden pl-4 mt-1 space-y-1">
-                              <a href="#" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Formulir Laporan</a>
-                              <a href="#" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Laporan Bulanan</a>
-                              <a href="#" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Status MWC & Ranting</a>
+                              <a href="{{ route('laporan-tahunan') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Formulir Laporan</a>
+                              <a href="{{ route('laporan-bulanan') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Laporan Bulanan</a>
+                              <a href="{{ route('status-mwc-ranting') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Status MWC & Ranting</a>
                         </div>
                   </div>
 
                   <!-- CTA -->
-                  <a href="{{ url('/donasi/sekarang') }}"
-                        class="block w-full mt-5 bg-green-600 text-white text-center px-6 py-3 rounded-xl
-                  font-semibold hover:bg-green-700 transition duration-300 shadow-md">
+                  <a href="{{ route('kalkulator-zakat') }}"
+                        class="block w-full mt-5 bg-gradient-to-br from-emerald-600 to-emerald-700 text-white text-center px-6 py-3 rounded-xl
+                  font-semibold hover:bg-emerald-700 transition duration-300 shadow-md">
                         Kalkulator Zakat
                   </a>
 
