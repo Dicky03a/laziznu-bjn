@@ -20,7 +20,7 @@
             </h1>
 
             <p class="text-base sm:text-lg text-emerald-100/90 max-w-2xl mx-auto leading-relaxed">
-                  Lembaga Amil Zakat, Infaq, dan Shadaqah Nahdlatul Ulama Kabupaten Jepara
+                  Lembaga Amil Zakat, Infaq, dan Shadaqah Nahdlatul Ulama Kabupaten Bojonegoro
             </p>
       </div>
 </section>
@@ -31,8 +31,8 @@
 
             <!-- TEXT CONTENT -->
             <div class="order-2 lg:order-1">
-                  <div class="inline-block mb-4 px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-semibold rounded-full">
-                        Lembaga Filantropi Islam
+                  <div class="inline-block mb-4 px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-semibold border-2 border-emerald-200 rounded-full">
+                        Laziznu Bojonegoro
                   </div>
 
                   <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-6 tracking-tight">
@@ -41,7 +41,7 @@
 
                   <div class="space-y-4 text-slate-600 leading-relaxed">
                         <p>
-                              NU Care–LAZISNU merupakan lembaga filantropi Islam yang berkhidmat dalam pengelolaan dana zakat, infaq, dan shadaqah secara amanah, transparan dan profesional untuk kemaslahatan umat.
+                              Lembaga Amil Zakat, Infak, dan Sedekah Nahdlatul Ulama (LAZISNU) merupakan lembaga nirlaba milik Nahdlatul Ulama yang berkhidmat dalam pemberdayaan masyarakat melalui pendayagunaan dana zakat, infak, sedekah, dan wakaf (ZISWAF).
                         </p>
 
                         <p>
@@ -52,15 +52,15 @@
                   <!-- Stats -->
                   <div class="grid grid-cols-3 gap-6 mt-8 pt-8 border-t border-slate-200">
                         <div>
-                              <div class="text-2xl sm:text-3xl font-bold text-emerald-600">15+</div>
-                              <div class="text-xs sm:text-sm text-slate-600 mt-1">Tahun Berpengalaman</div>
+                              <div class="text-2xl sm:text-3xl font-bold text-emerald-600">22</div>
+                              <div class="text-xs sm:text-sm text-slate-600 mt-1">Tahun Berdiri</div>
                         </div>
                         <div>
-                              <div class="text-2xl sm:text-3xl font-bold text-emerald-600">50K+</div>
+                              <div class="text-2xl sm:text-3xl font-bold text-emerald-600">53.314.706</div>
                               <div class="text-xs sm:text-sm text-slate-600 mt-1">Penerima Manfaat</div>
                         </div>
                         <div>
-                              <div class="text-2xl sm:text-3xl font-bold text-emerald-600">100+</div>
+                              <div class="text-2xl sm:text-3xl font-bold text-emerald-600">500+</div>
                               <div class="text-xs sm:text-sm text-slate-600 mt-1">Program Tersalurkan</div>
                         </div>
                   </div>
@@ -70,7 +70,7 @@
             <div class="order-1 lg:order-2">
                   <div class="relative">
                         <div class="absolute -inset-4 bg-gradient-to-r from-emerald-500/20 to-emerald-600/20 rounded-3xl blur-2xl"></div>
-                        <img src="{{ asset('asset/profile.jpg') }}"
+                        <img src="{{ asset('asset/hero.png') }}"
                               class="relative rounded-2xl shadow-2xl w-full"
                               alt="NU Care LAZISNU"
                               loading="eager">

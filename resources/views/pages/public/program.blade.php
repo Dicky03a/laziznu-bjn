@@ -68,15 +68,16 @@
 
                   {{-- RIGHT IMAGE --}}
                   <div class="relative mt-10 lg:mt-0">
-                        <img src="{{ asset('asset/hero.png') }}"
-                              class="rounded-3xl shadow-2xl w-full h-auto transition-transform duration-500 hover:scale-105">
-
-                        {{-- Floating Card --}}
-                        <div class="absolute -bottom-4 sm:-bottom-6 left-4 sm:-left-6 bg-white rounded-2xl shadow-2xl p-4 sm:p-6 w-56 sm:max-w-xs">
-                              <p class="text-2xl font-bold text-gray-800">1,234+</p>
-                              <p class="text-sm text-gray-600">Donatur Aktif</p>
+                        <div>
+                              <img src="{{ asset('asset/hero.png') }}"
+                                    class="rounded-3xl shadow-2xl w-300 transition-transform duration-500 hover:scale-105">
+                        </div>
+                        <div class="mt-10">
+                              <img src="{{ asset('asset/hero.png') }}"
+                                    class="rounded-3xl shadow-2xl w-300 transition-transform duration-500 hover:scale-105">
                         </div>
                   </div>
+
 
             </div>
       </div>
