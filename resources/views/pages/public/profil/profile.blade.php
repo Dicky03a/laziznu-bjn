@@ -144,7 +144,8 @@
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
 
-                  @foreach($profile->pillars as $index => $pillar)
+                  @foreach(optional($profile)->pillars ?? [] as $index => $pillar)
+
                   <div class="bg-slate-50 hover:bg-white p-6 rounded-2xl shadow border text-center">
 
                         <div class="w-16 h-16 flex items-center justify-center bg-emerald-600 text-white rounded-xl mx-auto mb-4 text-xl font-bold">

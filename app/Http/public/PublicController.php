@@ -9,7 +9,8 @@ class PublicController extends Controller
 {
     public function index()
     {
-        return view('pages.public.index');
+        $profile = Profile::with(['pillars'])->latest()->first();
+        return view('pages.public.index', compact('profile'));
     }
 
     public function profile()
