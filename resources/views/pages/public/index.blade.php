@@ -107,18 +107,6 @@
                         </p>
                   </a>
 
-                  <a href="#" class="group flex flex-col items-center text-center">
-                        <div class="w-16 h-16 sm:w-18 sm:h-18 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 
-                                    flex items-center justify-center shadow-lg shadow-emerald-500/20
-                                    transition-all duration-300 ease-out
-                                    group-hover:shadow-xl group-hover:shadow-emerald-500/30 
-                                    group-hover:-translate-y-1 group-hover:scale-105">
-                              <span class="text-2xl">🚑</span>
-                        </div>
-                        <p class="mt-3 text-sm font-semibold text-slate-700 group-hover:text-emerald-600 transition-colors duration-200">
-                              Mobil Sehat NU
-                        </p>
-                  </a>
 
                   <a href="#" class="group flex flex-col items-center text-center">
                         <div class="w-16 h-16 sm:w-18 sm:h-18 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 
@@ -129,7 +117,7 @@
                               <span class="text-2xl">🌙</span>
                         </div>
                         <p class="mt-3 text-sm font-semibold text-slate-700 group-hover:text-emerald-600 transition-colors duration-200">
-                              Ramadhan
+                              Fidyah
                         </p>
                   </a>
 
@@ -170,7 +158,7 @@
                   <!-- CARD 1 -->
                   <article class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-slate-100 hover:border-emerald-100">
                         <div class="relative overflow-hidden aspect-[16/10]">
-                              <img src="{{ asset('asset/program1.jpg') }}"
+                              <img src="{{ asset('asset/santriterampil.jpg') }}"
                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                                     alt="Wujudkan Santripreneur Terampil Berwirausaha"
                                     loading="lazy">
@@ -180,7 +168,7 @@
                         <div class="p-6">
                               <div class="mb-3">
                                     <span class="inline-block px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-semibold rounded-full">
-                                          LAZISNU JEPARA
+                                          LAZISNU Bojonegoro
                                     </span>
                               </div>
 
@@ -198,11 +186,6 @@
                                     <div class="relative w-full h-2 bg-slate-100 rounded-full overflow-hidden">
                                           <div class="absolute inset-y-0 left-0 bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-full transition-all duration-500 w-[10%]"></div>
                                     </div>
-
-                                    <div class="flex justify-between items-baseline text-xs text-slate-500">
-                                          <span>10% tercapai</span>
-                                          <span>Target Rp 10.000.000</span>
-                                    </div>
                               </div>
 
                               <button class="mt-6 w-full px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-sm hover:shadow-md hover:-translate-y-0.5">
@@ -214,7 +197,7 @@
                   <!-- CARD 2 -->
                   <article class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-slate-100 hover:border-emerald-100">
                         <div class="relative overflow-hidden aspect-[16/10]">
-                              <img src="{{ asset('asset/program2.jpg') }}"
+                              <img src="{{ asset('asset/gurumengajar.webp') }}"
                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                                     alt="Bantu Guru Membangun Masa Depan Pendidikan"
                                     loading="lazy">
@@ -224,7 +207,7 @@
                         <div class="p-6">
                               <div class="mb-3">
                                     <span class="inline-block px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-semibold rounded-full">
-                                          LAZISNU JEPARA
+                                          LAZISNU Bojonegoro
                                     </span>
                               </div>
 
@@ -241,11 +224,6 @@
                                     <div class="relative w-full h-2 bg-slate-100 rounded-full overflow-hidden">
                                           <div class="absolute inset-y-0 left-0 bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-full transition-all duration-500 w-[30%]"></div>
                                     </div>
-
-                                    <div class="flex justify-between items-baseline text-xs text-slate-500">
-                                          <span>30% tercapai</span>
-                                          <span>Target Rp 5.000.000</span>
-                                    </div>
                               </div>
 
                               <button class="mt-6 w-full px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-sm hover:shadow-md hover:-translate-y-0.5">
@@ -257,7 +235,7 @@
                   <!-- CARD 3 -->
                   <article class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-slate-100 hover:border-emerald-100">
                         <div class="relative overflow-hidden aspect-[16/10]">
-                              <img src="{{ asset('asset/program3.jpg') }}"
+                              <img src="{{ asset('asset/beasiswasantri.jpeg') }}"
                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                                     alt="Beasiswa Santri dan Siswa Nusantara"
                                     loading="lazy">
@@ -267,7 +245,7 @@
                         <div class="p-6">
                               <div class="mb-3">
                                     <span class="inline-block px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-semibold rounded-full">
-                                          LAZISNU JEPARA
+                                          LAZISNU Bojonegoro
                                     </span>
                               </div>
 
@@ -283,11 +261,6 @@
 
                                     <div class="relative w-full h-2 bg-slate-100 rounded-full overflow-hidden">
                                           <div class="absolute inset-y-0 left-0 bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-full transition-all duration-500 w-[5%]"></div>
-                                    </div>
-
-                                    <div class="flex justify-between items-baseline text-xs text-slate-500">
-                                          <span>5% tercapai</span>
-                                          <span>Target Rp 8.000.000</span>
                                     </div>
                               </div>
 
@@ -337,7 +310,7 @@
 
                         <div class="p-6">
                               <h3 class="font-semibold text-lg text-slate-900 mb-3 leading-snug group-hover:text-emerald-600 transition-colors duration-200 line-clamp-2">
-                                    Ribuan Relawan NU Berkumpul di Batang, PCNU Jepara
+                                    Ribuan Relawan NU Berkumpul di Batang, PCNU Bojonegoro
                               </h3>
 
                               <p class="text-sm text-slate-600 leading-relaxed mb-4 line-clamp-3">
@@ -358,17 +331,17 @@
                         <div class="relative overflow-hidden aspect-[16/11]">
                               <img src="{{ asset('asset/press2.jpg') }}"
                                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                    alt="NU Peduli Jepara"
+                                    alt="NU Peduli Bojonegoro"
                                     loading="lazy">
                         </div>
 
                         <div class="p-6">
                               <h3 class="font-semibold text-lg text-slate-900 mb-3 leading-snug group-hover:text-emerald-600 transition-colors duration-200 line-clamp-2">
-                                    NU Peduli Jepara Sambangi Warga Terdampak Cuaca Ekstrim
+                                    NU Peduli Bojonegoro Sambangi Warga Terdampak Cuaca Ekstrim
                               </h3>
 
                               <p class="text-sm text-slate-600 leading-relaxed mb-4 line-clamp-3">
-                                    NU Peduli dan LAZISNU PCNU Jepara menyalurkan bantuan kebencanaan kepada warga terdampak...
+                                    NU Peduli dan LAZISNU PCNU Bojonegoro menyalurkan bantuan kebencanaan kepada warga terdampak...
                               </p>
 
                               <div class="flex items-center gap-2 text-xs text-slate-500">
@@ -385,17 +358,17 @@
                         <div class="relative overflow-hidden aspect-[16/11]">
                               <img src="{{ asset('asset/press3.jpg') }}"
                                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                    alt="Peduli Bencana PCNU Jepara"
+                                    alt="Peduli Bencana PCNU Bojonegoro"
                                     loading="lazy">
                         </div>
 
                         <div class="p-6">
                               <h3 class="font-semibold text-lg text-slate-900 mb-3 leading-snug group-hover:text-emerald-600 transition-colors duration-200 line-clamp-2">
-                                    Peduli Bencana, PCNU Jepara Salurkan Bantuan ke Tiga Lokasi
+                                    Peduli Bencana, PCNU Bojonegoro Salurkan Bantuan ke Tiga Lokasi
                               </h3>
 
                               <p class="text-sm text-slate-600 leading-relaxed mb-4 line-clamp-3">
-                                    PCNU Jepara melalui NU Peduli Bencana menyalurkan bantuan sembako, pendidikan, dan santunan...
+                                    PCNU Bojonegoro melalui NU Peduli Bencana menyalurkan bantuan sembako, pendidikan, dan santunan...
                               </p>
 
                               <div class="flex items-center gap-2 text-xs text-slate-500">

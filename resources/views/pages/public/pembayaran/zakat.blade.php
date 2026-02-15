@@ -15,26 +15,26 @@
             <div class="max-w-3xl">
                   {{-- Breadcrumb --}}
                   <nav class="flex items-center gap-2 text-sm text-gray-300 mb-6">
-                        <a href="#" class="hover:text-white transition-colors">Beranda</a>
+                        <a href="{{ route('home') }}" class="hover:text-white transition-colors">Beranda</a>
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                               <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
                         </svg>
-                        <a href="#" class="hover:text-white transition-colors">Program</a>
+                        <a href="{{ route('program') }}" class="hover:text-white transition-colors">Program</a>
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                               <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
                         </svg>
-                        <span class="text-white font-medium">Kotak Infaq NU</span>
+                        <span class="text-white font-medium">Zakat</span>
                   </nav>
 
                   <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4">
-                        Kotak Infaq Nahdlatul Ulama Kabupaten Jepara
+                        Zakat Maal: Sucikan Hartamu 2,5%
                   </h1>
 
                   <div class="flex items-center gap-3 text-gray-300">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                               <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
                         </svg>
-                        <span class="text-sm sm:text-base md:text-lg">Kabupaten Jepara, Jawa Tengah</span>
+                        <span class="text-sm sm:text-base md:text-lg">Kabupaten Bojonegoro, Jawa Timur</span>
                   </div>
             </div>
       </div>
@@ -60,7 +60,7 @@
                                           </div>
 
                                           <div class="text-center p-6 bg-gradient-to-br from-blue-50 to-blue-100/50 rounded-2xl">
-                                                <p class="text-sm text-blue-700 font-medium mb-2">Total Donatur</p>
+                                                <p class="text-sm text-blue-700 font-medium mb-2">Total Muzakki</p>
                                                 <h2 class="text-3xl font-bold text-blue-600">1</h2>
                                           </div>
 
@@ -73,7 +73,7 @@
                                     {{-- Progress Bar --}}
                                     <div class="space-y-3">
                                           <div class="flex justify-between items-center">
-                                                <span class="text-gray-700 font-semibold">Progress Donasi</span>
+                                                <span class="text-gray-700 font-semibold">Progress</span>
                                                 <span class="text-emerald-600 font-bold">20%</span>
                                           </div>
                                           <div class="relative w-full bg-gray-200 rounded-full h-4 overflow-hidden">
@@ -378,7 +378,7 @@
 
                                                 <div class="flex-1">
                                                       <h3 class="font-bold text-gray-900 text-lg mb-1">
-                                                            LAZISNU Jepara
+                                                            LAZISNU Bojonegoro
                                                       </h3>
                                                       <p class="text-emerald-600 text-sm font-medium flex items-center gap-1">
                                                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -395,7 +395,7 @@
                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                                       </svg>
-                                                      <span class="text-sm">Jepara, Jawa Tengah</span>
+                                                      <span class="text-sm">Bojonegoro, Jawa Timur</span>
                                                 </div>
 
                                                 <div class="flex items-center gap-3 text-gray-600">
@@ -405,10 +405,11 @@
                                                       <span class="text-sm">Aktif sejak 2020</span>
                                                 </div>
                                           </div>
-
-                                          <button class="w-full py-3 border-2 border-emerald-600 text-emerald-600 rounded-xl font-semibold hover:bg-emerald-50 transition-all">
-                                                Lihat Profil
-                                          </button>
+                                          <a href="{{ route('profile') }}">
+                                                <button class="w-full py-3 border-2 border-emerald-600 text-emerald-600 rounded-xl font-semibold hover:bg-emerald-50 transition-all">
+                                                      Lihat Profil
+                                                </button>
+                                          </a>
                                     </div>
                               </div>
 

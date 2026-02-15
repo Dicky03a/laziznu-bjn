@@ -3,6 +3,7 @@
 namespace App\Http\public;
 
 use App\Http\Controllers\Controller;
+use App\Models\Profile;
 
 class PublicController extends Controller
 {
@@ -13,8 +14,11 @@ class PublicController extends Controller
 
     public function profile()
     {
-        return view('pages.public.profil.profile');
+        $profile = Profile::with(['missions', 'pillars'])->latest()->first();
+
+        return view('pages.public.profil.profile', compact('profile'));
     }
+
 
     public function pengurus()
     {

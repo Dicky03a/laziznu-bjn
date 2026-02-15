@@ -42,14 +42,14 @@
             [
             'bank' => 'Bank Rakyat Indonesia',
             'shortName' => 'BRI',
-            'nama' => 'LAZISNU JEPARA',
+            'nama' => 'LAZISNU Bojonegoro',
             'no' => '0022-01-028613-53-6',
             'color' => 'blue'
             ],
             [
             'bank' => 'Bank Syariah Indonesia',
             'shortName' => 'BSI',
-            'nama' => 'LAZISNU JEPARA',
+            'nama' => 'LAZISNU Bojonegoro',
             'no' => '7194101451',
             'type' => 'Infaq',
             'color' => 'emerald'
@@ -57,7 +57,7 @@
             [
             'bank' => 'Bank Syariah Indonesia',
             'shortName' => 'BSI',
-            'nama' => 'LAZISNU JEPARA',
+            'nama' => 'LAZISNU Bojonegoro',
             'no' => '721160084',
             'type' => 'Zakat',
             'color' => 'emerald'
@@ -65,14 +65,14 @@
             [
             'bank' => 'Bank Mandiri',
             'shortName' => 'Mandiri',
-            'nama' => 'LAZISNU JEPARA',
+            'nama' => 'LAZISNU Bojonegoro',
             'no' => '184-00-0453436-6',
             'color' => 'blue'
             ],
             [
             'bank' => 'BMT LISA (ASKOWANU)',
             'shortName' => 'BMT',
-            'nama' => 'PC LAZISNU JEPARA',
+            'nama' => 'PC LAZISNU Bojonegoro',
             'no' => '01.KNU.00142',
             'color' => 'emerald'
             ],
@@ -166,7 +166,7 @@
 
                         <div class="mt-6 text-center">
                               <p class="font-semibold text-slate-900 mb-1">
-                                    Zakat LAZISNU Jepara
+                                    Zakat LAZISNU Bojonegoro
                               </p>
                               <p class="text-sm text-slate-600">
                                     Scan untuk pembayaran zakat
@@ -202,7 +202,7 @@
 
                         <div class="mt-6 text-center">
                               <p class="font-semibold text-slate-900 mb-1">
-                                    Infaq LAZISNU Jepara
+                                    Infaq LAZISNU Bojonegoro
                               </p>
                               <p class="text-sm text-slate-600">
                                     Scan untuk infaq & shadaqah

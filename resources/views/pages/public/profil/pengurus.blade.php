@@ -23,7 +23,7 @@
                   Lembaga Amil Zakat, Infaq dan Shadaqah Nahdlatul Ulama
             </p>
             <p class="text-base sm:text-lg text-emerald-100/90 mb-4">
-                  Kabupaten Jepara
+                  Kabupaten Bojonegoro
             </p>
 
             <div class="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20">
@@ -321,7 +321,7 @@
                                     <div class="flex items-start gap-3">
                                           <span class="inline-flex items-center justify-center w-6 h-6 bg-emerald-100 text-emerald-700 rounded-full flex-shrink-0 text-xs font-bold">1</span>
                                           <p>
-                                                Surat Keputusan PCNU Kabupaten Jepara Nomor: <span class="font-semibold text-slate-900">0454/PC/A.II.a/H.08/III/2024</span> tanggal 26 Maret 2024 tentang Pengesahan Pimpinan Cabang.
+                                                Surat Keputusan PCNU Kabupaten Bojonegoro Nomor: <span class="font-semibold text-slate-900">0454/PC/A.II.a/H.08/III/2024</span> tanggal 26 Maret 2024 tentang Pengesahan Pimpinan Cabang.
                                           </p>
                                     </div>
 

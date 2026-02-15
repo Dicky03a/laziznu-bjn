@@ -69,11 +69,11 @@
                   {{-- RIGHT IMAGE --}}
                   <div class="relative mt-10 lg:mt-0">
                         <div>
-                              <img src="{{ asset('asset/hero.png') }}"
+                              <img src="{{ asset('asset/banjir.jpg') }}"
                                     class="rounded-3xl shadow-2xl w-300 transition-transform duration-500 hover:scale-105">
                         </div>
                         <div class="mt-10">
-                              <img src="{{ asset('asset/hero.png') }}"
+                              <img src="{{ asset('asset/sunami.jpg') }}"
                                     class="rounded-3xl shadow-2xl w-300 transition-transform duration-500 hover:scale-105">
                         </div>
                   </div>

@@ -20,7 +20,7 @@
             </h1>
 
             <p class="text-base sm:text-lg text-emerald-100/90 max-w-2xl mx-auto leading-relaxed">
-                  Informasi program, kegiatan dan distribusi bantuan NU Care-LAZISNU PCNU Jepara
+                  Informasi program, kegiatan dan distribusi bantuan NU Care-LAZISNU PCNU Bojonegoro
             </p>
       </div>
 </section>
@@ -55,7 +55,7 @@
                               'color' => 'blue'
                               ],
                               [
-                              'title' => 'Penguatan Ambulans NU Jepara',
+                              'title' => 'Penguatan Ambulans NU Bojonegoro',
                               'desc' => 'LAZISNU memperkuat fasilitas ambulans guna meningkatkan pelayanan masyarakat.',
                               'category' => 'Program',
                               'date' => '20 Feb 2024',
@@ -64,7 +64,7 @@
                               ],
                               [
                               'title' => 'Bantuan Pendidikan untuk Santri Dhuafa',
-                              'desc' => 'Program beasiswa untuk santri dari keluarga kurang mampu di wilayah Jepara.',
+                              'desc' => 'Program beasiswa untuk santri dari keluarga kurang mampu di wilayah Bojonegoro.',
                               'category' => 'Pendidikan',
                               'date' => '18 Feb 2024',
                               'image' => 'https://via.placeholder.com/600x400',
@@ -80,7 +80,7 @@
                               ],
                               [
                               'title' => 'Penyaluran Zakat Fitrah 1445 H',
-                              'desc' => 'Distribusi zakat fitrah kepada mustahik di seluruh kecamatan Kabupaten Jepara.',
+                              'desc' => 'Distribusi zakat fitrah kepada mustahik di seluruh kecamatan Kabupaten Bojonegoro.',
                               'category' => 'Zakat',
                               'date' => '08 Feb 2024',
                               'image' => 'https://via.placeholder.com/600x400',

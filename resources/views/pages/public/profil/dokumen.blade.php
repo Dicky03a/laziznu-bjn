@@ -16,7 +16,7 @@
             </div>
 
             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-4">
-                  Dokumen Resmi LAZISNU
+                  Dokumen Resmi LAZISNU PCNU Bojonegoro
             </h1>
 
             <p class="text-base sm:text-lg text-emerald-100/90 max-w-2xl mx-auto leading-relaxed">
@@ -83,7 +83,7 @@
                   'category' => 'Pedoman'
                   ],
                   [
-                  'title' => 'Annual Report NU Care-LAZISNU Jepara 2023',
+                  'title' => 'Annual Report NU Care-LAZISNU Bojonegoro 2023',
                   'desc' => 'Laporan tahunan program dan realisasi penyaluran dana zakat, infaq dan shadaqah tahun 2023.',
                   'size' => '6.3 MB',
                   'downloads' => '95',
