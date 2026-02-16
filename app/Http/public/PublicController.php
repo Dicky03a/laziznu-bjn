@@ -17,7 +17,6 @@ class PublicController extends Controller
             ->limit(3)
             ->get();
 
-
         return view('pages.public.index', compact('profile', 'news'));
     }
 
@@ -27,7 +26,6 @@ class PublicController extends Controller
 
         return view('pages.public.profil.profile', compact('profile'));
     }
-
 
     public function pengurus()
     {
@@ -106,11 +104,31 @@ class PublicController extends Controller
 
     public function berita()
     {
-        $news = \App\Models\News::with('category')
-            ->where('published_at', '<=', now())
-            ->orderByDesc('published_at')
-            ->paginate(10);
+        $query = \App\Models\News::with('category')
+            ->where('published_at', '<=', now());
 
-        return view('pages.public.berita.index', compact('news'));
+        // Filter by search
+        if (request('search')) {
+            $search = request('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('title', 'like', "%{$search}%")
+                    ->orWhere('excerpt', 'like', "%{$search}%")
+                    ->orWhere('content', 'like', "%{$search}%");
+            });
+        }
+
+        // Filter by category
+        if (request('category')) {
+            $query->where('category_id', request('category'));
+        }
+
+        $news = $query->orderByDesc('published_at')->paginate(10);
+
+        // Get all categories with count
+        $allCategories = \App\Models\Category::withCount('news')
+            ->orderBy('name')
+            ->get();
+
+        return view('pages.public.berita.index', compact('news', 'allCategories'));
     }
 }

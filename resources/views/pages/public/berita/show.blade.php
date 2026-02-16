@@ -158,6 +158,34 @@
                         </div>
                         @endif
 
+                        <!-- Search Box -->
+                        <div class="bg-white dark:bg-zinc-900 rounded-lg shadow-sm border border-gray-200 dark:border-zinc-800 p-5 mb-6 lg:sticky lg:top-6">
+                              <h3 class="text-base font-bold text-gray-900 dark:text-white mb-4 pb-3 border-b border-gray-200 dark:border-zinc-800">
+                                    Cari Berita
+                              </h3>
+                              <form action="{{ route('berita.public.index') }}" method="GET" class="flex gap-2">
+                                    <div class="flex-1 relative">
+                                          <input type="text"
+                                                name="search"
+                                                value="{{ request('search') }}"
+                                                placeholder="Ketik judul atau kata kunci..."
+                                                class="w-full px-3 py-2 bg-gray-50 dark:bg-zinc-800 border border-gray-300 dark:border-zinc-700 rounded-lg text-sm text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+                                          <svg class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                          </svg>
+                                    </div>
+                                    <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors">
+                                          Cari
+                                    </button>
+                              </form>
+                              @if (request('search'))
+                              <div class="mt-3 pt-3 border-t border-gray-200 dark:border-zinc-800">
+                                    <p class="text-xs text-gray-600 dark:text-gray-400">Hasil pencarian untuk: <span class="font-semibold text-gray-900 dark:text-white">{{ request('search') }}</span></p>
+                                    <a href="{{ route('berita.public.index') }}" class="text-xs text-blue-600 dark:text-blue-400 hover:underline">Hapus filter</a>
+                              </div>
+                              @endif
+                        </div>
+
                         <!-- Categories -->
                         <div class="bg-white dark:bg-zinc-900 rounded-lg shadow-sm border border-gray-200 dark:border-zinc-800 p-5 mb-6 lg:sticky lg:top-6">
                               <h3 class="text-base font-bold text-gray-900 dark:text-white mb-4 pb-3 border-b border-gray-200 dark:border-zinc-800">
@@ -165,42 +193,39 @@
                               </h3>
 
                               <div class="space-y-2">
-                                    <a href="{{ route('berita.public.index', ['category' => 'artikel']) }}"
-                                          class="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group">
-                                          <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <a href="{{ route('berita.public.index') }}"
+                                          class="flex items-center gap-2 text-sm px-3 py-2 rounded-lg transition-colors {{ !request('category') ? 'bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 font-medium' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-zinc-800' }}">
+                                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                                           </svg>
-                                          Artikel
+                                          Semua
                                     </a>
-                                    <a href="{{ route('berita.public.index', ['category' => 'berita']) }}"
-                                          class="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group">
-                                          <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+                                    @if (isset($allCategories) && $allCategories->count() > 0)
+                                    @foreach ($allCategories as $category)
+                                    <a href="{{ route('berita.public.index', ['category' => $category->id]) }}"
+                                          class="flex items-center gap-2 text-sm px-3 py-2 rounded-lg transition-colors {{ request('category') == $category->id ? 'bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 font-medium' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-zinc-800' }}">
+                                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                                           </svg>
-                                          Berita
+                                          {{ $category->name }}
+                                          <span class="ml-auto text-xs bg-gray-200 dark:bg-zinc-700 px-2 py-0.5 rounded-full">
+                                                {{ $category->news_count ?? 0 }}
+                                          </span>
                                     </a>
-                                    <a href="{{ route('berita.public.index', ['category' => 'kegiatan']) }}"
-                                          class="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group">
-                                          <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                          </svg>
-                                          Kegiatan
-                                    </a>
-                                    <a href="{{ route('berita.public.index', ['category' => 'pengumuman']) }}"
-                                          class="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group">
-                                          <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                          </svg>
-                                          Pengumuman
-                                    </a>
-                                    <a href="{{ route('berita.public.index', ['category' => 'program-kegiatan']) }}"
-                                          class="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group">
-                                          <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                          </svg>
-                                          Program Kegiatan
+                                    @endforeach
+                                    @else
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 py-2">Tidak ada kategori</p>
+                                    @endif
+                              </div>
+
+                              @if (request('category'))
+                              <div class="mt-4 pt-4 border-t border-gray-200 dark:border-zinc-800">
+                                    <a href="{{ route('berita.public.index') }}" class="text-xs text-blue-600 dark:text-blue-400 hover:underline">
+                                          Lihat Semua Kategori
                                     </a>
                               </div>
+                              @endif
                         </div>
 
                         <!-- Donation Banner (Optional) -->

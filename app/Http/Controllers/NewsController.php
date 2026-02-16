@@ -28,6 +28,7 @@ class NewsController extends Controller
     public function create()
     {
         $categories = Category::all();
+
         return view('admin.news.create', compact('categories'));
     }
 
@@ -69,7 +70,12 @@ class NewsController extends Controller
             ->limit(3)
             ->get();
 
-        return view('pages.public.berita.show', compact('news', 'relatedNews'));
+        // Get all categories with count
+        $allCategories = Category::withCount('news')
+            ->orderBy('name')
+            ->get();
+
+        return view('pages.public.berita.show', compact('news', 'relatedNews', 'allCategories'));
     }
 
     /**
@@ -78,6 +84,7 @@ class NewsController extends Controller
     public function edit(News $news)
     {
         $categories = Category::all();
+
         return view('admin.news.edit', compact('news', 'categories'));
     }
 
@@ -111,7 +118,7 @@ class NewsController extends Controller
 
         if ($action === 'publish') {
             // Only set published_at if it's currently null (draft -> published)
-            if (!$news->published_at) {
+            if (! $news->published_at) {
                 $data['published_at'] = now();
             }
             // If already published, keep the original published_at
