@@ -300,96 +300,58 @@
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
 
                   <!-- NEWS CARD 1 -->
+                  @foreach ($news as $item)
                   <article class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-slate-100 hover:border-emerald-100">
+
                         <div class="relative overflow-hidden aspect-[16/11]">
-                              <img src="{{ asset('asset/press1.jpg') }}"
+                              <img src="{{ asset('storage/' . $item->featured_image) }}"
                                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                    alt="Ribuan Relawan NU Berkumpul"
+                                    alt="{{ $item->title }}"
                                     loading="lazy">
                         </div>
 
                         <div class="p-6">
                               <h3 class="font-semibold text-lg text-slate-900 mb-3 leading-snug group-hover:text-emerald-600 transition-colors duration-200 line-clamp-2">
-                                    Ribuan Relawan NU Berkumpul di Batang, PCNU Bojonegoro
+                                    {{ $item->title }}
                               </h3>
 
                               <p class="text-sm text-slate-600 leading-relaxed mb-4 line-clamp-3">
-                                    Ribuan relawan Nahdlatul Ulama dari berbagai daerah di Jawa Tengah berkumpul dalam aksi sosial...
+                                    {{ $item->excerpt }}
                               </p>
+                              <div class="flex justify-between">
+                                    <div class="flex items-center gap-2 text-xs text-slate-500">
+                                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                          </svg>
 
-                              <div class="flex items-center gap-2 text-xs text-slate-500">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                    </svg>
-                                    <time datetime="2026-02-01">01 Februari 2026</time>
+                                          <time datetime="{{ $item->published_at }}">
+                                                {{ $item->published_at?->translatedFormat('d F Y') ?? '-' }}
+                                          </time>
+                                    </div>
+                                    <button class="text-emerald-600 hover:text-emerald-700 transition-colors duration-200" onclick="window.location='{{ route('berita.show', $item->slug) }}'">
+                                          Baca Selengkapnya
+                                          <svg class="w-4 h-4 inline-block ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                          </svg>
+                                    </button>
                               </div>
                         </div>
                   </article>
-
-                  <!-- NEWS CARD 2 -->
-                  <article class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-slate-100 hover:border-emerald-100">
-                        <div class="relative overflow-hidden aspect-[16/11]">
-                              <img src="{{ asset('asset/press2.jpg') }}"
-                                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                    alt="NU Peduli Bojonegoro"
-                                    loading="lazy">
-                        </div>
-
-                        <div class="p-6">
-                              <h3 class="font-semibold text-lg text-slate-900 mb-3 leading-snug group-hover:text-emerald-600 transition-colors duration-200 line-clamp-2">
-                                    NU Peduli Bojonegoro Sambangi Warga Terdampak Cuaca Ekstrim
-                              </h3>
-
-                              <p class="text-sm text-slate-600 leading-relaxed mb-4 line-clamp-3">
-                                    NU Peduli dan LAZISNU PCNU Bojonegoro menyalurkan bantuan kebencanaan kepada warga terdampak...
-                              </p>
-
-                              <div class="flex items-center gap-2 text-xs text-slate-500">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                    </svg>
-                                    <time datetime="2026-01-31">31 Januari 2026</time>
-                              </div>
-                        </div>
-                  </article>
-
-                  <!-- NEWS CARD 3 -->
-                  <article class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-slate-100 hover:border-emerald-100">
-                        <div class="relative overflow-hidden aspect-[16/11]">
-                              <img src="{{ asset('asset/press3.jpg') }}"
-                                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                    alt="Peduli Bencana PCNU Bojonegoro"
-                                    loading="lazy">
-                        </div>
-
-                        <div class="p-6">
-                              <h3 class="font-semibold text-lg text-slate-900 mb-3 leading-snug group-hover:text-emerald-600 transition-colors duration-200 line-clamp-2">
-                                    Peduli Bencana, PCNU Bojonegoro Salurkan Bantuan ke Tiga Lokasi
-                              </h3>
-
-                              <p class="text-sm text-slate-600 leading-relaxed mb-4 line-clamp-3">
-                                    PCNU Bojonegoro melalui NU Peduli Bencana menyalurkan bantuan sembako, pendidikan, dan santunan...
-                              </p>
-
-                              <div class="flex items-center gap-2 text-xs text-slate-500">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                    </svg>
-                                    <time datetime="2026-01-29">29 Januari 2026</time>
-                              </div>
-                        </div>
-                  </article>
+                  @endforeach
 
             </div>
 
             <!-- View More Button -->
             <div class="text-center mt-12 lg:mt-16">
-                  <button class="inline-flex items-center gap-2 px-8 py-3 bg-white border-2 border-slate-200 text-slate-900 font-semibold rounded-lg hover:border-emerald-500 hover:text-emerald-600 transition-all duration-200 shadow-sm hover:shadow-md">
-                        Lebih Banyak
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                  </button>
+                  <a href="{{ route('berita.public.index') }}">
+                        <button class="inline-flex items-center gap-2 px-8 py-3 bg-white border-2 border-slate-200 text-slate-900 font-semibold rounded-lg hover:border-emerald-500 hover:text-emerald-600 transition-all duration-200 shadow-sm hover:shadow-md">
+                              Lebih Banyak
+                              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                              </svg>
+                        </button>
+                  </a>
             </div>
       </div>
 </section>

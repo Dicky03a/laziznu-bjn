@@ -27,7 +27,7 @@
                 <flux:sidebar.item href="#">Rekening</flux:sidebar.item>
                 <flux:sidebar.item href="#">Dokumen</flux:sidebar.item>
             </flux:sidebar.group>
-            <flux:sidebar.item icon="calendar" href="#">Berita</flux:sidebar.item>
+            <flux:sidebar.item icon="book-open" href="{{ route('news.index') }}">Berita</flux:sidebar.item>
         </flux:sidebar.nav>
 
 

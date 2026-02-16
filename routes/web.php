@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\public\PublicController;
 use Illuminate\Support\Facades\Route;
@@ -22,11 +23,18 @@ Route::get('/kebijakan-privasi', [PublicController::class, 'privasi'])->name('ke
 Route::get('/terms-conditions', [PublicController::class, 'syarat'])->name('terms-conditions');
 Route::get('/disclaimer', [PublicController::class, 'disclaimer'])->name('disclaimer');
 
+// Public News routes
+Route::get('/berita', [PublicController::class, 'berita'])->name('berita.public.index');
+Route::get('/berita/{news:slug}', [NewsController::class, 'show'])->name('berita.show');
+
 Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('dashboard', fn() => view('dashboard'))->name('dashboard');
-    
+
     Route::resource('profiles', ProfileController::class);
+
+    // Admin News routes
+    Route::resource('news', NewsController::class)->except('show');
 });
 
 require __DIR__ . '/settings.php';

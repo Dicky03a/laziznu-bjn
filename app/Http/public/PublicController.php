@@ -3,6 +3,7 @@
 namespace App\Http\public;
 
 use App\Http\Controllers\Controller;
+use App\Models\News;
 use App\Models\Profile;
 
 class PublicController extends Controller
@@ -10,7 +11,14 @@ class PublicController extends Controller
     public function index()
     {
         $profile = Profile::with(['pillars'])->latest()->first();
-        return view('pages.public.index', compact('profile'));
+        $news = News::whereNotNull('published_at')
+            ->where('published_at', '<=', now())
+            ->latest('published_at')
+            ->limit(3)
+            ->get();
+
+
+        return view('pages.public.index', compact('profile', 'news'));
     }
 
     public function profile()
@@ -94,5 +102,15 @@ class PublicController extends Controller
     public function disclaimer()
     {
         return view('pages.public.disclaimer');
+    }
+
+    public function berita()
+    {
+        $news = \App\Models\News::with('category')
+            ->where('published_at', '<=', now())
+            ->orderByDesc('published_at')
+            ->paginate(10);
+
+        return view('pages.public.berita.index', compact('news'));
     }
 }

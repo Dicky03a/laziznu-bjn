@@ -1,0 +1,82 @@
+/* Tiptap Content Display Styles for Public Pages */
+/* Tambahkan ini ke app.css atau buat file terpisah dan import */
+
+.tiptap-content {
+      /* Preserve whitespace and line breaks */
+      white-space: pre-wrap;
+      word-wrap: break-word;
+}
+
+/* Handle empty paragraphs (untuk spasi/line breaks) */
+.tiptap-content p:empty {
+      min-height: 1.5em;
+      display: block;
+      margin: 0.5em 0;
+}
+
+.tiptap-content p:empty::before {
+      content: '\00a0';
+      /* Non-breaking space */
+      display: inline-block;
+      visibility: hidden;
+}
+
+/* Handle paragraphs with only <br> */
+.tiptap-content p:has(br:only-child) {
+      min-height: 1.5em;
+      display: block;
+      margin: 0.5em 0;
+}
+
+/* Handle multiple consecutive empty paragraphs */
+.tiptap-content p:empty+p:empty {
+      margin-top: 1em;
+}
+
+/* Handle br tags */
+.tiptap-content br {
+      display: block;
+      content: "";
+      margin-top: 0.5em;
+}
+
+/* Ensure proper spacing for content */
+.tiptap-content>*+* {
+      margin-top: 0.5em;
+}
+
+/* Handle specific Tiptap elements */
+.tiptap-content h1:empty,
+.tiptap-content h2:empty,
+.tiptap-content h3:empty,
+.tiptap-content h4:empty,
+.tiptap-content h5:empty,
+.tiptap-content h6:empty {
+      min-height: 1em;
+      display: block;
+}
+
+/* Code blocks */
+.tiptap-content pre {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+}
+
+/* Preserve spacing in lists */
+.tiptap-content ul li:empty,
+.tiptap-content ol li:empty {
+      min-height: 1.2em;
+      display: list-item;
+}
+
+/* Blockquotes */
+.tiptap-content blockquote:empty {
+      min-height: 2em;
+      display: block;
+}
+
+/* Tables */
+.tiptap-content table td:empty,
+.tiptap-content table th:empty {
+      min-height: 1.5em;
+}
