@@ -86,35 +86,47 @@
                               </p>
 
                               {{-- HARGA EMAS --}}
-                              <div class="bg-gradient-to-r from-amber-50 to-yellow-50 border-2 border-amber-200 rounded-xl p-5 mb-6">
-                                    <div class="flex items-start gap-3 mb-3">
-                                          <div class="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                                                <svg class="w-6 h-6 text-amber-600" fill="currentColor" viewBox="0 0 20 20">
-                                                      <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
-                                                </svg>
-                                          </div>
-                                          <div class="flex-1">
-                                                <label class="text-sm font-semibold text-amber-900 block mb-2">
+                              <div class="bg-gradient-to-br from-emerald-600 to-emerald-500 rounded-xl p-4 sm:p-5 mb-6">
+
+                                    <div class="flex flex-col sm:flex-row sm:items-start gap-3">
+                                          <!-- CONTENT -->
+                                          <div class="flex-1 w-full">
+
+                                                <label class="text-sm sm:text-base font-semibold text-white block mb-2">
                                                       Harga Emas per Gram (Update Manual)
                                                 </label>
-                                                <div class="flex items-center border-2 border-amber-300 focus-within:border-amber-500 rounded-lg overflow-hidden bg-white">
-                                                      <span class="px-3 py-2 bg-amber-100 text-amber-700 font-semibold text-sm">Rp</span>
-                                                      <input type="text"
+
+                                                <!-- INPUT -->
+                                                <div class="flex items-center w-full border-2 rounded-lg overflow-hidden bg-white">
+                                                      <span class="px-3 py-2 text-emerald-700 font-semibold text-sm">
+                                                            Rp
+                                                      </span>
+
+                                                      <input
+                                                            type="text"
                                                             x-model="hargaEmasDisplay"
                                                             @input="updateHargaEmas()"
                                                             placeholder="950000"
-                                                            class="flex-1 px-3 py-2 outline-none text-gray-900 font-semibold">
-                                                      <span class="px-3 py-2 text-gray-500 text-sm">/gram</span>
+                                                            class="flex-1 min-w-0 px-3 py-2 text-sm sm:text-base outline-none text-gray-900 font-semibold">
+
+                                                      <span class="px-3 py-2 text-gray-500 text-xs sm:text-sm whitespace-nowrap">
+                                                            /gram
+                                                      </span>
                                                 </div>
-                                                <p class="text-xs text-amber-700 mt-1.5">
+
+                                                <!-- INFO -->
+                                                <p class="text-xs sm:text-sm text-white mt-2 leading-relaxed">
                                                       <svg class="w-3 h-3 inline mr-1" fill="currentColor" viewBox="0 0 20 20">
                                                             <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" />
                                                       </svg>
-                                                      Nisab = 85 gram emas = <strong x-text="rupiah(nisab)"></strong>
+                                                      Nisab = 85 gram emas =
+                                                      <strong x-text="rupiah(nisab)"></strong>
                                                 </p>
+
                                           </div>
                                     </div>
                               </div>
+
 
                               {{-- INPUT HARTA --}}
                               <div class="space-y-5">
@@ -157,8 +169,8 @@
 
 
                         {{-- INFO NISAB --}}
-                        <div class="bg-gradient-to-r rounded-xl p-5 border-2"
-                              :class="total >= nisab ? 'from-emerald-50 to-green-50 border-emerald-300' : 'from-red-50 to-orange-50 border-red-300'">
+                        <div class="bg-gradient-to-br from-emerald-600 to-emerald-500 rounded-xl p-5 border-2"
+                              :class="total >= nisab ? 'from-emerald-600 to-emerald-500 border-emerald-300' : 'from-red-50 to-orange-50 border-red-300'">
 
                               <div class="flex items-start gap-3">
                                     <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
@@ -169,7 +181,7 @@
                                     </div>
 
                                     <div class="flex-1">
-                                          <h4 class="font-bold text-gray-900 mb-1">Status Nisab</h4>
+                                          <h4 class="font-bold text-emerald-900 mb-1">Status Nisab</h4>
 
                                           <template x-if="total === 0">
                                                 <p class="text-sm text-gray-600">
@@ -180,7 +192,7 @@
                                           <template x-if="total > 0 && total < nisab">
                                                 <div>
                                                       <p class="text-sm font-semibold text-red-700 mb-2">
-                                                            ❌ Harta Anda belum mencapai nisab, belum wajib zakat maal.
+                                                            Harta Anda belum mencapai nisab, belum wajib zakat maal.
                                                       </p>
                                                       <p class="text-xs text-gray-600">
                                                             Kekurangan: <strong x-text="rupiah(nisab - total)"></strong> lagi untuk mencapai nisab.
@@ -190,10 +202,10 @@
 
                                           <template x-if="total >= nisab">
                                                 <div>
-                                                      <p class="text-sm font-semibold text-emerald-700 mb-2">
-                                                            ✅ Alhamdulillah, harta Anda telah mencapai nisab dan <span class="underline">wajib zakat</span>.
+                                                      <p class="text-sm font-semibold text-white mb-2">
+                                                            Alhamdulillah, harta Anda telah mencapai nisab dan <span class="underline">wajib zakat</span>.
                                                       </p>
-                                                      <p class="text-xs text-gray-600">
+                                                      <p class="text-xs text-white">
                                                             Nisab: <strong x-text="rupiah(nisab)"></strong> |
                                                             Harta Anda: <strong x-text="rupiah(total)"></strong>
                                                       </p>
@@ -226,10 +238,10 @@
                                           </p>
                                     </div>
 
-                                    <div class="bg-white text-blue-700 rounded-2xl p-6">
+                                    <div class="bg-white text-emerald-700 rounded-2xl p-6">
                                           <p class="text-sm font-semibold mb-2">Zakat Per Bulan (Opsional)</p>
                                           <h2 class="text-3xl sm:text-4xl font-bold" x-text="rupiah(zakatBulan)"></h2>
-                                          <p class="text-xs text-blue-600 mt-2" x-show="total >= nisab">
+                                          <p class="text-xs text-emerald-700 mt-2" x-show="total >= nisab">
                                                 Cicilan 12 bulan
                                           </p>
                                     </div>
@@ -254,13 +266,14 @@
                                           :disabled="zakatTahun <= 0"
                                           :class="zakatTahun <= 0 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-100'"
                                           class="flex-1 bg-white text-emerald-700 py-4 rounded-xl font-bold transition">
-                                          <span x-show="zakatTahun > 0">Tunaikan Zakat</span>
+                                          <a href="http://">
+                                                <span x-show="zakatTahun > 0">Tunaikan Zakat</span>
+                                          </a>
                                           <span x-show="zakatTahun <= 0">Belum Wajib Zakat</span>
                                     </button>
-
                                     <button
                                           class="flex-1 border-2 border-white py-4 rounded-xl font-bold hover:bg-white/10 transition">
-                                          Konsultasi Gratis
+                                          <a href="http://">Konsultasi Gratis</a>
                                     </button>
                               </div>
 
@@ -414,10 +427,10 @@
 
                               <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
 
-                                    <div class="bg-white text-green-400 rounded-2xl p-6">
+                                    <div class="bg-white text-emerald-700 rounded-2xl p-6">
                                           <p class="text-sm font-semibold mb-2" x-text="jenisZakat === 'beras' ? 'Total Beras' : 'Total Uang'"></p>
                                           <h2 class="text-3xl sm:text-4xl font-bold" x-text="jenisZakat === 'beras' ? (jumlahJiwa * 2.5) + ' Kg' : 'Rp ' + hitungZakat().toLocaleString('id-ID')"></h2>
-                                          <p class="text-xs text-green-400 mt-2" x-text="jumlahJiwa + ' jiwa × 2.5 kg'"></p>
+                                          <p class="text-xs text-emerald-700 mt-2" x-text="jumlahJiwa + ' jiwa × 2.5 kg'"></p>
                                     </div>
 
                                     <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
@@ -440,11 +453,11 @@
                               </div>
 
                               <div class="flex flex-col sm:flex-row gap-4">
-                                    <button class="flex-1 bg-white text-green-500 py-4 rounded-xl font-bold hover:bg-gray-100 transition">
-                                          Tunaikan Zakat Fitrah
+                                    <button class="flex-1 bg-white text-emerald-700 py-4 rounded-xl font-bold hover:bg-gray-100 transition">
+                                          <a href="http://">Tunaikan Zakat Fitrah</a>
                                     </button>
                                     <button class="flex-1 border border-white py-4 rounded-xl font-bold hover:bg-white/10 transition">
-                                          Konsultasi
+                                          <a href="http://">Konsultasi</a>
                                     </button>
                               </div>
 
@@ -500,11 +513,11 @@
 
 {{-- Alpine.js & Scripts --}}
 @push('scripts')
+@push('scripts')
 <script>
       function zakatMaal() {
             return {
 
-                  // HARGA EMAS PER GRAM (dapat diubah user)
                   hargaEmas: 950000,
                   hargaEmasDisplay: '950,000',
 
@@ -513,6 +526,23 @@
                         gold: '',
                         property: '',
                         stock: '',
+                  },
+
+                  // ===== FORMAT INPUT =====
+                  formatInput(key) {
+                        let num = this.toNumber(this.form[key]);
+                        this.form[key] = num.toLocaleString('id-ID');
+                  },
+
+                  // ===== CONVERT STRING KE NUMBER =====
+                  toNumber(val) {
+                        if (!val) return 0;
+                        return parseInt(val.toString().replace(/\D/g, '')) || 0;
+                  },
+
+                  // ===== FORMAT RUPIAH =====
+                  rupiah(val) {
+                        return 'Rp ' + (val || 0).toLocaleString('id-ID');
                   },
 
                   // ===== UPDATE HARGA EMAS =====
@@ -530,50 +560,31 @@
                               this.toNumber(this.form.stock);
                   },
 
-                  // ===== NISAB (85 gram emas) =====
+                  // ===== NISAB =====
                   get nisab() {
                         return this.hargaEmas * 85;
                   },
 
-                  // ===== ZAKAT TAHUN (2.5% dari total) =====
+                  // ===== ZAKAT =====
                   get zakatTahun() {
                         if (this.total < this.nisab) return 0;
-                        return Math.round(this.total * 0.025); // 2.5% = 0.025
+                        return Math.round(this.total * 0.025);
                   },
 
-                  // ===== ZAKAT BULAN (dibagi 12) =====
                   get zakatBulan() {
+                        if (this.zakatTahun <= 0) return 0;
                         return Math.round(this.zakatTahun / 12);
                   },
 
-                  // ===== HELPER FUNCTIONS =====
-                  toNumber(v) {
-                        return parseInt((v + '').replace(/\D/g, '')) || 0;
-                  },
-
-                  rupiah(v) {
-                        return 'Rp ' + (v || 0).toLocaleString('id-ID');
-                  },
-
-                  formatInput(field) {
-                        let num = this.toNumber(this.form[field]);
-                        this.form[field] = num === 0 ? '' : num.toLocaleString('id-ID');
-                  },
-
-                  // ===== BAYAR ZAKAT =====
+                  // ===== BUTTON =====
                   bayarZakat() {
-
-                        if (this.zakatTahun <= 0) {
-                              alert('Harta belum mencapai nisab, belum wajib zakat maal.');
-                              return;
-                        }
-
-                        // Redirect ke halaman pembayaran zakat
-                        window.location.href = `/donasi/zakat?jenis=maal&nominal=${this.zakatTahun}`;
+                        alert('Lanjut ke halaman pembayaran zakat');
                   }
             }
       }
 </script>
+@endpush
+
 
 @endpush
 

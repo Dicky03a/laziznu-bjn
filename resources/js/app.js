@@ -1,4 +1,10 @@
+import Alpine from 'alpinejs'
 import './tiptap-editor.js';
+
+
+window.Alpine = Alpine
+Alpine.start()
+
 
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize Tiptap editors

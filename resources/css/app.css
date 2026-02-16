@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 @import '../../vendor/livewire/flux/dist/flux.css';
 @import './tiptap-editor.css';
-@import './tiptap-public.css';
+@import './titap-public.css';
 
 @source '../views';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
