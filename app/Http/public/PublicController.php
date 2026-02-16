@@ -3,6 +3,7 @@
 namespace App\Http\public;
 
 use App\Http\Controllers\Controller;
+use App\Models\Dokuemen;
 use App\Models\News;
 use App\Models\Profile;
 use App\Models\Rekening;
@@ -42,7 +43,8 @@ class PublicController extends Controller
 
     public function dokumen()
     {
-        return view('pages.public.profil.dokumen');
+        $dokumens = Dokuemen::latest()->get();
+        return view('pages.public.profil.dokumen', compact('dokumens'));
     }
 
     public function pressrelease()

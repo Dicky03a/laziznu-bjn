@@ -25,30 +25,6 @@
       </div>
 </section>
 
-<!-- SEARCH BAR -->
-<section class="bg-white py-8 sm:py-10 shadow-sm border-b border-slate-100">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col sm:flex-row gap-4">
-                  <div class="flex-1 relative">
-                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                              <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                              </svg>
-                        </div>
-                        <input type="text"
-                              placeholder="Cari dokumen..."
-                              class="w-full pl-12 pr-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-all duration-200">
-                  </div>
-
-                  <select class="sm:w-48 px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-all duration-200 bg-white">
-                        <option>Semua Kategori</option>
-                        <option>Regulasi</option>
-                        <option>Laporan</option>
-                        <option>Pedoman</option>
-                  </select>
-            </div>
-      </div>
-</section>
 
 <!-- DOCUMENT LIST -->
 <section class="bg-slate-50/50 py-16 sm:py-20 lg:py-24">
@@ -56,50 +32,14 @@
 
             <div class="space-y-6">
 
-                  @php
-                  $documents = [
-                  [
-                  'title' => 'Buku Saku AD/ART Nahdlatul Ulama 2022',
-                  'desc' => 'Dokumen resmi yang berisi Anggaran Dasar dan Anggaran Rumah Tangga Nahdlatul Ulama terbaru.',
-                  'size' => '2.4 MB',
-                  'downloads' => '324',
-                  'date' => '12 Jan 2024',
-                  'category' => 'Regulasi'
-                  ],
-                  [
-                  'title' => 'Ketentuan LAZISNU PBNU 2023 (Full)',
-                  'desc' => 'Pedoman resmi pengelolaan zakat, infaq dan shadaqah sesuai kebijakan PBNU.',
-                  'size' => '7.2 MB',
-                  'downloads' => '510',
-                  'date' => '20 Feb 2024',
-                  'category' => 'Pedoman'
-                  ],
-                  [
-                  'title' => 'Rencana Strategis LAZISNU PBNU 2022–2027',
-                  'desc' => 'Dokumen arah kebijakan dan strategi pengembangan LAZISNU dalam lima tahun ke depan.',
-                  'size' => '9.1 MB',
-                  'downloads' => '180',
-                  'date' => '05 Mar 2024',
-                  'category' => 'Pedoman'
-                  ],
-                  [
-                  'title' => 'Annual Report NU Care-LAZISNU Bojonegoro 2023',
-                  'desc' => 'Laporan tahunan program dan realisasi penyaluran dana zakat, infaq dan shadaqah tahun 2023.',
-                  'size' => '6.3 MB',
-                  'downloads' => '95',
-                  'date' => '10 Jan 2024',
-                  'category' => 'Laporan'
-                  ],
-                  ];
-                  @endphp
-
-                  @foreach($documents as $doc)
+                  @forelse($dokumens as $dokumen)
                   <article class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-200 hover:border-emerald-200 p-6 sm:p-8">
                         <div class="flex flex-col lg:flex-row lg:items-center gap-6">
 
                               <!-- Icon & Content -->
                               <div class="flex items-start gap-4 sm:gap-6 flex-1">
-                                    <!-- PDF Icon -->
+
+                                    <!-- Icon File -->
                                     <div class="flex-shrink-0">
                                           <div class="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-red-50 to-red-100 border-2 border-red-200 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                                                 <svg class="w-7 h-7 sm:w-8 sm:h-8 text-red-600" fill="currentColor" viewBox="0 0 20 20">
@@ -110,43 +50,49 @@
 
                                     <!-- Text Content -->
                                     <div class="flex-1 min-w-0">
-                                          <div class="flex items-start gap-3 mb-2">
-                                                <h3 class="font-bold text-slate-900 text-base sm:text-lg leading-snug group-hover:text-emerald-600 transition-colors duration-200">
-                                                      {{ $doc['title'] }}
-                                                </h3>
-                                          </div>
+
+                                          <h3 class="font-bold text-slate-900 text-base sm:text-lg leading-snug group-hover:text-emerald-600 transition-colors duration-200">
+                                                {{ $dokumen->nama_dokumen }}
+                                          </h3>
 
                                           <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-4">
-                                                {{ $doc['desc'] }}
+                                                {{ $dokumen->deskripsi }}
                                           </p>
 
                                           <div class="flex flex-wrap items-center gap-4 sm:gap-6 text-xs sm:text-sm text-slate-500">
+
+                                                <!-- Ukuran File -->
                                                 <span class="inline-flex items-center gap-1.5">
                                                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                                                       </svg>
-                                                      {{ $doc['size'] }}
+                                                      {{ number_format($dokumen->ukuran_file / 1024 / 1024, 1) }} MB
                                                 </span>
+
+                                                <!-- Download Count -->
                                                 <span class="inline-flex items-center gap-1.5">
                                                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                                                       </svg>
-                                                      {{ $doc['downloads'] }} downloads
+                                                      {{ $dokumen->jumlah_download }} downloads
                                                 </span>
+
+                                                <!-- Tanggal Upload -->
                                                 <span class="inline-flex items-center gap-1.5">
                                                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                                       </svg>
-                                                      {{ $doc['date'] }}
+                                                      {{ $dokumen->created_at->format('d M Y') }}
                                                 </span>
+
                                           </div>
                                     </div>
                               </div>
 
                               <!-- Download Button -->
                               <div class="lg:flex-shrink-0">
-                                    <a href="#"
-                                          class="group/btn inline-flex items-center justify-center gap-2 w-full lg:w-auto px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-sm hover:shadow-md hover:-translate-y-0.5">
+                                    <a href="{{ route('dokumens.download', $dokumen) }}"
+                                          class="inline-flex items-center justify-center gap-2 w-full lg:w-auto px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-sm hover:shadow-md hover:-translate-y-0.5">
                                           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                                           </svg>
@@ -156,11 +102,17 @@
 
                         </div>
                   </article>
-                  @endforeach
+
+                  @empty
+                  <div class="text-center py-12 text-slate-500">
+                        Dokumen belum tersedia.
+                  </div>
+                  @endforelse
 
             </div>
       </div>
 </section>
+
 
 <!-- CTA -->
 <section class="relative bg-gradient-to-br from-emerald-600 to-emerald-700 py-16 sm:py-20 overflow-hidden">

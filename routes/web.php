@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DokumenController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RekeningController;
@@ -28,15 +29,17 @@ Route::get('/disclaimer', [PublicController::class, 'disclaimer'])->name('discla
 Route::get('/berita', [PublicController::class, 'berita'])->name('berita.public.index');
 Route::get('/berita/{news:slug}', [NewsController::class, 'show'])->name('berita.show');
 
+Route::get('dokumens/{dokumen}/download',[DokumenController::class, 'download'])->name('dokumens.download');
+
+
 Route::middleware(['auth', 'verified'])->group(function () {
 
-    Route::get('dashboard', fn () => view('dashboard'))->name('dashboard');
+    Route::get('dashboard', fn() => view('dashboard'))->name('dashboard');
 
     Route::resource('profiles', ProfileController::class);
     Route::resource('rekenings', RekeningController::class);
-
-    // Admin News routes
     Route::resource('news', NewsController::class)->except('show');
+    Route::resource('dokumens', DokumenController::class);
 });
 
-require __DIR__.'/settings.php';
+require __DIR__ . '/settings.php';
