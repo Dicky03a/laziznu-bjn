@@ -5,6 +5,7 @@ namespace App\Http\public;
 use App\Http\Controllers\Controller;
 use App\Models\News;
 use App\Models\Profile;
+use App\Models\Rekening;
 
 class PublicController extends Controller
 {
@@ -34,7 +35,9 @@ class PublicController extends Controller
 
     public function rekening()
     {
-        return view('pages.public.profil.rekeninglengkap');
+        $rekenings = Rekening::latest()->get();
+
+        return view('pages.public.profil.rekeninglengkap', compact('rekenings'));
     }
 
     public function dokumen()

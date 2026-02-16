@@ -32,76 +32,58 @@
             <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mb-3">
                   Transfer Melalui Bank
             </h2>
-            <p class="text-slate-600">Pilih metode transfer yang paling mudah untuk Anda</p>
+            <p class="text-slate-600">
+                  Pilih metode transfer yang paling mudah untuk Anda
+            </p>
       </div>
+
+      @if($rekenings->isEmpty())
+      <div class="text-center text-slate-500">
+            Data rekening belum tersedia.
+      </div>
+      @else
 
       <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
 
-            @php
-            $rekening = [
-            [
-            'bank' => 'Bank Rakyat Indonesia',
-            'shortName' => 'BRI',
-            'nama' => 'LAZISNU Bojonegoro',
-            'no' => '0022-01-028613-53-6',
-            'color' => 'blue'
-            ],
-            [
-            'bank' => 'Bank Syariah Indonesia',
-            'shortName' => 'BSI',
-            'nama' => 'LAZISNU Bojonegoro',
-            'no' => '7194101451',
-            'type' => 'Infaq',
-            'color' => 'emerald'
-            ],
-            [
-            'bank' => 'Bank Syariah Indonesia',
-            'shortName' => 'BSI',
-            'nama' => 'LAZISNU Bojonegoro',
-            'no' => '721160084',
-            'type' => 'Zakat',
-            'color' => 'emerald'
-            ],
-            [
-            'bank' => 'Bank Mandiri',
-            'shortName' => 'Mandiri',
-            'nama' => 'LAZISNU Bojonegoro',
-            'no' => '184-00-0453436-6',
-            'color' => 'blue'
-            ],
-            [
-            'bank' => 'BMT LISA (ASKOWANU)',
-            'shortName' => 'BMT',
-            'nama' => 'PC LAZISNU Bojonegoro',
-            'no' => '01.KNU.00142',
-            'color' => 'emerald'
-            ],
-            ];
-            @endphp
-
-            @foreach($rekening as $item)
+            @foreach($rekenings as $rekening)
             <div class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 p-6 lg:p-8 border border-slate-200 hover:border-emerald-200">
 
+                  {{-- Header --}}
                   <div class="flex justify-between items-start mb-6">
                         <div class="flex-1">
+
                               <div class="flex items-center gap-3 mb-2">
-                                    <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br from-{{ $item['color'] }}-500 to-{{ $item['color'] }}-600 text-white font-bold text-sm shadow-sm">
-                                          {{ substr($item['shortName'], 0, 1) }}
-                                    </div>
-                                    <div>
-                                          <h3 class="font-semibold text-slate-900 text-base">
-                                                {{ $item['bank'] }}
-                                          </h3>
-                                          @if(isset($item['type']))
-                                          <span class="text-xs text-{{ $item['color'] }}-600 font-medium">
-                                                {{ $item['type'] }}
+
+                                    {{-- ICON --}}
+                                    <div class="w-14 flex items-center justify-center bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden p-1">
+
+                                          @if(!empty($rekening->icon))
+                                          <img
+                                                src="{{ asset('storage/'.$rekening->icon) }}"
+                                                alt="{{ $rekening->bank_atas_nama }}"
+                                                class="max-h-full max-w-full object-contain">
+                                          @else
+                                          <span class="text-slate-500 font-bold text-xl">
+                                                {{ strtoupper(substr($rekening->bank_atas_nama, 0, 1)) }}
                                           </span>
                                           @endif
+
                                     </div>
+
+
+                                    {{-- NAMA BANK --}}
+                                    <div>
+                                          <h3 class="font-semibold text-slate-900 text-base">
+                                                {{ $rekening->nama }}
+                                          </h3>
+                                    </div>
+
                               </div>
-                              <p class="text-sm text-slate-600 ml-13">
-                                    a.n {{ $item['nama'] }}
+
+                              <p class="text-sm text-slate-600 ml-15">
+                                    a.n {{ $rekening->bank_atas_nama }}
                               </p>
+
                         </div>
 
                         <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-semibold rounded-full">
@@ -110,25 +92,36 @@
                         </span>
                   </div>
 
+                  {{-- Nomor Rekening --}}
                   <div class="flex items-center gap-3 bg-slate-50 p-4 rounded-xl border border-slate-100 group-hover:border-emerald-100 transition-colors duration-300">
+
                         <span class="flex-1 font-mono text-slate-900 text-base font-semibold tracking-wide">
-                              {{ $item['no'] }}
+                              {{ $rekening->nomor_rekening }}
                         </span>
 
-                        <button onclick="copyToClipboard('{{ $item['no'] }}', this)"
+                        <button
+                              onclick="copyToClipboard('{{ $rekening->nomor_rekening }}', this)"
                               class="flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium rounded-lg transition-all duration-200 shadow-sm hover:shadow-md hover:-translate-y-0.5">
+
                               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
                               </svg>
+
                               <span class="copy-text">Salin</span>
                         </button>
+
                   </div>
 
             </div>
             @endforeach
 
       </div>
+
+      @endif
+
 </section>
+
 
 <!-- QRIS SECTION -->
 <section class="bg-slate-50/50 py-16 sm:py-20 lg:py-24">

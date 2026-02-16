@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RekeningController;
 use App\Http\public\PublicController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,12 +30,13 @@ Route::get('/berita/{news:slug}', [NewsController::class, 'show'])->name('berita
 
 Route::middleware(['auth', 'verified'])->group(function () {
 
-    Route::get('dashboard', fn() => view('dashboard'))->name('dashboard');
+    Route::get('dashboard', fn () => view('dashboard'))->name('dashboard');
 
     Route::resource('profiles', ProfileController::class);
+    Route::resource('rekenings', RekeningController::class);
 
     // Admin News routes
     Route::resource('news', NewsController::class)->except('show');
 });
 
-require __DIR__ . '/settings.php';
+require __DIR__.'/settings.php';
