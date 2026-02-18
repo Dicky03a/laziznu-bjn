@@ -79,7 +79,7 @@ class RekeningController extends Controller
 
             $data['icon'] = $file->storeAs(
                 'rekenings',
-                Str::uuid() . '.' . $file->getClientOriginalExtension(),
+                Str::uuid().'.'.$file->getClientOriginalExtension(),
                 'public'
             );
         }
@@ -90,7 +90,6 @@ class RekeningController extends Controller
             ->route('rekenings.index')
             ->with('success', 'Rekening berhasil diperbarui');
     }
-
 
     /**
      * Remove the specified resource from storage.

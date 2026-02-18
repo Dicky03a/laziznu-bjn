@@ -28,6 +28,9 @@
                 <flux:sidebar.item href="{{ route('dokumens.index') }}">Dokumen</flux:sidebar.item>
             </flux:sidebar.group>
             <flux:sidebar.item icon="book-open" href="{{ route('news.index') }}">Berita</flux:sidebar.item>
+            <flux:sidebar.item icon="book-open" href="{{ route('programs.index') }}">Program</flux:sidebar.item>
+            <flux:sidebar.item icon="book-open" href="{{ route('transactions.index') }}">Transaksi</flux:sidebar.item>
+            <flux:sidebar.item icon="book-open" href="{{ route('program.edit') }}">Pengaturan Program</flux:sidebar.item>
         </flux:sidebar.nav>
 
 

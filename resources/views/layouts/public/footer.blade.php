@@ -62,7 +62,7 @@
                                     </a>
                               </li>
                               <li>
-                                    <a href="{{ route('donasi') }}" class="text-sm hover:text-green-400 transition duration-300 flex items-center group">
+                                    <a href="{{ route('donasi.index') }}" class="text-sm hover:text-green-400 transition duration-300 flex items-center group">
                                           <span class="mr-2 text-green-500 group-hover:translate-x-1 transition-transform duration-300">›</span>
                                           Donasi
                                     </a>
@@ -87,19 +87,19 @@
                         <h3 class="text-white text-lg font-semibold mb-4 border-b border-gray-700 pb-2">Program Kami</h3>
                         <ul class="space-y-3">
                               <li>
-                                    <a href="{{ route('zakat') }}" class="text-sm hover:text-green-400 transition duration-300 flex items-center group">
+                                    <a href="{{ route('zakat.index') }}" class="text-sm hover:text-green-400 transition duration-300 flex items-center group">
                                           <span class="mr-2 text-green-500 group-hover:translate-x-1 transition-transform duration-300">›</span>
                                           Zakat
                                     </a>
                               </li>
                               <li>
-                                    <a href="{{ route('infaq') }}" class="text-sm hover:text-green-400 transition duration-300 flex items-center group">
+                                    <a href="{{ route('infaq.index') }}" class="text-sm hover:text-green-400 transition duration-300 flex items-center group">
                                           <span class="mr-2 text-green-500 group-hover:translate-x-1 transition-transform duration-300">›</span>
                                           Infaq & Sedekah
                                     </a>
                               </li>
                               <li>
-                                    <a href="{{ route('donasi') }}" class="text-sm hover:text-green-400 transition duration-300 flex items-center group">
+                                    <a href="{{ route('donasi.index') }}" class="text-sm hover:text-green-400 transition duration-300 flex items-center group">
                                           <span class="mr-2 text-green-500 group-hover:translate-x-1 transition-transform duration-300">›</span>
                                           Program Sosial
                                     </a>

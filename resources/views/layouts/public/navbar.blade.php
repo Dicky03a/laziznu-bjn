@@ -90,21 +90,21 @@
                                 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
                                 transition-all duration-300 ease-out p-2">
 
-                                    <a href="{{ route('zakat') }}"
+                                    <a href="{{ route('zakat.index') }}"
                                           class="block px-4 py-3 rounded-xl text-sm text-gray-600
                            hover:bg-green-50 hover:text-green-600 hover:translate-x-1
                            transition-all duration-200">
                                           Zakat
                                     </a>
 
-                                    <a href="{{ route('infaq') }}"
+                                    <a href="{{ route('infaq.index') }}"
                                           class="block px-4 py-3 rounded-xl text-sm text-gray-600
                            hover:bg-green-50 hover:text-green-600 hover:translate-x-1
                            transition-all duration-200">
                                           Infaq & Sedekah
                                     </a>
 
-                                    <a href="{{ route('donasi') }}"
+                                    <a href="{{ route('donasi.index') }}"
                                           class="block px-4 py-3 rounded-xl text-sm text-gray-600
                            hover:bg-green-50 hover:text-green-600 hover:translate-x-1
                            transition-all duration-200">
@@ -233,9 +233,9 @@
                         </button>
 
                         <div class="mobile-content hidden pl-4 mt-1 space-y-1">
-                              <a href="{{ route('zakat') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Zakat</a>
-                              <a href="{{ route('infaq') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Infaq & Sedekah</a>
-                              <a href="{{ route('donasi') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Program Sosial</a>
+                              <a href="{{ route('zakat.index') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Zakat</a>
+                              <a href="{{ route('infaq.index') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Infaq & Sedekah</a>
+                              <a href="{{ route('donasi.index') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Program Sosial</a>
                         </div>
                   </div>
 

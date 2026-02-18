@@ -44,6 +44,7 @@ class PublicController extends Controller
     public function dokumen()
     {
         $dokumens = Dokuemen::latest()->get();
+
         return view('pages.public.profil.dokumen', compact('dokumens'));
     }
 
@@ -54,7 +55,13 @@ class PublicController extends Controller
 
     public function program()
     {
-        return view('pages.public.program');
+        $programs = \App\Models\Program::active()
+            ->withCount(['confirmedTransactions as total_donatur'])
+            ->latest('is_featured')
+            ->latest()
+            ->get();
+
+        return view('pages.public.program', compact('programs'));
     }
 
     public function laporanbulanan()
