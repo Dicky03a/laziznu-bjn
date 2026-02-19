@@ -240,7 +240,11 @@
                         </div>
 
                         <div class="text-center md:text-right bg-white/10 backdrop-blur-sm rounded-xl px-6 py-4 border border-white/20">
-                              <p class="text-white font-bold text-lg mb-1">085743229703</p>
+                              <a href="https://wa.me/6285743229703?text=Assalamu%E2%80%99alaikum,%20saya%20ingin%20menghubungi%20admin%20zakat,%20sedekah,%20dan%20donasi."
+                                    target="_blank"
+                                    rel="noopener">
+                                    <p class="text-white font-bold text-lg mb-1">085743229703</p>
+                              </a>
                               <p class="text-emerald-100 text-sm">Admin</p>
                         </div>
 

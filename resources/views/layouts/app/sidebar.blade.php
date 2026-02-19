@@ -23,7 +23,7 @@
             <flux:sidebar.item icon="home" href="{{ route('dashboard') }}">Home</flux:sidebar.item>
             <flux:sidebar.group expandable heading="Profile" class="grid">
                 <flux:sidebar.item href="{{ route('profiles.index') }}">Sekilas NU Care</flux:sidebar.item>
-                <flux:sidebar.item href="#">Pengurus</flux:sidebar.item>
+                <flux:sidebar.item href="{{ route('pengurus.index') }}">Pengurus</flux:sidebar.item>
                 <flux:sidebar.item href="{{ route('rekenings.index') }}">Rekening</flux:sidebar.item>
                 <flux:sidebar.item href="{{ route('dokumens.index') }}">Dokumen</flux:sidebar.item>
             </flux:sidebar.group>

@@ -208,7 +208,7 @@
                               <a href="{{ route('pengurus-laziznu-bojonegoro') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Pengurus Laziznu</a>
                               <a href="{{ route('rekening-lengkap') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Rekening Lengkap</a>
                               <a href="{{ route('dokumen') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Unduh Dokumen</a>
-                              <a href="{{ route('press-release') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Press Release</a>
+                              <a href="{{ route('berita.public.index') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Berita</a>
                         </div>
                   </div>
 

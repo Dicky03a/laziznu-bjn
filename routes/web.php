@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\PengurusController;
 use App\Http\Controllers\Admin\ProgramController;
 use App\Http\Controllers\Admin\SettingControllerProgram;
 use App\Http\Controllers\Admin\TransactionController;
@@ -21,7 +22,6 @@ Route::get('/profile', [PublicController::class, 'profile'])->name('profile');
 Route::get('/pengurus-laziznu-bojonegoro', [PublicController::class, 'pengurus'])->name('pengurus-laziznu-bojonegoro');
 Route::get('/rekening-lengkap', [PublicController::class, 'rekening'])->name('rekening-lengkap');
 Route::get('/dokumen', [PublicController::class, 'dokumen'])->name('dokumen');
-Route::get('/press-release', [PublicController::class, 'pressrelease'])->name('press-release');
 Route::get('/program', [PublicController::class, 'program'])->name('program');
 Route::get('/laporan-bulanan', [PublicController::class, 'laporanbulanan'])->name('laporan-bulanan');
 Route::get('/laporan-tahunan', [PublicController::class, 'laporantahunan'])->name('laporan-tahunan');
@@ -33,6 +33,7 @@ Route::get('/zakat', [PublicController::class, 'zakat'])->name('zakat');
 Route::get('/kebijakan-privasi', [PublicController::class, 'privasi'])->name('kebijakan-privasi');
 Route::get('/terms-conditions', [PublicController::class, 'syarat'])->name('terms-conditions');
 Route::get('/disclaimer', [PublicController::class, 'disclaimer'])->name('disclaimer');
+
 
 // Public News routes
 Route::get('/berita', [PublicController::class, 'berita'])->name('berita.public.index');
@@ -62,15 +63,19 @@ Route::get('/pembayaran/{kode}', [PaymentController::class, 'show'])->name('paym
 Route::post('/pembayaran/{kode}/konfirmasi', [PaymentController::class, 'confirm'])->name('payment.confirm');
 Route::get('/pembayaran/{kode}/status', [PaymentController::class, 'status'])->name('payment.status');
 
+
+
 // Protected routes for authenticated users
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('dashboard', fn () => view('dashboard'))->name('dashboard');
+    Route::get('dashboard', fn() => view('dashboard'))->name('dashboard');
 
+    // Resource routes for admin management
     Route::resource('profiles', ProfileController::class);
     Route::resource('rekenings', RekeningController::class);
     Route::resource('news', NewsController::class)->except('show');
     Route::resource('dokumens', DokumenController::class);
 
+    // Program
     Route::resource('programs', ProgramController::class);
     Route::patch('programs/{program}/toggle-active', [ProgramController::class, 'toggleActive'])
         ->name('programs.toggle-active');
@@ -85,6 +90,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Settings (Fidyah, Zakat Fitrah, Nisab, dll)
     Route::get('program/settings', [SettingControllerProgram::class, 'index'])->name('program.edit');
     Route::put('settings/program', [SettingControllerProgram::class, 'update'])->name('program.settings');
+
+
+    // Pengurus
+    Route::resource('pengurus', PengurusController::class)->parameters([
+        'pengurus' => 'pengurus'
+    ]);
+    Route::patch('pengurus/{pengurus}/toggle-status', [PengurusController::class, 'toggleStatus'])
+        ->name('pengurus.toggle-status');
+    Route::delete('pengurus/{pengurus}/foto', [PengurusController::class, 'destroyFoto'])
+        ->name('pengurus.destroy-foto');
 });
 
-require __DIR__.'/settings.php';
+require __DIR__ . '/settings.php';

@@ -2,7 +2,6 @@
 @section('title', 'Hitung Zakat - LAZIZNU Bojonegoro')
 @section('content')
 
-{{-- ================= HERO ================= --}}
 <section class="relative bg-gradient-to-br from-emerald-900 via-emerald-800 to-emerald-700 py-16 sm:py-20 lg:py-24 overflow-hidden">
 
       <div class="absolute inset-0 opacity-10">
@@ -266,7 +265,7 @@
                                           :disabled="zakatTahun <= 0"
                                           :class="zakatTahun <= 0 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-100'"
                                           class="flex-1 bg-white text-emerald-700 py-4 rounded-xl font-bold transition">
-                                          <a href="http://">
+                                          <a href="{{ route('zakat.index') }}">
                                                 <span x-show="zakatTahun > 0">Tunaikan Zakat</span>
                                           </a>
                                           <span x-show="zakatTahun <= 0">Belum Wajib Zakat</span>
@@ -454,7 +453,7 @@
 
                               <div class="flex flex-col sm:flex-row gap-4">
                                     <button class="flex-1 bg-white text-emerald-700 py-4 rounded-xl font-bold hover:bg-gray-100 transition">
-                                          <a href="http://">Tunaikan Zakat Fitrah</a>
+                                          <a href="{{ route('zakat.index') }}">Tunaikan Zakat Fitrah</a>
                                     </button>
                                     <button class="flex-1 border border-white py-4 rounded-xl font-bold hover:bg-white/10 transition">
                                           <a href="http://">Konsultasi</a>

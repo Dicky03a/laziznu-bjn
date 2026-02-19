@@ -5,6 +5,7 @@ namespace App\Http\public;
 use App\Http\Controllers\Controller;
 use App\Models\Dokuemen;
 use App\Models\News;
+use App\Models\Pengurus;
 use App\Models\Profile;
 use App\Models\Rekening;
 
@@ -37,7 +38,40 @@ class PublicController extends Controller
 
     public function pengurus()
     {
-        return view('pages.public.profil.pengurus');
+
+        // Ambil pengurus aktif, dikelompokkan per periode terbaru
+        $tahunSekarang = now()->year;
+
+        $pengurusList = Pengurus::active()
+            ->ordered()
+            ->get()
+            ->groupBy(fn($p) => "{$p->masa_khidmat_mulai}-{$p->masa_khidmat_selesai}");
+
+        // Ambil no_sk dari pengurus pertama yang ada
+        $noSk = Pengurus::active()->value('no_sk');
+
+        // Data untuk periode aktif (tampil di halaman publik)
+        $periodeAktif = Pengurus::active()
+            ->selectRaw('CONCAT(masa_khidmat_mulai, "-", masa_khidmat_selesai) as periode, masa_khidmat_mulai, masa_khidmat_selesai')
+            ->orderByDesc('masa_khidmat_mulai')
+            ->first();
+
+        $pengurusByJabatan = Pengurus::active()
+            ->when(
+                $periodeAktif,
+                fn($q) => $q
+                    ->where('masa_khidmat_mulai', $periodeAktif->masa_khidmat_mulai)
+                    ->where('masa_khidmat_selesai', $periodeAktif->masa_khidmat_selesai)
+            )
+            ->ordered()
+            ->get()
+            ->groupBy('jabatan');
+
+        return view('pages.public.profil.pengurus', compact(
+            'pengurusByJabatan',
+            'periodeAktif',
+            'noSk'
+        ));
     }
 
     public function rekening()
