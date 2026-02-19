@@ -187,14 +187,10 @@
             </p>
 
             <div class="flex flex-wrap gap-4 justify-center">
-                  <button class="group px-8 py-3.5 bg-white text-emerald-700 font-semibold rounded-lg hover:bg-emerald-50 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+                  <a href="{{ route('donasi.index') }}" class="group px-8 py-3.5 bg-white text-emerald-700 font-semibold rounded-lg hover:bg-emerald-50 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
                         Salurkan Donasi Sekarang
                         <span class="inline-block ml-2 transition-transform duration-200 group-hover:translate-x-1">→</span>
-                  </button>
-
-                  <button class="px-8 py-3.5 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 backdrop-blur-sm transition-all duration-200">
-                        Hubungi Kami
-                  </button>
+                  </a>
             </div>
       </div>
 </section>

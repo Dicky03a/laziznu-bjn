@@ -61,7 +61,7 @@
                                           Unduh Dokumen
                                     </a>
 
-                                    <a href="{{ route('press-release') }}"
+                                    <a href="{{ route('berita.public.index') }}"
                                           class="block px-4 py-3 rounded-xl text-sm text-gray-600
                            hover:bg-green-50 hover:text-green-600 hover:translate-x-1
                            transition-all duration-200">

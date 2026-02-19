@@ -33,7 +33,7 @@
         @if($programs->isEmpty())
         <div class="text-center py-20">
             <svg class="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
             </svg>
             <p class="text-gray-500 font-semibold text-lg">Belum ada program infaq tersedia</p>
             <p class="text-gray-400 text-sm mt-1">Silakan cek kembali nanti</p>
@@ -42,23 +42,23 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             @foreach($programs as $program)
             <a href="{{ route('infaq.show', $program->slug) }}"
-               class="group bg-white rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-emerald-200 overflow-hidden flex flex-col">
+                class="group bg-white rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-emerald-200 overflow-hidden flex flex-col">
 
                 {{-- Thumbnail --}}
                 <div class="relative h-48 overflow-hidden bg-gray-100">
                     <img src="{{ $program->thumbnail_url }}"
-                         alt="{{ $program->nama }}"
-                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        alt="{{ $program->nama }}"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     @if($program->is_featured)
                     <div class="absolute top-3 left-3">
                         <span class="px-2.5 py-1 bg-amber-400 text-amber-900 text-xs font-bold rounded-full">⭐ Unggulan</span>
                     </div>
                     @endif
                     @if($program->end_date && $program->end_date->diffInDays(now()) <= 7 && !$program->end_date->isPast())
-                    <div class="absolute top-3 right-3">
-                        <span class="px-2.5 py-1 bg-red-500 text-white text-xs font-bold rounded-full">Segera Berakhir</span>
-                    </div>
-                    @endif
+                        <div class="absolute top-3 right-3">
+                            <span class="px-2.5 py-1 bg-red-500 text-white text-xs font-bold rounded-full">Segera Berakhir</span>
+                        </div>
+                        @endif
                 </div>
 
                 {{-- Content --}}

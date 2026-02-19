@@ -38,9 +38,9 @@
                                     <span class="inline-block ml-2 transition-transform duration-200 group-hover:translate-x-1">→</span>
                               </a>
                               </button>
-                              <button class="px-6 py-3 bg-transparent border-2 border-white/30 text-white rounded-lg font-semibold hover:bg-white/10 backdrop-blur-sm transition-all duration-200">
-                                    Pelajari Lebih Lanjut
-                              </button>
+                              <a href="{{ route('zakat.index') }}" class="px-6 py-3 bg-transparent border-2 border-white/30 text-white rounded-lg font-semibold hover:bg-white/10 backdrop-blur-sm transition-all duration-200">
+                                    Zakat
+                              </a>
                         </div>
                   </div>
             </div>
@@ -132,17 +132,20 @@
             <!-- Program Cards Grid -->
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
 
-                  <!-- CARD 1 -->
+                  @foreach($programs as $program)
                   <article class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-slate-100 hover:border-emerald-100">
+
                         <div class="relative overflow-hidden aspect-[16/10]">
-                              <img src="{{ asset('asset/santriterampil.jpg') }}"
+                              <img src="{{ $program->thumbnail_url }}"
                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                    alt="Wujudkan Santripreneur Terampil Berwirausaha"
+                                    alt="{{ $program->nama }}"
                                     loading="lazy">
+
                               <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
 
                         <div class="p-6">
+
                               <div class="mb-3">
                                     <span class="inline-block px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-semibold rounded-full">
                                           LAZISNU Bojonegoro
@@ -150,113 +153,48 @@
                               </div>
 
                               <h3 class="font-semibold text-lg text-slate-900 mb-4 leading-snug group-hover:text-emerald-600 transition-colors duration-200">
-                                    Wujudkan Santripreneur Terampil Berwirausaha
+                                    {{ $program->nama }}
                               </h3>
 
                               <!-- Progress Section -->
                               <div class="space-y-3">
+
                                     <div class="flex justify-between items-baseline text-sm">
                                           <span class="text-slate-600">Terkumpul</span>
-                                          <span class="font-semibold text-slate-900">Rp 0</span>
+                                          <span class="font-semibold text-slate-900">
+                                                Rp {{ number_format($program->total_terkumpul, 0, ',', '.') }}
+                                          </span>
                                     </div>
 
                                     <div class="relative w-full h-2 bg-slate-100 rounded-full overflow-hidden">
-                                          <div class="absolute inset-y-0 left-0 bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-full transition-all duration-500 w-[10%]"></div>
+                                          <div class="absolute inset-y-0 left-0 bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-full transition-all duration-500"
+                                                style="width: {{ $program->progress_persen }}%">
+                                          </div>
                                     </div>
+
                               </div>
 
-                              <button class="mt-6 w-full px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-sm hover:shadow-md hover:-translate-y-0.5">
+                              <a href="{{ route('infaq.show', $program->slug) }}"
+                                    class="mt-6 inline-block w-full text-center px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-sm hover:shadow-md hover:-translate-y-0.5">
                                     Salurkan Donasi
-                              </button>
+                              </a>
+
                         </div>
                   </article>
-
-                  <!-- CARD 2 -->
-                  <article class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-slate-100 hover:border-emerald-100">
-                        <div class="relative overflow-hidden aspect-[16/10]">
-                              <img src="{{ asset('asset/gurumengajar.webp') }}"
-                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                    alt="Bantu Guru Membangun Masa Depan Pendidikan"
-                                    loading="lazy">
-                              <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        </div>
-
-                        <div class="p-6">
-                              <div class="mb-3">
-                                    <span class="inline-block px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-semibold rounded-full">
-                                          LAZISNU Bojonegoro
-                                    </span>
-                              </div>
-
-                              <h3 class="font-semibold text-lg text-slate-900 mb-4 leading-snug group-hover:text-emerald-600 transition-colors duration-200">
-                                    Bantu Guru Membangun Masa Depan Pendidikan
-                              </h3>
-
-                              <div class="space-y-3">
-                                    <div class="flex justify-between items-baseline text-sm">
-                                          <span class="text-slate-600">Terkumpul</span>
-                                          <span class="font-semibold text-slate-900">Rp 150.000</span>
-                                    </div>
-
-                                    <div class="relative w-full h-2 bg-slate-100 rounded-full overflow-hidden">
-                                          <div class="absolute inset-y-0 left-0 bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-full transition-all duration-500 w-[30%]"></div>
-                                    </div>
-                              </div>
-
-                              <button class="mt-6 w-full px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-sm hover:shadow-md hover:-translate-y-0.5">
-                                    Salurkan Donasi
-                              </button>
-                        </div>
-                  </article>
-
-                  <!-- CARD 3 -->
-                  <article class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-slate-100 hover:border-emerald-100">
-                        <div class="relative overflow-hidden aspect-[16/10]">
-                              <img src="{{ asset('asset/beasiswasantri.jpeg') }}"
-                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                    alt="Beasiswa Santri dan Siswa Nusantara"
-                                    loading="lazy">
-                              <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        </div>
-
-                        <div class="p-6">
-                              <div class="mb-3">
-                                    <span class="inline-block px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-semibold rounded-full">
-                                          LAZISNU Bojonegoro
-                                    </span>
-                              </div>
-
-                              <h3 class="font-semibold text-lg text-slate-900 mb-4 leading-snug group-hover:text-emerald-600 transition-colors duration-200">
-                                    Beasiswa Santri dan Siswa Nusantara
-                              </h3>
-
-                              <div class="space-y-3">
-                                    <div class="flex justify-between items-baseline text-sm">
-                                          <span class="text-slate-600">Terkumpul</span>
-                                          <span class="font-semibold text-slate-900">Rp 0</span>
-                                    </div>
-
-                                    <div class="relative w-full h-2 bg-slate-100 rounded-full overflow-hidden">
-                                          <div class="absolute inset-y-0 left-0 bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-full transition-all duration-500 w-[5%]"></div>
-                                    </div>
-                              </div>
-
-                              <button class="mt-6 w-full px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-sm hover:shadow-md hover:-translate-y-0.5">
-                                    Salurkan Donasi
-                              </button>
-                        </div>
-                  </article>
+                  @endforeach
 
             </div>
 
             <!-- View All Button -->
             <div class="text-center mt-12 lg:mt-16">
-                  <button class="inline-flex items-center gap-2 px-8 py-3 bg-white border-2 border-slate-200 text-slate-900 font-semibold rounded-lg hover:border-emerald-500 hover:text-emerald-600 transition-all duration-200 shadow-sm hover:shadow-md">
-                        Lihat Semua Program
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                  </button>
+                  <a href="{{ route('program') }}">
+                        <button class="inline-flex items-center gap-2 px-8 py-3 bg-white border-2 border-slate-200 text-slate-900 font-semibold rounded-lg hover:border-emerald-500 hover:text-emerald-600 transition-all duration-200 shadow-sm hover:shadow-md">
+                              Lihat Semua Program
+                              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                              </svg>
+                        </button>
+                  </a>
             </div>
       </div>
 </section>

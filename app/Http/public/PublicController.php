@@ -18,8 +18,14 @@ class PublicController extends Controller
             ->latest('published_at')
             ->limit(3)
             ->get();
+        $programs = \App\Models\Program::active()
+            ->ofType('infaq')
+            ->withCount(['confirmedTransactions as total_donatur'])
+            ->latest('is_featured')
+            ->latest()
+            ->get();
 
-        return view('pages.public.index', compact('profile', 'news'));
+        return view('pages.public.index', compact('profile', 'news', 'programs'));
     }
 
     public function profile()
@@ -55,13 +61,25 @@ class PublicController extends Controller
 
     public function program()
     {
+        $programUnggulan = \App\Models\Program::active()
+            ->featured()
+            ->withSum('confirmedTransactions as total_terkumpul', 'jumlah')
+            ->withCount('confirmedTransactions as total_donatur')
+            ->latest()
+            ->first();
+
         $programs = \App\Models\Program::active()
-            ->withCount(['confirmedTransactions as total_donatur'])
-            ->latest('is_featured')
+            ->withSum('confirmedTransactions as total_terkumpul', 'jumlah')
+            ->withCount('confirmedTransactions as total_donatur')
             ->latest()
             ->get();
 
-        return view('pages.public.program', compact('programs'));
+        $donasiTerbaru = \App\Models\Transaction::where('status', 'confirmed')
+            ->latest()
+            ->take(5)
+            ->get();
+
+        return view('pages.public.program', compact('programs', 'programUnggulan', 'donasiTerbaru'));
     }
 
     public function laporanbulanan()

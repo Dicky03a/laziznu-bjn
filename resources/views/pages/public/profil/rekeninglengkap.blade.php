@@ -151,7 +151,7 @@
 
                         <div class="relative">
                               <div class="absolute -inset-4 bg-gradient-to-r from-emerald-500/10 to-emerald-600/10 rounded-2xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                              <img src="{{ asset('asset/qris-zakat.png') }}"
+                              <img src="{{ asset('asset/qris-zakat.jpeg') }}"
                                     class="relative mx-auto w-full max-w-xs rounded-xl shadow-md border-4 border-white"
                                     alt="QRIS Zakat"
                                     loading="lazy">
@@ -187,7 +187,7 @@
 
                         <div class="relative">
                               <div class="absolute -inset-4 bg-gradient-to-r from-emerald-500/10 to-emerald-600/10 rounded-2xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                              <img src="{{ asset('asset/qris-infaq.png') }}"
+                              <img src="{{ asset('asset/qris-infaq.jpeg') }}"
                                     class="relative mx-auto w-full max-w-xs rounded-xl shadow-md border-4 border-white"
                                     alt="QRIS Infaq"
                                     loading="lazy">
@@ -240,8 +240,8 @@
                         </div>
 
                         <div class="text-center md:text-right bg-white/10 backdrop-blur-sm rounded-xl px-6 py-4 border border-white/20">
-                              <p class="text-white font-bold text-lg mb-1">0856-4001-9811</p>
-                              <p class="text-emerald-100 text-sm">Ahmad Fauzan (Manajer Keuangan)</p>
+                              <p class="text-white font-bold text-lg mb-1">085743229703</p>
+                              <p class="text-emerald-100 text-sm">Admin</p>
                         </div>
 
                   </div>
