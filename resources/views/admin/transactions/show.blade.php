@@ -264,6 +264,7 @@
                   {{-- Link publik --}}
                   <div class="bg-white rounded-2xl border border-gray-200 p-5">
                         <p class="text-xs font-semibold text-gray-600 mb-2">Link Halaman Pembayaran</p>
+                        <p class="text-sm text-gray-700">Salin link tersebut dan kirim ke Nomer Whatsap Donatur</p>
                         <div class="flex items-center gap-2 p-2.5 bg-gray-50 rounded-xl border border-gray-200">
                               <p class="text-xs text-gray-500 truncate flex-1">{{ route('payment.show', $transaction->kode_transaksi) }}</p>
                               <button onclick="navigator.clipboard.writeText('{{ route('payment.show', $transaction->kode_transaksi) }}')"

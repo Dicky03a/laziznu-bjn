@@ -31,8 +31,8 @@
                         <label class="block text-xs font-medium text-gray-600 mb-1">Jenis</label>
                         <select name="type" class="px-3 py-2 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:ring-emerald-500">
                               <option value="">Semua</option>
-                              <option value="infaq" {{ request('type') === 'infaq' ? 'selected' : '' }}>Infaq</option>
-                              <option value="donasi" {{ request('type') === 'donasi' ? 'selected' : '' }}>Donasi</option>
+                              <option value="infaq" {{ request('type') === 'infaq' ? 'selected' : '' }}>DSKL</option>
+                              <option value="donasi" {{ request('type') === 'donasi' ? 'selected' : '' }}>Infaq & Donasi</option>
                         </select>
                   </div>
                   <div>
@@ -88,7 +88,7 @@
                                     </td>
                                     <td class="px-5 py-4">
                                           <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold
-                                {{ $program->type === 'infaq' ? 'bg-blue-100 text-blue-700' : 'bg-purple-100 text-purple-700' }}">
+                                {{ $program->type === 'infaq' ? 'bg-emerald-100 text-emerald-700' : 'bg-emerald-100 text-emerald-700' }}">
                                                 {{ ucfirst($program->type) }}
                                           </span>
                                           @if($program->is_featured)

@@ -44,20 +44,20 @@
                         {{-- ─── Card: Infaq ─── --}}
                         <button type="button" @click="type = 'infaq'"
                               :class="isInfaq
-                            ? 'border-blue-500 bg-blue-50 ring-2 ring-blue-500 ring-offset-1'
-                            : 'border-gray-200 bg-white hover:border-blue-300 hover:bg-blue-50/40'"
-                              class="relative text-left rounded-2xl border-2 p-5 transition-all duration-200 group focus:outline-none focus:ring-2 focus:ring-blue-400">
+                            ? 'border-emerald-500 bg-emerald-50 ring-2 ring-emerald-500 ring-offset-1'
+                            : 'border-gray-200 bg-white hover:border-emerald-300 hover:bg-emerald-50/40'"
+                              class="relative text-left rounded-2xl border-2 p-5 transition-all duration-200 group focus:outline-none focus:ring-2 focus:ring-emerald-400">
 
                               {{-- Check badge --}}
                               <span x-show="isInfaq"
-                                    class="absolute top-3 right-3 w-5 h-5 bg-blue-500 rounded-full flex items-center justify-center">
+                                    class="absolute top-3 right-3 w-5 h-5 bg-emerald-500 rounded-full flex items-center justify-center">
                                     <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
                                     </svg>
                               </span>
 
                               {{-- Icon --}}
-                              <div :class="isInfaq ? 'bg-blue-500 text-white' : 'bg-blue-100 text-blue-600 group-hover:bg-blue-200'"
+                              <div :class="isInfaq ? 'bg-emerald-500 text-white' : 'bg-emerald-100 text-emerald-600 group-hover:bg-emerald-200'"
                                     class="w-11 h-11 rounded-xl flex items-center justify-center mb-4 transition-colors">
                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -67,32 +67,32 @@
 
                               <p class="font-bold text-gray-900 mb-1">DSKL Dana Sosial Keagamaan Lainya</p>
                               <p class="text-xs text-gray-500 leading-relaxed">
-                                    Program Infaq Shodaqoh dan <strong>berkelanjutan</strong> tanpa batas waktu. Cocok untuk kegiatan rutin seperti operasional masjid, pendidikan, dan sosial.
+                                    Program DSKL Dana Sosial Keagamaan Lainya dan <strong>berkelanjutan</strong> tanpa batas waktu. Cocok untuk kegiatan rutin seperti operasional masjid, pendidikan, dan sosial.
                               </p>
 
                               {{-- Tags --}}
                               <div class="flex flex-wrap gap-1.5 mt-4">
-                                    <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-blue-100 text-blue-700">Berkelanjutan</span>
-                                    <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-blue-100 text-blue-700">Nominal Bebas</span>
-                                    <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-blue-100 text-blue-700">Multi Kategori</span>
+                                    <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">Berkelanjutan</span>
+                                    <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">Nominal Bebas</span>
+                                    <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">Multi Kategori</span>
                               </div>
                         </button>
 
                         {{-- ─── Card: Donasi ─── --}}
                         <button type="button" @click="type = 'donasi'"
                               :class="isDonasi
-                            ? 'border-purple-500 bg-purple-50 ring-2 ring-purple-500 ring-offset-1'
-                            : 'border-gray-200 bg-white hover:border-purple-300 hover:bg-purple-50/40'"
-                              class="relative text-left rounded-2xl border-2 p-5 transition-all duration-200 group focus:outline-none focus:ring-2 focus:ring-purple-400">
+                            ? 'border-emerald-500 bg-emerald-50 ring-2 ring-emerald-500 ring-offset-1'
+                            : 'border-gray-200 bg-white hover:border-emerald-300 hover:bg-emerald-50/40'"
+                              class="relative text-left rounded-2xl border-2 p-5 transition-all duration-200 group focus:outline-none focus:ring-2 focus:ring-emerald-400">
 
                               <span x-show="isDonasi"
-                                    class="absolute top-3 right-3 w-5 h-5 bg-purple-500 rounded-full flex items-center justify-center">
+                                    class="absolute top-3 right-3 w-5 h-5 bg-emerald-500 rounded-full flex items-center justify-center">
                                     <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
                                     </svg>
                               </span>
 
-                              <div :class="isDonasi ? 'bg-purple-500 text-white' : 'bg-purple-100 text-purple-600 group-hover:bg-purple-200'"
+                              <div :class="isDonasi ? 'bg-emerald-500 text-white' : 'bg-emerald-100 text-emerald-600 group-hover:bg-emerald-200'"
                                     class="w-11 h-11 rounded-xl flex items-center justify-center mb-4 transition-colors">
                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -102,13 +102,13 @@
 
                               <p class="font-bold text-gray-900 mb-1">Infaq Shodaqoh dan Peduli Bencana </p>
                               <p class="text-xs text-gray-500 leading-relaxed">
-                                    Program donasi dengan <strong>target dana</strong> dan batas waktu. Cocok untuk kegiatan insidental seperti bencana, pembangunan, dan bantuan khusus.
+                                    Program Infaq Shodaqoh dan Peduli Bencana dengan <strong>target dana</strong> dan batas waktu. Cocok untuk kegiatan insidental seperti bencana, pembangunan, dan bantuan khusus.
                               </p>
 
                               <div class="flex flex-wrap gap-1.5 mt-4">
-                                    <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-purple-100 text-purple-700">Target Dana</span>
-                                    <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-purple-100 text-purple-700">Batas Waktu</span>
-                                    <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-purple-100 text-purple-700">Progress Bar</span>
+                                    <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">Target Dana</span>
+                                    <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">Batas Waktu</span>
+                                    <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">Progress Bar</span>
                               </div>
                         </button>
                   </div>
@@ -124,23 +124,23 @@
 
                   {{-- Info ringkas setelah pilih --}}
                   <div x-show="isInfaq" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0"
-                        class="mt-4 flex items-start gap-2.5 p-3 bg-blue-50 rounded-xl border border-blue-100">
-                        <svg class="w-4 h-4 text-blue-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        class="mt-4 flex items-start gap-2.5 p-3 bg-emerald-50 rounded-xl border border-emerald-100">
+                        <svg class="w-4 h-4 text-emerald-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        <p class="text-xs text-blue-700">
-                              <strong>Program Infaq Shodaqoh dan Peduli Bencana</strong> tidak memerlukan target dana dan tanggal berakhir.
+                        <p class="text-xs text-emerald-700">
+                              <strong>Program DSKL Dana Sosial Keagamaan Lainya </strong> tidak memerlukan target dana dan tanggal berakhir.
                               Anda bisa menambahkan nominal infaq rekomendasi dan kategori pengelompokan.
                         </p>
                   </div>
 
                   <div x-show="isDonasi" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0"
-                        class="mt-4 flex items-start gap-2.5 p-3 bg-purple-50 rounded-xl border border-purple-100">
-                        <svg class="w-4 h-4 text-purple-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        class="mt-4 flex items-start gap-2.5 p-3 bg-emerald-50 rounded-xl border border-emerald-100">
+                        <svg class="w-4 h-4 text-emerald-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        <p class="text-xs text-purple-700">
-                              <strong>Program Donasi</strong> memiliki target dana dan batas waktu pengumpulan.
+                        <p class="text-xs text-emerald-700">
+                              <strong>Program Infaq Shodaqoh dan Peduli Bencana</strong> memiliki target dana dan batas waktu pengumpulan.
                               Progress pengumpulan akan ditampilkan secara real-time kepada donatur.
                         </p>
                   </div>
@@ -165,7 +165,7 @@
                         </label>
                         <input type="text" name="nama" id="nama"
                               value="{{ old('nama', $program->nama ?? '') }}"
-                              :placeholder="isInfaq ? 'Cth: Infaq/Donasi Operasional Masjid Bojonegoro' : 'Cth: Donasi Bencana Banjir Bojonegoro'"
+                              :placeholder="isInfaq ? 'Nama Program DSKL Dana Sosial Keagamaan Lainya ' : 'Nama Program Infaq Shodaqoh dan Peduli Bencana'"
                               class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition
                               @error('nama') border-red-500 @enderror">
                         @error('nama') <p class="text-xs text-red-600 mt-1">{{ $message }}</p> @enderror
@@ -196,7 +196,7 @@
                   </div>
             </div>
 
-            {{-- ── STEP 3A: Pengaturan Infaq ── --}}
+            {{-- ── STEP 3A: ── --}}
             <div x-show="isInfaq"
                   x-transition:enter="transition ease-out duration-300 delay-75"
                   x-transition:enter-start="opacity-0 translate-y-2"
@@ -205,19 +205,19 @@
 
                   <div class="flex items-center justify-between">
                         <div class="flex items-center gap-2">
-                              <span class="inline-flex items-center justify-center w-6 h-6 bg-blue-100 text-blue-700 rounded-full text-xs font-bold">3</span>
-                              <h3 class="font-semibold text-gray-900 text-sm">Pengaturan Infaq Shodaqoh dan Peduli Bencana</h3>
+                              <span class="inline-flex items-center justify-center w-6 h-6 bg-emerald-100 text-emerald-700 rounded-full text-xs font-bold">3</span>
+                              <h3 class="font-semibold text-gray-900 text-sm">Pengaturan DSKL Dana Sosial Keagamaan Lainya </h3>
                         </div>
-                        <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-100 text-blue-700">Infaq</span>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700">Infaq</span>
                   </div>
 
                   {{-- Nominal Rekomendasi --}}
                   <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1.5">
-                              Nominal Infaq/Donasi Rekomendasi
+                              Nominal
                               <span class="text-gray-400 font-normal">(opsional)</span>
                         </label>
-                        <p class="text-xs text-gray-400 mb-3">Berikan pilihan nominal untuk memudahkan muzakki. Nominal pertama akan jadi default.</p>
+                        <p class="text-xs text-gray-400 mb-3">Berikan pilihan nominal untuk memudahkan. Nominal pertama akan jadi default.</p>
 
                         <div class="space-y-2" id="nominal-list">
                               @php
@@ -244,7 +244,7 @@
                         </div>
 
                         <button type="button" onclick="addNominal()"
-                              class="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-800 px-3 py-1.5 border border-blue-200 hover:border-blue-400 rounded-lg hover:bg-blue-50 transition">
+                              class="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 hover:text-emerald-800 px-3 py-1.5 border border-emerald-200 hover:border-emerald-400 rounded-lg hover:bg-emerald-50 transition">
                               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                               </svg>
@@ -261,7 +261,7 @@
                         <input type="date" name="start_date" id="start_date_infaq"
                               value="{{ old('start_date', isset($program->start_date) ? $program->start_date->format('Y-m-d') : '') }}"
                               class="w-full sm:w-56 px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
-                        <p class="text-xs text-gray-400 mt-1">Program infaq tidak memiliki tanggal berakhir.</p>
+                        <p class="text-xs text-gray-400 mt-1">Program DSKL Dana Sosial Keagamaan Lainya tidak memiliki tanggal berakhir.</p>
                   </div>
             </div>
 
@@ -274,10 +274,10 @@
 
                   <div class="flex items-center justify-between">
                         <div class="flex items-center gap-2">
-                              <span class="inline-flex items-center justify-center w-6 h-6 bg-purple-100 text-purple-700 rounded-full text-xs font-bold">3</span>
+                              <span class="inline-flex items-center justify-center w-6 h-6 bg-emerald-100 text-emerald-700 rounded-full text-xs font-bold">3</span>
                               <h3 class="font-semibold text-gray-900 text-sm">Pengaturan Donasi</h3>
                         </div>
-                        <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-purple-100 text-purple-700">Donasi</span>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700">Donasi</span>
                   </div>
 
                   {{-- Target Dana --}}
@@ -298,7 +298,7 @@
                                     oninput="updateTargetPreview(this.value)">
                         </div>
                         @error('target_dana') <p class="text-xs text-red-600 mt-1">{{ $message }}</p> @enderror
-                        <p id="target-preview" class="text-xs text-purple-600 font-medium mt-1.5 hidden"></p>
+                        <p id="target-preview" class="text-xs text-emerald-600 font-medium mt-1.5 hidden"></p>
                   </div>
 
                   {{-- Periode Donasi --}}
@@ -427,9 +427,9 @@
                   x-transition:enter-start="opacity-0"
                   x-transition:enter-end="opacity-100"
                   class="rounded-2xl border p-4 text-xs space-y-2"
-                  :class="isInfaq ? 'bg-blue-50 border-blue-200 text-blue-800' : 'bg-purple-50 border-purple-200 text-purple-800'">
+                  :class="isInfaq ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-emerald-50 border-emerald-200 text-emerald-800'">
 
-                  <p class="font-bold text-sm" x-text="isInfaq ? 'Ringkasan Program Infaq Shodaqoh dan Peduli Bencana' : 'Ringkasan Program DSKI Dana Sosial Keagamaan Lainya'"></p>
+                  <p class="font-bold text-sm" x-text="isInfaq ? 'Ringkasan Program DSKL Dana Sosial Keagamaan Lainya ' : 'Ringkasan Program Infaq Shodaqoh dan Peduli Bencana'"></p>
 
                   <template x-if="isInfaq">
                         <ul class="space-y-1">
@@ -458,7 +458,7 @@
                   </a>
                   <button type="submit" :disabled="!isChosen"
                         :class="isChosen
-                        ? (isDonasi ? 'bg-purple-600 hover:bg-purple-700' : 'bg-blue-600 hover:bg-blue-700')
+                        ? (isDonasi ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-emerald-600 hover:bg-emerald-700')
                         : 'bg-gray-300 cursor-not-allowed'"
                         class="flex-1 py-3 text-white text-sm font-semibold rounded-xl transition-all shadow-sm">
                         {{ $isEdit ? 'Simpan Perubahan' : 'Buat Program' }}
