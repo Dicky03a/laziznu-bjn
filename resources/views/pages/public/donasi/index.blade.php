@@ -1,5 +1,5 @@
 {{--
-  FILE: resources/views/public/infaq/index.blade.php
+  FILE: resources/views/public/Donasi/index.blade.php
   FILE: resources/views/public/donasi/index.blade.php  — sama strukturnya, ganti variable
   Untuk donasi, route('donasi.show') dan judul "Donasi"
 --}}
@@ -18,10 +18,10 @@
                   <span class="text-emerald-200 text-sm font-medium">Program LAZIZNU Bojonegoro</span>
             </div>
             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-4">
-                  Program Infaq
+                  Program Infaq Shodaqoh dan Peduli Bencana
             </h1>
             <p class="text-base sm:text-lg text-emerald-100/90 max-w-2xl mx-auto leading-relaxed">
-                  Salurkan infaq terbaik Anda untuk program-program kemanusiaan dan sosial LAZIZNU Bojonegoro
+                  Salurkan Infaq Shodaqoh dan Peduli Bencana terbaik Anda untuk program-program kemanusiaan dan sosial LAZIZNU Bojonegoro
             </p>
       </div>
 </section>
@@ -35,7 +35,7 @@
                   <svg class="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                   </svg>
-                  <p class="text-gray-500 font-semibold text-lg">Belum ada program infaq tersedia</p>
+                  <p class="text-gray-500 font-semibold text-lg">Belum ada program Donasi tersedia</p>
                   <p class="text-gray-400 text-sm mt-1">Silakan cek kembali nanti</p>
             </div>
             @else
@@ -64,7 +64,7 @@
                         {{-- Content --}}
                         <div class="p-6 flex flex-col flex-1">
                               <div class="flex items-center gap-2 mb-3">
-                                    <span class="px-2.5 py-0.5 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full">Infaq</span>
+                                    <span class="px-2.5 py-0.5 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full">Donasi</span>
                                     @if(!$program->end_date)
                                     <span class="px-2.5 py-0.5 bg-gray-100 text-gray-600 text-xs font-medium rounded-full">Berkelanjutan</span>
                                     @endif

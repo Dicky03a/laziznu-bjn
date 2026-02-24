@@ -18,10 +18,10 @@
             <span class="text-emerald-200 text-sm font-medium">Program LAZIZNU Bojonegoro</span>
         </div>
         <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-4">
-            Program Infaq
+            Program DSKL Dana Sosial Keagamaan Lainya
         </h1>
         <p class="text-base sm:text-lg text-emerald-100/90 max-w-2xl mx-auto leading-relaxed">
-            Salurkan infaq terbaik Anda untuk program-program kemanusiaan dan sosial LAZIZNU Bojonegoro
+            Salurkan Donasi Sosial terbaik Anda untuk program-program kemanusiaan dan sosial LAZIZNU Bojonegoro
         </p>
     </div>
 </section>

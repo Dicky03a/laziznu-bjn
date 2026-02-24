@@ -6,17 +6,17 @@
                   <div class="flex items-center justify-between">
                         <div>
                               <h1 class="text-3xl font-bold text-slate-900 dark:text-white">
-                                    {{ __('Rekening') }}
+                                    Rekening
                               </h1>
                               <p class="mt-2 text-slate-600 dark:text-slate-400">
-                                    {{ __('Kelola semua rekening di sini') }}
+                                    Kelola semua rekening di sini
                               </p>
                         </div>
-                        <a href="{{ route('rekenings.create') }}" class="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-medium rounded-lg transition-all duration-200 shadow-lg">
+                        <a href="{{ route('rekenings.create') }}" class="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-gradient-to-r bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-lg transition-all duration-200 shadow-lg">
                               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                               </svg>
-                              {{ __('Tambah Rekening') }}
+                              Tambah Rekening
                         </a>
                   </div>
 
@@ -69,7 +69,7 @@
                                                                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                                                                   </svg>
-                                                                  {{ __('Edit') }}
+                                                                  Edit
                                                             </a>
                                                             <form action="{{ route('rekenings.destroy', $item) }}" method="POST" class="inline" onsubmit="return confirm('{{ __('Yakin ingin menghapus?') }}')">
                                                                   @csrf

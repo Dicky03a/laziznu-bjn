@@ -1,5 +1,5 @@
 <x-layouts::auth>
-    <div class="flex flex-col gap-6">
+    <div class="flex flex-col gap-6 border-2 px-12 py-10 rounded-4xl">
         <x-auth-header :title="__('Create an account')" :description="__('Enter your details below to create your account')" />
 
         <!-- Session Status -->
@@ -16,8 +16,7 @@
                 required
                 autofocus
                 autocomplete="name"
-                :placeholder="__('Full name')"
-            />
+                :placeholder="__('Full name')" />
 
             <!-- Email Address -->
             <flux:input
@@ -27,8 +26,7 @@
                 type="email"
                 required
                 autocomplete="email"
-                placeholder="email@example.com"
-            />
+                placeholder="email@example.com" />
 
             <!-- Password -->
             <flux:input
@@ -38,8 +36,7 @@
                 required
                 autocomplete="new-password"
                 :placeholder="__('Password')"
-                viewable
-            />
+                viewable />
 
             <!-- Confirm Password -->
             <flux:input
@@ -49,8 +46,7 @@
                 required
                 autocomplete="new-password"
                 :placeholder="__('Confirm password')"
-                viewable
-            />
+                viewable />
 
             <div class="flex items-center justify-end">
                 <flux:button type="submit" variant="primary" class="w-full" data-test="register-user-button">

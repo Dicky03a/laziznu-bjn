@@ -1,5 +1,3 @@
-
-
 @php $isEdit = isset($program); @endphp
 
 <div
@@ -12,9 +10,7 @@
     }"
       class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-      {{-- ══════════════════════════════════════════════════ --}}
-      {{-- KOLOM KIRI – Form Utama                           --}}
-      {{-- ══════════════════════════════════════════════════ --}}
+
       <div class="lg:col-span-2 space-y-5">
 
             {{-- ── Validation Errors ── --}}
@@ -69,9 +65,9 @@
                                     </svg>
                               </div>
 
-                              <p class="font-bold text-gray-900 mb-1">Infaq</p>
+                              <p class="font-bold text-gray-900 mb-1">DSKL Dana Sosial Keagamaan Lainya</p>
                               <p class="text-xs text-gray-500 leading-relaxed">
-                                    Program infaq <strong>berkelanjutan</strong> tanpa batas waktu. Cocok untuk kegiatan rutin seperti operasional masjid, pendidikan, dan sosial.
+                                    Program Infaq Shodaqoh dan <strong>berkelanjutan</strong> tanpa batas waktu. Cocok untuk kegiatan rutin seperti operasional masjid, pendidikan, dan sosial.
                               </p>
 
                               {{-- Tags --}}
@@ -104,7 +100,7 @@
                                     </svg>
                               </div>
 
-                              <p class="font-bold text-gray-900 mb-1">Donasi</p>
+                              <p class="font-bold text-gray-900 mb-1">Infaq Shodaqoh dan Peduli Bencana </p>
                               <p class="text-xs text-gray-500 leading-relaxed">
                                     Program donasi dengan <strong>target dana</strong> dan batas waktu. Cocok untuk kegiatan insidental seperti bencana, pembangunan, dan bantuan khusus.
                               </p>
@@ -133,7 +129,7 @@
                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                         <p class="text-xs text-blue-700">
-                              <strong>Program Infaq</strong> tidak memerlukan target dana dan tanggal berakhir.
+                              <strong>Program Infaq Shodaqoh dan Peduli Bencana</strong> tidak memerlukan target dana dan tanggal berakhir.
                               Anda bisa menambahkan nominal infaq rekomendasi dan kategori pengelompokan.
                         </p>
                   </div>
@@ -169,7 +165,7 @@
                         </label>
                         <input type="text" name="nama" id="nama"
                               value="{{ old('nama', $program->nama ?? '') }}"
-                              :placeholder="isInfaq ? 'Cth: Infaq Operasional Masjid Bojonegoro' : 'Cth: Donasi Bencana Banjir Bojonegoro'"
+                              :placeholder="isInfaq ? 'Cth: Infaq/Donasi Operasional Masjid Bojonegoro' : 'Cth: Donasi Bencana Banjir Bojonegoro'"
                               class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition
                               @error('nama') border-red-500 @enderror">
                         @error('nama') <p class="text-xs text-red-600 mt-1">{{ $message }}</p> @enderror
@@ -210,7 +206,7 @@
                   <div class="flex items-center justify-between">
                         <div class="flex items-center gap-2">
                               <span class="inline-flex items-center justify-center w-6 h-6 bg-blue-100 text-blue-700 rounded-full text-xs font-bold">3</span>
-                              <h3 class="font-semibold text-gray-900 text-sm">Pengaturan Infaq</h3>
+                              <h3 class="font-semibold text-gray-900 text-sm">Pengaturan Infaq Shodaqoh dan Peduli Bencana</h3>
                         </div>
                         <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-100 text-blue-700">Infaq</span>
                   </div>
@@ -218,7 +214,7 @@
                   {{-- Nominal Rekomendasi --}}
                   <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1.5">
-                              Nominal Infaq Rekomendasi
+                              Nominal Infaq/Donasi Rekomendasi
                               <span class="text-gray-400 font-normal">(opsional)</span>
                         </label>
                         <p class="text-xs text-gray-400 mb-3">Berikan pilihan nominal untuk memudahkan muzakki. Nominal pertama akan jadi default.</p>
@@ -433,7 +429,7 @@
                   class="rounded-2xl border p-4 text-xs space-y-2"
                   :class="isInfaq ? 'bg-blue-50 border-blue-200 text-blue-800' : 'bg-purple-50 border-purple-200 text-purple-800'">
 
-                  <p class="font-bold text-sm" x-text="isInfaq ? '📋 Ringkasan Program Infaq' : '📋 Ringkasan Program Donasi'"></p>
+                  <p class="font-bold text-sm" x-text="isInfaq ? 'Ringkasan Program Infaq Shodaqoh dan Peduli Bencana' : 'Ringkasan Program DSKI Dana Sosial Keagamaan Lainya'"></p>
 
                   <template x-if="isInfaq">
                         <ul class="space-y-1">

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\public;
+namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
 use App\Models\Dokuemen;

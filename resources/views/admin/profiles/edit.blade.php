@@ -19,7 +19,7 @@
                   <div class="bg-white dark:bg-zinc-900 rounded-2xl shadow-xl border border-slate-200 dark:border-zinc-800 overflow-hidden">
 
                         <!-- Header -->
-                        <div class="bg-gradient-to-r from-amber-600 to-orange-600 px-8 py-6">
+                        <div class="bg-emerald-600 px-8 py-6">
                               <h1 class="text-2xl font-bold text-white flex items-center gap-3">
                                     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
@@ -32,7 +32,7 @@
                         <!-- Profile Info Banner -->
                         <div class="bg-slate-50 dark:bg-zinc-800/50 px-8 py-4 border-b border-slate-200 dark:border-zinc-800">
                               <div class="flex items-center gap-3">
-                                    <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <div class="w-12 h-12 bg-emerald-600 rounded-lg flex items-center justify-center flex-shrink-0">
                                           <span class="text-white font-bold text-lg">{{ substr($profile->title, 0, 2) }}</span>
                                     </div>
                                     <div>
@@ -182,7 +182,7 @@
                                     <div class="flex items-center justify-between">
                                           <div>
                                                 <h3 class="text-lg font-semibold text-slate-900 dark:text-white flex items-center gap-2">
-                                                      <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                      <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                                       </svg>
                                                       Misi Organisasi
@@ -192,7 +192,7 @@
                                           <button
                                                 type="button"
                                                 onclick="addMission()"
-                                                class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-2">
+                                                class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-2">
                                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                                                 </svg>
@@ -213,7 +213,7 @@
                                     <div class="flex items-center justify-between">
                                           <div>
                                                 <h3 class="text-lg font-semibold text-slate-900 dark:text-white flex items-center gap-2">
-                                                      <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                      <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                                                       </svg>
                                                       Pilar Program
@@ -223,7 +223,7 @@
                                           <button
                                                 type="button"
                                                 onclick="addPillar()"
-                                                class="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-2">
+                                                class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-2">
                                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                                                 </svg>
@@ -237,11 +237,11 @@
                               </div>
 
                               <!-- Info Box -->
-                              <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800/30 rounded-lg p-4 flex gap-3">
-                                    <svg class="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <div class="bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800/30 rounded-lg p-4 flex gap-3">
+                                    <svg class="w-5 h-5 text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
-                                    <div class="text-sm text-blue-800 dark:text-blue-300">
+                                    <div class="text-sm text-emerald-800 dark:text-emerald-300">
                                           <p class="font-semibold mb-1">Perhatian</p>
                                           <p>Pastikan semua informasi yang dimasukkan sudah benar sebelum menyimpan perubahan.</p>
                                     </div>
@@ -261,7 +261,7 @@
 
                                           <button
                                                 type="submit"
-                                                class="px-8 py-3 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white rounded-lg font-semibold shadow-lg shadow-amber-500/30 hover:shadow-xl hover:shadow-amber-500/40 transition-all duration-200 flex items-center justify-center gap-2 w-full sm:w-auto">
+                                                class="px-8 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-semibold shadow-lg shadow-emerald-500/30 hover:shadow-xl hover:shadow-emerald-500/40 transition-all duration-200 flex items-center justify-center gap-2 w-full sm:w-auto">
                                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                                                 </svg>
@@ -287,14 +287,14 @@
             let pillarCounter = 0;
 
             // Load existing missions
-            const existingMissions = @json($profile->missions);
-            const existingPillars = @json($profile->pillars);
+            const existingMissions = @json($profile-> missions);
+            const existingPillars = @json($profile-> pillars);
 
             function addMission(text = '', urutan = null, missionId = null) {
                   const container = document.getElementById('missions-container');
                   const missionDiv = document.createElement('div');
                   const currentUrutan = urutan !== null ? urutan : missionCounter;
-                  missionDiv.className = 'mission-item bg-blue-50 dark:bg-blue-900/10 border border-blue-200 dark:border-blue-800/30 rounded-lg p-4';
+                  missionDiv.className = 'mission-item bg-emerald-50 dark:bg-emerald-900/10 border border-emerald-200 dark:border-emerald-800/30 rounded-lg p-4';
                   missionDiv.innerHTML = `
                         <div class="flex gap-3">
                               <div class="flex-1 space-y-2">
@@ -307,7 +307,7 @@
                                           value="${text}"
                                           placeholder="Masukkan teks misi"
                                           required
-                                          class="w-full px-4 py-2 border border-slate-300 dark:border-zinc-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-zinc-800 dark:text-white transition-all duration-200 placeholder:text-slate-400">
+                                          class="w-full px-4 py-2 border border-slate-300 dark:border-zinc-700 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent dark:bg-zinc-800 dark:text-white transition-all duration-200 placeholder:text-slate-400">
                                     <input type="hidden" name="missions[${currentUrutan}][urutan]" value="${currentUrutan}">
                                     ${missionId ? `<input type="hidden" name="missions[${currentUrutan}][id]" value="${missionId}">` : ''}
                               </div>
@@ -345,7 +345,7 @@
                   const container = document.getElementById('pillars-container');
                   const pillarDiv = document.createElement('div');
                   const currentUrutan = urutan !== null ? urutan : pillarCounter;
-                  pillarDiv.className = 'pillar-item bg-purple-50 dark:bg-purple-900/10 border border-purple-200 dark:border-purple-800/30 rounded-lg p-4';
+                  pillarDiv.className = 'pillar-item bg-emerald-50 dark:bg-emerald-900/10 border border-emerald-200 dark:border-emerald-800/30 rounded-lg p-4';
                   pillarDiv.innerHTML = `
                         <div class="flex gap-3">
                               <div class="flex-1 space-y-3">
@@ -359,14 +359,14 @@
                                                 value="${title}"
                                                 placeholder="Judul pilar"
                                                 required
-                                                class="w-full px-4 py-2 border border-slate-300 dark:border-zinc-700 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-zinc-800 dark:text-white transition-all duration-200 placeholder:text-slate-400">
+                                                class="w-full px-4 py-2 border border-slate-300 dark:border-zinc-700 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent dark:bg-zinc-800 dark:text-white transition-all duration-200 placeholder:text-slate-400">
                                     </div>
                                     <div>
                                           <textarea
                                                 name="pillars[${currentUrutan}][deskripsi]"
                                                 rows="2"
                                                 placeholder="Deskripsi pilar"
-                                                class="w-full px-4 py-2 border border-slate-300 dark:border-zinc-700 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-zinc-800 dark:text-white transition-all duration-200 placeholder:text-slate-400 resize-none">${deskripsi}</textarea>
+                                                class="w-full px-4 py-2 border border-slate-300 dark:border-zinc-700 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent dark:bg-zinc-800 dark:text-white transition-all duration-200 placeholder:text-slate-400 resize-none">${deskripsi}</textarea>
                                     </div>
                                     <input type="hidden" name="pillars[${currentUrutan}][urutan]" value="${currentUrutan}">
                                     ${pillarId ? `<input type="hidden" name="pillars[${currentUrutan}][id]" value="${pillarId}">` : ''}

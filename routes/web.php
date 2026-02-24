@@ -1,55 +1,55 @@
 <?php
 
+use App\Http\Controllers\Admin\DokumenController as AdminDokumenController;
+use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\PengurusController;
+use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
 use App\Http\Controllers\Admin\ProgramController;
+use App\Http\Controllers\Admin\RekeningController as AdminRekeningController;
 use App\Http\Controllers\Admin\SettingControllerProgram;
 use App\Http\Controllers\Admin\TransactionController;
-use App\Http\Controllers\DokumenController;
-use App\Http\Controllers\NewsController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Public\DonasiController;
 use App\Http\Controllers\Public\FidyahController;
 use App\Http\Controllers\Public\InfaqController;
 use App\Http\Controllers\Public\PaymentController;
+use App\Http\Controllers\Public\PublicController as PublicPublicController;
 use App\Http\Controllers\Public\ZakatController;
-use App\Http\Controllers\RekeningController;
-use App\Http\public\PublicController;
 use Illuminate\Support\Facades\Route;
 
 // Routes for public pages
-Route::get('/', [PublicController::class, 'index'])->name('home');
-Route::get('/profile', [PublicController::class, 'profile'])->name('profile');
-Route::get('/pengurus-laziznu-bojonegoro', [PublicController::class, 'pengurus'])->name('pengurus-laziznu-bojonegoro');
-Route::get('/rekening-lengkap', [PublicController::class, 'rekening'])->name('rekening-lengkap');
-Route::get('/dokumen', [PublicController::class, 'dokumen'])->name('dokumen');
-Route::get('/program', [PublicController::class, 'program'])->name('program');
-Route::get('/laporan-bulanan', [PublicController::class, 'laporanbulanan'])->name('laporan-bulanan');
-Route::get('/laporan-tahunan', [PublicController::class, 'laporantahunan'])->name('laporan-tahunan');
-Route::get('/status-mwc-ranting', [PublicController::class, 'statusmwcranting'])->name('status-mwc-ranting');
-Route::get('/kalkulator-zakat', [PublicController::class, 'kalkulatorzakat'])->name('kalkulator-zakat');
-Route::get('/donasi', [PublicController::class, 'donasi'])->name('donasi');
-Route::get('/infaq', [PublicController::class, 'infaq'])->name('infaq');
-Route::get('/zakat', [PublicController::class, 'zakat'])->name('zakat');
-Route::get('/kebijakan-privasi', [PublicController::class, 'privasi'])->name('kebijakan-privasi');
-Route::get('/terms-conditions', [PublicController::class, 'syarat'])->name('terms-conditions');
-Route::get('/disclaimer', [PublicController::class, 'disclaimer'])->name('disclaimer');
+Route::get('/', [PublicPublicController::class, 'index'])->name('home');
+Route::get('/profile', [PublicPublicController::class, 'profile'])->name('profile');
+Route::get('/pengurus-laziznu-bojonegoro', [PublicPublicController::class, 'pengurus'])->name('pengurus-laziznu-bojonegoro');
+Route::get('/rekening-lengkap', [PublicPublicController::class, 'rekening'])->name('rekening-lengkap');
+Route::get('/dokumen', [PublicPublicController::class, 'dokumen'])->name('dokumen');
+Route::get('/program', [PublicPublicController::class, 'program'])->name('program');
+Route::get('/laporan-bulanan', [PublicPublicController::class, 'laporanbulanan'])->name('laporan-bulanan');
+Route::get('/laporan-tahunan', [PublicPublicController::class, 'laporantahunan'])->name('laporan-tahunan');
+Route::get('/status-mwc-ranting', [PublicPublicController::class, 'statusmwcranting'])->name('status-mwc-ranting');
+Route::get('/kalkulator-zakat', [PublicPublicController::class, 'kalkulatorzakat'])->name('kalkulator-zakat');
+Route::get('/donasi', [PublicPublicController::class, 'donasi'])->name('donasi');
+Route::get('/infaq', [PublicPublicController::class, 'infaq'])->name('infaq');
+Route::get('/zakat', [PublicPublicController::class, 'zakat'])->name('zakat');
+Route::get('/kebijakan-privasi', [PublicPublicController::class, 'privasi'])->name('kebijakan-privasi');
+Route::get('/terms-conditions', [PublicPublicController::class, 'syarat'])->name('terms-conditions');
+Route::get('/disclaimer', [PublicPublicController::class, 'disclaimer'])->name('disclaimer');
 
 
 // Public News routes
-Route::get('/berita', [PublicController::class, 'berita'])->name('berita.public.index');
-Route::get('/berita/{news:slug}', [NewsController::class, 'show'])->name('berita.show');
-Route::get('dokumens/{dokumen}/download', [DokumenController::class, 'download'])->name('dokumens.download');
+Route::get('/berita', [PublicPublicController::class, 'berita'])->name('berita.public.index');
+Route::get('/berita/{news:slug}', [AdminNewsController::class, 'show'])->name('berita.show');
+Route::get('dokumens/{dokumen}/download', [AdminDokumenController::class, 'download'])->name('dokumens.download');
 
 // Zakat
 Route::get('/zakat', [ZakatController::class, 'index'])->name('zakat.index');
 Route::post('/zakat/bayar', [ZakatController::class, 'store'])->name('zakat.store');
 
-// Infaq
+// DSKL Dana Sosial Keagamaan Lainya 
 Route::get('/infaq', [InfaqController::class, 'index'])->name('infaq.index');
 Route::get('/infaq/{slug}', [InfaqController::class, 'show'])->name('infaq.show');
 Route::post('/infaq/{slug}/bayar', [InfaqController::class, 'store'])->name('infaq.store');
 
-// Donasi
+// Infaq Shodaqoh dan Peduli Bencana
 Route::get('/donasi', [DonasiController::class, 'index'])->name('donasi.index');
 Route::get('/donasi/{slug}', [DonasiController::class, 'show'])->name('donasi.show');
 Route::post('/donasi/{slug}/bayar', [DonasiController::class, 'store'])->name('donasi.store');
@@ -70,10 +70,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', fn() => view('dashboard'))->name('dashboard');
 
     // Resource routes for admin management
-    Route::resource('profiles', ProfileController::class);
-    Route::resource('rekenings', RekeningController::class);
-    Route::resource('news', NewsController::class)->except('show');
-    Route::resource('dokumens', DokumenController::class);
+    Route::resource('profiles', AdminProfileController::class);
+    Route::resource('rekenings', AdminRekeningController::class);
+    Route::resource('news', AdminNewsController::class)->except('show');
+    Route::resource('dokumens', AdminDokumenController::class);
 
     // Program
     Route::resource('programs', ProgramController::class);

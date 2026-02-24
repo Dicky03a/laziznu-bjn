@@ -90,25 +90,25 @@
                                 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
                                 transition-all duration-300 ease-out p-2">
 
-                                    <a href="{{ route('zakat.index') }}"
-                                          class="block px-4 py-3 rounded-xl text-sm text-gray-600
-                           hover:bg-green-50 hover:text-green-600 hover:translate-x-1
-                           transition-all duration-200">
-                                          Zakat
-                                    </a>
-
                                     <a href="{{ route('infaq.index') }}"
                                           class="block px-4 py-3 rounded-xl text-sm text-gray-600
                            hover:bg-green-50 hover:text-green-600 hover:translate-x-1
                            transition-all duration-200">
-                                          Infaq & Sedekah
+                                          DSKL Dana Sosial Keagamaan Lainya
                                     </a>
 
                                     <a href="{{ route('donasi.index') }}"
                                           class="block px-4 py-3 rounded-xl text-sm text-gray-600
                            hover:bg-green-50 hover:text-green-600 hover:translate-x-1
                            transition-all duration-200">
-                                          Program Sosial
+                                          Infaq Shodaqoh dan Peduli Bencana
+                                    </a>
+
+                                    <a href="{{ route('fidyah.index') }}"
+                                          class="block px-4 py-3 rounded-xl text-sm text-gray-600
+                           hover:bg-green-50 hover:text-green-600 hover:translate-x-1
+                           transition-all duration-200">
+                                          Fidyah & Qurban
                                     </a>
                               </div>
                         </div>
