@@ -1,5 +1,5 @@
 @extends('layouts.public.app')
-@section('title', 'Syarat & Ketentuan - LAZISNU Jepara')
+@section('title', 'Syarat & Ketentuan - LAZISNU Bojonegoro')
 
 @section('content')
 
@@ -13,7 +13,7 @@
             </h1>
 
             <p class="max-w-3xl mx-auto text-lg text-emerald-100 leading-relaxed">
-                  Ketentuan resmi penggunaan layanan website LAZISNU Jepara.
+                  Ketentuan resmi penggunaan layanan website LAZISNU Bojonegoro.
                   Dengan mengakses situs ini, Anda dianggap telah memahami
                   dan menyetujui seluruh syarat yang berlaku.
             </p>
@@ -30,7 +30,7 @@
                   {{-- Intro --}}
                   <div class="text-gray-700 leading-relaxed space-y-4">
                         <p>
-                              Selamat datang di website resmi LAZISNU Jepara.
+                              Selamat datang di website resmi LAZISNU Bojonegoro.
                               Dengan menggunakan layanan di website ini, Anda setuju
                               untuk tunduk dan patuh terhadap seluruh syarat dan ketentuan
                               yang telah ditetapkan.
@@ -47,7 +47,7 @@
                               Penggunaan Konten
                         </h2>
                         <ul class="space-y-4 text-gray-700 leading-relaxed list-decimal pl-6">
-                              <li>Seluruh konten di website dilindungi hak cipta dan merupakan milik LAZISNU Jepara.</li>
+                              <li>Seluruh konten di website dilindungi hak cipta dan merupakan milik LAZISNU Bojonegoro.</li>
                               <li>Konten hanya boleh digunakan untuk tujuan informasi dan non-komersial.</li>
                               <li>Dilarang mendistribusikan ulang tanpa izin tertulis.</li>
                         </ul>
@@ -72,7 +72,7 @@
                         </h2>
                         <p class="text-gray-700 leading-relaxed">
                               Website ini dapat berisi tautan ke situs pihak ketiga.
-                              LAZISNU Jepara tidak bertanggung jawab atas isi maupun
+                              LAZISNU Bojonegoro tidak bertanggung jawab atas isi maupun
                               kebijakan privasi dari situs tersebut.
                         </p>
                   </div>
@@ -95,7 +95,7 @@
                               Perubahan Syarat & Ketentuan
                         </h2>
                         <p class="text-gray-700 leading-relaxed">
-                              LAZISNU Jepara berhak memperbarui syarat dan ketentuan
+                              LAZISNU Bojonegoro berhak memperbarui syarat dan ketentuan
                               sewaktu-waktu tanpa pemberitahuan sebelumnya.
                         </p>
                   </div>
@@ -110,7 +110,7 @@
                               pendidikan, dan kemanusiaan yang bermanfaat bagi umat.
                         </p>
 
-                        <a href="{{ route('infaq') }}"
+                        <a href="{{ route('infaq.index') }}"
                               class="inline-block bg-white text-emerald-800 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300 shadow-md">
                               Infaq Sekarang
                         </a>

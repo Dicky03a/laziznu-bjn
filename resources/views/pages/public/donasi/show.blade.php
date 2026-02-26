@@ -340,9 +340,17 @@
 
       function toggleAnonim(checkbox, fieldId) {
             const field = document.getElementById(fieldId);
-            field.value = checkbox.checked ? 'Hamba Allah' : '';
-            field.disabled = checkbox.checked;
-            field.classList.toggle('bg-gray-100', checkbox.checked);
+
+            if (checkbox.checked) {
+                  field._originalValue = field.value; // simpan nilai asli
+                  field.value = 'Hamba Allah';
+                  field.readOnly = true;
+                  field.classList.add('bg-gray-100', 'text-gray-400', 'cursor-not-allowed');
+            } else {
+                  field.value = field._originalValue ?? ''; // kembalikan nilai asli
+                  field.readOnly = false;
+                  field.classList.remove('bg-gray-100', 'text-gray-400', 'cursor-not-allowed');
+            }
       }
 </script>
 @endpush

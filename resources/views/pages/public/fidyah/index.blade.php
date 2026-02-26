@@ -269,7 +269,7 @@
                   let current = parseInt(input.value) || 1;
 
                   current = Math.max(1, Math.min(365, current + delta));
-                  input.value = current;
+                  input.value = current;  
 
                   hitungFidyah();
             }
@@ -278,16 +278,16 @@
                   const field = document.getElementById(fieldId);
 
                   if (checkbox.checked) {
+                        field._originalValue = field.value; // simpan nilai asli
                         field.value = 'Hamba Allah';
-                        field.disabled = true;
-                        field.classList.add('bg-gray-100');
+                        field.readOnly = true;
+                        field.classList.add('bg-gray-100', 'text-gray-400', 'cursor-not-allowed');
                   } else {
-                        field.value = '';
-                        field.disabled = false;
-                        field.classList.remove('bg-gray-100');
+                        field.value = field._originalValue ?? '';
+                        field.readOnly = false;
+                        field.classList.remove('bg-gray-100', 'text-gray-400', 'cursor-not-allowed');
                   }
             }
-
             // Init pertama kali
             hitungFidyah();
 

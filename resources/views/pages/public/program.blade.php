@@ -127,10 +127,10 @@
 
                               <div>
                                     <p class="font-semibold text-gray-800 text-lg">
-                                          {{ $donasi->donor_name ?? 'Hamba Allah' }}
+                                          {{ $donasi->nama_tampil }}
                                     </p>
-                                    <p class="text-sm text-gray-500 mt-1">
-                                          {{ $donasi->created_at->diffForHumans() }}
+                                    <p class="text-xs text-gray-500">
+                                          {{ $donasi->program?->nama ?? '-' }}
                                     </p>
                               </div>
 

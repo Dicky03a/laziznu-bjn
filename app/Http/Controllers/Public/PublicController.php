@@ -105,10 +105,13 @@ class PublicController extends Controller
         $programs = \App\Models\Program::active()
             ->withSum('confirmedTransactions as total_terkumpul', 'jumlah')
             ->withCount('confirmedTransactions as total_donatur')
+            ->ofType('donasi')
             ->latest()
             ->get();
 
         $donasiTerbaru = \App\Models\Transaction::where('status', 'confirmed')
+            ->where('type', 'donasi')
+            ->with('program')
             ->latest()
             ->take(5)
             ->get();

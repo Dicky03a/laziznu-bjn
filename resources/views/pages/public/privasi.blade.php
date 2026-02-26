@@ -1,5 +1,5 @@
 @extends('layouts.public.app')
-@section('title', 'Kebijakan Privasi - LAZIZNU Jepara')
+@section('title', 'Kebijakan Privasi - LAZIZNU Bojonegoro')
 
 @section('content')
 
@@ -13,7 +13,7 @@
             </h1>
             <p class="max-w-3xl mx-auto text-lg text-emerald-100 leading-relaxed">
                   Komitmen kami dalam menjaga dan melindungi informasi pribadi
-                  setiap pengguna layanan LAZISNU Jepara.
+                  setiap pengguna layanan LAZISNU Bojonegoro.
             </p>
       </div>
 </section>
@@ -28,7 +28,7 @@
                   {{-- Intro --}}
                   <div class="text-gray-700 leading-relaxed">
                         <p>
-                              Kebijakan privasi ini menjelaskan bagaimana LAZISNU Jepara
+                              Kebijakan privasi ini menjelaskan bagaimana LAZISNU Bojonegoro
                               mengumpulkan, menggunakan, dan melindungi informasi pribadi
                               pengguna yang dikumpulkan melalui website resmi kami.
                         </p>
@@ -82,7 +82,7 @@
                               Perubahan Kebijakan
                         </h2>
                         <p class="text-gray-700 leading-relaxed">
-                              LAZISNU Jepara berhak memperbarui kebijakan ini sewaktu-waktu.
+                              LAZISNU Bojonegoro berhak memperbarui kebijakan ini sewaktu-waktu.
                               Perubahan akan diumumkan melalui halaman ini.
                         </p>
                   </div>
@@ -97,7 +97,7 @@
                               yang bermanfaat bagi masyarakat.
                         </p>
 
-                        <a href="{{ route('infaq') }}"
+                        <a href="{{ route('infaq.index') }}"
                               class="inline-block bg-emerald-700 text-white px-8 py-3 rounded-lg font-semibold hover:bg-emerald-800 transition duration-300 shadow-md">
                               Infaq Sekarang
                         </a>

@@ -10,9 +10,9 @@
         <flux:sidebar.header>
             <!-- <x-app-logo :sidebar="true" href="{{ route('dashboard') }}" wire:navigate /> -->
             <div class="flex items-center gap-1">
-                <img src="{{ asset('asset/laziznulogo.svg') }}" alt="Logo NU Care" class="h-16 w-auto">
+                <img src="{{ asset('asset/laziznulogo.svg') }}" alt="Logo NU Care" class="h-12 w-auto">
                 <div class="">
-                    <h2 class="font-bold text-green-800">Laziznu</h2>
+                    <h2 class="font-bold text-xs text-green-800">NU CARE Laziznu</h2>
                     <h2 class="font-bold text-green-800 -mt-1">Bojonegoro</h2>
                 </div>
             </div>
@@ -27,10 +27,18 @@
                 <flux:sidebar.item href="{{ route('rekenings.index') }}">Rekening</flux:sidebar.item>
                 <flux:sidebar.item href="{{ route('dokumens.index') }}">Dokumen</flux:sidebar.item>
             </flux:sidebar.group>
+            <flux:sidebar.group expandable heading="Zakat, Infaq, Donasi" class="grid">
+                <flux:sidebar.item icon="book-open" href="{{ route('programs.index') }}">Program</flux:sidebar.item>
+                <flux:sidebar.item icon="book-open" href="{{ route('transactions.index') }}">Transaksi</flux:sidebar.item>
+                <flux:sidebar.item icon="book-open" href="{{ route('program.edit') }}">Pengaturan Program</flux:sidebar.item>
+            </flux:sidebar.group>
+            <flux:sidebar.group expandable heading="Qurban" class="grid">
+                <flux:sidebar.item icon="book-open" href="{{ route('qurban.periods.index') }}">Periode Qurban</flux:sidebar.item>
+                <flux:sidebar.item icon="book-open" href="{{ route('qurban.binatang.index') }}">Hewan Qurban</flux:sidebar.item>
+                <flux:sidebar.item icon="book-open" href="{{ route('qurban.registrations.index') }}">Transaksi Qurban</flux:sidebar.item>
+            </flux:sidebar.group>
             <flux:sidebar.item icon="book-open" href="{{ route('news.index') }}">Berita</flux:sidebar.item>
-            <flux:sidebar.item icon="book-open" href="{{ route('programs.index') }}">Program</flux:sidebar.item>
-            <flux:sidebar.item icon="book-open" href="{{ route('transactions.index') }}">Transaksi</flux:sidebar.item>
-            <flux:sidebar.item icon="book-open" href="{{ route('program.edit') }}">Pengaturan Program</flux:sidebar.item>
+
         </flux:sidebar.nav>
 
 

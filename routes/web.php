@@ -5,6 +5,9 @@ use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\PengurusController;
 use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
 use App\Http\Controllers\Admin\ProgramController;
+use App\Http\Controllers\Admin\QurbanHewanController;
+use App\Http\Controllers\Admin\QurbanPeriodController;
+use App\Http\Controllers\Admin\QurbanRegistrationController;
 use App\Http\Controllers\Admin\RekeningController as AdminRekeningController;
 use App\Http\Controllers\Admin\SettingControllerProgram;
 use App\Http\Controllers\Admin\TransactionController;
@@ -13,6 +16,8 @@ use App\Http\Controllers\Public\FidyahController;
 use App\Http\Controllers\Public\InfaqController;
 use App\Http\Controllers\Public\PaymentController;
 use App\Http\Controllers\Public\PublicController as PublicPublicController;
+use App\Http\Controllers\Public\QurbanController;
+use App\Http\Controllers\Public\QurbanPaymentController;
 use App\Http\Controllers\Public\ZakatController;
 use Illuminate\Support\Facades\Route;
 
@@ -63,6 +68,24 @@ Route::get('/pembayaran/{kode}', [PaymentController::class, 'show'])->name('paym
 Route::post('/pembayaran/{kode}/konfirmasi', [PaymentController::class, 'confirm'])->name('payment.confirm');
 Route::get('/pembayaran/{kode}/status', [PaymentController::class, 'status'])->name('payment.status');
 
+// Qurban
+Route::prefix('qurban')->name('qurban.')->group(function () {
+
+    // Listing semua hewan periode aktif
+    Route::get('/', [QurbanController::class, 'index'])->name('index');
+
+    // Detail hewan + form daftar
+    Route::get('/hewan/{hewan}', [QurbanController::class, 'show'])->name('show');
+
+    // Proses pendaftaran
+    Route::post('/hewan/{hewan}/daftar', [QurbanController::class, 'store'])->name('store');
+
+    // Halaman instruksi pembayaran
+    Route::get('/pembayaran/{kode}', [QurbanPaymentController::class, 'show'])->name('payment');
+
+    // Submit konfirmasi transfer
+    Route::post('/pembayaran/{kode}/konfirmasi', [QurbanPaymentController::class, 'confirm'])->name('payment.confirm');
+});
 
 
 // Protected routes for authenticated users
@@ -100,6 +123,34 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('pengurus.toggle-status');
     Route::delete('pengurus/{pengurus}/foto', [PengurusController::class, 'destroyFoto'])
         ->name('pengurus.destroy-foto');
+
+    Route::prefix('qurban')->name('qurban.')->group(function () {
+
+        // ── Periode ──────────────────────────────────────────────────────────
+        Route::resource('periods', QurbanPeriodController::class)
+            ->names('periods');
+        Route::patch('periods/{period}/toggle-active', [QurbanPeriodController::class, 'toggleActive'])
+            ->name('periods.toggle-active');
+
+        // ── Hewan ────────────────────────────────────────────────────────────
+        Route::resource('binatang', QurbanHewanController::class)
+            ->names('binatang')
+            ->parameters(['binatang' => 'hewan']);
+        Route::patch('hewan/{hewan}/toggle-active', [QurbanHewanController::class, 'toggleActive'])
+            ->name('hewan.toggle-active');
+
+        // ── Registrasi ───────────────────────────────────────────────────────
+        Route::get('registrations', [QurbanRegistrationController::class, 'index'])
+            ->name('registrations.index');
+        Route::get('registrations/export', [QurbanRegistrationController::class, 'export'])
+            ->name('registrations.export');
+        Route::get('registrations/{registration}', [QurbanRegistrationController::class, 'show'])
+            ->name('registrations.show');
+        Route::post('registrations/{registration}/confirm', [QurbanRegistrationController::class, 'confirm'])
+            ->name('registrations.confirm');
+        Route::post('registrations/{registration}/cancel', [QurbanRegistrationController::class, 'cancel'])
+            ->name('registrations.cancel');
+    });
 });
 
 require __DIR__ . '/settings.php';

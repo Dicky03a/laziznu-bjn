@@ -7,10 +7,6 @@
                   <div class="space-y-4">
                         <div class="flex items-center space-x-3 mb-4">
                               <img class="h-12 w-auto" src="{{ asset('asset/laziznulogo.svg') }}" alt="Laziznu" onerror="this.style.display='none'">
-                              <div class="flex flex-col">
-                                    <span class="text-2xl font-bold text-green-600">LAZIZNU</span>
-                                    <span class="text-xs text-gray-400">Bojonegoro</span>
-                              </div>
                         </div>
                         <p class="text-sm text-black leading-relaxed">
                               Lembaga Amil Zakat, Infaq dan Shadaqah Nahdlatul Ulama Bojonegoro. Menyalurkan amanah umat untuk kemaslahatan bersama.

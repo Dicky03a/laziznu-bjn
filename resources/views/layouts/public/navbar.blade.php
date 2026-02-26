@@ -7,7 +7,7 @@
                         <img
                               src="{{ asset('asset/laziznulogo.svg') }}"
                               alt="Laziznu Bojonegoro"
-                              class="h-10 sm:h-16 md:h-16 lg:h-20 w-auto object-contain" />
+                              class="h-12 sm:h-16 md:h-12 lg:h-16 w-auto object-contain" />
                   </div>
 
                   <!-- Desktop Menu -->
