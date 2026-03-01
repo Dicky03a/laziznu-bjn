@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
 use App\Models\Dokuemen;
+use App\Models\LaporanBulanan;
+use App\Models\LaporanTahunan;
 use App\Models\News;
 use App\Models\Pengurus;
 use App\Models\Profile;
@@ -121,7 +123,8 @@ class PublicController extends Controller
 
     public function laporanbulanan()
     {
-        return view('pages.public.laporan.laporanbulanan');
+        $laporanBulanan = LaporanBulanan::latest()->get();
+        return view('pages.public.laporan.laporanbulanan', compact('laporanBulanan'));
     }
 
     public function laporantahunan()

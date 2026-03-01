@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DokumenController as AdminDokumenController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\PengurusController;
+use App\Http\Controllers\Admin\LaporanBulananController as AdminLaporanBulananController;
 use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
 use App\Http\Controllers\Admin\ProgramController;
 use App\Http\Controllers\Admin\QurbanHewanController;
@@ -19,6 +20,7 @@ use App\Http\Controllers\Public\PublicController as PublicPublicController;
 use App\Http\Controllers\Public\QurbanController;
 use App\Http\Controllers\Public\QurbanPaymentController;
 use App\Http\Controllers\Public\ZakatController;
+
 use Illuminate\Support\Facades\Route;
 
 // Routes for public pages
@@ -28,8 +30,8 @@ Route::get('/pengurus-laziznu-bojonegoro', [PublicPublicController::class, 'peng
 Route::get('/rekening-lengkap', [PublicPublicController::class, 'rekening'])->name('rekening-lengkap');
 Route::get('/dokumen', [PublicPublicController::class, 'dokumen'])->name('dokumen');
 Route::get('/program', [PublicPublicController::class, 'program'])->name('program');
-Route::get('/laporan-bulanan', [PublicPublicController::class, 'laporanbulanan'])->name('laporan-bulanan');
-Route::get('/laporan-tahunan', [PublicPublicController::class, 'laporantahunan'])->name('laporan-tahunan');
+Route::get('/laporan/bulanan', [PublicPublicController::class, 'laporanbulanan'])->name('laporan-bulanan.public');
+Route::get('/laporan/tahunan', [PublicPublicController::class, 'laporantahunan'])->name('laporan-tahunan.public');
 Route::get('/status-mwc-ranting', [PublicPublicController::class, 'statusmwcranting'])->name('status-mwc-ranting');
 Route::get('/kalkulator-zakat', [PublicPublicController::class, 'kalkulatorzakat'])->name('kalkulator-zakat');
 Route::get('/donasi', [PublicPublicController::class, 'donasi'])->name('donasi');
@@ -88,7 +90,7 @@ Route::prefix('qurban')->name('qurban.')->group(function () {
 });
 
 
-// Protected routes for authenticated users
+// Dashboard & Admin routes (protected by auth and verified middleware)
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', fn() => view('dashboard'))->name('dashboard');
 
@@ -124,22 +126,18 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('pengurus/{pengurus}/foto', [PengurusController::class, 'destroyFoto'])
         ->name('pengurus.destroy-foto');
 
-    Route::prefix('qurban')->name('qurban.')->group(function () {
 
-        // ── Periode ──────────────────────────────────────────────────────────
+    // Qurban
+    Route::prefix('qurban')->name('qurban.')->group(function () {
         Route::resource('periods', QurbanPeriodController::class)
             ->names('periods');
         Route::patch('periods/{period}/toggle-active', [QurbanPeriodController::class, 'toggleActive'])
             ->name('periods.toggle-active');
-
-        // ── Hewan ────────────────────────────────────────────────────────────
         Route::resource('binatang', QurbanHewanController::class)
             ->names('binatang')
             ->parameters(['binatang' => 'hewan']);
         Route::patch('hewan/{hewan}/toggle-active', [QurbanHewanController::class, 'toggleActive'])
             ->name('hewan.toggle-active');
-
-        // ── Registrasi ───────────────────────────────────────────────────────
         Route::get('registrations', [QurbanRegistrationController::class, 'index'])
             ->name('registrations.index');
         Route::get('registrations/export', [QurbanRegistrationController::class, 'export'])
@@ -151,6 +149,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('registrations/{registration}/cancel', [QurbanRegistrationController::class, 'cancel'])
             ->name('registrations.cancel');
     });
+
+    // Laporan
+    Route::resource('laporan-bulanan', AdminLaporanBulananController::class)
+        ->parameters([
+            'laporan-bulanan' => 'laporanBulanan'
+        ]);
 });
 
 require __DIR__ . '/settings.php';

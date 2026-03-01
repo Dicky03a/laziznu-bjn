@@ -127,7 +127,7 @@
                                 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
                                 transition-all duration-300 ease-out p-2">
 
-                                    <a href="{{ route('laporan-bulanan') }}"
+                                    <a href="{{ route('laporan-bulanan.public') }}"
                                           class="block px-4 py-3 rounded-xl text-sm text-gray-600
                            hover:bg-green-50 hover:text-green-600 hover:translate-x-1
                            transition-all duration-200">
@@ -141,7 +141,7 @@
                                           Status Laporan MWC & Ranting
                                     </a>
 
-                                    <a href="{{ route('laporan-tahunan') }}"
+                                    <a href="{{ route('laporan-tahunan.public') }}"
                                           class="block px-4 py-3 rounded-xl text-sm text-gray-600
                            hover:bg-green-50 hover:text-green-600 hover:translate-x-1
                            transition-all duration-200">
@@ -252,8 +252,8 @@
                         </button>
 
                         <div class="mobile-content hidden pl-4 mt-1 space-y-1">
-                              <a href="{{ route('laporan-tahunan') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Formulir Laporan</a>
-                              <a href="{{ route('laporan-bulanan') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Laporan Bulanan</a>
+                              <a href="{{ route('laporan-tahunan.public') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Formulir Laporan</a>
+                              <a href="{{ route('laporan-bulanan.public') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Laporan Bulanan</a>
                               <a href="{{ route('status-mwc-ranting') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Status MWC & Ranting</a>
                         </div>
                   </div>
