@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\DokumenController as AdminDokumenController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\PengurusController;
 use App\Http\Controllers\Admin\LaporanBulananController as AdminLaporanBulananController;
+use App\Http\Controllers\Admin\LaporanMwcController as AdminLaporanMwcController;
+use App\Http\Controllers\Admin\LaporanTahunanController;
 use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
 use App\Http\Controllers\Admin\ProgramController;
 use App\Http\Controllers\Admin\QurbanHewanController;
@@ -154,6 +156,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('laporan-bulanan', AdminLaporanBulananController::class)
         ->parameters([
             'laporan-bulanan' => 'laporanBulanan'
+        ]);
+
+    Route::resource('laporan-mwc', AdminLaporanMwcController::class)
+        ->parameters([
+            'laporan-mwc' => 'laporanMwc'
+        ]);
+
+    Route::resource('laporan-tahunans', LaporanTahunanController::class)
+        ->parameters([
+            'laporan-tahunans' => 'laporanTahunan'
         ]);
 });
 

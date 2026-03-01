@@ -1,13 +1,9 @@
 <?php
 
-
-// ════════════════════════════════════════════════════════════════════════════════
-// FILE: app/Http/Controllers/Public/QurbanPaymentController.php
-// ════════════════════════════════════════════════════════════════════════════════
 namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Qurban\StoreQurbanPaymentConfirmationRequest;
+use App\Http\Requests\StoreQurbanPaymentConfirmationRequest;
 use App\Models\QurbanRegistration;
 use App\Models\Rekening;
 use App\Services\QurbanService;

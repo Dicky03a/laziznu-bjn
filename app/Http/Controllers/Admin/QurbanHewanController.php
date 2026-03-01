@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Qurban\StoreQurbanHewanRequest;
+use App\Http\Requests\StoreQurbanHewanRequest;
 use App\Models\QurbanHewan;
 use App\Models\QurbanPeriod;
 use App\Services\QurbanService;

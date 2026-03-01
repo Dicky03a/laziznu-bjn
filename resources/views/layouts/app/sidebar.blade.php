@@ -38,8 +38,9 @@
                 <flux:sidebar.item icon="book-open" href="{{ route('qurban.registrations.index') }}">Transaksi Qurban</flux:sidebar.item>
             </flux:sidebar.group>
             <flux:sidebar.item icon="book-open" href="{{ route('news.index') }}">Berita</flux:sidebar.item>
-            <flux:sidebar.item icon="book-open" href="{{ route('laporan-bulanan.index') }}">Laporan Bualanan</flux:sidebar.item>
-
+            <flux:sidebar.item icon="book-open" href="{{ route('laporan-bulanan.index') }}">Laporan Bulanan</flux:sidebar.item>
+            <flux:sidebar.item icon="book-open" href="{{ route('laporan-mwc.index') }}">Laporan MWC</flux:sidebar.item>
+            <flux:sidebar.item icon="book-open" href="{{ route('laporan-tahunans.index') }}">Laporan Tahunan</flux:sidebar.item>
         </flux:sidebar.nav>
 
 

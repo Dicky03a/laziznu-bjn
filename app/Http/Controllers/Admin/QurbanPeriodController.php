@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Qurban\StoreQurbanPeriodRequest;
+use App\Http\Requests\StoreQurbanPeriodRequest;
 use App\Models\QurbanPeriod;
 
 class QurbanPeriodController extends Controller

@@ -1,11 +1,8 @@
 <?php
-// ════════════════════════════════════════════════════════════════════════════════
-// FILE: app/Http/Controllers/Public/QurbanController.php
-// ════════════════════════════════════════════════════════════════════════════════
 namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Qurban\StoreQurbanRegistrationRequest;
+use App\Http\Requests\StoreQurbanRegistrationRequest;
 use App\Models\QurbanHewan;
 use App\Models\QurbanPeriod;
 use App\Services\QurbanService;

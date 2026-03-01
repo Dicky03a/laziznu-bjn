@@ -86,7 +86,7 @@ class TransactionController extends Controller
         );
 
         return redirect()
-            ->route('admin.transactions.show', $transaction)
+            ->route('transactions.show', $transaction)
             ->with('success', 'Transaksi ditolak.');
     }
 

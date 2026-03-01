@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Public;
 use App\Http\Controllers\Controller;
 use App\Models\Dokuemen;
 use App\Models\LaporanBulanan;
+use App\Models\LaporanMwc;
 use App\Models\LaporanTahunan;
 use App\Models\News;
 use App\Models\Pengurus;
@@ -129,12 +130,15 @@ class PublicController extends Controller
 
     public function laporantahunan()
     {
-        return view('pages.public.laporan.laporantahunan');
+        $laporanTahunans = LaporanTahunan::latest()->get() ?? collect();
+
+        return view('pages.public.laporan.laporantahunan', compact('laporanTahunans'));
     }
 
     public function statusmwcranting()
     {
-        return view('pages.public.laporan.statusmwcranting');
+        $laporanMwc = LaporanMwc::latest()->get();
+        return view('pages.public.laporan.statusmwcranting', compact('laporanMwc'));
     }
 
     public function kalkulatorzakat()

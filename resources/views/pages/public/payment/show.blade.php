@@ -309,7 +309,7 @@
                         <div class="bg-red-50 rounded-3xl border border-red-200 p-6">
                               <h3 class="font-bold text-red-800 mb-2">Transaksi Ditolak</h3>
                               <p class="text-red-700 text-sm">{{ $transaction->catatan_admin ?? 'Silakan hubungi tim kami untuk informasi lebih lanjut.' }}</p>
-                              <a href="https://wa.me/6285640019811" class="mt-3 inline-flex items-center gap-2 text-sm text-red-700 font-semibold underline">
+                              <a href="https://wa.me/6285743229703" class="mt-3 inline-flex items-center gap-2 text-sm text-red-700 font-semibold underline">
                                     Hubungi Kami
                               </a>
                         </div>

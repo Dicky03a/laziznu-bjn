@@ -182,21 +182,20 @@
                               {{-- Anonim toggle --}}
                               <div class="flex items-center gap-3 mb-5">
                                     <label class="relative inline-flex items-center cursor-pointer">
-                                          <input type="checkbox" name="is_anonim" id="is_anonim" value="1" class="sr-only peer"
-                                                onchange="toggleAnonim(this)">
+                                          <input type="checkbox" name="is_anonim" value="1" class="sr-only peer"
+                                                onchange="toggleAnonim(this, 'nama_program')">
                                           <div class="w-11 h-6 bg-gray-200 peer-focus:ring-2 peer-focus:ring-emerald-500 rounded-full peer peer-checked:bg-emerald-600 transition-all"></div>
                                           <div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full shadow peer-checked:translate-x-5 transition-all"></div>
                                     </label>
-                                    <span class="text-sm text-gray-600">Bayar sebagai <strong>Hamba Allah</strong> (anonim)</span>
+                                    <span class="text-sm text-gray-600">Donasi sebagai <strong>Hamba Allah</strong></span>
                               </div>
 
                               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                     <div class="sm:col-span-2">
                                           <label class="block text-sm font-medium text-gray-700 mb-1.5">Nama Lengkap <span class="text-red-500">*</span></label>
-                                          <input type="text" name="nama_donatur" id="nama_donatur"
-                                                value="{{ old('nama_donatur') }}"
-                                                placeholder="Nama Anda"
-                                                class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 @error('nama_donatur') border-red-500 @enderror">
+                                          <input type="text" name="nama_donatur" id="nama_program"
+                                                value="{{ old('nama_donatur') }}" placeholder="Nama Anda"
+                                                class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500 @error('nama_donatur') border-red-500 @enderror">
                                     </div>
 
                                     <div>
@@ -398,16 +397,26 @@
                   }
             }
 
-            window.toggleAnonim = function(checkbox) {
-                  const namaInput = document.getElementById('nama_donatur');
-                  if (!namaInput) return;
+            window.toggleAnonim = function(checkbox, fieldId) {
+                  const field = document.getElementById(fieldId);
+                  if (!field) return;
 
                   if (checkbox.checked) {
-                        namaInput.value = 'Hamba Allah';
-                        namaInput.disabled = true;
+                        // Simpan nilai asli hanya sekali
+                        if (!field.dataset.original) {
+                              field.dataset.original = field.value;
+                        }
+
+                        field.value = 'Hamba Allah';
+                        field.readOnly = true;
+                        field.required = false; // penting agar tidak gagal validasi required
+                        field.classList.add('bg-gray-100', 'text-gray-400', 'cursor-not-allowed');
+
                   } else {
-                        namaInput.value = '';
-                        namaInput.disabled = false;
+                        field.value = field.dataset.original || '';
+                        field.readOnly = false;
+                        field.required = true; // aktifkan kembali required
+                        field.classList.remove('bg-gray-100', 'text-gray-400', 'cursor-not-allowed');
                   }
             }
 
