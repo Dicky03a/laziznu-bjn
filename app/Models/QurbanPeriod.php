@@ -31,8 +31,6 @@ class QurbanPeriod extends Model
         'tanggal_pelaksanaan' => 'date',
     ];
 
-    // ─── Relationships ────────────────────────────────────────────────────────
-
     public function hewanList(): HasMany
     {
         return $this->hasMany(QurbanHewan::class, 'period_id');
@@ -43,18 +41,11 @@ class QurbanPeriod extends Model
         return $this->hasMany(QurbanRegistration::class, 'period_id');
     }
 
-    // ─── Scopes ───────────────────────────────────────────────────────────────
-
     public function scopeActive(Builder $query): void
     {
         $query->where('is_active', true);
     }
 
-    // ─── Accessors ────────────────────────────────────────────────────────────
-
-    /**
-     * Apakah pendaftaran saat ini sedang terbuka?
-     */
     public function getIsOpenAttribute(): bool
     {
         if (! $this->is_active) {
@@ -64,11 +55,11 @@ class QurbanPeriod extends Model
         $now = now()->toDateString();
 
         if ($this->tanggal_buka && $now < $this->tanggal_buka->toDateString()) {
-            return false; // belum dibuka
+            return false;
         }
 
         if ($this->tanggal_tutup && $now > $this->tanggal_tutup->toDateString()) {
-            return false; // sudah tutup
+            return false; 
         }
 
         return true;
@@ -110,11 +101,6 @@ class QurbanPeriod extends Model
             ->sum('total_bayar');
     }
 
-    // ─── Helpers ─────────────────────────────────────────────────────────────
-
-    /**
-     * Saat mengaktifkan periode ini, nonaktifkan semua periode lain.
-     */
     public function activate(): void
     {
         static::where('id', '!=', $this->id)->update(['is_active' => false]);

@@ -41,8 +41,6 @@ class PublicController extends Controller
 
     public function pengurus()
     {
-
-        // Ambil pengurus aktif, dikelompokkan per periode terbaru
         $tahunSekarang = now()->year;
 
         $pengurusList = Pengurus::active()
@@ -50,10 +48,8 @@ class PublicController extends Controller
             ->get()
             ->groupBy(fn($p) => "{$p->masa_khidmat_mulai}-{$p->masa_khidmat_selesai}");
 
-        // Ambil no_sk dari pengurus pertama yang ada
         $noSk = Pengurus::active()->value('no_sk');
 
-        // Data untuk periode aktif (tampil di halaman publik)
         $periodeAktif = Pengurus::active()
             ->selectRaw('CONCAT(masa_khidmat_mulai, "-", masa_khidmat_selesai) as periode, masa_khidmat_mulai, masa_khidmat_selesai')
             ->orderByDesc('masa_khidmat_mulai')

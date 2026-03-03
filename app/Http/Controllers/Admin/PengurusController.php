@@ -56,10 +56,6 @@ class PengurusController extends Controller
         ));
     }
 
-    // ──────────────────────────────────────────────
-    //  Create
-    // ──────────────────────────────────────────────
-
     public function create(): View
     {
         $jabatanList = Pengurus::JABATAN_LIST;
@@ -67,10 +63,6 @@ class PengurusController extends Controller
 
         return view('admin.pengurus.create', compact('jabatanList', 'bidangList'));
     }
-
-    // ──────────────────────────────────────────────
-    //  Store
-    // ──────────────────────────────────────────────
 
     public function store(PengurusRequest $request): RedirectResponse
     {
@@ -91,18 +83,10 @@ class PengurusController extends Controller
             ->with('success', 'Data pengurus berhasil ditambahkan.');
     }
 
-    // ──────────────────────────────────────────────
-    //  Show
-    // ──────────────────────────────────────────────
-
     public function show(Pengurus $pengurus): View
     {
         return view('admin.pengurus.show', compact('pengurus'));
     }
-
-    // ──────────────────────────────────────────────
-    //  Edit
-    // ──────────────────────────────────────────────
 
     public function edit(Pengurus $pengurus): View
     {
@@ -111,10 +95,6 @@ class PengurusController extends Controller
 
         return view('admin.pengurus.edit', compact('pengurus', 'jabatanList', 'bidangList'));
     }
-
-    // ──────────────────────────────────────────────
-    //  Update
-    // ──────────────────────────────────────────────
 
     public function update(PengurusRequest $request, Pengurus $pengurus): RedirectResponse
     {
@@ -139,10 +119,6 @@ class PengurusController extends Controller
             ->with('success', 'Data pengurus berhasil diperbarui.');
     }
 
-    // ──────────────────────────────────────────────
-    //  Destroy
-    // ──────────────────────────────────────────────
-
     public function destroy(Pengurus $pengurus): RedirectResponse
     {
         // Soft delete – foto tetap ada
@@ -153,10 +129,6 @@ class PengurusController extends Controller
             ->with('success', 'Data pengurus berhasil dihapus.');
     }
 
-    // ──────────────────────────────────────────────
-    //  Toggle Status
-    // ──────────────────────────────────────────────
-
     public function toggleStatus(Pengurus $pengurus): RedirectResponse
     {
         $pengurus->update(['is_active' => ! $pengurus->is_active]);
@@ -165,10 +137,6 @@ class PengurusController extends Controller
 
         return back()->with('success', "Pengurus berhasil {$status}.");
     }
-
-    // ──────────────────────────────────────────────
-    //  Hapus Foto
-    // ──────────────────────────────────────────────
 
     public function destroyFoto(Pengurus $pengurus): RedirectResponse
     {

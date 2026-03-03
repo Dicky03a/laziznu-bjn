@@ -10,8 +10,7 @@ return new class extends Migration
     {
         Schema::create('qurban_registrations', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_registrasi', 20)->unique();     // QRB-20250101-A3F9K2
-
+            $table->string('kode_registrasi', 20)->unique();     
             $table->foreignId('hewan_id')
                 ->constrained('qurban_hewans')
                 ->cascadeOnDelete();
@@ -20,9 +19,8 @@ return new class extends Migration
                 ->constrained('qurban_periods')
                 ->cascadeOnDelete();
 
-            // Data peserta (shohibul qurban yang bayar)
             $table->string('nama_peserta');
-            $table->string('atas_nama')->nullable();              // atas nama siapa qurban ini
+            $table->string('atas_nama')->nullable();             
             $table->string('email')->nullable();
             $table->string('telepon', 20)->nullable();
             $table->text('alamat')->nullable();
@@ -34,9 +32,8 @@ return new class extends Migration
             // Untuk kambing: 1 slot dari 1 (langsung penuh)
             $table->unsignedTinyInteger('jumlah_slot')->default(1);
             $table->unsignedBigInteger('harga_per_slot');
-            $table->unsignedBigInteger('total_bayar');           // jumlah_slot × harga_per_slot
+            $table->unsignedBigInteger('total_bayar');          
 
-            // Status
             $table->enum('status', ['pending', 'confirmed', 'cancelled'])->default('pending');
             $table->text('catatan_admin')->nullable();
             $table->timestamp('confirmed_at')->nullable();
@@ -45,7 +42,6 @@ return new class extends Migration
                 ->constrained('users')
                 ->nullOnDelete();
 
-            // Payment gateway ready
             $table->string('payment_gateway')->nullable();
             $table->string('gateway_transaction_id')->nullable();
             $table->string('gateway_status')->nullable();

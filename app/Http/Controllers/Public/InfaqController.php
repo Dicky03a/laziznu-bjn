@@ -13,9 +13,6 @@ class InfaqController extends Controller
         protected TransactionService $transactionService
     ) {}
 
-    /**
-     * Daftar semua program infaq
-     */
     public function index()
     {
         $programs = Program::active()
@@ -28,9 +25,6 @@ class InfaqController extends Controller
         return view('pages.public.infaq.index', compact('programs'));
     }
 
-    /**
-     * Detail program infaq + form pembayaran
-     */
     public function show(string $slug)
     {
         $program = Program::active()
@@ -55,9 +49,6 @@ class InfaqController extends Controller
         ));
     }
 
-    /**
-     * Simpan transaksi infaq
-     */
     public function store(StoreInfaqRequest $request, string $slug)
     {
         $program = Program::active()

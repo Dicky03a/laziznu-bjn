@@ -10,13 +10,13 @@ return new class extends Migration
     {
         Schema::create('qurban_periods', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');                              // "Qurban Idul Adha 1446 H / 2025 M"
-            $table->smallInteger('tahun');                       // 2025
+            $table->string('nama');                              
+            $table->smallInteger('tahun');                      
             $table->text('deskripsi')->nullable();
-            $table->boolean('is_active')->default(false);        // hanya 1 aktif sekaligus
-            $table->date('tanggal_buka')->nullable();            // pendaftaran dibuka
-            $table->date('tanggal_tutup')->nullable();           // deadline daftar
-            $table->date('tanggal_pelaksanaan')->nullable();     // hari penyembelihan
+            $table->boolean('is_active')->default(false);        
+            $table->date('tanggal_buka')->nullable();           
+            $table->date('tanggal_tutup')->nullable();         
+            $table->date('tanggal_pelaksanaan')->nullable();    
             $table->timestamps();
 
             $table->index('is_active');

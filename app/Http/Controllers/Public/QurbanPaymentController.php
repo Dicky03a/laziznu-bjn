@@ -14,9 +14,6 @@ class QurbanPaymentController extends Controller
             protected QurbanService $qurbanService
       ) {}
 
-      /**
-       * Halaman instruksi pembayaran + form konfirmasi transfer.
-       */
       public function show(string $kode)
       {
             $registration = QurbanRegistration::where('kode_registrasi', $kode)
@@ -28,9 +25,6 @@ class QurbanPaymentController extends Controller
             return view('pages.public.qurban.payment', compact('registration', 'rekenings'));
       }
 
-      /**
-       * Simpan konfirmasi transfer dari peserta.
-       */
       public function confirm(StoreQurbanPaymentConfirmationRequest $request, string $kode)
       {
             $registration = QurbanRegistration::where('kode_registrasi', $kode)

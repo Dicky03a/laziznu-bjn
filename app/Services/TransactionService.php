@@ -9,9 +9,6 @@ use Illuminate\Support\Facades\DB;
 
 class TransactionService
 {
-    /**
-     * Buat transaksi Zakat (Mal atau Fitrah)
-     */
     public function createZakat(array $data): Transaction
     {
         return DB::transaction(function () use ($data) {
@@ -53,9 +50,6 @@ class TransactionService
         });
     }
 
-    /**
-     * Buat transaksi Infaq
-     */
     public function createInfaq(array $data, Program $program): Transaction
     {
         return DB::transaction(function () use ($data, $program) {
@@ -76,9 +70,6 @@ class TransactionService
         });
     }
 
-    /**
-     * Buat transaksi Donasi
-     */
     public function createDonasi(array $data, Program $program): Transaction
     {
         return DB::transaction(function () use ($data, $program) {
@@ -99,9 +90,6 @@ class TransactionService
         });
     }
 
-    /**
-     * Buat transaksi Fidyah
-     */
     public function createFidyah(array $data): Transaction
     {
         return DB::transaction(function () use ($data) {
@@ -128,9 +116,6 @@ class TransactionService
         });
     }
 
-    /**
-     * Admin: Konfirmasi transaksi
-     */
     public function confirm(Transaction $transaction, int $adminId, ?string $catatan = null): Transaction
     {
         $transaction->update([
@@ -143,9 +128,6 @@ class TransactionService
         return $transaction->fresh();
     }
 
-    /**
-     * Admin: Tolak transaksi
-     */
     public function reject(Transaction $transaction, int $adminId, ?string $catatan = null): Transaction
     {
         $transaction->update([

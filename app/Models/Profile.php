@@ -16,17 +16,11 @@ class Profile extends Model
         'visi',
     ];
 
-    /**
-     * Relasi ke missions
-     */
     public function missions(): HasMany
     {
         return $this->hasMany(Missions::class)->orderBy('urutan');
     }
 
-    /**
-     * Relasi ke pillars
-     */
     public function pillars(): HasMany
     {
         return $this->hasMany(Pillars::class)->orderBy('urutan');

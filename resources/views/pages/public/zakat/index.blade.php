@@ -2,7 +2,7 @@
 @section('title', 'Kalkulator & Pembayaran Zakat - LAZIZNU Bojonegoro')
 @section('content')
 
-{{-- HERO --}}
+
 <section class="relative  bg-gradient-to-br from-emerald-600 to-emerald-700 overflow-hidden">
       <div class="absolute inset-0 opacity-10">
             <div class="absolute top-0 left-0 w-96 h-96 bg-emerald-500 rounded-full blur-3xl"></div>
@@ -41,7 +41,6 @@
       </div>
 </section>
 
-{{-- MAIN CONTENT --}}
 <section class="bg-gray-50 py-16">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -211,6 +210,14 @@
                                           <input type="tel" name="telepon"
                                                 value="{{ old('telepon') }}"
                                                 placeholder="08xxxxxxxxxx"
+                                                class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500">
+                                    </div>
+
+                                    <div>
+                                          <label class="block text-sm font-medium text-gray-700 mb-1.5">Alamat</label>
+                                          <input type="text" name="alamat"
+                                                value="{{ old('alamat') }}"
+                                                placeholder="Alamat lengkap Anda"
                                                 class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500">
                                     </div>
 

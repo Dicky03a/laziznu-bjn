@@ -35,8 +35,6 @@ class Program extends Model
         'target_dana' => 'integer',
     ];
 
-    // ─── Relationships ────────────────────────────────────────────────────────
-
     public function transactions(): HasMany
     {
         return $this->hasMany(Transaction::class);
@@ -46,8 +44,6 @@ class Program extends Model
     {
         return $this->hasMany(Transaction::class)->where('status', 'confirmed');
     }
-
-    // ─── Scopes ───────────────────────────────────────────────────────────────
 
     public function scopeActive(Builder $query): void
     {
@@ -63,8 +59,6 @@ class Program extends Model
     {
         $query->where('type', $type);
     }
-
-    // ─── Accessors ────────────────────────────────────────────────────────────
 
     public function getTotalTerkumpulAttribute(): int
     {
@@ -101,17 +95,15 @@ class Program extends Model
     public function getThumbnailUrlAttribute(): string
     {
         return $this->thumbnail
-            ? asset('storage/'.$this->thumbnail)
+            ? asset('storage/' . $this->thumbnail)
             : asset('images/default-program.jpg');
     }
-
-    // ─── Helpers ─────────────────────────────────────────────────────────────
 
     public static function generateSlug(string $nama): string
     {
         $slug = Str::slug($nama);
-        $count = static::where('slug', 'like', $slug.'%')->count();
+        $count = static::where('slug', 'like', $slug . '%')->count();
 
-        return $count > 0 ? $slug.'-'.($count + 1) : $slug;
+        return $count > 0 ? $slug . '-' . ($count + 1) : $slug;
     }
 }

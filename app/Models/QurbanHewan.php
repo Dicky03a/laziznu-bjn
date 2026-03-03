@@ -35,10 +35,8 @@ class QurbanHewan extends Model
         'max_peserta'    => 'integer',
     ];
 
-    // ─── Konstanta ────────────────────────────────────────────────────────────
-
-    const JENIS_PATUNGAN    = ['sapi', 'unta'];   // max 7 orang
-    const JENIS_PERORANGAN  = ['kambing', 'domba']; // 1 orang saja
+    const JENIS_PATUNGAN    = ['sapi', 'unta'];  
+    const JENIS_PERORANGAN  = ['kambing', 'domba']; 
 
     const MAX_PESERTA_MAP = [
         'sapi'   => 7,
@@ -61,8 +59,6 @@ class QurbanHewan extends Model
         'domba'  => '🐑',
     ];
 
-    // ─── Relationships ────────────────────────────────────────────────────────
-
     public function period(): BelongsTo
     {
         return $this->belongsTo(QurbanPeriod::class, 'period_id');
@@ -81,12 +77,9 @@ class QurbanHewan extends Model
 
     public function activeRegistrations(): HasMany
     {
-        // Pending + Confirmed (keduanya "mengisi" slot)
         return $this->hasMany(QurbanRegistration::class, 'hewan_id')
             ->whereIn('status', ['pending', 'confirmed']);
     }
-
-    // ─── Scopes ───────────────────────────────────────────────────────────────
 
     public function scopeActive(Builder $query): void
     {
@@ -108,8 +101,6 @@ class QurbanHewan extends Model
         $query->whereIn('jenis', self::JENIS_PERORANGAN);
     }
 
-    // ─── Accessors ────────────────────────────────────────────────────────────
-
     public function getIsPatunganAttribute(): bool
     {
         return in_array($this->jenis, self::JENIS_PATUNGAN);
@@ -125,10 +116,6 @@ class QurbanHewan extends Model
         return self::JENIS_ICONS[$this->jenis] ?? '🐄';
     }
 
-    /**
-     * Jumlah slot yang sudah terisi (pending + confirmed)
-     * Menggunakan withCount untuk efisiensi, atau hitung langsung.
-     */
     public function getSlotTerisiAttribute(): int
     {
         return $this->activeRegistrations()->count();
@@ -167,9 +154,6 @@ class QurbanHewan extends Model
             : asset('images/default-hewan.jpg');
     }
 
-    /**
-     * Label status visual slot
-     */
     public function getStatusSlotAttribute(): string
     {
         $sisa = $this->slot_tersedia;
@@ -200,11 +184,6 @@ class QurbanHewan extends Model
         };
     }
 
-    // ─── Helpers ─────────────────────────────────────────────────────────────
-
-    /**
-     * Auto-set max_peserta dan hitung harga_per_slot dari jenis.
-     */
     public static function buildFromJenis(array $data): array
     {
         $maxPeserta = self::MAX_PESERTA_MAP[$data['jenis']] ?? 1;

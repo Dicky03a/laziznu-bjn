@@ -30,7 +30,6 @@ class TransactionController extends Controller
             ->paginate(20)
             ->withQueryString();
 
-        // Summary stats
         $stats = [
             'total_pending' => Transaction::pending()->count(),
             'total_confirmed' => Transaction::confirmed()->count(),

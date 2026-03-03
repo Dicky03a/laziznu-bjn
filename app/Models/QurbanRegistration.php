@@ -44,8 +44,6 @@ class QurbanRegistration extends Model
         'confirmed_at'   => 'datetime',
     ];
 
-    // ─── Status Constants ─────────────────────────────────────────────────────
-
     const STATUS_PENDING   = 'pending';
     const STATUS_CONFIRMED = 'confirmed';
     const STATUS_CANCELLED = 'cancelled';
@@ -61,8 +59,6 @@ class QurbanRegistration extends Model
         'confirmed' => 'emerald',
         'cancelled' => 'red',
     ];
-
-    // ─── Relationships ────────────────────────────────────────────────────────
 
     public function hewan(): BelongsTo
     {
@@ -83,8 +79,6 @@ class QurbanRegistration extends Model
     {
         return $this->hasOne(QurbanPaymentConfirmation::class, 'registration_id');
     }
-
-    // ─── Scopes ───────────────────────────────────────────────────────────────
 
     public function scopePending(Builder $query): void
     {
@@ -111,8 +105,6 @@ class QurbanRegistration extends Model
     {
         $query->where('period_id', $periodId);
     }
-
-    // ─── Accessors ────────────────────────────────────────────────────────────
 
     public function getStatusLabelAttribute(): string
     {
@@ -149,15 +141,10 @@ class QurbanRegistration extends Model
         return 'Rp ' . number_format($this->harga_per_slot, 0, ',', '.');
     }
 
-    /**
-     * Nama yang tampil: atas_nama jika diisi, fallback ke nama_peserta
-     */
     public function getNamaTampilAttribute(): string
     {
         return $this->atas_nama ?: $this->nama_peserta;
     }
-
-    // ─── Static Helpers ───────────────────────────────────────────────────────
 
     public static function generateKode(): string
     {

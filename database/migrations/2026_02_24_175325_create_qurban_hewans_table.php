@@ -14,17 +14,15 @@ return new class extends Migration
                 ->constrained('qurban_periods')
                 ->cascadeOnDelete();
 
-            // Jenis hewan — menentukan aturan syar'i
             $table->enum('jenis', ['sapi', 'unta', 'kambing', 'domba']);
 
-            $table->string('nama');                              // "Sapi Jawa Premium A"
+            $table->string('nama');                              
             $table->text('deskripsi')->nullable();
-            $table->string('berat_estimasi', 50)->nullable();    // "250–300 kg"
+            $table->string('berat_estimasi', 50)->nullable();    
             $table->string('gambar')->nullable();
 
-            // Harga
-            $table->unsignedBigInteger('harga_total');           // harga 1 ekor penuh
-            $table->unsignedBigInteger('harga_per_slot');        // harga_total / max_peserta
+            $table->unsignedBigInteger('harga_total');           
+            $table->unsignedBigInteger('harga_per_slot');        
 
             // Slot — diatur otomatis berdasarkan jenis
             // sapi/unta = 7, kambing/domba = 1

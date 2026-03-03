@@ -71,7 +71,6 @@ class NewsController extends Controller
             ->limit(3)
             ->get();
 
-        // Get all categories with count
         $allCategories = Category::withCount('news')
             ->orderBy('name')
             ->get();
@@ -110,7 +109,6 @@ class NewsController extends Controller
             }
             $data['featured_image'] = null;
         } else {
-            // Keep existing image - don't include in update data
             unset($data['featured_image']);
         }
 
@@ -118,16 +116,12 @@ class NewsController extends Controller
         $action = $request->input('action');
 
         if ($action === 'publish') {
-            // Only set published_at if it's currently null (draft -> published)
             if (! $news->published_at) {
                 $data['published_at'] = now();
             }
-            // If already published, keep the original published_at
         } elseif ($action === 'draft') {
-            // Unpublish - set to null
             $data['published_at'] = null;
         }
-        // If action is null/empty, keep current published status
 
         $news->update($data);
 
@@ -139,7 +133,6 @@ class NewsController extends Controller
      */
     public function destroy(News $news)
     {
-        // Delete featured image if exists
         if ($news->featured_image && Storage::disk('public')->exists($news->featured_image)) {
             Storage::disk('public')->delete($news->featured_image);
         }

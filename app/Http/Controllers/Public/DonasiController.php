@@ -13,9 +13,6 @@ class DonasiController extends Controller
         protected TransactionService $transactionService
     ) {}
 
-    /**
-     * Daftar semua program donasi
-     */
     public function index()
     {
         $programs = Program::active()
@@ -28,9 +25,6 @@ class DonasiController extends Controller
         return view('pages.public.donasi.index', compact('programs'));
     }
 
-    /**
-     * Detail program donasi + form pembayaran
-     */
     public function show(string $slug)
     {
         $program = Program::active()
@@ -52,9 +46,6 @@ class DonasiController extends Controller
         ));
     }
 
-    /**
-     * Simpan transaksi donasi
-     */
     public function store(StoreDonasiRequest $request, string $slug)
     {
         $program = Program::active()

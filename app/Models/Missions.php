@@ -13,9 +13,6 @@ class Missions extends Model
         'urutan',
     ];
 
-    /**
-     * Relasi balik ke profile
-     */
     public function profile(): BelongsTo
     {
         return $this->belongsTo(Profile::class);

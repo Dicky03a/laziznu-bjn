@@ -37,10 +37,6 @@ class Pengurus extends Model
         'masa_khidmat_selesai' => 'integer',
     ];
 
-    // ──────────────────────────────────────────────
-    //  Constants
-    // ──────────────────────────────────────────────
-
     public const JABATAN_LIST = [
         'Ketua',
         'Wakil Ketua',
@@ -55,10 +51,6 @@ class Pengurus extends Model
         'IT dan Marcom',
         'SDM dan Kelembagaan',
     ];
-
-    // ──────────────────────────────────────────────
-    //  Scopes
-    // ──────────────────────────────────────────────
 
     public function scopeActive(Builder $query): Builder
     {
@@ -76,13 +68,6 @@ class Pengurus extends Model
         return $query->orderBy('urutan')->orderBy('id');
     }
 
-    // ──────────────────────────────────────────────
-    //  Accessors
-    // ──────────────────────────────────────────────
-
-    /**
-     * Nama lengkap dengan gelar
-     */
     public function getNamaLengkapAttribute(): string
     {
         $parts = array_filter([
@@ -94,9 +79,6 @@ class Pengurus extends Model
         return implode(' ', $parts);
     }
 
-    /**
-     * Label jabatan + bidang (untuk Anggota)
-     */
     public function getJabatanLabelAttribute(): string
     {
         if ($this->jabatan === 'Anggota' && $this->bidang) {
@@ -106,17 +88,11 @@ class Pengurus extends Model
         return $this->jabatan;
     }
 
-    /**
-     * Periode masa khidmat
-     */
     public function getPeriodeAttribute(): string
     {
         return "{$this->masa_khidmat_mulai} - {$this->masa_khidmat_selesai}";
     }
 
-    /**
-     * URL foto
-     */
     public function getFotoUrlAttribute(): string
     {
         if ($this->foto && Storage::disk('public')->exists($this->foto)) {

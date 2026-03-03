@@ -41,8 +41,6 @@ class Transaction extends Model
         'confirmed_at' => 'datetime',
     ];
 
-    // ─── Status Constants ─────────────────────────────────────────────────────
-
     const STATUS_PENDING = 'pending';
 
     const STATUS_CONFIRMED = 'confirmed';
@@ -83,8 +81,6 @@ class Transaction extends Model
         'fidyah' => 'FDY',
     ];
 
-    // ─── Relationships ────────────────────────────────────────────────────────
-
     public function program(): BelongsTo
     {
         return $this->belongsTo(Program::class);
@@ -99,8 +95,6 @@ class Transaction extends Model
     {
         return $this->hasOne(PaymentConfirmation::class);
     }
-
-    // ─── Scopes ───────────────────────────────────────────────────────────────
 
     public function scopeOfType(Builder $query, string $type): void
     {
@@ -121,8 +115,6 @@ class Transaction extends Model
     {
         $query->where('status', self::STATUS_CONFIRMED);
     }
-
-    // ─── Accessors ────────────────────────────────────────────────────────────
 
     public function getNamaTampilAttribute(): string
     {
@@ -163,8 +155,6 @@ class Transaction extends Model
     {
         return $this->metadata['jenis'] ?? null;
     }
-
-    // ─── Static Helpers ───────────────────────────────────────────────────────
 
     public static function generateKode(string $type): string
     {

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('nomor_rekening_pengirim', 30)->nullable();
             $table->unsignedBigInteger('jumlah_transfer');
             $table->date('tanggal_transfer');
-            $table->string('bukti_transfer')->nullable();         // path file gambar
+            $table->string('bukti_transfer')->nullable();        
             $table->text('catatan')->nullable();
             $table->timestamps();
 

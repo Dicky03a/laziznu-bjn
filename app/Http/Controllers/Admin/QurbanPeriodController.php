@@ -34,7 +34,6 @@ class QurbanPeriodController extends Controller
 
             $period = QurbanPeriod::create($validated);
 
-            // Jika diset aktif, nonaktifkan periode lain
             if ($period->is_active) {
                   $period->activate();
             }
@@ -67,7 +66,6 @@ class QurbanPeriodController extends Controller
 
       public function destroy(QurbanPeriod $period)
       {
-            // Cegah hapus jika ada registrasi confirmed
             if ($period->registrations()->confirmed()->exists()) {
                   return back()->with('error', 'Tidak dapat menghapus periode yang memiliki registrasi terkonfirmasi.');
             }
@@ -82,7 +80,7 @@ class QurbanPeriodController extends Controller
       public function toggleActive(QurbanPeriod $period)
       {
             if (! $period->is_active) {
-                  $period->activate(); // nonaktifkan lainnya, aktifkan ini
+                  $period->activate();
             } else {
                   $period->update(['is_active' => false]);
             }

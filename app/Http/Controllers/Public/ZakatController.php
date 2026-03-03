@@ -14,9 +14,6 @@ class ZakatController extends Controller
         protected TransactionService $transactionService
     ) {}
 
-    /**
-     * Halaman utama zakat (pilih jenis + kalkulator + form)
-     */
     public function index()
     {
         $settings = [
@@ -27,16 +24,12 @@ class ZakatController extends Controller
             'harga_emas_per_gram' => Setting::hargaEmasPerGram(),
         ];
 
-        // Statistik ringkas untuk halaman
         $totalMuzakki = Transaction::ofType('zakat')->confirmed()->count();
         $totalTerkumpul = Transaction::ofType('zakat')->confirmed()->sum('jumlah');
 
         return view('pages.public.zakat.index', compact('settings', 'totalMuzakki', 'totalTerkumpul'));
     }
 
-    /**
-     * Simpan transaksi zakat
-     */
     public function store(StoreZakatRequest $request)
     {
         $transaction = $this->transactionService->createZakat($request->validated());

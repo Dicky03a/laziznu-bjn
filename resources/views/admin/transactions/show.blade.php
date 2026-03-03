@@ -86,6 +86,10 @@
                                     <dt class="text-gray-500">Tanggal</dt>
                                     <dd class="font-semibold text-gray-900 mt-0.5">{{ $transaction->created_at->format('d F Y, H:i') }}</dd>
                               </div>
+                              <div>
+                                    <dt class="text-gray-500">Alamat</dt>
+                                    <dd class="font-semibold text-gray-900 mt-0.5">{{ $transaction->alamat ?? '-' }}</dd>
+                              </div>
                               @if($transaction->catatan)
                               <div class="col-span-2">
                                     <dt class="text-gray-500">Catatan Donatur</dt>
@@ -262,22 +266,94 @@
                   @endif
 
                   {{-- Link publik --}}
-                  <div class="bg-white rounded-2xl border border-gray-200 p-5">
-                        <p class="text-xs font-semibold text-gray-600 mb-2">Link Halaman Pembayaran</p>
-                        <p class="text-sm text-gray-700">Salin link tersebut dan kirim ke Nomer Whatsap Donatur</p>
-                        <div class="flex items-center gap-2 p-2.5 bg-gray-50 rounded-xl border border-gray-200">
-                              <p class="text-xs text-gray-500 truncate flex-1">{{ route('payment.show', $transaction->kode_transaksi) }}</p>
-                              <button onclick="navigator.clipboard.writeText('{{ route('payment.show', $transaction->kode_transaksi) }}')"
-                                    class="text-xs px-2.5 py-1 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg flex-shrink-0 transition-all">
-                                    Salin
-                              </button>
-                        </div>
-                        <a href="{{ route('payment.show', $transaction->kode_transaksi) }}" target="_blank"
-                              class="mt-2 block text-center text-xs text-emerald-600 hover:underline">
-                              Buka halaman donatur →
-                        </a>
-                  </div>
+                  @php
+                  $phone = $transaction->telepon
+                  ? '62' . ltrim($transaction->telepon, '0')
+                  : null;
 
+                  $link = url("/pembayaran/{$transaction->kode_transaksi}");
+
+                  $statusText = '';
+                  $message = '';
+
+                  if ($transaction->is_confirmed) {
+
+                  $statusText = "Konfirmasi Diterima";
+
+                  $message = "Assalamu’alaikum Warahmatullahi Wabarakatuh,
+
+                  Yth. {$transaction->nama_donatur},
+
+                  Transaksi Anda dengan kode {$transaction->kode_transaksi} telah kami KONFIRMASI dan DINYATAKAN DITERIMA.
+
+                  Total Pembayaran: {$transaction->jumlah_format}
+
+                  Silakan cek detail transaksi melalui link berikut:
+                  {$link}
+
+                  Terima kasih atas kepercayaan Anda kepada kami.
+
+                  Wassalamu’alaikum Warahmatullahi Wabarakatuh.";
+
+                  } elseif ($transaction->status === 'rejected') {
+
+                  $statusText = "Konfirmasi Ditolak";
+
+                  $alasan = $transaction->catatan_admin ?? 'Silakan hubungi admin untuk informasi lebih lanjut.';
+
+                  $message = "Assalamu’alaikum Warahmatullahi Wabarakatuh,
+
+                  Yth. {$transaction->nama_donatur},
+
+                  Mohon maaf, transaksi Anda dengan kode {$transaction->kode_transaksi} belum dapat kami terima.
+
+                  Alasan:
+                  {$alasan}
+
+                  Silakan cek detail transaksi melalui link berikut:
+                  {$link}
+
+                  Jika ada pertanyaan, silakan hubungi admin kami.
+
+                  Wassalamu’alaikum Warahmatullahi Wabarakatuh.";
+                  }
+
+                  $encodedMessage = urlencode($message);
+                  @endphp
+
+
+                  @if(!$transaction->is_pending)
+                  <div class="bg-white rounded-2xl border border-gray-200 p-5">
+                        <p class="text-xs font-semibold text-gray-600 mb-2">
+                              Kirim Notifikasi WhatsApp Otomatis
+                        </p>
+
+                        <div class="flex items-center gap-2 p-2.5 bg-gray-50 rounded-xl border border-gray-200">
+
+                              {{-- Status Info --}}
+                              <p class="text-xs font-semibold flex-1 
+            {{ $transaction->is_confirmed ? 'text-emerald-600' : 'text-red-600' }}">
+                                    {{ $statusText }}
+                              </p>
+
+                              {{-- Tombol WA --}}
+                              @if($phone)
+                              <a href="https://wa.me/{{ $phone }}?text={{ $encodedMessage }}"
+                                    target="_blank"
+                                    class="text-xs px-3 py-1 
+            {{ $transaction->is_confirmed 
+                ? 'bg-emerald-500 hover:bg-emerald-600' 
+                : 'bg-red-500 hover:bg-red-600' }}
+            text-white rounded-lg transition-all">
+                                    Kirim WA
+                              </a>
+                              @else
+                              <span class="text-xs text-gray-400">No HP tidak tersedia</span>
+                              @endif
+
+                        </div>
+                  </div>
+                  @endif
             </div>
       </div>
 

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
@@ -14,9 +15,6 @@ class QurbanController extends Controller
             protected QurbanService $qurbanService
       ) {}
 
-      /**
-       * Halaman utama: listing semua hewan pada periode aktif.
-       */
       public function index()
       {
             $period = QurbanPeriod::active()->first();
@@ -29,7 +27,6 @@ class QurbanController extends Controller
                   ]);
             }
 
-            // Ambil hewan aktif + hitung slot realtime
             $allHewan = QurbanHewan::with('period')
                   ->where('period_id', $period->id)
                   ->active()
@@ -38,24 +35,18 @@ class QurbanController extends Controller
                   ])
                   ->get();
 
-            // Pisah berdasarkan jenis
             $hewanPatungan = $allHewan->whereIn('jenis', QurbanHewan::JENIS_PATUNGAN)->values();
             $hewanSendiri  = $allHewan->whereIn('jenis', QurbanHewan::JENIS_PERORANGAN)->values();
 
             return view('pages.public.qurban.index', compact('period', 'hewanPatungan', 'hewanSendiri'));
       }
 
-      /**
-       * Detail hewan + form pendaftaran.
-       */
       public function show(QurbanHewan $hewan)
       {
-            // Pastikan hewan aktif dan milik periode aktif
             abort_unless($hewan->is_active && $hewan->period->is_active, 404);
 
             $hewan->load('period');
 
-            // Daftar peserta yang sudah terdaftar (aktif) — tampil nama saja
             $pesertaTerdaftar = $hewan->activeRegistrations()
                   ->select('id', 'nama_peserta', 'atas_nama', 'status', 'created_at')
                   ->latest()
@@ -66,14 +57,10 @@ class QurbanController extends Controller
             return view('pages.public.qurban.show', compact('hewan', 'pesertaTerdaftar', 'summary'));
       }
 
-      /**
-       * Proses pendaftaran qurban.
-       */
       public function store(StoreQurbanRegistrationRequest $request, QurbanHewan $hewan)
       {
             abort_unless($hewan->is_active && $hewan->period->is_active, 404);
 
-            // Cek periode terbuka
             if (! $hewan->period->is_open) {
                   return back()->with('error', 'Maaf, periode pendaftaran qurban sudah ditutup.');
             }

@@ -130,7 +130,6 @@ class ProfileController extends Controller
      */
     public function destroy(Profile $profile): RedirectResponse
     {
-        // Missions and pillars will be deleted automatically due to cascadeOnDelete in migration
         $profile->delete();
 
         return redirect()

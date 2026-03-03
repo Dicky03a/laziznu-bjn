@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
+// Admin Controllers
 use App\Http\Controllers\Admin\DokumenController as AdminDokumenController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\PengurusController;
@@ -14,6 +17,7 @@ use App\Http\Controllers\Admin\QurbanRegistrationController;
 use App\Http\Controllers\Admin\RekeningController as AdminRekeningController;
 use App\Http\Controllers\Admin\SettingControllerProgram;
 use App\Http\Controllers\Admin\TransactionController;
+// Public Controllers
 use App\Http\Controllers\Public\DonasiController;
 use App\Http\Controllers\Public\FidyahController;
 use App\Http\Controllers\Public\InfaqController;
@@ -23,123 +27,115 @@ use App\Http\Controllers\Public\QurbanController;
 use App\Http\Controllers\Public\QurbanPaymentController;
 use App\Http\Controllers\Public\ZakatController;
 
-use Illuminate\Support\Facades\Route;
-
-// Routes for public pages
-Route::get('/', [PublicPublicController::class, 'index'])->name('home');
-Route::get('/profile', [PublicPublicController::class, 'profile'])->name('profile');
-Route::get('/pengurus-laziznu-bojonegoro', [PublicPublicController::class, 'pengurus'])->name('pengurus-laziznu-bojonegoro');
-Route::get('/rekening-lengkap', [PublicPublicController::class, 'rekening'])->name('rekening-lengkap');
-Route::get('/dokumen', [PublicPublicController::class, 'dokumen'])->name('dokumen');
-Route::get('/program', [PublicPublicController::class, 'program'])->name('program');
-Route::get('/laporan/bulanan', [PublicPublicController::class, 'laporanbulanan'])->name('laporan-bulanan.public');
-Route::get('/laporan/tahunan', [PublicPublicController::class, 'laporantahunan'])->name('laporan-tahunan.public');
-Route::get('/status-mwc-ranting', [PublicPublicController::class, 'statusmwcranting'])->name('status-mwc-ranting');
-Route::get('/kalkulator-zakat', [PublicPublicController::class, 'kalkulatorzakat'])->name('kalkulator-zakat');
-Route::get('/donasi', [PublicPublicController::class, 'donasi'])->name('donasi');
-Route::get('/infaq', [PublicPublicController::class, 'infaq'])->name('infaq');
-Route::get('/zakat', [PublicPublicController::class, 'zakat'])->name('zakat');
-Route::get('/kebijakan-privasi', [PublicPublicController::class, 'privasi'])->name('kebijakan-privasi');
-Route::get('/terms-conditions', [PublicPublicController::class, 'syarat'])->name('terms-conditions');
-Route::get('/disclaimer', [PublicPublicController::class, 'disclaimer'])->name('disclaimer');
-
-
-// Public News routes
-Route::get('/berita', [PublicPublicController::class, 'berita'])->name('berita.public.index');
-Route::get('/berita/{news:slug}', [AdminNewsController::class, 'show'])->name('berita.show');
-Route::get('dokumens/{dokumen}/download', [AdminDokumenController::class, 'download'])->name('dokumens.download');
-
-// Zakat
-Route::get('/zakat', [ZakatController::class, 'index'])->name('zakat.index');
-Route::post('/zakat/bayar', [ZakatController::class, 'store'])->name('zakat.store');
-
-// DSKL Dana Sosial Keagamaan Lainya 
-Route::get('/infaq', [InfaqController::class, 'index'])->name('infaq.index');
-Route::get('/infaq/{slug}', [InfaqController::class, 'show'])->name('infaq.show');
-Route::post('/infaq/{slug}/bayar', [InfaqController::class, 'store'])->name('infaq.store');
-
-// Infaq Shodaqoh dan Peduli Bencana
-Route::get('/donasi', [DonasiController::class, 'index'])->name('donasi.index');
-Route::get('/donasi/{slug}', [DonasiController::class, 'show'])->name('donasi.show');
-Route::post('/donasi/{slug}/bayar', [DonasiController::class, 'store'])->name('donasi.store');
-
-// Fidyah
-Route::get('/fidyah', [FidyahController::class, 'index'])->name('fidyah.index');
-Route::post('/fidyah/bayar', [FidyahController::class, 'store'])->name('fidyah.store');
-
-// Payment (halaman instruksi + konfirmasi)
-Route::get('/pembayaran/{kode}', [PaymentController::class, 'show'])->name('payment.show');
-Route::post('/pembayaran/{kode}/konfirmasi', [PaymentController::class, 'confirm'])->name('payment.confirm');
-Route::get('/pembayaran/{kode}/status', [PaymentController::class, 'status'])->name('payment.status');
-
-// Qurban
-Route::prefix('qurban')->name('qurban.')->group(function () {
-
-    // Listing semua hewan periode aktif
-    Route::get('/', [QurbanController::class, 'index'])->name('index');
-
-    // Detail hewan + form daftar
-    Route::get('/hewan/{hewan}', [QurbanController::class, 'show'])->name('show');
-
-    // Proses pendaftaran
-    Route::post('/hewan/{hewan}/daftar', [QurbanController::class, 'store'])->name('store');
-
-    // Halaman instruksi pembayaran
-    Route::get('/pembayaran/{kode}', [QurbanPaymentController::class, 'show'])->name('payment');
-
-    // Submit konfirmasi transfer
-    Route::post('/pembayaran/{kode}/konfirmasi', [QurbanPaymentController::class, 'confirm'])->name('payment.confirm');
+// Public Routes
+Route::controller(PublicPublicController::class)->group(function () {
+    Route::get('/', 'index')->name('home');
+    Route::get('/profile', 'profile')->name('profile');
+    Route::get('/pengurus-laziznu-bojonegoro', 'pengurus')->name('pengurus-laziznu-bojonegoro');
+    Route::get('/rekening-lengkap', 'rekening')->name('rekening-lengkap');
+    Route::get('/dokumen', 'dokumen')->name('dokumen');
+    Route::get('/program', 'program')->name('program');
+    Route::get('/laporan/bulanan', 'laporanbulanan')->name('laporan-bulanan.public');
+    Route::get('/laporan/tahunan', 'laporantahunan')->name('laporan-tahunan.public');
+    Route::get('/status-mwc-ranting', 'statusmwcranting')->name('status-mwc-ranting');
+    Route::get('/kalkulator-zakat', 'kalkulatorzakat')->name('kalkulator-zakat');
+    Route::get('/kebijakan-privasi', 'privasi')->name('kebijakan-privasi');
+    Route::get('/terms-conditions', 'syarat')->name('terms-conditions');
+    Route::get('/disclaimer', 'disclaimer')->name('disclaimer');
+    Route::get('/berita', 'berita')->name('berita.public.index');
 });
 
 
-// Dashboard & Admin routes (protected by auth and verified middleware)
+// News & Dokumen Routes
+Route::get('/berita/{news:slug}', [AdminNewsController::class, 'show'])->name('berita.show');
+Route::get('dokumens/{dokumen}/download', [AdminDokumenController::class, 'download'])->name('dokumens.download');
+
+// Zakat Routes
+Route::prefix('zakat')->name('zakat.')->group(function () {
+    Route::get('/', [ZakatController::class, 'index'])->name('index');
+    Route::post('/bayar', [ZakatController::class, 'store'])->name('store');
+});
+
+// Infaq Routes
+Route::prefix('infaq')->name('infaq.')->group(function () {
+    Route::get('/', [InfaqController::class, 'index'])->name('index');
+    Route::get('/{slug}', [InfaqController::class, 'show'])->name('show');
+    Route::post('/{slug}/bayar', [InfaqController::class, 'store'])->name('store');
+});
+
+// Donasi Routes
+Route::prefix('donasi')->name('donasi.')->group(function () {
+    Route::get('/', [DonasiController::class, 'index'])->name('index');
+    Route::get('/{slug}', [DonasiController::class, 'show'])->name('show');
+    Route::post('/{slug}/bayar', [DonasiController::class, 'store'])->name('store');
+});
+
+// Fidyah Routes
+Route::get('/fidyah', [FidyahController::class, 'index'])->name('fidyah.index');
+Route::post('/fidyah/bayar', [FidyahController::class, 'store'])->name('fidyah.store');
+
+// Payment Confirmation Routes
+Route::prefix('pembayaran')->name('payment.')->group(function () {
+    Route::get('/{kode}', [PaymentController::class, 'show'])->name('show');
+    Route::post('/{kode}/konfirmasi', [PaymentController::class, 'confirm'])->name('confirm');
+    Route::get('/{kode}/status', [PaymentController::class, 'status'])->name('status');
+});
+
+// Quraban Routes
+Route::prefix('qurban')->name('qurban.')->group(function () {
+    Route::get('/', [QurbanController::class, 'index'])->name('index');
+    Route::get('/hewan/{hewan}', [QurbanController::class, 'show'])->name('show');
+    Route::post('/hewan/{hewan}/daftar', [QurbanController::class, 'store'])->name('store');
+    Route::get('/pembayaran/{kode}', [QurbanPaymentController::class, 'show'])->name('payment');
+    Route::post('/pembayaran/{kode}/konfirmasi', [QurbanPaymentController::class, 'confirm'])->name('payment.confirm');
+});
+
+// Admin Routes (Protected by auth & verified middleware)
 Route::middleware(['auth', 'verified'])->group(function () {
+
     Route::get('dashboard', fn() => view('dashboard'))->name('dashboard');
 
-    // Resource routes for admin management
     Route::resource('profiles', AdminProfileController::class);
     Route::resource('rekenings', AdminRekeningController::class);
     Route::resource('news', AdminNewsController::class)->except('show');
     Route::resource('dokumens', AdminDokumenController::class);
 
-    // Program
     Route::resource('programs', ProgramController::class);
     Route::patch('programs/{program}/toggle-active', [ProgramController::class, 'toggleActive'])
         ->name('programs.toggle-active');
 
-    // Transactions
+    // Transaction management
     Route::get('transactions', [TransactionController::class, 'index'])->name('transactions.index');
     Route::get('transactions/export', [TransactionController::class, 'export'])->name('transactions.export');
     Route::get('transactions/{transaction}', [TransactionController::class, 'show'])->name('transactions.show');
     Route::post('transactions/{transaction}/confirm', [TransactionController::class, 'confirm'])->name('transactions.confirm');
     Route::post('transactions/{transaction}/reject', [TransactionController::class, 'reject'])->name('transactions.reject');
 
-    // Settings (Fidyah, Zakat Fitrah, Nisab, dll)
+    // Program settings
     Route::get('program/settings', [SettingControllerProgram::class, 'index'])->name('program.edit');
     Route::put('settings/program', [SettingControllerProgram::class, 'update'])->name('program.settings');
 
-
-    // Pengurus
-    Route::resource('pengurus', PengurusController::class)->parameters([
-        'pengurus' => 'pengurus'
-    ]);
+    // Pengurus management
+    Route::resource('pengurus', PengurusController::class);
     Route::patch('pengurus/{pengurus}/toggle-status', [PengurusController::class, 'toggleStatus'])
         ->name('pengurus.toggle-status');
     Route::delete('pengurus/{pengurus}/foto', [PengurusController::class, 'destroyFoto'])
         ->name('pengurus.destroy-foto');
 
-
-    // Qurban
+    // Qurban management
     Route::prefix('qurban')->name('qurban.')->group(function () {
-        Route::resource('periods', QurbanPeriodController::class)
-            ->names('periods');
+
+        Route::resource('periods', QurbanPeriodController::class)->names('periods');
         Route::patch('periods/{period}/toggle-active', [QurbanPeriodController::class, 'toggleActive'])
             ->name('periods.toggle-active');
+
         Route::resource('binatang', QurbanHewanController::class)
             ->names('binatang')
             ->parameters(['binatang' => 'hewan']);
+
         Route::patch('hewan/{hewan}/toggle-active', [QurbanHewanController::class, 'toggleActive'])
             ->name('hewan.toggle-active');
+
         Route::get('registrations', [QurbanRegistrationController::class, 'index'])
             ->name('registrations.index');
         Route::get('registrations/export', [QurbanRegistrationController::class, 'export'])
@@ -152,21 +148,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
             ->name('registrations.cancel');
     });
 
-    // Laporan
     Route::resource('laporan-bulanan', AdminLaporanBulananController::class)
-        ->parameters([
-            'laporan-bulanan' => 'laporanBulanan'
-        ]);
+        ->parameters(['laporan-bulanan' => 'laporanBulanan']);
 
     Route::resource('laporan-mwc', AdminLaporanMwcController::class)
-        ->parameters([
-            'laporan-mwc' => 'laporanMwc'
-        ]);
+        ->parameters(['laporan-mwc' => 'laporanMwc']);
 
     Route::resource('laporan-tahunans', LaporanTahunanController::class)
-        ->parameters([
-            'laporan-tahunans' => 'laporanTahunan'
-        ]);
+        ->parameters(['laporan-tahunans' => 'laporanTahunan']);
 });
 
 require __DIR__ . '/settings.php';

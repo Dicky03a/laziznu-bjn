@@ -10,20 +10,12 @@ use Illuminate\Validation\ValidationException;
 
 class QurbanService
 {
-      /**
-       * Daftarkan peserta qurban.
-       *
-       * Menggunakan DB transaction + pessimistic locking (lockForUpdate)
-       * untuk mencegah race condition (2 orang daftar di slot terakhir bersamaan).
-       */
       public function register(array $data, QurbanHewan $hewan): QurbanRegistration
       {
             return DB::transaction(function () use ($data, $hewan) {
 
-                  // Lock baris hewan agar tidak ada proses lain yang baca saat kita hitung slot
                   $hewan = QurbanHewan::lockForUpdate()->findOrFail($hewan->id);
 
-                  // Hitung slot yang sudah terpakai (pending + confirmed)
                   $slotTerisi = QurbanRegistration::where('hewan_id', $hewan->id)
                         ->whereIn('status', ['pending', 'confirmed'])
                         ->count();
@@ -36,7 +28,6 @@ class QurbanService
                         ]);
                   }
 
-                  // Pastikan periode masih terbuka
                   if (! $hewan->period->is_open) {
                         throw ValidationException::withMessages([
                               'period_id' => 'Pendaftaran qurban periode ini sudah ditutup.',
@@ -53,17 +44,14 @@ class QurbanService
                         'telepon'         => $data['telepon'] ?? null,
                         'alamat'          => $data['alamat'] ?? null,
                         'catatan'         => $data['catatan'] ?? null,
-                        'jumlah_slot'     => 1, // selalu 1 per registrasi
+                        'jumlah_slot'     => 1, 
                         'harga_per_slot'  => $hewan->harga_per_slot,
-                        'total_bayar'     => $hewan->harga_per_slot, // 1 × harga_per_slot
+                        'total_bayar'     => $hewan->harga_per_slot,
                         'status'          => QurbanRegistration::STATUS_PENDING,
                   ]);
             });
       }
 
-      /**
-       * Simpan konfirmasi pembayaran dari peserta.
-       */
       public function storePaymentConfirmation(
             array $data,
             QurbanRegistration $registration
@@ -88,9 +76,6 @@ class QurbanService
             ]);
       }
 
-      /**
-       * Admin: konfirmasi pembayaran.
-       */
       public function confirm(
             QurbanRegistration $registration,
             int $adminId,
@@ -106,18 +91,13 @@ class QurbanService
             return $registration->fresh();
       }
 
-      /**
-       * Admin: batalkan pendaftaran (slot dikembalikan otomatis karena
-       * slot_terisi dihitung realtime dari DB).
-       */
       public function cancel(
             QurbanRegistration $registration,
             int $adminId,
             string $catatan
       ): QurbanRegistration {
             if ($registration->is_confirmed) {
-                  // Confirmed sudah tidak bisa dibatalkan tanpa alasan kuat
-                  // Tetap izinkan tapi wajib catatan
+
             }
 
             $registration->update([
@@ -129,9 +109,6 @@ class QurbanService
             return $registration->fresh();
       }
 
-      /**
-       * Ambil summary slot per hewan untuk ditampilkan admin.
-       */
       public function getSlotSummary(QurbanHewan $hewan): array
       {
             $byStatus = QurbanRegistration::where('hewan_id', $hewan->id)

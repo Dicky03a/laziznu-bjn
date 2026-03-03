@@ -10,34 +10,25 @@ use App\Models\Transaction;
 
 class PaymentController extends Controller
 {
-    /**
-     * Halaman instruksi pembayaran + form konfirmasi
-     */
     public function show(string $kode)
     {
         $transaction = Transaction::where('kode_transaksi', $kode)
             ->with(['program', 'paymentConfirmation'])
             ->firstOrFail();
 
-        // Ambil rekening aktif dari tabel rekening yang sudah ada
         $rekenings = Rekening::all();
 
-        // Tentukan QR berdasarkan jenis
         $qrisType = in_array($transaction->type, ['zakat', 'fidyah']) ? 'zakat' : 'infaq';
 
         return view('pages.public.payment.show', compact('transaction', 'rekenings', 'qrisType'));
     }
 
-    /**
-     * Submit konfirmasi transfer
-     */
     public function confirm(StorePaymentConfirmationRequest $request, string $kode)
     {
         $transaction = Transaction::where('kode_transaksi', $kode)
             ->where('status', Transaction::STATUS_PENDING)
             ->firstOrFail();
 
-        // Pastikan belum pernah konfirmasi
         if ($transaction->paymentConfirmation) {
             return back()->with('error', 'Konfirmasi sudah pernah dikirim. Tim kami sedang memproses.');
         }
@@ -64,9 +55,6 @@ class PaymentController extends Controller
             ->with('success', 'Konfirmasi transfer diterima! Tim kami akan memverifikasi dalam 1×24 jam.');
     }
 
-    /**
-     * Cek status transaksi (opsional — AJAX endpoint)
-     */
     public function status(string $kode)
     {
         $transaction = Transaction::where('kode_transaksi', $kode)->firstOrFail();

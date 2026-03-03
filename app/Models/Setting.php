@@ -28,7 +28,6 @@ class Setting extends Model
         Cache::forget("setting_{$key}");
     }
 
-    // Shortcut helpers
     public static function fidyahPricePerDay(): int
     {
         return (int) static::getValue('fidyah_price_per_day', 50000);

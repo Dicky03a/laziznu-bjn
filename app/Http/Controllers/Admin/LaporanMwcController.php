@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Storage;
 
 class LaporanMwcController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
         $laporanMwc = LaporanMwc::latest()->paginate(10);
