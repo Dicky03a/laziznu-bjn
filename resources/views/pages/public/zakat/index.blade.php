@@ -160,11 +160,14 @@
 
                         {{-- FORM PEMBAYARAN --}}
                         <form action="{{ route('zakat.store') }}" method="POST" id="form-zakat"
-                              class="bg-white rounded-3xl shadow-sm border border-gray-100 p-6">
+                              class="bg-white rounded-3xl shadow-sm border border-gray-100 p-6"
+                              x-data="zakatForm()">
                               @csrf
                               <input type="hidden" name="jenis" id="input-jenis" value="mal">
                               <input type="hidden" name="nilai_harta" id="input-nilai-harta" value="">
                               <input type="hidden" name="jumlah_jiwa" id="input-jumlah-jiwa" value="1">
+                              <input type="hidden" name="kecamatan_id" x-model="kecamatanId" id="input-kecamatan">
+                              <input type="hidden" name="desa_id" x-model="desaId" id="input-desa">
 
                               <h3 class="font-bold text-gray-900 mb-5">Data Muzakki</h3>
 
@@ -213,18 +216,45 @@
                                                 class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500">
                                     </div>
 
+                                    {{-- SELECT KECAMATAN --}}
                                     <div>
-                                          <label class="block text-sm font-medium text-gray-700 mb-1.5">Alamat</label>
-                                          <input type="text" name="alamat"
-                                                value="{{ old('alamat') }}"
-                                                placeholder="Alamat lengkap Anda"
-                                                class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500">
+                                          <label class="block text-sm font-medium text-gray-700 mb-1.5">Kecamatan <span class="text-red-500">*</span></label>
+                                          <select name="kecamatan_id"
+                                                x-model="kecamatanId"
+                                                @change="loadDesa()"
+                                                class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500 bg-white text-gray-900 @error('kecamatan_id') border-red-500 @enderror"
+                                                required>
+                                                <option value="">-- Pilih Kecamatan --</option>
+                                                @forelse ($kecamatans as $kecamatan)
+                                                <option value="{{ $kecamatan->id }}" {{ old('kecamatan_id') == $kecamatan->id ? 'selected' : '' }}>
+                                                      {{ $kecamatan->nama }}
+                                                </option>
+                                                @empty
+                                                <option disabled>Tidak ada kecamatan</option>
+                                                @endforelse
+                                          </select>
+                                          @error('kecamatan_id')
+                                          <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+                                          @enderror
                                     </div>
 
-                                    <div class="sm:col-span-2">
-                                          <label class="block text-sm font-medium text-gray-700 mb-1.5">Catatan (opsional)</label>
-                                          <textarea name="catatan" rows="2" placeholder="Catatan tambahan..."
-                                                class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500 resize-none">{{ old('catatan') }}</textarea>
+                                    {{-- SELECT DESA --}}
+                                    <div>
+                                          <label class="block text-sm font-medium text-gray-700 mb-1.5">Desa / Kelurahan <span class="text-red-500">*</span></label>
+                                          <select name="desa_id"
+                                                x-model="desaId"
+                                                :disabled="!desas.length"
+                                                class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500 bg-white text-gray-900 disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed @error('desa_id') border-red-500 @enderror"
+                                                required>
+                                                <option value="">-- Pilih Desa --</option>
+                                                <template x-for="desa in desas" :key="desa.id">
+                                                      <option :value="desa.id" x-text="desa.nama"></option>
+                                                </template>
+                                          </select>
+                                          <p class="text-xs text-gray-400 mt-1" x-show="!kecamatanId">Pilih kecamatan terlebih dahulu</p>
+                                          @error('desa_id')
+                                          <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+                                          @enderror
                                     </div>
                               </div>
 
@@ -237,7 +267,8 @@
                               </div>
 
                               <button type="submit" id="btn-submit"
-                                    class="mt-6 w-full py-4 bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-700 hover:to-emerald-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3 disabled:opacity-50">
+                                    class="mt-6 w-full py-4 bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-700 hover:to-emerald-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3 disabled:opacity-50"
+                                    :disabled="!kecamatanId || !desaId">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
                                     </svg>
@@ -321,6 +352,41 @@
 
 @push('scripts')
 <script>
+      // Alpine.js Data Component untuk Form Zakat
+      function zakatForm() {
+            return {
+                  kecamatanId: '{{ old("kecamatan_id") }}',
+                  desaId: '{{ old("desa_id") }}',
+                  desas: [],
+
+                  async loadDesa() {
+                        if (!this.kecamatanId) {
+                              this.desas = [];
+                              this.desaId = '';
+                              return;
+                        }
+
+                        try {
+                              const response = await fetch(`{{ url('/zakat/desa') }}/${this.kecamatanId}`);
+                              if (response.ok) {
+                                    this.desas = await response.json();
+                                    this.desaId = ''; // Reset desa selection
+                              }
+                        } catch (error) {
+                              console.error('Error loading desa:', error);
+                              this.desas = [];
+                        }
+                  },
+
+                  // Initialize - jika ada kecamatan lama, load desanya
+                  init() {
+                        if (this.kecamatanId) {
+                              this.loadDesa();
+                        }
+                  }
+            }
+      }
+
       document.addEventListener('DOMContentLoaded', function() {
 
             // ==== SAFE BACKEND VALUE ====
@@ -416,13 +482,13 @@
 
                         field.value = 'Hamba Allah';
                         field.readOnly = true;
-                        field.required = false; // penting agar tidak gagal validasi required
+                        field.required = false;
                         field.classList.add('bg-gray-100', 'text-gray-400', 'cursor-not-allowed');
 
                   } else {
                         field.value = field.dataset.original || '';
                         field.readOnly = false;
-                        field.required = true; // aktifkan kembali required
+                        field.required = true;
                         field.classList.remove('bg-gray-100', 'text-gray-400', 'cursor-not-allowed');
                   }
             }
@@ -433,7 +499,5 @@
       });
 </script>
 @endpush
-
-
 
 @endsection

@@ -20,7 +20,8 @@ class Transaction extends Model
         'nama_donatur',
         'email',
         'telepon',
-        'alamat',
+        'kecamatan_id',
+        'desa_id',
         'is_anonim',
         'jumlah',
         'metadata',
@@ -42,17 +43,12 @@ class Transaction extends Model
     ];
 
     const STATUS_PENDING = 'pending';
-
     const STATUS_CONFIRMED = 'confirmed';
-
     const STATUS_REJECTED = 'rejected';
 
     const TYPE_ZAKAT = 'zakat';
-
     const TYPE_INFAQ = 'infaq';
-
     const TYPE_DONASI = 'donasi';
-
     const TYPE_FIDYAH = 'fidyah';
 
     const TYPE_LABELS = [
@@ -84,6 +80,16 @@ class Transaction extends Model
     public function program(): BelongsTo
     {
         return $this->belongsTo(Program::class);
+    }
+
+    public function kecamatan(): BelongsTo
+    {
+        return $this->belongsTo(Kecamatan::class);
+    }
+
+    public function desa(): BelongsTo
+    {
+        return $this->belongsTo(Desa::class);
     }
 
     public function confirmedBy(): BelongsTo
@@ -121,9 +127,24 @@ class Transaction extends Model
         return $this->is_anonim ? 'Hamba Allah' : $this->nama_donatur;
     }
 
+    public function getAlamatLengkapAttribute(): string
+    {
+        $parts = [];
+
+        if ($this->desa) {
+            $parts[] = $this->desa->nama;
+        }
+
+        if ($this->kecamatan) {
+            $parts[] = $this->kecamatan->nama;
+        }
+
+        return implode(', ', $parts) ?: '-';
+    }
+
     public function getJumlahFormatAttribute(): string
     {
-        return 'Rp '.number_format($this->jumlah, 0, ',', '.');
+        return 'Rp ' . number_format($this->jumlah, 0, ',', '.');
     }
 
     public function getTypeLabelAttribute(): string

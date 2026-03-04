@@ -43,8 +43,9 @@ class TransactionController extends Controller
     public function show(Transaction $transaction)
     {
         $transaction->load(['program', 'paymentConfirmation', 'confirmedBy']);
+        $kecamatan = $transaction->kecamatan ? $transaction->kecamatan->nama : '-';
 
-        return view('admin.transactions.show', compact('transaction'));
+        return view('admin.transactions.show', compact('transaction', 'kecamatan'));
     }
 
     public function confirm(Request $request, Transaction $transaction)

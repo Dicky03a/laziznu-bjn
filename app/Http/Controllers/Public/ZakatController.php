@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreZakatRequest;
+use App\Models\Kecamatan;
 use App\Models\Setting;
 use App\Models\Transaction;
 use App\Services\TransactionService;
@@ -24,10 +25,22 @@ class ZakatController extends Controller
             'harga_emas_per_gram' => Setting::hargaEmasPerGram(),
         ];
 
+        // Ambil semua kecamatan
+        $kecamatans = Kecamatan::orderBy('nama')->get();
+
         $totalMuzakki = Transaction::ofType('zakat')->confirmed()->count();
         $totalTerkumpul = Transaction::ofType('zakat')->confirmed()->sum('jumlah');
 
-        return view('pages.public.zakat.index', compact('settings', 'totalMuzakki', 'totalTerkumpul'));
+        return view('pages.public.zakat.index', compact('settings', 'kecamatans', 'totalMuzakki', 'totalTerkumpul'));
+    }
+
+    public function getDesa($kecamatanId)
+    {
+        $desas = \App\Models\Desa::where('kecamatan_id', $kecamatanId)
+            ->orderBy('nama')
+            ->get(['id', 'nama']);
+
+        return response()->json($desas);
     }
 
     public function store(StoreZakatRequest $request)

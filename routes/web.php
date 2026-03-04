@@ -51,10 +51,9 @@ Route::get('/berita/{news:slug}', [AdminNewsController::class, 'show'])->name('b
 Route::get('dokumens/{dokumen}/download', [AdminDokumenController::class, 'download'])->name('dokumens.download');
 
 // Zakat Routes
-Route::prefix('zakat')->name('zakat.')->group(function () {
-    Route::get('/', [ZakatController::class, 'index'])->name('index');
-    Route::post('/bayar', [ZakatController::class, 'store'])->name('store');
-});
+Route::get('/zakat', [ZakatController::class, 'index'])->name('zakat.index');
+Route::post('/bayar', [ZakatController::class, 'store'])->name('zakat.store');
+Route::get('/zakat/desa/{kecamatanId}', [ZakatController::class, 'getDesa'])->name('zakat.getDesa'); 
 
 // Infaq Routes
 Route::prefix('infaq')->name('infaq.')->group(function () {
