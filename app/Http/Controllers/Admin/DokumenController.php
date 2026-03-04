@@ -11,9 +11,6 @@ use Illuminate\Support\Str;
 
 class DokumenController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $dokumens = Dokuemen::latest()->get();

@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\PengurusController;
 use App\Http\Controllers\Admin\LaporanBulananController as AdminLaporanBulananController;
 use App\Http\Controllers\Admin\LaporanMwcController as AdminLaporanMwcController;
 use App\Http\Controllers\Admin\LaporanTahunanController;
+use App\Http\Controllers\Admin\PetaSebaranController;
 use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
 use App\Http\Controllers\Admin\ProgramController;
 use App\Http\Controllers\Admin\QurbanHewanController;
@@ -53,7 +54,7 @@ Route::get('dokumens/{dokumen}/download', [AdminDokumenController::class, 'downl
 // Zakat Routes
 Route::get('/zakat', [ZakatController::class, 'index'])->name('zakat.index');
 Route::post('/bayar', [ZakatController::class, 'store'])->name('zakat.store');
-Route::get('/zakat/desa/{kecamatanId}', [ZakatController::class, 'getDesa'])->name('zakat.getDesa'); 
+Route::get('/zakat/desa/{kecamatanId}', [ZakatController::class, 'getDesa'])->name('zakat.getDesa');
 
 // Infaq Routes
 Route::prefix('infaq')->name('infaq.')->group(function () {
@@ -155,6 +156,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::resource('laporan-tahunans', LaporanTahunanController::class)
         ->parameters(['laporan-tahunans' => 'laporanTahunan']);
+
+    Route::prefix('peta-sebaran')->name('peta-sebaran.')->group(function () {
+        Route::get('/', [PetaSebaranController::class, 'index'])->name('index');
+        Route::get('/export', [PetaSebaranController::class, 'exportExcel'])->name('export');
+        Route::get('/desa', [PetaSebaranController::class, 'getDesa'])->name('getDesa');
+    });
 });
 
 require __DIR__ . '/settings.php';

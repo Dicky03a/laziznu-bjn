@@ -41,6 +41,7 @@
             <flux:sidebar.item icon="book-open" href="{{ route('laporan-bulanan.index') }}">Laporan Bulanan</flux:sidebar.item>
             <flux:sidebar.item icon="book-open" href="{{ route('laporan-mwc.index') }}">Laporan MWC</flux:sidebar.item>
             <flux:sidebar.item icon="book-open" href="{{ route('laporan-tahunans.index') }}">Laporan Tahunan</flux:sidebar.item>
+            <flux:sidebar.item icon="book-open" href="{{ route('peta-sebaran.index') }}">Peta Sebaran</flux:sidebar.item>
         </flux:sidebar.nav>
 
 
