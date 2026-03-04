@@ -20,28 +20,79 @@
         </flux:sidebar.header>
 
         <flux:sidebar.nav>
-            <flux:sidebar.item icon="home" href="{{ route('dashboard') }}">Home</flux:sidebar.item>
+
+            <flux:sidebar.item icon="home" href="{{ route('dashboard') }}">
+                Dashboard
+            </flux:sidebar.item>
+
             <flux:sidebar.group expandable heading="Profile" class="grid">
-                <flux:sidebar.item href="{{ route('profiles.index') }}">Sekilas NU Care</flux:sidebar.item>
-                <flux:sidebar.item href="{{ route('pengurus.index') }}">Pengurus</flux:sidebar.item>
-                <flux:sidebar.item href="{{ route('rekenings.index') }}">Rekening</flux:sidebar.item>
-                <flux:sidebar.item href="{{ route('dokumens.index') }}">Dokumen</flux:sidebar.item>
+                <flux:sidebar.item icon="information-circle" href="{{ route('profiles.index') }}">
+                    Sekilas NU Care
+                </flux:sidebar.item>
+
+                <flux:sidebar.item icon="users" href="{{ route('pengurus.index') }}">
+                    Pengurus
+                </flux:sidebar.item>
+
+                <flux:sidebar.item icon="credit-card" href="{{ route('rekenings.index') }}">
+                    Rekening
+                </flux:sidebar.item>
+
+                <flux:sidebar.item icon="document-text" href="{{ route('dokumens.index') }}">
+                    Dokumen
+                </flux:sidebar.item>
             </flux:sidebar.group>
+
             <flux:sidebar.group expandable heading="Zakat, Infaq, Donasi" class="grid">
-                <flux:sidebar.item icon="book-open" href="{{ route('programs.index') }}">Program</flux:sidebar.item>
-                <flux:sidebar.item icon="book-open" href="{{ route('transactions.index') }}">Transaksi</flux:sidebar.item>
-                <flux:sidebar.item icon="book-open" href="{{ route('program.edit') }}">Pengaturan Program</flux:sidebar.item>
+                <flux:sidebar.item icon="rectangle-stack" href="{{ route('programs.index') }}">
+                    Program
+                </flux:sidebar.item>
+
+                <flux:sidebar.item icon="banknotes" href="{{ route('transactions.index') }}">
+                    Transaksi
+                </flux:sidebar.item>
+
+                <flux:sidebar.item icon="cog-6-tooth" href="{{ route('program.edit') }}">
+                    Pengaturan Program
+                </flux:sidebar.item>
+
+                <flux:sidebar.item icon="map" href="{{ route('peta-sebaran.index') }}">
+                    Peta Sebaran
+                </flux:sidebar.item>
             </flux:sidebar.group>
+
             <flux:sidebar.group expandable heading="Qurban" class="grid">
-                <flux:sidebar.item icon="book-open" href="{{ route('qurban.periods.index') }}">Periode Qurban</flux:sidebar.item>
-                <flux:sidebar.item icon="book-open" href="{{ route('qurban.binatang.index') }}">Hewan Qurban</flux:sidebar.item>
-                <flux:sidebar.item icon="book-open" href="{{ route('qurban.registrations.index') }}">Transaksi Qurban</flux:sidebar.item>
+                <flux:sidebar.item icon="calendar-days" href="{{ route('qurban.periods.index') }}">
+                    Periode Qurban
+                </flux:sidebar.item>
+
+                <flux:sidebar.item icon="shopping-bag" href="{{ route('qurban.binatang.index') }}">
+                    Hewan Qurban
+                </flux:sidebar.item>
+
+                <flux:sidebar.item icon="clipboard-document-list" href="{{ route('qurban.registrations.index') }}">
+                    Transaksi Qurban
+                </flux:sidebar.item>
             </flux:sidebar.group>
-            <flux:sidebar.item icon="book-open" href="{{ route('news.index') }}">Berita</flux:sidebar.item>
-            <flux:sidebar.item icon="book-open" href="{{ route('laporan-bulanan.index') }}">Laporan Bulanan</flux:sidebar.item>
-            <flux:sidebar.item icon="book-open" href="{{ route('laporan-mwc.index') }}">Laporan MWC</flux:sidebar.item>
-            <flux:sidebar.item icon="book-open" href="{{ route('laporan-tahunans.index') }}">Laporan Tahunan</flux:sidebar.item>
-            <flux:sidebar.item icon="book-open" href="{{ route('peta-sebaran.index') }}">Peta Sebaran</flux:sidebar.item>
+
+            <flux:sidebar.group expandable heading="Laporan" class="grid">
+                <flux:sidebar.item icon="document-chart-bar" href="{{ route('laporan-bulanan.index') }}">
+                    Laporan Bulanan
+                </flux:sidebar.item>
+
+                <flux:sidebar.item icon="building-office-2" href="{{ route('laporan-mwc.index') }}">
+                    Laporan MWC
+                </flux:sidebar.item>
+
+                <flux:sidebar.item icon="chart-bar-square" href="{{ route('laporan-tahunans.index') }}">
+                    Laporan Tahunan
+                </flux:sidebar.item>
+            </flux:sidebar.group>
+
+            <flux:sidebar.item icon="newspaper" href="{{ route('news.index') }}">
+                Berita
+            </flux:sidebar.item>
+
         </flux:sidebar.nav>
 
 
