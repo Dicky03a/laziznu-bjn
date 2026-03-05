@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\QurbanRegistrationController;
 use App\Http\Controllers\Admin\RekeningController as AdminRekeningController;
 use App\Http\Controllers\Admin\SettingControllerProgram;
 use App\Http\Controllers\Admin\TransactionController;
+use App\Http\Controllers\Admin\MustahikController;
 // Public Controllers
 use App\Http\Controllers\Public\DonasiController;
 use App\Http\Controllers\Public\FidyahController;
@@ -162,6 +163,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/export', [PetaSebaranController::class, 'exportExcel'])->name('export');
         Route::get('/desa', [PetaSebaranController::class, 'getDesa'])->name('getDesa');
     });
+
+    Route::resource('mustahiks', MustahikController::class);
+    Route::get('/mustahiks/desa/{kecamatanId}', [MustahikController::class, 'getDesa']);
 });
 
 require __DIR__ . '/settings.php';

@@ -52,6 +52,10 @@
                     Transaksi
                 </flux:sidebar.item>
 
+                <flux:sidebar.item icon="newspaper" href="{{ route('mustahiks.index') }}">
+                    Mustahik
+                </flux:sidebar.item>
+
                 <flux:sidebar.item icon="cog-6-tooth" href="{{ route('program.edit') }}">
                     Pengaturan Program
                 </flux:sidebar.item>

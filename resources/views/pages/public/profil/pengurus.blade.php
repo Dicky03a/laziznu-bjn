@@ -31,7 +31,7 @@
 
             @if($noSk)
             <p class="mt-3 text-xs text-emerald-300">
-                  SK PCNU Kabupaten Bojonegoro Nomor: <span class="font-mono font-semibold text-white">{{ $noSk }}</span>
+                  <span class="font-mono font-semibold text-white">{{ $noSk }}</span>
             </p>
             @endif
       </div>

@@ -2,7 +2,7 @@
 
     <div class="flex items-center justify-between mb-6">
         <div>
-            <h1 class="text-2xl font-bold text-gray-900">binatang Qurban</h1>
+            <h1 class="text-2xl font-bold text-gray-900">Binatang Qurban</h1>
             <p class="text-sm text-gray-500 mt-1">Kelola binatang qurban per periode</p>
         </div>
         <a href="{{ route('qurban.binatang.create', request()->only('period_id')) }}"
@@ -132,8 +132,8 @@
                     </div>
                     {{-- Detail slot: pending vs confirmed --}}
                     <div class="flex gap-3 mt-1.5 text-xs text-gray-400">
-                        <span>✅ {{ $h->slot_confirmed ?? 0 }} konfirmasi</span>
-                        <span>⏳ {{ $h->slot_pending ?? 0 }} pending</span>
+                        <span>{{ $h->slot_confirmed ?? 0 }} konfirmasi</span>
+                        <span>{{ $h->slot_pending ?? 0 }} pending</span>
                     </div>
                 </div>
                 @else

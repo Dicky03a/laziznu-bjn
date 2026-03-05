@@ -251,7 +251,6 @@
                                                       <option :value="desa.id" x-text="desa.nama"></option>
                                                 </template>
                                           </select>
-                                          <p class="text-xs text-gray-400 mt-1" x-show="!kecamatanId">Pilih kecamatan terlebih dahulu</p>
                                           @error('desa_id')
                                           <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
                                           @enderror

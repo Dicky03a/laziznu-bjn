@@ -113,7 +113,7 @@
                               <!-- Export Button -->
                               <form action="{{ route('peta-sebaran.export') }}" method="GET" class="inline">
                                     @foreach (request()->query() as $key => $value)
-                                    @if ($key !== '_token')
+                                    @if ($key !== '_token' && $key !== 'page' && $key !== 'mustahik_page')
                                     <input type="hidden" name="{{ $key }}" value="{{ $value }}">
                                     @endif
                                     @endforeach
@@ -233,6 +233,7 @@
                                           <tr>
                                                 <th class="px-6 py-3 text-left text-sm font-semibold text-slate-900 dark:text-slate-100">Desa</th>
                                                 <th class="px-6 py-3 text-right text-sm font-semibold text-slate-900 dark:text-slate-100">Total Muzaki</th>
+                                                <th class="px-6 py-3 text-right text-sm font-semibold text-slate-900 dark:text-slate-100">Total Mustahik</th>
                                                 <th class="px-6 py-3 text-right text-sm font-semibold text-slate-900 dark:text-slate-100">Total Donasi</th>
                                                 <th class="px-6 py-3 text-right text-sm font-semibold text-slate-900 dark:text-slate-100">Rata-rata Donasi</th>
                                           </tr>
@@ -246,6 +247,11 @@
                                                 <td class="px-6 py-4 text-right">
                                                       <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-semibold bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300">
                                                             {{ $stat->total_muzaki }}
+                                                      </span>
+                                                </td>
+                                                <td class="px-6 py-4 text-right">
+                                                      <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-semibold bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300">
+                                                            {{ $stat->total_mustahik }}
                                                       </span>
                                                 </td>
                                                 <td class="px-6 py-4 text-right text-slate-900 dark:text-white font-medium">
@@ -309,15 +315,15 @@
                         <div class="bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-slate-200 dark:border-zinc-800 p-6 hover:shadow-xl transition-shadow">
                               <div class="flex items-start justify-between">
                                     <div>
-                                          <p class="text-slate-600 dark:text-slate-400 text-sm font-medium">Kecamatan</p>
+                                          <p class="text-slate-600 dark:text-slate-400 text-sm font-medium">Total Mustahik</p>
                                           <p class="text-3xl font-bold text-slate-900 dark:text-white mt-2">
-                                                {{ $totalKecamatan }}
+                                                {{ number_format($totalMustahik) }}
                                           </p>
-                                          <p class="text-xs text-slate-500 dark:text-slate-500 mt-2">Area yang tercakup</p>
+                                          <p class="text-xs text-slate-500 dark:text-slate-500 mt-2">Yang sudah terdaftar</p>
                                     </div>
-                                    <div class="w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center">
-                                          <svg class="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 003 16.382V5.618a1 1 0 011.553-.894L9 7m0 13l6.447-3.276A1 1 0 0021 16.382V5.618a1 1 0 00-1.553-.894L15 7m0 13V7m0 13L9 7" />
+                                    <div class="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
+                                          <svg class="w-6 h-6 text-orange-600 dark:text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                           </svg>
                                     </div>
                               </div>
@@ -356,6 +362,7 @@
                                           <tr>
                                                 <th class="px-6 py-3 text-left text-sm font-semibold text-slate-900 dark:text-slate-100">Kecamatan</th>
                                                 <th class="px-6 py-3 text-right text-sm font-semibold text-slate-900 dark:text-slate-100">Total Muzaki</th>
+                                                <th class="px-6 py-3 text-right text-sm font-semibold text-slate-900 dark:text-slate-100">Total Mustahik</th>
                                                 <th class="px-6 py-3 text-right text-sm font-semibold text-slate-900 dark:text-slate-100">Total Donasi</th>
                                                 <th class="px-6 py-3 text-right text-sm font-semibold text-slate-900 dark:text-slate-100">Rata-rata Donasi</th>
                                           </tr>
@@ -369,6 +376,11 @@
                                                 <td class="px-6 py-4 text-right">
                                                       <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-semibold bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">
                                                             {{ $stat->total_muzaki }}
+                                                      </span>
+                                                </td>
+                                                <td class="px-6 py-4 text-right">
+                                                      <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-semibold bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">
+                                                            {{ $stat->total_mustahik }}
                                                       </span>
                                                 </td>
                                                 <td class="px-6 py-4 text-right text-slate-900 dark:text-white font-medium">

@@ -94,7 +94,7 @@ class QurbanHewanController extends Controller
             $hewan->update($validated);
 
             return redirect()
-                  ->route('qurban.hewan.index')
+                  ->route('qurban.binatang.index')
                   ->with('success', 'Data hewan berhasil diperbarui.');
       }
 
