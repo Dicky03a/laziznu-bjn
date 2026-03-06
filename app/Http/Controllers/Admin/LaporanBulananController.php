@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreLaporanBulanan;
 use App\Http\Requests\UpdateLaporanBulanan;
@@ -17,6 +16,7 @@ class LaporanBulananController extends Controller
     public function index()
     {
         $laporanBulanans = LaporanBulanan::latest()->paginate(10);
+
         return view('admin.laporan-bulanan.index', compact('laporanBulanans'));
     }
 
@@ -39,7 +39,7 @@ class LaporanBulananController extends Controller
             // Handle file upload
             if ($request->hasFile('file_laporan')) {
                 $file = $request->file('file_laporan');
-                $fileName = time() . '_' . $file->getClientOriginalName();
+                $fileName = time().'_'.$file->getClientOriginalName();
                 $file->storeAs('laporan-bulanan', $fileName, 'public');
                 $validated['file_laporan'] = $fileName;
             }
@@ -52,7 +52,7 @@ class LaporanBulananController extends Controller
         } catch (\Exception $e) {
             return back()
                 ->withInput()
-                ->with('error', 'Gagal menambahkan laporan: ' . $e->getMessage());
+                ->with('error', 'Gagal menambahkan laporan: '.$e->getMessage());
         }
     }
 
@@ -83,13 +83,13 @@ class LaporanBulananController extends Controller
             // Handle file upload
             if ($request->hasFile('file_laporan')) {
                 // Delete old file
-                if ($laporanBulanan->file_laporan && Storage::disk('public')->exists('laporan-bulanan/' . $laporanBulanan->file_laporan)) {
-                    Storage::disk('public')->delete('laporan-bulanan/' . $laporanBulanan->file_laporan);
+                if ($laporanBulanan->file_laporan && Storage::disk('public')->exists('laporan-bulanan/'.$laporanBulanan->file_laporan)) {
+                    Storage::disk('public')->delete('laporan-bulanan/'.$laporanBulanan->file_laporan);
                 }
 
                 // Upload new file
                 $file = $request->file('file_laporan');
-                $fileName = time() . '_' . $file->getClientOriginalName();
+                $fileName = time().'_'.$file->getClientOriginalName();
                 $file->storeAs('laporan-bulanan', $fileName, 'public');
                 $validated['file_laporan'] = $fileName;
             }
@@ -102,7 +102,7 @@ class LaporanBulananController extends Controller
         } catch (\Exception $e) {
             return back()
                 ->withInput()
-                ->with('error', 'Gagal memperbarui laporan: ' . $e->getMessage());
+                ->with('error', 'Gagal memperbarui laporan: '.$e->getMessage());
         }
     }
 
@@ -113,8 +113,8 @@ class LaporanBulananController extends Controller
     {
         try {
             // Delete file
-            if ($laporanBulanan->file_laporan && Storage::disk('public')->exists('laporan-bulanan/' . $laporanBulanan->file_laporan)) {
-                Storage::disk('public')->delete('laporan-bulanan/' . $laporanBulanan->file_laporan);
+            if ($laporanBulanan->file_laporan && Storage::disk('public')->exists('laporan-bulanan/'.$laporanBulanan->file_laporan)) {
+                Storage::disk('public')->delete('laporan-bulanan/'.$laporanBulanan->file_laporan);
             }
 
             $laporanBulanan->delete();
@@ -124,7 +124,7 @@ class LaporanBulananController extends Controller
                 ->with('success', 'Laporan bulanan berhasil dihapus!');
         } catch (\Exception $e) {
             return back()
-                ->with('error', 'Gagal menghapus laporan: ' . $e->getMessage());
+                ->with('error', 'Gagal menghapus laporan: '.$e->getMessage());
         }
     }
 }

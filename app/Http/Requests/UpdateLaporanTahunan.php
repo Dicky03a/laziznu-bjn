@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Livewire\Attributes\Rule;
 
 class UpdateLaporanTahunan extends FormRequest
 {

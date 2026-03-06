@@ -43,8 +43,8 @@ class PengurusController extends Controller
 
         $pengurusList = $query->ordered()->paginate(15)->withQueryString();
 
-        $jabatanList  = Pengurus::JABATAN_LIST;
-        $periodeList  = Pengurus::distinct()
+        $jabatanList = Pengurus::JABATAN_LIST;
+        $periodeList = Pengurus::distinct()
             ->orderBy('masa_khidmat_mulai')
             ->pluck('masa_khidmat_mulai')
             ->unique();
@@ -59,7 +59,7 @@ class PengurusController extends Controller
     public function create(): View
     {
         $jabatanList = Pengurus::JABATAN_LIST;
-        $bidangList  = Pengurus::BIDANG_LIST;
+        $bidangList = Pengurus::BIDANG_LIST;
 
         return view('admin.pengurus.create', compact('jabatanList', 'bidangList'));
     }
@@ -91,7 +91,7 @@ class PengurusController extends Controller
     public function edit(Pengurus $pengurus): View
     {
         $jabatanList = Pengurus::JABATAN_LIST;
-        $bidangList  = Pengurus::BIDANG_LIST;
+        $bidangList = Pengurus::BIDANG_LIST;
 
         return view('admin.pengurus.edit', compact('pengurus', 'jabatanList', 'bidangList'));
     }

@@ -95,15 +95,15 @@ class Program extends Model
     public function getThumbnailUrlAttribute(): string
     {
         return $this->thumbnail
-            ? asset('storage/' . $this->thumbnail)
+            ? asset('storage/'.$this->thumbnail)
             : asset('images/default-program.jpg');
     }
 
     public static function generateSlug(string $nama): string
     {
         $slug = Str::slug($nama);
-        $count = static::where('slug', 'like', $slug . '%')->count();
+        $count = static::where('slug', 'like', $slug.'%')->count();
 
-        return $count > 0 ? $slug . '-' . ($count + 1) : $slug;
+        return $count > 0 ? $slug.'-'.($count + 1) : $slug;
     }
 }

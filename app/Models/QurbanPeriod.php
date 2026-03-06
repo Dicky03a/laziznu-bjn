@@ -24,10 +24,10 @@ class QurbanPeriod extends Model
     ];
 
     protected $casts = [
-        'is_active'           => 'boolean',
-        'tahun'               => 'integer',
-        'tanggal_buka'        => 'date',
-        'tanggal_tutup'       => 'date',
+        'is_active' => 'boolean',
+        'tahun' => 'integer',
+        'tanggal_buka' => 'date',
+        'tanggal_tutup' => 'date',
         'tanggal_pelaksanaan' => 'date',
     ];
 
@@ -59,7 +59,7 @@ class QurbanPeriod extends Model
         }
 
         if ($this->tanggal_tutup && $now > $this->tanggal_tutup->toDateString()) {
-            return false; 
+            return false;
         }
 
         return true;
@@ -87,10 +87,10 @@ class QurbanPeriod extends Model
     public function getStatusDaftarLabelAttribute(): string
     {
         return match ($this->status_daftar) {
-            'buka'        => 'Pendaftaran Terbuka',
-            'belum_buka'  => 'Segera Dibuka',
-            'tutup'       => 'Pendaftaran Ditutup',
-            default       => 'Tidak Aktif',
+            'buka' => 'Pendaftaran Terbuka',
+            'belum_buka' => 'Segera Dibuka',
+            'tutup' => 'Pendaftaran Ditutup',
+            default => 'Tidak Aktif',
         };
     }
 

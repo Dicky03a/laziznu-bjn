@@ -16,13 +16,13 @@ return new class extends Migration
 
             $table->enum('jenis', ['sapi', 'unta', 'kambing', 'domba']);
 
-            $table->string('nama');                              
+            $table->string('nama');
             $table->text('deskripsi')->nullable();
-            $table->string('berat_estimasi', 50)->nullable();    
+            $table->string('berat_estimasi', 50)->nullable();
             $table->string('gambar')->nullable();
 
-            $table->unsignedBigInteger('harga_total');           
-            $table->unsignedBigInteger('harga_per_slot');        
+            $table->unsignedBigInteger('harga_total');
+            $table->unsignedBigInteger('harga_per_slot');
 
             // Slot — diatur otomatis berdasarkan jenis
             // sapi/unta = 7, kambing/domba = 1

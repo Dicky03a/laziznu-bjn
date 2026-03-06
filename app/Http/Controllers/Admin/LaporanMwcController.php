@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreLaporanMwc;
 use App\Http\Requests\UpdateLaporanMwc;
 use App\Models\LaporanMwc;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class LaporanMwcController extends Controller
@@ -17,6 +16,7 @@ class LaporanMwcController extends Controller
     public function index()
     {
         $laporanMwc = LaporanMwc::latest()->paginate(10);
+
         return view('admin.laporan-mwc.index', compact('laporanMwc'));
     }
 
@@ -39,7 +39,7 @@ class LaporanMwcController extends Controller
             // Handle file upload
             if ($request->hasFile('file_laporan')) {
                 $file = $request->file('file_laporan');
-                $fileName = time() . '_' . $file->getClientOriginalName();
+                $fileName = time().'_'.$file->getClientOriginalName();
                 $file->storeAs('laporan-mwc', $fileName, 'public');
                 $validated['file_laporan'] = $fileName;
             }
@@ -52,7 +52,7 @@ class LaporanMwcController extends Controller
         } catch (\Exception $e) {
             return back()
                 ->withInput()
-                ->with('error', 'Gagal menambahkan laporan: ' . $e->getMessage());
+                ->with('error', 'Gagal menambahkan laporan: '.$e->getMessage());
         }
     }
 
@@ -83,13 +83,13 @@ class LaporanMwcController extends Controller
             // Handle file upload
             if ($request->hasFile('file_laporan')) {
                 // Delete old file
-                if ($laporanMwc->file_laporan && Storage::disk('public')->exists('laporan-mwc/' . $laporanMwc->file_laporan)) {
-                    Storage::disk('public')->delete('laporan-mwc/' . $laporanMwc->file_laporan);
+                if ($laporanMwc->file_laporan && Storage::disk('public')->exists('laporan-mwc/'.$laporanMwc->file_laporan)) {
+                    Storage::disk('public')->delete('laporan-mwc/'.$laporanMwc->file_laporan);
                 }
 
                 // Upload new file
                 $file = $request->file('file_laporan');
-                $fileName = time() . '_' . $file->getClientOriginalName();
+                $fileName = time().'_'.$file->getClientOriginalName();
                 $file->storeAs('laporan-mwc', $fileName, 'public');
                 $validated['file_laporan'] = $fileName;
             }
@@ -102,7 +102,7 @@ class LaporanMwcController extends Controller
         } catch (\Exception $e) {
             return back()
                 ->withInput()
-                ->with('error', 'Gagal memperbarui laporan: ' . $e->getMessage());
+                ->with('error', 'Gagal memperbarui laporan: '.$e->getMessage());
         }
     }
 
@@ -113,8 +113,8 @@ class LaporanMwcController extends Controller
     {
         try {
             // Delete file
-            if ($laporanMwc->file_laporan && Storage::disk('public')->exists('laporan-mwc/' . $laporanMwc->file_laporan)) {
-                Storage::disk('public')->delete('laporan-mwc/' . $laporanMwc->file_laporan);
+            if ($laporanMwc->file_laporan && Storage::disk('public')->exists('laporan-mwc/'.$laporanMwc->file_laporan)) {
+                Storage::disk('public')->delete('laporan-mwc/'.$laporanMwc->file_laporan);
             }
 
             $laporanMwc->delete();
@@ -124,7 +124,7 @@ class LaporanMwcController extends Controller
                 ->with('success', 'Laporan MWC berhasil dihapus!');
         } catch (\Exception $e) {
             return back()
-                ->with('error', 'Gagal menghapus laporan: ' . $e->getMessage());
+                ->with('error', 'Gagal menghapus laporan: '.$e->getMessage());
         }
     }
 }

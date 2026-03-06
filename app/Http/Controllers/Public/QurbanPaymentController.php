@@ -10,41 +10,41 @@ use App\Services\QurbanService;
 
 class QurbanPaymentController extends Controller
 {
-      public function __construct(
-            protected QurbanService $qurbanService
-      ) {}
+    public function __construct(
+        protected QurbanService $qurbanService
+    ) {}
 
-      public function show(string $kode)
-      {
-            $registration = QurbanRegistration::where('kode_registrasi', $kode)
-                  ->with(['hewan.period', 'period', 'paymentConfirmation'])
-                  ->firstOrFail();
+    public function show(string $kode)
+    {
+        $registration = QurbanRegistration::where('kode_registrasi', $kode)
+            ->with(['hewan.period', 'period', 'paymentConfirmation'])
+            ->firstOrFail();
 
-            $rekenings = Rekening::all();
+        $rekenings = Rekening::all();
 
-            return view('pages.public.qurban.payment', compact('registration', 'rekenings'));
-      }
+        return view('pages.public.qurban.payment', compact('registration', 'rekenings'));
+    }
 
-      public function confirm(StoreQurbanPaymentConfirmationRequest $request, string $kode)
-      {
-            $registration = QurbanRegistration::where('kode_registrasi', $kode)
-                  ->where('status', QurbanRegistration::STATUS_PENDING)
-                  ->firstOrFail();
+    public function confirm(StoreQurbanPaymentConfirmationRequest $request, string $kode)
+    {
+        $registration = QurbanRegistration::where('kode_registrasi', $kode)
+            ->where('status', QurbanRegistration::STATUS_PENDING)
+            ->firstOrFail();
 
-            if ($registration->paymentConfirmation) {
-                  return back()->with('error', 'Konfirmasi sudah pernah dikirim sebelumnya.');
-            }
+        if ($registration->paymentConfirmation) {
+            return back()->with('error', 'Konfirmasi sudah pernah dikirim sebelumnya.');
+        }
 
-            $data = $request->validated();
+        $data = $request->validated();
 
-            if ($request->hasFile('bukti_transfer')) {
-                  $data['bukti_transfer_file'] = $request->file('bukti_transfer');
-            }
+        if ($request->hasFile('bukti_transfer')) {
+            $data['bukti_transfer_file'] = $request->file('bukti_transfer');
+        }
 
-            $this->qurbanService->storePaymentConfirmation($data, $registration);
+        $this->qurbanService->storePaymentConfirmation($data, $registration);
 
-            return redirect()
-                  ->route('qurban.payment', $kode)
-                  ->with('success', 'Konfirmasi transfer berhasil dikirim! Tim kami akan memverifikasi dalam 1×24 jam.');
-      }
+        return redirect()
+            ->route('qurban.payment', $kode)
+            ->with('success', 'Konfirmasi transfer berhasil dikirim! Tim kami akan memverifikasi dalam 1×24 jam.');
+    }
 }

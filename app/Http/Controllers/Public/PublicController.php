@@ -46,7 +46,7 @@ class PublicController extends Controller
         $pengurusList = Pengurus::active()
             ->ordered()
             ->get()
-            ->groupBy(fn($p) => "{$p->masa_khidmat_mulai}-{$p->masa_khidmat_selesai}");
+            ->groupBy(fn ($p) => "{$p->masa_khidmat_mulai}-{$p->masa_khidmat_selesai}");
 
         $noSk = Pengurus::active()->value('no_sk');
 
@@ -58,7 +58,7 @@ class PublicController extends Controller
         $pengurusByJabatan = Pengurus::active()
             ->when(
                 $periodeAktif,
-                fn($q) => $q
+                fn ($q) => $q
                     ->where('masa_khidmat_mulai', $periodeAktif->masa_khidmat_mulai)
                     ->where('masa_khidmat_selesai', $periodeAktif->masa_khidmat_selesai)
             )
@@ -121,6 +121,7 @@ class PublicController extends Controller
     public function laporanbulanan()
     {
         $laporanBulanan = LaporanBulanan::latest()->get();
+
         return view('pages.public.laporan.laporanbulanan', compact('laporanBulanan'));
     }
 
@@ -134,6 +135,7 @@ class PublicController extends Controller
     public function statusmwcranting()
     {
         $laporanMwc = LaporanMwc::latest()->get();
+
         return view('pages.public.laporan.statusmwcranting', compact('laporanMwc'));
     }
 

@@ -10,13 +10,13 @@ return new class extends Migration
     {
         Schema::create('qurban_periods', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');                              
-            $table->smallInteger('tahun');                      
+            $table->string('nama');
+            $table->smallInteger('tahun');
             $table->text('deskripsi')->nullable();
-            $table->boolean('is_active')->default(false);        
-            $table->date('tanggal_buka')->nullable();           
-            $table->date('tanggal_tutup')->nullable();         
-            $table->date('tanggal_pelaksanaan')->nullable();    
+            $table->boolean('is_active')->default(false);
+            $table->date('tanggal_buka')->nullable();
+            $table->date('tanggal_tutup')->nullable();
+            $table->date('tanggal_pelaksanaan')->nullable();
             $table->timestamps();
 
             $table->index('is_active');

@@ -29,34 +29,35 @@ class QurbanHewan extends Model
     ];
 
     protected $casts = [
-        'is_active'      => 'boolean',
-        'harga_total'    => 'integer',
+        'is_active' => 'boolean',
+        'harga_total' => 'integer',
         'harga_per_slot' => 'integer',
-        'max_peserta'    => 'integer',
+        'max_peserta' => 'integer',
     ];
 
-    const JENIS_PATUNGAN    = ['sapi', 'unta'];  
-    const JENIS_PERORANGAN  = ['kambing', 'domba']; 
+    const JENIS_PATUNGAN = ['sapi', 'unta'];
+
+    const JENIS_PERORANGAN = ['kambing', 'domba'];
 
     const MAX_PESERTA_MAP = [
-        'sapi'   => 7,
-        'unta'   => 7,
+        'sapi' => 7,
+        'unta' => 7,
         'kambing' => 1,
-        'domba'  => 1,
+        'domba' => 1,
     ];
 
     const JENIS_LABELS = [
-        'sapi'   => 'Sapi',
-        'unta'   => 'Unta',
+        'sapi' => 'Sapi',
+        'unta' => 'Unta',
         'kambing' => 'Kambing',
-        'domba'  => 'Domba',
+        'domba' => 'Domba',
     ];
 
     const JENIS_ICONS = [
-        'sapi'   => '🐄',
-        'unta'   => '🐪',
+        'sapi' => '🐄',
+        'unta' => '🐪',
         'kambing' => '🐐',
-        'domba'  => '🐑',
+        'domba' => '🐑',
     ];
 
     public function period(): BelongsTo
@@ -133,24 +134,27 @@ class QurbanHewan extends Model
 
     public function getProgressPersenAttribute(): float
     {
-        if ($this->max_peserta === 0) return 0;
+        if ($this->max_peserta === 0) {
+            return 0;
+        }
+
         return min(100, round(($this->slot_terisi / $this->max_peserta) * 100));
     }
 
     public function getHargaTotalFormatAttribute(): string
     {
-        return 'Rp ' . number_format($this->harga_total, 0, ',', '.');
+        return 'Rp '.number_format($this->harga_total, 0, ',', '.');
     }
 
     public function getHargaPerSlotFormatAttribute(): string
     {
-        return 'Rp ' . number_format($this->harga_per_slot, 0, ',', '.');
+        return 'Rp '.number_format($this->harga_per_slot, 0, ',', '.');
     }
 
     public function getGambarUrlAttribute(): string
     {
         return $this->gambar
-            ? asset('storage/' . $this->gambar)
+            ? asset('storage/'.$this->gambar)
             : asset('images/default-hewan.jpg');
     }
 
@@ -158,29 +162,36 @@ class QurbanHewan extends Model
     {
         $sisa = $this->slot_tersedia;
 
-        if ($sisa <= 0) return 'penuh';
-        if ($sisa === 1) return 'hampir_penuh';
-        if ($sisa <= $this->max_peserta / 2) return 'terbatas';
+        if ($sisa <= 0) {
+            return 'penuh';
+        }
+        if ($sisa === 1) {
+            return 'hampir_penuh';
+        }
+        if ($sisa <= $this->max_peserta / 2) {
+            return 'terbatas';
+        }
+
         return 'tersedia';
     }
 
     public function getStatusSlotLabelAttribute(): string
     {
         return match ($this->status_slot) {
-            'penuh'       => 'PENUH',
+            'penuh' => 'PENUH',
             'hampir_penuh' => '1 Slot Tersisa!',
-            'terbatas'    => $this->slot_tersedia . ' Slot Tersisa',
-            default       => 'Tersedia',
+            'terbatas' => $this->slot_tersedia.' Slot Tersisa',
+            default => 'Tersedia',
         };
     }
 
     public function getStatusSlotColorAttribute(): string
     {
         return match ($this->status_slot) {
-            'penuh'        => 'red',
+            'penuh' => 'red',
             'hampir_penuh' => 'orange',
-            'terbatas'     => 'yellow',
-            default        => 'emerald',
+            'terbatas' => 'yellow',
+            default => 'emerald',
         };
     }
 
@@ -190,7 +201,7 @@ class QurbanHewan extends Model
         $hargaTotal = (int) $data['harga_total'];
 
         return array_merge($data, [
-            'max_peserta'    => $maxPeserta,
+            'max_peserta' => $maxPeserta,
             'harga_per_slot' => (int) ceil($hargaTotal / $maxPeserta),
         ]);
     }

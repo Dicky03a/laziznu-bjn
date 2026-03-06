@@ -36,12 +36,12 @@ class QurbanPaymentConfirmation extends Model
     public function getBuktiUrlAttribute(): ?string
     {
         return $this->bukti_transfer
-            ? asset('storage/' . $this->bukti_transfer)
+            ? asset('storage/'.$this->bukti_transfer)
             : null;
     }
 
     public function getJumlahFormatAttribute(): string
     {
-        return 'Rp ' . number_format($this->jumlah_transfer, 0, ',', '.');
+        return 'Rp '.number_format($this->jumlah_transfer, 0, ',', '.');
     }
 }

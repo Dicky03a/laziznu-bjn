@@ -1,14 +1,13 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
-// Admin Controllers
 use App\Http\Controllers\Admin\DokumenController as AdminDokumenController;
-use App\Http\Controllers\Admin\NewsController as AdminNewsController;
-use App\Http\Controllers\Admin\PengurusController;
+// Admin Controllers
 use App\Http\Controllers\Admin\LaporanBulananController as AdminLaporanBulananController;
 use App\Http\Controllers\Admin\LaporanMwcController as AdminLaporanMwcController;
 use App\Http\Controllers\Admin\LaporanTahunanController;
+use App\Http\Controllers\Admin\MustahikController;
+use App\Http\Controllers\Admin\NewsController as AdminNewsController;
+use App\Http\Controllers\Admin\PengurusController;
 use App\Http\Controllers\Admin\PetaSebaranController;
 use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
 use App\Http\Controllers\Admin\ProgramController;
@@ -18,9 +17,8 @@ use App\Http\Controllers\Admin\QurbanRegistrationController;
 use App\Http\Controllers\Admin\RekeningController as AdminRekeningController;
 use App\Http\Controllers\Admin\SettingControllerProgram;
 use App\Http\Controllers\Admin\TransactionController;
-use App\Http\Controllers\Admin\MustahikController;
-// Public Controllers
 use App\Http\Controllers\Public\DonasiController;
+// Public Controllers
 use App\Http\Controllers\Public\FidyahController;
 use App\Http\Controllers\Public\InfaqController;
 use App\Http\Controllers\Public\PaymentController;
@@ -28,6 +26,7 @@ use App\Http\Controllers\Public\PublicController as PublicPublicController;
 use App\Http\Controllers\Public\QurbanController;
 use App\Http\Controllers\Public\QurbanPaymentController;
 use App\Http\Controllers\Public\ZakatController;
+use Illuminate\Support\Facades\Route;
 
 // Public Routes
 Route::controller(PublicPublicController::class)->group(function () {
@@ -46,7 +45,6 @@ Route::controller(PublicPublicController::class)->group(function () {
     Route::get('/disclaimer', 'disclaimer')->name('disclaimer');
     Route::get('/berita', 'berita')->name('berita.public.index');
 });
-
 
 // News & Dokumen Routes
 Route::get('/berita/{news:slug}', [AdminNewsController::class, 'show'])->name('berita.show');
@@ -94,7 +92,7 @@ Route::prefix('qurban')->name('qurban.')->group(function () {
 // Admin Routes (Protected by auth & verified middleware)
 Route::middleware(['auth', 'verified'])->group(function () {
 
-    Route::get('dashboard', fn() => view('dashboard'))->name('dashboard');
+    Route::get('dashboard', fn () => view('dashboard'))->name('dashboard');
 
     Route::resource('profiles', AdminProfileController::class);
     Route::resource('rekenings', AdminRekeningController::class);
@@ -168,4 +166,4 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/mustahiks/desa/{kecamatanId}', [MustahikController::class, 'getDesa']);
 });
 
-require __DIR__ . '/settings.php';
+require __DIR__.'/settings.php';

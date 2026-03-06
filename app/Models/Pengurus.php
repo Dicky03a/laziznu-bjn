@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Storage;
 
 class Pengurus extends Model
@@ -31,9 +31,9 @@ class Pengurus extends Model
     ];
 
     protected $casts = [
-        'is_active'           => 'boolean',
-        'urutan'              => 'integer',
-        'masa_khidmat_mulai'  => 'integer',
+        'is_active' => 'boolean',
+        'urutan' => 'integer',
+        'masa_khidmat_mulai' => 'integer',
         'masa_khidmat_selesai' => 'integer',
     ];
 

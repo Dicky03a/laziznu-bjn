@@ -43,12 +43,17 @@ class Transaction extends Model
     ];
 
     const STATUS_PENDING = 'pending';
+
     const STATUS_CONFIRMED = 'confirmed';
+
     const STATUS_REJECTED = 'rejected';
 
     const TYPE_ZAKAT = 'zakat';
+
     const TYPE_INFAQ = 'infaq';
+
     const TYPE_DONASI = 'donasi';
+
     const TYPE_FIDYAH = 'fidyah';
 
     const TYPE_LABELS = [
@@ -144,7 +149,7 @@ class Transaction extends Model
 
     public function getJumlahFormatAttribute(): string
     {
-        return 'Rp ' . number_format($this->jumlah, 0, ',', '.');
+        return 'Rp '.number_format($this->jumlah, 0, ',', '.');
     }
 
     public function getTypeLabelAttribute(): string

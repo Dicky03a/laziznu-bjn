@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('qurban_registrations', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_registrasi', 20)->unique();     
+            $table->string('kode_registrasi', 20)->unique();
             $table->foreignId('hewan_id')
                 ->constrained('qurban_hewans')
                 ->cascadeOnDelete();
@@ -20,7 +20,7 @@ return new class extends Migration
                 ->cascadeOnDelete();
 
             $table->string('nama_peserta');
-            $table->string('atas_nama')->nullable();             
+            $table->string('atas_nama')->nullable();
             $table->string('email')->nullable();
             $table->string('telepon', 20)->nullable();
             $table->text('alamat')->nullable();
@@ -32,7 +32,7 @@ return new class extends Migration
             // Untuk kambing: 1 slot dari 1 (langsung penuh)
             $table->unsignedTinyInteger('jumlah_slot')->default(1);
             $table->unsignedBigInteger('harga_per_slot');
-            $table->unsignedBigInteger('total_bayar');          
+            $table->unsignedBigInteger('total_bayar');
 
             $table->enum('status', ['pending', 'confirmed', 'cancelled'])->default('pending');
             $table->text('catatan_admin')->nullable();

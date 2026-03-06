@@ -11,114 +11,114 @@ use Illuminate\Http\Request;
 
 class QurbanHewanController extends Controller
 {
-      public function __construct(
-            protected QurbanService $qurbanService
-      ) {}
+    public function __construct(
+        protected QurbanService $qurbanService
+    ) {}
 
-      public function index(Request $request)
-      {
-            $periods = QurbanPeriod::orderByDesc('tahun')->get();
+    public function index(Request $request)
+    {
+        $periods = QurbanPeriod::orderByDesc('tahun')->get();
 
-            $hewan = QurbanHewan::with('period')
-                  ->when($request->period_id, fn($q) => $q->where('period_id', $request->period_id))
-                  ->when($request->jenis, fn($q) => $q->ofJenis($request->jenis))
-                  ->withCount([
-                        'registrations as slot_pending'   => fn($q) => $q->pending(),
-                        'registrations as slot_confirmed'  => fn($q) => $q->confirmed(),
-                        'registrations as slot_active'     => fn($q) => $q->active(),
-                  ])
-                  ->withSum(['registrations as terkumpul' => fn($q) => $q->confirmed()], 'total_bayar')
-                  ->latest()
-                  ->paginate(15)
-                  ->withQueryString();
+        $hewan = QurbanHewan::with('period')
+            ->when($request->period_id, fn ($q) => $q->where('period_id', $request->period_id))
+            ->when($request->jenis, fn ($q) => $q->ofJenis($request->jenis))
+            ->withCount([
+                'registrations as slot_pending' => fn ($q) => $q->pending(),
+                'registrations as slot_confirmed' => fn ($q) => $q->confirmed(),
+                'registrations as slot_active' => fn ($q) => $q->active(),
+            ])
+            ->withSum(['registrations as terkumpul' => fn ($q) => $q->confirmed()], 'total_bayar')
+            ->latest()
+            ->paginate(15)
+            ->withQueryString();
 
-            return view('admin.qurban.hewan.index', compact('hewan', 'periods'));
-      }
+        return view('admin.qurban.hewan.index', compact('hewan', 'periods'));
+    }
 
-      public function create(Request $request)
-      {
-            $periods = QurbanPeriod::orderByDesc('tahun')->get();
-            $selectedPeriod = $request->period_id
-                  ? QurbanPeriod::find($request->period_id)
-                  : QurbanPeriod::active()->first();
+    public function create(Request $request)
+    {
+        $periods = QurbanPeriod::orderByDesc('tahun')->get();
+        $selectedPeriod = $request->period_id
+              ? QurbanPeriod::find($request->period_id)
+              : QurbanPeriod::active()->first();
 
-            return view('admin.qurban.hewan.create', compact('periods', 'selectedPeriod'));
-      }
+        return view('admin.qurban.hewan.create', compact('periods', 'selectedPeriod'));
+    }
 
-      public function store(StoreQurbanHewanRequest $request)
-      {
-            $validated = $request->validated();
-            $validated['is_active'] = $request->boolean('is_active', true);
+    public function store(StoreQurbanHewanRequest $request)
+    {
+        $validated = $request->validated();
+        $validated['is_active'] = $request->boolean('is_active', true);
 
-            // Auto-set max_peserta dan harga_per_slot dari jenis
-            $validated = QurbanHewan::buildFromJenis($validated);
+        // Auto-set max_peserta dan harga_per_slot dari jenis
+        $validated = QurbanHewan::buildFromJenis($validated);
 
-            if ($request->hasFile('gambar')) {
-                  $validated['gambar'] = $request->file('gambar')
-                        ->store('qurban/hewan', 'public');
-            }
+        if ($request->hasFile('gambar')) {
+            $validated['gambar'] = $request->file('gambar')
+                ->store('qurban/hewan', 'public');
+        }
 
-            $validated['period_id'] = $request->period_id;
-            QurbanHewan::create($validated);
+        $validated['period_id'] = $request->period_id;
+        QurbanHewan::create($validated);
 
-            return redirect()
-                  ->route('qurban.binatang.index')
-                  ->with('success', 'Hewan qurban berhasil ditambahkan.');
-      }
+        return redirect()
+            ->route('qurban.binatang.index')
+            ->with('success', 'Hewan qurban berhasil ditambahkan.');
+    }
 
-      public function edit(QurbanHewan $hewan)
-      {
-            $periods = QurbanPeriod::orderByDesc('tahun')->get();
-            $summary = $this->qurbanService->getSlotSummary($hewan);
+    public function edit(QurbanHewan $hewan)
+    {
+        $periods = QurbanPeriod::orderByDesc('tahun')->get();
+        $summary = $this->qurbanService->getSlotSummary($hewan);
 
-            return view('admin.qurban.hewan.create', compact('hewan', 'periods', 'summary'));
-      }
+        return view('admin.qurban.hewan.create', compact('hewan', 'periods', 'summary'));
+    }
 
-      public function update(StoreQurbanHewanRequest $request, QurbanHewan $hewan)
-      {
-            $validated              = $request->validated();
-            $validated['is_active'] = $request->boolean('is_active');
-            $validated['period_id'] = $request->period_id;
+    public function update(StoreQurbanHewanRequest $request, QurbanHewan $hewan)
+    {
+        $validated = $request->validated();
+        $validated['is_active'] = $request->boolean('is_active');
+        $validated['period_id'] = $request->period_id;
 
-            // Recalculate slot & harga jika jenis atau harga berubah
-            $validated = QurbanHewan::buildFromJenis($validated);
+        // Recalculate slot & harga jika jenis atau harga berubah
+        $validated = QurbanHewan::buildFromJenis($validated);
 
-            if ($request->hasFile('gambar')) {
-                  if ($hewan->gambar) {
-                        \Storage::disk('public')->delete($hewan->gambar);
-                  }
-                  $validated['gambar'] = $request->file('gambar')
-                        ->store('qurban/hewan', 'public');
-            }
-
-            $hewan->update($validated);
-
-            return redirect()
-                  ->route('qurban.binatang.index')
-                  ->with('success', 'Data hewan berhasil diperbarui.');
-      }
-
-      public function destroy(QurbanHewan $hewan)
-      {
-            if ($hewan->confirmedRegistrations()->exists()) {
-                  return back()->with('error', 'Tidak dapat menghapus hewan yang memiliki pendaftar terkonfirmasi.');
-            }
-
+        if ($request->hasFile('gambar')) {
             if ($hewan->gambar) {
-                  \Storage::disk('public')->delete($hewan->gambar);
+                \Storage::disk('public')->delete($hewan->gambar);
             }
+            $validated['gambar'] = $request->file('gambar')
+                ->store('qurban/hewan', 'public');
+        }
 
-            $hewan->delete();
+        $hewan->update($validated);
 
-            return redirect()
-                  ->route('qurban.binatang.index')
-                  ->with('success', 'Hewan berhasil dihapus.');
-      }
+        return redirect()
+            ->route('qurban.binatang.index')
+            ->with('success', 'Data hewan berhasil diperbarui.');
+    }
 
-      public function toggleActive(QurbanHewan $hewan)
-      {
-            $hewan->update(['is_active' => ! $hewan->is_active]);
+    public function destroy(QurbanHewan $hewan)
+    {
+        if ($hewan->confirmedRegistrations()->exists()) {
+            return back()->with('error', 'Tidak dapat menghapus hewan yang memiliki pendaftar terkonfirmasi.');
+        }
 
-            return back()->with('success', 'Status hewan diperbarui.');
-      }
+        if ($hewan->gambar) {
+            \Storage::disk('public')->delete($hewan->gambar);
+        }
+
+        $hewan->delete();
+
+        return redirect()
+            ->route('qurban.binatang.index')
+            ->with('success', 'Hewan berhasil dihapus.');
+    }
+
+    public function toggleActive(QurbanHewan $hewan)
+    {
+        $hewan->update(['is_active' => ! $hewan->is_active]);
+
+        return back()->with('success', 'Status hewan diperbarui.');
+    }
 }

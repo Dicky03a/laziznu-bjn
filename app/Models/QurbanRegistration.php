@@ -38,24 +38,26 @@ class QurbanRegistration extends Model
     ];
 
     protected $casts = [
-        'jumlah_slot'    => 'integer',
+        'jumlah_slot' => 'integer',
         'harga_per_slot' => 'integer',
-        'total_bayar'    => 'integer',
-        'confirmed_at'   => 'datetime',
+        'total_bayar' => 'integer',
+        'confirmed_at' => 'datetime',
     ];
 
-    const STATUS_PENDING   = 'pending';
+    const STATUS_PENDING = 'pending';
+
     const STATUS_CONFIRMED = 'confirmed';
+
     const STATUS_CANCELLED = 'cancelled';
 
     const STATUS_LABELS = [
-        'pending'   => 'Menunggu Konfirmasi',
+        'pending' => 'Menunggu Konfirmasi',
         'confirmed' => 'Terkonfirmasi',
         'cancelled' => 'Dibatalkan',
     ];
 
     const STATUS_COLORS = [
-        'pending'   => 'yellow',
+        'pending' => 'yellow',
         'confirmed' => 'emerald',
         'cancelled' => 'red',
     ];
@@ -133,12 +135,12 @@ class QurbanRegistration extends Model
 
     public function getTotalBayarFormatAttribute(): string
     {
-        return 'Rp ' . number_format($this->total_bayar, 0, ',', '.');
+        return 'Rp '.number_format($this->total_bayar, 0, ',', '.');
     }
 
     public function getHargaPerSlotFormatAttribute(): string
     {
-        return 'Rp ' . number_format($this->harga_per_slot, 0, ',', '.');
+        return 'Rp '.number_format($this->harga_per_slot, 0, ',', '.');
     }
 
     public function getNamaTampilAttribute(): string
@@ -148,7 +150,7 @@ class QurbanRegistration extends Model
 
     public static function generateKode(): string
     {
-        $date   = now()->format('Ymd');
+        $date = now()->format('Ymd');
         $random = strtoupper(substr(md5(uniqid(mt_rand(), true)), 0, 6));
 
         return "QRB-{$date}-{$random}";
