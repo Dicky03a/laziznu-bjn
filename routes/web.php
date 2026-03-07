@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DokumenController as AdminDokumenController;
 // Admin Controllers
+use App\Http\Controllers\Admin\ExportReportController;
 use App\Http\Controllers\Admin\LaporanBulananController as AdminLaporanBulananController;
 use App\Http\Controllers\Admin\LaporanMwcController as AdminLaporanMwcController;
 use App\Http\Controllers\Admin\LaporanTahunanController;
@@ -96,7 +97,11 @@ Route::prefix('qurban')->name('qurban.')->group(function () {
 // Admin Routes (Protected by auth & verified middleware)
 Route::middleware(['auth', 'verified'])->group(function () {
 
-    Route::get('dashboard', fn() => view('dashboard'))->name('dashboard');
+    Route::get('dashboard', fn () => view('dashboard'))->name('dashboard');
+
+    // Export Reports
+    Route::get('laporan/export-dskl', [ExportReportController::class, 'exportDskl'])->name('laporan.export-dskl');
+    Route::get('laporan/export-infaq-shodaqah', [ExportReportController::class, 'exportInfaqShodaqah'])->name('laporan.export-infaq-shodaqah');
 
     Route::resource('profiles', AdminProfileController::class);
     Route::resource('rekenings', AdminRekeningController::class);
@@ -116,7 +121,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('transactions/{transaction}', [TransactionController::class, 'show'])->name('transactions.show');
     Route::post('transactions/{transaction}/confirm', [TransactionController::class, 'confirm'])->name('transactions.confirm');
     Route::post('transactions/{transaction}/reject', [TransactionController::class, 'reject'])->name('transactions.reject');
-
 
     // Pengurus management
     Route::resource('pengurus', PengurusController::class)
@@ -171,4 +175,4 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/mustahiks/desa/{kecamatanId}', [MustahikController::class, 'getDesa']);
 });
 
-require __DIR__ . '/settings.php';
+require __DIR__.'/settings.php';

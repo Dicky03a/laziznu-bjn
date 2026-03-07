@@ -21,9 +21,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call([
-            ProfileSeeder::class,
-            NewsSeeder::class,
-            RekeningSeeder::class,
+            SettingSeeder::class
         ]);
     }
 }

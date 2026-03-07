@@ -158,7 +158,28 @@ new class extends Component
                     <h1 class="text-2xl sm:text-3xl font-bold text-gray-900  tracking-tight">Dashboard Admin</h1>
                     <p class="text-sm text-gray-500  mt-1">{{ now()->format('l, d F Y') }}</p>
                 </div>
-                <div class="flex gap-3">
+                <div class="flex gap-3 flex-wrap">
+                    <div x-data="{ open: false }" class="relative">
+                        <button @click="open = !open" @click.away="open = false" class="inline-flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-all duration-200 font-medium text-sm shadow-sm hover:shadow-md">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            <span>Export PDF</span>
+                            <svg :class="{ 'rotate-180': open }" class="w-4 h-4 ml-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                            </svg>
+                        </button>
+                        <div x-show="open" class="absolute left-0 mt-2 w-72 bg-white rounded-lg shadow-lg border border-gray-200 z-50 py-1">
+                            <a href="{{ route('laporan.export-dskl') }}" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 transition-colors border-b border-gray-100">
+                                <div class="font-semibold text-gray-900">Export PDF DSKL</div>
+                                <div class="text-xs text-gray-500 mt-1">Dana Sosial Keagamaan</div>
+                            </a>
+                            <a href="{{ route('laporan.export-infaq-shodaqah') }}" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 transition-colors">
+                                <div class="font-semibold text-gray-900">Export PDF Infaq Shodaqoh</div>
+                                <div class="text-xs text-gray-500 mt-1">dan Peduli Bencana</div>
+                            </a>
+                        </div>
+                    </div>
                     <a href="{{ route('programs.index') }}" class="inline-flex items-center gap-2 px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-all duration-200 font-medium text-sm shadow-sm hover:shadow-md">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
