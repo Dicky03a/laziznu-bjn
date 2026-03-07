@@ -88,7 +88,7 @@
                               </div>
                               <div>
                                     <dt class="text-gray-500">Alamat</dt>
-                                    <dd class="font-semibold text-gray-900 mt-0.5">{{ $transaction->desa->nama ?? '-' }}, {{ $kecamatan }}</dd>
+                                    <dd class="font-semibold text-gray-900 mt-0.5">{{ $transaction->desa->nama ?? '-' }}, {{ $transaction->kecamatan->nama ?? '-' }}</dd>
                               </div>
                               @if($transaction->catatan)
                               <div class="col-span-2">

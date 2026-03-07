@@ -335,7 +335,8 @@
                                           <svg class="w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                           </svg>
-                                          <span>0856-4001-9811 (Ahmad Fauzan)</span>
+                                          <span>085743229703</span>
+                                          (Admin)</span>
                                     </div>
                                     <div class="flex items-center gap-2">
                                           <svg class="w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -364,7 +365,8 @@
                                           class="flex-1 py-2 bg-green-500 hover:bg-green-600 text-white text-xs font-semibold rounded-lg transition-all text-center">
                                           WhatsApp
                                     </a>
-                                    <button onclick="navigator.share({title:'LAZIZNU Bojonegoro', url:'{{ url('/') }}'})"
+                                    <button
+                                          onclick="shareWebsite()"
                                           class="flex-1 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-semibold rounded-lg transition-all">
                                           Bagikan
                                     </button>
@@ -404,6 +406,23 @@
             document.getElementById('tab-qris').className = tab === 'qris' ?
                   'px-4 py-2.5 text-sm font-semibold text-emerald-600 border-b-2 border-emerald-600 -mb-px' :
                   'px-4 py-2.5 text-sm font-semibold text-gray-400 hover:text-gray-600 -mb-px';
+      }
+
+      function shareWebsite() {
+            const shareData = {
+                  title: 'LAZIZNU Bojonegoro',
+                  text: 'Salurkan zakat, infak, dan sedekah Anda melalui LAZIZNU Bojonegoro.',
+                  url: '{{ url(' / ') }}'
+            };
+
+            if (navigator.share) {
+                  navigator.share(shareData)
+                        .catch(err => console.log('Share dibatalkan', err));
+            } else {
+                  navigator.clipboard.writeText(shareData.url)
+                        .then(() => alert('Link berhasil disalin'))
+                        .catch(() => alert('Gagal menyalin link'));
+            }
       }
 </script>
 @endpush

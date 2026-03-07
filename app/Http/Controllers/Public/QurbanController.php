@@ -31,7 +31,7 @@ class QurbanController extends Controller
             ->where('period_id', $period->id)
             ->active()
             ->withCount([
-                'registrations as slot_active' => fn ($q) => $q->active(),
+                'activeRegistrations as slot_active',
             ])
             ->get();
 

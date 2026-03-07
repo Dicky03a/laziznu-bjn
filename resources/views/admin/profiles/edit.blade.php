@@ -1,22 +1,22 @@
 <x-layouts::app :title="__('Edit Profil')">
-      <div class="min-h-screen  dark:from-zinc-900 dark:to-zinc-800 py-8 px-4">
+      <div class="min-h-screen    py-8 px-4">
             <div class="max-w-4xl mx-auto">
 
                   <!-- Breadcrumb -->
-                  <nav class="mb-6 flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
-                        <a href="{{ route('profiles.index') }}" class="hover:text-green-600 dark:hover:text-green-400 transition-colors">
+                  <nav class="mb-6 flex items-center gap-2 text-sm text-slate-600 ">
+                        <a href="{{ route('profiles.index') }}" class="hover:text-green-600  transition-colors">
                               Data Profil
                         </a>
                         <span>/</span>
-                        <a href="{{ route('profiles.show', $profile) }}" class="hover:text-green-600 dark:hover:text-green-400 transition-colors">
+                        <a href="{{ route('profiles.show', $profile) }}" class="hover:text-green-600  transition-colors">
                               Detail Profil
                         </a>
                         <span>/</span>
-                        <span class="text-slate-900 dark:text-white font-medium">Edit Profil</span>
+                        <span class="text-slate-900  font-medium">Edit Profil</span>
                   </nav>
 
                   <!-- Main Card -->
-                  <div class="bg-white dark:bg-zinc-900 rounded-2xl shadow-xl border border-slate-200 dark:border-zinc-800 overflow-hidden">
+                  <div class="bg-white  rounded-2xl shadow-xl border border-slate-200  overflow-hidden">
 
                         <!-- Header -->
                         <div class="bg-emerald-600 px-8 py-6">
@@ -30,14 +30,14 @@
                         </div>
 
                         <!-- Profile Info Banner -->
-                        <div class="bg-slate-50 dark:bg-zinc-800/50 px-8 py-4 border-b border-slate-200 dark:border-zinc-800">
+                        <div class="bg-slate-50  px-8 py-4 border-b border-slate-200 ">
                               <div class="flex items-center gap-3">
                                     <div class="w-12 h-12 bg-emerald-600 rounded-lg flex items-center justify-center flex-shrink-0">
                                           <span class="text-white font-bold text-lg">{{ substr($profile->title, 0, 2) }}</span>
                                     </div>
                                     <div>
-                                          <p class="font-semibold text-slate-900 dark:text-white">{{ $profile->title }}</p>
-                                          <p class="text-xs text-slate-500 dark:text-slate-400">ID: #{{ $profile->id }}</p>
+                                          <p class="font-semibold text-slate-900 ">{{ $profile->title }}</p>
+                                          <p class="text-xs text-slate-500 ">ID: #{{ $profile->id }}</p>
                                     </div>
                               </div>
                         </div>
@@ -49,7 +49,7 @@
 
                               <!-- Judul -->
                               <div class="space-y-2">
-                                    <label for="title" class="block text-sm font-semibold text-slate-700 dark:text-slate-300">
+                                    <label for="title" class="block text-sm font-semibold text-slate-700 ">
                                           Judul Profil <span class="text-red-500">*</span>
                                     </label>
                                     <input
@@ -58,15 +58,15 @@
                                           name="title"
                                           value="{{ old('title', $profile->title) }}"
                                           required
-                                          class="w-full px-4 py-3 border border-slate-300 dark:border-zinc-700 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent dark:bg-zinc-800 dark:text-white transition-all duration-200 placeholder:text-slate-400">
+                                          class="w-full px-4 py-3 border border-slate-300  rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent   transition-all duration-200 placeholder:text-slate-400">
                                     @error('title')
-                                    <p class="text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
+                                    <p class="text-sm text-red-600 ">{{ $message }}</p>
                                     @enderror
                               </div>
 
                               <!-- Deskripsi -->
                               <div class="space-y-2">
-                                    <label for="deskripsi" class="block text-sm font-semibold text-slate-700 dark:text-slate-300">
+                                    <label for="deskripsi" class="block text-sm font-semibold text-slate-700 ">
                                           Deskripsi Singkat <span class="text-red-500">*</span>
                                     </label>
                                     <textarea
@@ -74,9 +74,9 @@
                                           name="deskripsi"
                                           rows="4"
                                           required
-                                          class="w-full px-4 py-3 border border-slate-300 dark:border-zinc-700 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent dark:bg-zinc-800 dark:text-white transition-all duration-200 placeholder:text-slate-400 resize-none">{{ old('deskripsi', $profile->deskripsi) }}</textarea>
+                                          class="w-full px-4 py-3 border border-slate-300  rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent   transition-all duration-200 placeholder:text-slate-400 resize-none">{{ old('deskripsi', $profile->deskripsi) }}</textarea>
                                     @error('deskripsi')
-                                    <p class="text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
+                                    <p class="text-sm text-red-600 ">{{ $message }}</p>
                                     @enderror
                               </div>
 
@@ -85,7 +85,7 @@
 
                                     <!-- Tahun Berdiri -->
                                     <div class="space-y-2">
-                                          <label for="tahun_berdiri" class="block text-sm font-semibold text-slate-700 dark:text-slate-300">
+                                          <label for="tahun_berdiri" class="block text-sm font-semibold text-slate-700 ">
                                                 Tahun Berdiri <span class="text-red-500">*</span>
                                           </label>
                                           <div class="relative">
@@ -100,16 +100,16 @@
                                                       name="tahun_berdiri"
                                                       value="{{ old('tahun_berdiri', $profile->tahun_berdiri) }}"
                                                       required
-                                                      class="w-full pl-10 pr-4 py-3 border border-slate-300 dark:border-zinc-700 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent dark:bg-zinc-800 dark:text-white transition-all duration-200">
+                                                      class="w-full pl-10 pr-4 py-3 border border-slate-300  rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent   transition-all duration-200">
                                           </div>
                                           @error('tahun_berdiri')
-                                          <p class="text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
+                                          <p class="text-sm text-red-600 ">{{ $message }}</p>
                                           @enderror
                                     </div>
 
                                     <!-- Penerima Manfaat -->
                                     <div class="space-y-2">
-                                          <label for="penerima_manfaat" class="block text-sm font-semibold text-slate-700 dark:text-slate-300">
+                                          <label for="penerima_manfaat" class="block text-sm font-semibold text-slate-700 ">
                                                 Penerima Manfaat <span class="text-red-500">*</span>
                                           </label>
                                           <div class="relative">
@@ -125,16 +125,16 @@
                                                       value="{{ old('penerima_manfaat', $profile->penerima_manfaat) }}"
                                                       required
                                                       min="0"
-                                                      class="w-full pl-10 pr-4 py-3 border border-slate-300 dark:border-zinc-700 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent dark:bg-zinc-800 dark:text-white transition-all duration-200">
+                                                      class="w-full pl-10 pr-4 py-3 border border-slate-300  rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent   transition-all duration-200">
                                           </div>
                                           @error('penerima_manfaat')
-                                          <p class="text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
+                                          <p class="text-sm text-red-600 ">{{ $message }}</p>
                                           @enderror
                                     </div>
 
                                     <!-- Program Tersalurkan -->
                                     <div class="space-y-2">
-                                          <label for="program_tersalurkan" class="block text-sm font-semibold text-slate-700 dark:text-slate-300">
+                                          <label for="program_tersalurkan" class="block text-sm font-semibold text-slate-700 ">
                                                 Program Tersalurkan <span class="text-red-500">*</span>
                                           </label>
                                           <div class="relative">
@@ -150,17 +150,17 @@
                                                       value="{{ old('program_tersalurkan', $profile->program_tersalurkan) }}"
                                                       required
                                                       min="0"
-                                                      class="w-full pl-10 pr-4 py-3 border border-slate-300 dark:border-zinc-700 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent dark:bg-zinc-800 dark:text-white transition-all duration-200">
+                                                      class="w-full pl-10 pr-4 py-3 border border-slate-300  rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent   transition-all duration-200">
                                           </div>
                                           @error('program_tersalurkan')
-                                          <p class="text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
+                                          <p class="text-sm text-red-600 ">{{ $message }}</p>
                                           @enderror
                                     </div>
                               </div>
 
                               <!-- Visi -->
                               <div class="space-y-2">
-                                    <label for="visi" class="block text-sm font-semibold text-slate-700 dark:text-slate-300">
+                                    <label for="visi" class="block text-sm font-semibold text-slate-700 ">
                                           Visi Organisasi <span class="text-red-500">*</span>
                                     </label>
                                     <textarea
@@ -168,26 +168,26 @@
                                           name="visi"
                                           rows="3"
                                           required
-                                          class="w-full px-4 py-3 border border-slate-300 dark:border-zinc-700 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent dark:bg-zinc-800 dark:text-white transition-all duration-200 placeholder:text-slate-400 resize-none">{{ old('visi', $profile->visi) }}</textarea>
+                                          class="w-full px-4 py-3 border border-slate-300  rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent   transition-all duration-200 placeholder:text-slate-400 resize-none">{{ old('visi', $profile->visi) }}</textarea>
                                     @error('visi')
-                                    <p class="text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
+                                    <p class="text-sm text-red-600 ">{{ $message }}</p>
                                     @enderror
                               </div>
 
                               <!-- Divider -->
-                              <div class="border-t border-slate-200 dark:border-zinc-700 my-6"></div>
+                              <div class="border-t border-slate-200  my-6"></div>
 
                               <!-- MISI Section -->
                               <div class="space-y-4">
                                     <div class="flex items-center justify-between">
                                           <div>
-                                                <h3 class="text-lg font-semibold text-slate-900 dark:text-white flex items-center gap-2">
+                                                <h3 class="text-lg font-semibold text-slate-900  flex items-center gap-2">
                                                       <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                                       </svg>
                                                       Misi Organisasi
                                                 </h3>
-                                                <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Tambahkan misi-misi organisasi</p>
+                                                <p class="text-sm text-slate-600  mt-1">Tambahkan misi-misi organisasi</p>
                                           </div>
                                           <button
                                                 type="button"
@@ -206,19 +206,19 @@
                               </div>
 
                               <!-- Divider -->
-                              <div class="border-t border-slate-200 dark:border-zinc-700 my-6"></div>
+                              <div class="border-t border-slate-200  my-6"></div>
 
                               <!-- PILAR Section -->
                               <div class="space-y-4">
                                     <div class="flex items-center justify-between">
                                           <div>
-                                                <h3 class="text-lg font-semibold text-slate-900 dark:text-white flex items-center gap-2">
+                                                <h3 class="text-lg font-semibold text-slate-900  flex items-center gap-2">
                                                       <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                                                       </svg>
                                                       Pilar Program
                                                 </h3>
-                                                <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Tambahkan pilar-pilar program organisasi</p>
+                                                <p class="text-sm text-slate-600  mt-1">Tambahkan pilar-pilar program organisasi</p>
                                           </div>
                                           <button
                                                 type="button"
@@ -237,22 +237,22 @@
                               </div>
 
                               <!-- Info Box -->
-                              <div class="bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800/30 rounded-lg p-4 flex gap-3">
-                                    <svg class="w-5 h-5 text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <div class="bg-emerald-50  border border-emerald-200  rounded-lg p-4 flex gap-3">
+                                    <svg class="w-5 h-5 text-emerald-600  flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
-                                    <div class="text-sm text-emerald-800 dark:text-emerald-300">
+                                    <div class="text-sm text-emerald-800 ">
                                           <p class="font-semibold mb-1">Perhatian</p>
                                           <p>Pastikan semua informasi yang dimasukkan sudah benar sebelum menyimpan perubahan.</p>
                                     </div>
                               </div>
 
                               <!-- Divider -->
-                              <div class="border-t border-slate-200 dark:border-zinc-700 pt-6">
+                              <div class="border-t border-slate-200  pt-6">
                                     <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
                                           <a
                                                 href="{{ route('profiles.show', $profile) }}"
-                                                class="px-6 py-3 bg-slate-100 hover:bg-slate-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-slate-700 dark:text-slate-300 rounded-lg font-medium transition-all duration-200 flex items-center gap-2 w-full sm:w-auto justify-center">
+                                                class="px-6 py-3 bg-slate-100 hover:bg-slate-200   text-slate-700  rounded-lg font-medium transition-all duration-200 flex items-center gap-2 w-full sm:w-auto justify-center">
                                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                                                 </svg>
@@ -274,7 +274,7 @@
                   </div>
 
                   <!-- Last Updated Info -->
-                  <div class="mt-4 text-center text-sm text-slate-500 dark:text-slate-400">
+                  <div class="mt-4 text-center text-sm text-slate-500 ">
                         <p>Terakhir diperbarui: <span class="font-medium">{{ $profile->updated_at->format('d M Y, H:i') }}</span></p>
                   </div>
 
@@ -294,11 +294,11 @@
                   const container = document.getElementById('missions-container');
                   const missionDiv = document.createElement('div');
                   const currentUrutan = urutan !== null ? urutan : missionCounter;
-                  missionDiv.className = 'mission-item bg-emerald-50 dark:bg-emerald-900/10 border border-emerald-200 dark:border-emerald-800/30 rounded-lg p-4';
+                  missionDiv.className = 'mission-item bg-emerald-50  border border-emerald-200  rounded-lg p-4';
                   missionDiv.innerHTML = `
                         <div class="flex gap-3">
                               <div class="flex-1 space-y-2">
-                                    <label class="block text-sm font-medium text-slate-700 dark:text-slate-300">
+                                    <label class="block text-sm font-medium text-slate-700 ">
                                           Misi ${currentUrutan + 1}
                                     </label>
                                     <input
@@ -307,14 +307,14 @@
                                           value="${text}"
                                           placeholder="Masukkan teks misi"
                                           required
-                                          class="w-full px-4 py-2 border border-slate-300 dark:border-zinc-700 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent dark:bg-zinc-800 dark:text-white transition-all duration-200 placeholder:text-slate-400">
+                                          class="w-full px-4 py-2 border border-slate-300  rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent   transition-all duration-200 placeholder:text-slate-400">
                                     <input type="hidden" name="missions[${currentUrutan}][urutan]" value="${currentUrutan}">
                                     ${missionId ? `<input type="hidden" name="missions[${currentUrutan}][id]" value="${missionId}">` : ''}
                               </div>
                               <button
                                     type="button"
                                     onclick="removeMission(this)"
-                                    class="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-red-100 hover:bg-red-200 dark:bg-red-900/20 dark:hover:bg-red-900/30 text-red-600 dark:text-red-400 rounded-lg transition-all duration-200">
+                                    class="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-red-100 hover:bg-red-200   text-red-600  rounded-lg transition-all duration-200">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
                                     </svg>
@@ -345,12 +345,12 @@
                   const container = document.getElementById('pillars-container');
                   const pillarDiv = document.createElement('div');
                   const currentUrutan = urutan !== null ? urutan : pillarCounter;
-                  pillarDiv.className = 'pillar-item bg-emerald-50 dark:bg-emerald-900/10 border border-emerald-200 dark:border-emerald-800/30 rounded-lg p-4';
+                  pillarDiv.className = 'pillar-item bg-emerald-50  border border-emerald-200  rounded-lg p-4';
                   pillarDiv.innerHTML = `
                         <div class="flex gap-3">
                               <div class="flex-1 space-y-3">
                                     <div>
-                                          <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                                          <label class="block text-sm font-medium text-slate-700  mb-2">
                                                 Pilar ${currentUrutan + 1}
                                           </label>
                                           <input
@@ -359,14 +359,14 @@
                                                 value="${title}"
                                                 placeholder="Judul pilar"
                                                 required
-                                                class="w-full px-4 py-2 border border-slate-300 dark:border-zinc-700 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent dark:bg-zinc-800 dark:text-white transition-all duration-200 placeholder:text-slate-400">
+                                                class="w-full px-4 py-2 border border-slate-300  rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent   transition-all duration-200 placeholder:text-slate-400">
                                     </div>
                                     <div>
                                           <textarea
                                                 name="pillars[${currentUrutan}][deskripsi]"
                                                 rows="2"
                                                 placeholder="Deskripsi pilar"
-                                                class="w-full px-4 py-2 border border-slate-300 dark:border-zinc-700 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent dark:bg-zinc-800 dark:text-white transition-all duration-200 placeholder:text-slate-400 resize-none">${deskripsi}</textarea>
+                                                class="w-full px-4 py-2 border border-slate-300  rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent   transition-all duration-200 placeholder:text-slate-400 resize-none">${deskripsi}</textarea>
                                     </div>
                                     <input type="hidden" name="pillars[${currentUrutan}][urutan]" value="${currentUrutan}">
                                     ${pillarId ? `<input type="hidden" name="pillars[${currentUrutan}][id]" value="${pillarId}">` : ''}
@@ -374,7 +374,7 @@
                               <button
                                     type="button"
                                     onclick="removePillar(this)"
-                                    class="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-red-100 hover:bg-red-200 dark:bg-red-900/20 dark:hover:bg-red-900/30 text-red-600 dark:text-red-400 rounded-lg transition-all duration-200">
+                                    class="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-red-100 hover:bg-red-200   text-red-600  rounded-lg transition-all duration-200">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
                                     </svg>

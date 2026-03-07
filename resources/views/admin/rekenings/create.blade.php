@@ -4,30 +4,30 @@
 
                   <!-- Header -->
                   <div>
-                        <h1 class="text-3xl font-bold text-slate-900 dark:text-white">
+                        <h1 class="text-3xl font-bold text-slate-900 ">
                               {{ __('Tambah Rekening Baru') }}
                         </h1>
-                        <p class="text-slate-600 dark:text-slate-400 mt-2">
+                        <p class="text-slate-600  mt-2">
                               {{ __('Isi formulir di bawah untuk membuat rekening baru') }}
                         </p>
                   </div>
 
                   <!-- Form Card -->
-                  <div class="bg-white dark:bg-zinc-900 rounded-2xl shadow-xl border border-slate-200 dark:border-zinc-800 p-6 md:p-8">
+                  <div class="bg-white  rounded-2xl shadow-xl border border-slate-200  p-6 md:p-8">
                         <form action="{{ route('rekenings.store') }}" enctype="multipart/form-data" method="POST" class="space-y-6">
                               @csrf
 
                               <!-- Nama -->
                               <div>
-                                    <label for="nama" class="block text-sm font-semibold text-slate-900 dark:text-white mb-2">
+                                    <label for="nama" class="block text-sm font-semibold text-slate-900  mb-2">
                                           {{ __('Nama') }} <span class="text-red-500">*</span>
                                     </label>
                                     <input type="text" id="nama" name="nama" value="{{ old('nama') }}"
                                           placeholder="{{ __('Contoh: Bank Mandiri') }}"
-                                          class="w-full px-4 py-2.5 bg-slate-50 dark:bg-zinc-800 border border-slate-300 dark:border-zinc-700 rounded-lg text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                                          class="w-full px-4 py-2.5 bg-slate-50  border border-slate-300  rounded-lg text-slate-900  placeholder-slate-500  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                                           required>
                                     @error('nama')
-                                    <p class="text-red-600 dark:text-red-400 text-sm mt-1">{{ $message }}</p>
+                                    <p class="text-red-600  text-sm mt-1">{{ $message }}</p>
                                     @enderror
                               </div>
 
@@ -56,35 +56,35 @@
 
                               <!-- Bank Atas Nama -->
                               <div>
-                                    <label for="bank_atas_nama" class="block text-sm font-semibold text-slate-900 dark:text-white mb-2">
+                                    <label for="bank_atas_nama" class="block text-sm font-semibold text-slate-900  mb-2">
                                           {{ __('Bank Atas Nama') }} <span class="text-red-500">*</span>
                                     </label>
                                     <input type="text" id="bank_atas_nama" name="bank_atas_nama" value="{{ old('bank_atas_nama') }}"
                                           placeholder="{{ __('Nama pemilik rekening') }}"
-                                          class="w-full px-4 py-2.5 bg-slate-50 dark:bg-zinc-800 border border-slate-300 dark:border-zinc-700 rounded-lg text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                                          class="w-full px-4 py-2.5 bg-slate-50  border border-slate-300  rounded-lg text-slate-900  placeholder-slate-500  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                                           required>
                                     @error('bank_atas_nama')
-                                    <p class="text-red-600 dark:text-red-400 text-sm mt-1">{{ $message }}</p>
+                                    <p class="text-red-600  text-sm mt-1">{{ $message }}</p>
                                     @enderror
                               </div>
 
                               <!-- Nomor Rekening -->
                               <div>
-                                    <label for="nomor_rekening" class="block text-sm font-semibold text-slate-900 dark:text-white mb-2">
+                                    <label for="nomor_rekening" class="block text-sm font-semibold text-slate-900  mb-2">
                                           {{ __('Nomor Rekening') }} <span class="text-red-500">*</span>
                                     </label>
                                     <input type="text" id="nomor_rekening" name="nomor_rekening" value="{{ old('nomor_rekening') }}"
                                           placeholder="{{ __('Nomor rekening bank') }}"
-                                          class="w-full px-4 py-2.5 bg-slate-50 dark:bg-zinc-800 border border-slate-300 dark:border-zinc-700 rounded-lg text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                                          class="w-full px-4 py-2.5 bg-slate-50  border border-slate-300  rounded-lg text-slate-900  placeholder-slate-500  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                                           required>
                                     @error('nomor_rekening')
-                                    <p class="text-red-600 dark:text-red-400 text-sm mt-1">{{ $message }}</p>
+                                    <p class="text-red-600  text-sm mt-1">{{ $message }}</p>
                                     @enderror
                               </div>
 
                               <!-- Form Actions -->
-                              <div class="flex items-center justify-between gap-4 pt-6 border-t border-slate-200 dark:border-zinc-700">
-                                    <a href="{{ route('rekenings.index') }}" class="inline-flex items-center justify-center gap-2 px-6 py-2.5 text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-zinc-800 hover:bg-slate-200 dark:hover:bg-zinc-700 font-medium rounded-lg transition-all duration-200">
+                              <div class="flex items-center justify-between gap-4 pt-6 border-t border-slate-200 ">
+                                    <a href="{{ route('rekenings.index') }}" class="inline-flex items-center justify-center gap-2 px-6 py-2.5 text-slate-700  bg-slate-100  hover:bg-slate-200  font-medium rounded-lg transition-all duration-200">
                                           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                                           </svg>

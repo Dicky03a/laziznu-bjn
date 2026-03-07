@@ -98,8 +98,8 @@ class PetaSebaranController extends Controller
         $statistikDesa = $this->getStatistikDesa($request->kecamatan_id);
 
         // Overall statistics
-        $totalMuzaki = Transaction::where('status', Transaction::STATUS_CONFIRMED)->count();
-        $totalDonasi = Transaction::where('status', Transaction::STATUS_CONFIRMED)->sum('jumlah');
+        $totalMuzaki = Transaction::where('status', 'confirmed')->where('type', 'zakat')->count();
+        $totalDonasi = Transaction::where('status', 'confirmed')->where('type', 'zakat')->sum('jumlah');
         $totalKecamatan = Kecamatan::count();
         $totalDesa = Desa::count();
         $totalMustahikByKecamatan = Kecamatan::count();

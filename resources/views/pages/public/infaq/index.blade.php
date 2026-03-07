@@ -1,10 +1,5 @@
-{{--
-  FILE: resources/views/public/infaq/index.blade.php
-  FILE: resources/views/public/donasi/index.blade.php  — sama strukturnya, ganti variable
-  Untuk donasi, route('donasi.show') dan judul "Donasi"
---}}
 @extends('layouts.public.app')
-@section('title', 'Program Infaq - LAZIZNU Bojonegoro')
+@section('title', 'DSKL - LAZIZNU Bojonegoro')
 @section('content')
 
 {{-- Hero --}}

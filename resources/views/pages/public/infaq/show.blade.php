@@ -271,7 +271,7 @@
                     <div class="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
                         <div class="p-8">
                             <div class="flex items-center gap-4 mb-6">
-                                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-600 to-emerald-500 flex items-center justify-center text-white font-bold text-2xl shadow-lg">NU</div>
+                                <img src="{{ asset('asset/laziznulogo.svg') }}" class="w-20" alt="Laziznu Bojonegoro">
                                 <div class="flex-1">
                                     <h3 class="font-bold text-gray-900 text-lg mb-1">LAZISNU Bojonegoro</h3>
                                     <p class="text-emerald-600 text-sm font-medium flex items-center gap-1">

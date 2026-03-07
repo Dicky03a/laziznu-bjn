@@ -180,7 +180,6 @@
     @if($hewanSendiri->isNotEmpty())
     <div>
         <div class="flex items-center gap-3 mb-7">
-            <div class="w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center text-xl">🐐</div>
             <div>
                 <h2 class="text-xl font-bold text-gray-900">Kambing & Domba — Perorangan</h2>
                 <p class="text-sm text-gray-500">1 ekor untuk 1 orang · Bayar penuh</p>
@@ -209,7 +208,7 @@
 
                     <div class="absolute top-3 left-3">
                         <span class="px-2.5 py-1 bg-white/90 text-gray-800 text-xs font-bold rounded-full">
-                            {{ $h->jenis_icon }} {{ $h->jenis_label }}
+                            {{ $h->jenis_label }}
                         </span>
                     </div>
 

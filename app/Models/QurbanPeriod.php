@@ -96,6 +96,12 @@ class QurbanPeriod extends Model
 
     public function getTotalTerkumpulAttribute(): int
     {
+        if ($this->relationLoaded('registrations')) {
+            return $this->registrations
+                ->where('status', 'confirmed')
+                ->sum('total_bayar');
+        }
+
         return $this->registrations()
             ->where('status', 'confirmed')
             ->sum('total_bayar');

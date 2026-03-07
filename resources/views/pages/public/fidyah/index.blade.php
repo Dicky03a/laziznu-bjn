@@ -194,46 +194,62 @@
                   {{-- RIGHT sidebar (sama dengan zakat) --}}
                   <div class="lg:col-span-1">
                         <div class="sticky top-8 space-y-6">
-                              <div class="bg-white rounded-3xl shadow-sm border border-gray-100 p-6">
-                                    <div class="flex items-center gap-4 mb-5">
-                                          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-600 to-emerald-500 flex items-center justify-center text-white font-bold text-xl shadow-lg">NU</div>
-                                          <div>
-                                                <h3 class="font-bold text-gray-900">LAZIZNU Bojonegoro</h3>
-                                                <p class="text-emerald-600 text-xs font-medium">Lembaga Terverifikasi</p>
+                              <div class="p-8">
+                                    <div class="flex items-center gap-4 mb-6">
+                                          <img src="{{ asset('asset/laziznulogo.svg') }}" class="w-20" alt="Laziznu Bojonegoro">
+                                          <div class="flex-1">
+                                                <h3 class="font-bold text-gray-900 text-lg mb-1">LAZISNU Bojonegoro</h3>
+                                                <p class="text-emerald-600 text-sm font-medium flex items-center gap-1">
+                                                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                                            <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                                      </svg>
+                                                      Verified Organization
+                                                </p>
                                           </div>
                                     </div>
-                                    <a href="{{ route('rekening-lengkap') }}" class="block w-full py-2.5 border-2 border-emerald-600 text-emerald-600 rounded-xl font-semibold text-center text-sm hover:bg-emerald-50 transition-all">
-                                          Lihat Rekening Donasi
+                                    <div class="space-y-3 mb-6 text-sm text-gray-600">
+                                          <div class="flex items-center gap-2">
+                                                <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                </svg>
+                                                <span>Bojonegoro, Jawa Timur</span>
+                                          </div>
+                                    </div>
+                                    <a href="{{ route('profile') }}" class="block w-full py-3 border-2 border-emerald-600 text-emerald-600 rounded-xl font-semibold hover:bg-emerald-50 transition-all text-center">
+                                          Lihat Profil
                                     </a>
                               </div>
+                        </div>
 
-                              <div class="bg-gradient-to-br from-emerald-50 to-emerald-100/50 rounded-3xl p-6 border border-emerald-200">
-                                    <h4 class="font-bold text-gray-900 mb-4">Jaminan Kami</h4>
-                                    <div class="space-y-3 text-sm text-gray-700">
-                                          <p class="flex items-start gap-2">
-                                                <svg class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                                </svg>
-                                                Dana dikelola secara profesional dan amanah
-                                          </p>
-                                          <p class="flex items-start gap-2">
-                                                <svg class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                                </svg>
-                                                Disalurkan kepada yang berhak
-                                          </p>
-                                          <p class="flex items-start gap-2">
-                                                <svg class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                                </svg>
-                                                Laporan transparan berkala
-                                          </p>
-                                    </div>
+
+                        <div class="bg-gradient-to-br from-emerald-50 to-emerald-100/50 rounded-3xl p-6 border border-emerald-200">
+                              <h4 class="font-bold text-gray-900 mb-4">Jaminan Kami</h4>
+                              <div class="space-y-3 text-sm text-gray-700">
+                                    <p class="flex items-start gap-2">
+                                          <svg class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                          </svg>
+                                          Dana dikelola secara profesional dan amanah
+                                    </p>
+                                    <p class="flex items-start gap-2">
+                                          <svg class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                          </svg>
+                                          Disalurkan kepada yang berhak
+                                    </p>
+                                    <p class="flex items-start gap-2">
+                                          <svg class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                          </svg>
+                                          Laporan transparan berkala
+                                    </p>
                               </div>
                         </div>
                   </div>
-
             </div>
+
+      </div>
       </div>
 </section>
 
@@ -269,7 +285,7 @@
                   let current = parseInt(input.value) || 1;
 
                   current = Math.max(1, Math.min(365, current + delta));
-                  input.value = current;  
+                  input.value = current;
 
                   hitungFidyah();
             }

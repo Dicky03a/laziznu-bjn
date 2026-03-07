@@ -214,7 +214,10 @@
                                     <span class="text-sm text-gray-600">
                                           {{ $program->total_donatur ?? 0 }} Donatur
                                     </span>
-
+                                    <a href="{{ route($program->type . '.show', $program->slug) }}"
+                                          class="inline-block px-4 py-2 bg-emerald-600 text-white rounded-full text-sm font-medium hover:bg-emerald-700 transition">
+                                          Donasi Sekarang
+                                    </a>
                               </div>
                         </div>
                   </div>

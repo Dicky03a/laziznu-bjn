@@ -51,9 +51,11 @@ Route::get('/berita/{news:slug}', [AdminNewsController::class, 'show'])->name('b
 Route::get('dokumens/{dokumen}/download', [AdminDokumenController::class, 'download'])->name('dokumens.download');
 
 // Zakat Routes
-Route::get('/zakat', [ZakatController::class, 'index'])->name('zakat.index');
-Route::post('/bayar', [ZakatController::class, 'store'])->name('zakat.store');
-Route::get('/zakat/desa/{kecamatanId}', [ZakatController::class, 'getDesa'])->name('zakat.getDesa');
+Route::prefix('zakat')->name('zakat.')->group(function () {
+    Route::get('/', [ZakatController::class, 'index'])->name('index');
+    Route::post('/', [ZakatController::class, 'store'])->name('store');
+    Route::get('/desa/{kecamatanId}', [ZakatController::class, 'getDesa'])->name('getDesa');
+});
 
 // Infaq Routes
 Route::prefix('infaq')->name('infaq.')->group(function () {
@@ -70,8 +72,10 @@ Route::prefix('donasi')->name('donasi.')->group(function () {
 });
 
 // Fidyah Routes
-Route::get('/fidyah', [FidyahController::class, 'index'])->name('fidyah.index');
-Route::post('/fidyah/bayar', [FidyahController::class, 'store'])->name('fidyah.store');
+Route::prefix('fidyah')->name('fidyah.')->group(function () {
+    Route::get('/', [FidyahController::class, 'index'])->name('index');
+    Route::post('/bayar', [FidyahController::class, 'store'])->name('store');
+});
 
 // Payment Confirmation Routes
 Route::prefix('pembayaran')->name('payment.')->group(function () {
@@ -92,16 +96,19 @@ Route::prefix('qurban')->name('qurban.')->group(function () {
 // Admin Routes (Protected by auth & verified middleware)
 Route::middleware(['auth', 'verified'])->group(function () {
 
-    Route::get('dashboard', fn () => view('dashboard'))->name('dashboard');
+    Route::get('dashboard', fn() => view('dashboard'))->name('dashboard');
 
     Route::resource('profiles', AdminProfileController::class);
     Route::resource('rekenings', AdminRekeningController::class);
     Route::resource('news', AdminNewsController::class)->except('show');
     Route::resource('dokumens', AdminDokumenController::class);
 
+    // Program management
     Route::resource('programs', ProgramController::class);
     Route::patch('programs/{program}/toggle-active', [ProgramController::class, 'toggleActive'])
         ->name('programs.toggle-active');
+    Route::get('program/settings', [SettingControllerProgram::class, 'index'])->name('program.edit');
+    Route::put('settings/program', [SettingControllerProgram::class, 'update'])->name('program.settings');
 
     // Transaction management
     Route::get('transactions', [TransactionController::class, 'index'])->name('transactions.index');
@@ -110,12 +117,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('transactions/{transaction}/confirm', [TransactionController::class, 'confirm'])->name('transactions.confirm');
     Route::post('transactions/{transaction}/reject', [TransactionController::class, 'reject'])->name('transactions.reject');
 
-    // Program settings
-    Route::get('program/settings', [SettingControllerProgram::class, 'index'])->name('program.edit');
-    Route::put('settings/program', [SettingControllerProgram::class, 'update'])->name('program.settings');
 
     // Pengurus management
-    Route::resource('pengurus', PengurusController::class);
+    Route::resource('pengurus', PengurusController::class)
+        ->parameters(['pengurus' => 'pengurus']);
     Route::patch('pengurus/{pengurus}/toggle-status', [PengurusController::class, 'toggleStatus'])
         ->name('pengurus.toggle-status');
     Route::delete('pengurus/{pengurus}/foto', [PengurusController::class, 'destroyFoto'])
@@ -166,4 +171,4 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/mustahiks/desa/{kecamatanId}', [MustahikController::class, 'getDesa']);
 });
 
-require __DIR__.'/settings.php';
+require __DIR__ . '/settings.php';

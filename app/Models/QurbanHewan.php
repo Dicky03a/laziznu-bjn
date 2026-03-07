@@ -119,6 +119,11 @@ class QurbanHewan extends Model
 
     public function getSlotTerisiAttribute(): int
     {
+        // Use the count from withCount() if available, otherwise count manually
+        if (isset($this->attributes['active_registrations_count'])) {
+            return (int) $this->attributes['active_registrations_count'];
+        }
+
         return $this->activeRegistrations()->count();
     }
 
@@ -143,18 +148,18 @@ class QurbanHewan extends Model
 
     public function getHargaTotalFormatAttribute(): string
     {
-        return 'Rp '.number_format($this->harga_total, 0, ',', '.');
+        return 'Rp ' . number_format($this->harga_total, 0, ',', '.');
     }
 
     public function getHargaPerSlotFormatAttribute(): string
     {
-        return 'Rp '.number_format($this->harga_per_slot, 0, ',', '.');
+        return 'Rp ' . number_format($this->harga_per_slot, 0, ',', '.');
     }
 
     public function getGambarUrlAttribute(): string
     {
         return $this->gambar
-            ? asset('storage/'.$this->gambar)
+            ? asset('storage/' . $this->gambar)
             : asset('images/default-hewan.jpg');
     }
 
@@ -180,7 +185,7 @@ class QurbanHewan extends Model
         return match ($this->status_slot) {
             'penuh' => 'PENUH',
             'hampir_penuh' => '1 Slot Tersisa!',
-            'terbatas' => $this->slot_tersedia.' Slot Tersisa',
+            'terbatas' => $this->slot_tersedia . ' Slot Tersisa',
             default => 'Tersedia',
         };
     }

@@ -5,10 +5,10 @@
                   <!-- Header -->
                   <div class="flex items-center justify-between">
                         <div>
-                              <h1 class="text-3xl font-bold text-slate-900 dark:text-white">
+                              <h1 class="text-3xl font-bold text-slate-900 ">
                                     {{ $mustahik->nama }}
                               </h1>
-                              <p class="text-slate-600 dark:text-slate-400 mt-2">
+                              <p class="text-slate-600  mt-2">
                                     Detail informasi mustahik
                               </p>
                         </div>
@@ -19,7 +19,7 @@
                                     </svg>
                                     Edit
                               </a>
-                              <a href="{{ route('mustahiks.index') }}" class="inline-flex items-center justify-center gap-2 px-6 py-2.5 text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-zinc-800 hover:bg-slate-200 dark:hover:bg-zinc-700 font-medium rounded-lg transition-all duration-200">
+                              <a href="{{ route('mustahiks.index') }}" class="inline-flex items-center justify-center gap-2 px-6 py-2.5 text-slate-700  bg-slate-100  hover:bg-slate-200  font-medium rounded-lg transition-all duration-200">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                                     </svg>
@@ -32,14 +32,14 @@
                   <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <!-- Status Badge -->
                         <div class="md:col-span-1">
-                              <div class="bg-white dark:bg-zinc-900 rounded-2xl shadow-xl border border-slate-200 dark:border-zinc-800 p-6">
-                                    <p class="text-sm font-semibold text-slate-600 dark:text-slate-400 mb-3">Status</p>
+                              <div class="bg-white  rounded-2xl shadow-xl border border-slate-200  p-6">
+                                    <p class="text-sm font-semibold text-slate-600  mb-3">Status</p>
                                     @if($mustahik->status === 'aktif')
-                                    <span class="inline-block px-4 py-2 rounded-full text-sm font-semibold bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300">
+                                    <span class="inline-block px-4 py-2 rounded-full text-sm font-semibold bg-green-100  text-green-700 ">
                                           ✓ Aktif
                                     </span>
                                     @else
-                                    <span class="inline-block px-4 py-2 rounded-full text-sm font-semibold bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300">
+                                    <span class="inline-block px-4 py-2 rounded-full text-sm font-semibold bg-red-100  text-red-700 ">
                                           ✗ Nonaktif
                                     </span>
                                     @endif
@@ -48,9 +48,9 @@
 
                         <!-- Kategori Asnaf -->
                         <div class="md:col-span-1">
-                              <div class="bg-white dark:bg-zinc-900 rounded-2xl shadow-xl border border-slate-200 dark:border-zinc-800 p-6">
-                                    <p class="text-sm font-semibold text-slate-600 dark:text-slate-400 mb-3">Kategori Asnaf</p>
-                                    <span class="inline-block px-4 py-2 rounded-full text-sm font-semibold bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300">
+                              <div class="bg-white  rounded-2xl shadow-xl border border-slate-200  p-6">
+                                    <p class="text-sm font-semibold text-slate-600  mb-3">Kategori Asnaf</p>
+                                    <span class="inline-block px-4 py-2 rounded-full text-sm font-semibold bg-purple-100  text-purple-700 ">
                                           {{ $mustahik->getKategoriAsnafFormatted() }}
                                     </span>
                               </div>
@@ -58,9 +58,9 @@
 
                         <!-- Jenis Kelamin -->
                         <div class="md:col-span-1">
-                              <div class="bg-white dark:bg-zinc-900 rounded-2xl shadow-xl border border-slate-200 dark:border-zinc-800 p-6">
-                                    <p class="text-sm font-semibold text-slate-600 dark:text-slate-400 mb-3">Jenis Kelamin</p>
-                                    <p class="text-lg font-semibold text-slate-900 dark:text-white">
+                              <div class="bg-white  rounded-2xl shadow-xl border border-slate-200  p-6">
+                                    <p class="text-sm font-semibold text-slate-600  mb-3">Jenis Kelamin</p>
+                                    <p class="text-lg font-semibold text-slate-900 ">
                                           {{ $mustahik->getJenisKelaminFormatted() }}
                                     </p>
                               </div>
@@ -68,46 +68,46 @@
                   </div>
 
                   <!-- Details Card -->
-                  <div class="bg-white dark:bg-zinc-900 rounded-2xl shadow-xl border border-slate-200 dark:border-zinc-800 p-6 md:p-8">
-                        <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-6">Informasi Pribadi</h2>
+                  <div class="bg-white  rounded-2xl shadow-xl border border-slate-200  p-6 md:p-8">
+                        <h2 class="text-xl font-bold text-slate-900  mb-6">Informasi Pribadi</h2>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                               <!-- NIK -->
                               <div>
-                                    <p class="text-sm font-semibold text-slate-600 dark:text-slate-400 mb-2">
+                                    <p class="text-sm font-semibold text-slate-600  mb-2">
                                           NIK (Nomor Identitas Kependudukan)
                                     </p>
-                                    <p class="text-lg font-mono text-slate-900 dark:text-white">
+                                    <p class="text-lg font-mono text-slate-900 ">
                                           {{ $mustahik->nik }}
                                     </p>
                               </div>
 
                               <!-- No HP -->
                               <div>
-                                    <p class="text-sm font-semibold text-slate-600 dark:text-slate-400 mb-2">
+                                    <p class="text-sm font-semibold text-slate-600  mb-2">
                                           Nomor Telepon
                                     </p>
-                                    <a href="tel:{{ $mustahik->no_hp }}" class="text-lg text-blue-600 dark:text-blue-400 hover:underline font-medium">
+                                    <a href="tel:{{ $mustahik->no_hp }}" class="text-lg text-blue-600  hover:underline font-medium">
                                           {{ $mustahik->no_hp }}
                                     </a>
                               </div>
 
                               <!-- Kecamatan -->
                               <div>
-                                    <p class="text-sm font-semibold text-slate-600 dark:text-slate-400 mb-2">
+                                    <p class="text-sm font-semibold text-slate-600  mb-2">
                                           Kecamatan
                                     </p>
-                                    <p class="text-lg text-slate-900 dark:text-white font-medium">
+                                    <p class="text-lg text-slate-900  font-medium">
                                           {{ $mustahik->kecamatan->nama }}
                                     </p>
                               </div>
 
                               <!-- Desa -->
                               <div>
-                                    <p class="text-sm font-semibold text-slate-600 dark:text-slate-400 mb-2">
+                                    <p class="text-sm font-semibold text-slate-600  mb-2">
                                           Desa
                                     </p>
-                                    <p class="text-lg text-slate-900 dark:text-white font-medium">
+                                    <p class="text-lg text-slate-900  font-medium">
                                           {{ $mustahik->desa->nama }}
                                     </p>
                               </div>
@@ -115,26 +115,26 @@
                   </div>
 
                   <!-- Timestamps Card -->
-                  <div class="bg-white dark:bg-zinc-900 rounded-2xl shadow-xl border border-slate-200 dark:border-zinc-800 p-6">
-                        <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-6">Riwayat</h2>
+                  <div class="bg-white  rounded-2xl shadow-xl border border-slate-200  p-6">
+                        <h2 class="text-xl font-bold text-slate-900  mb-6">Riwayat</h2>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                               <!-- Created At -->
                               <div>
-                                    <p class="text-sm font-semibold text-slate-600 dark:text-slate-400 mb-2">
+                                    <p class="text-sm font-semibold text-slate-600  mb-2">
                                           Dibuat Pada
                                     </p>
-                                    <p class="text-slate-900 dark:text-white">
+                                    <p class="text-slate-900 ">
                                           {{ $mustahik->created_at->translatedFormat('d F Y H:i') }}
                                     </p>
                               </div>
 
                               <!-- Updated At -->
                               <div>
-                                    <p class="text-sm font-semibold text-slate-600 dark:text-slate-400 mb-2">
+                                    <p class="text-sm font-semibold text-slate-600  mb-2">
                                           Diperbarui Pada
                                     </p>
-                                    <p class="text-slate-900 dark:text-white">
+                                    <p class="text-slate-900 ">
                                           {{ $mustahik->updated_at->translatedFormat('d F Y H:i') }}
                                     </p>
                               </div>
@@ -142,9 +142,9 @@
                   </div>
 
                   <!-- Danger Zone -->
-                  <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-900 rounded-2xl p-6">
-                        <h2 class="text-xl font-bold text-red-700 dark:text-red-300 mb-4">Zona Berbahaya</h2>
-                        <p class="text-red-600 dark:text-red-400 mb-4">
+                  <div class="bg-red-50  border border-red-200  rounded-2xl p-6">
+                        <h2 class="text-xl font-bold text-red-700  mb-4">Zona Berbahaya</h2>
+                        <p class="text-red-600  mb-4">
                               Menghapus data mustahik akan menghapus semua informasi terkait secara permanen. Tindakan ini tidak dapat dibatalkan.
                         </p>
                         <form action="{{ route('mustahiks.destroy', $mustahik) }}" method="POST" class="inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data {{ $mustahik->nama }}? Tindakan ini tidak dapat dibatalkan.')">

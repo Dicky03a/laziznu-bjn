@@ -1,18 +1,18 @@
 <x-layouts::app :title="__('Detail Profil')">
-      <div class="min-h-screen dark:from-zinc-900 dark:to-zinc-800 py-8 px-4">
+      <div class="min-h-screen   py-8 px-4">
             <div class="max-w-5xl mx-auto space-y-6">
 
                   <!-- Breadcrumb -->
-                  <nav class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
-                        <a href="{{ route('profiles.index') }}" class="hover:text-green-600 dark:hover:text-green-400 transition-colors">
+                  <nav class="flex items-center gap-2 text-sm text-slate-600 ">
+                        <a href="{{ route('profiles.index') }}" class="hover:text-green-600  transition-colors">
                               Data Profil
                         </a>
                         <span>/</span>
-                        <span class="text-slate-900 dark:text-white font-medium">Detail Profil</span>
+                        <span class="text-slate-900  font-medium">Detail Profil</span>
                   </nav>
 
                   <!-- Main Card -->
-                  <div class="bg-white dark:bg-zinc-900 rounded-2xl shadow-xl border border-slate-200 dark:border-zinc-800 overflow-hidden">
+                  <div class="bg-white  rounded-2xl shadow-xl border border-slate-200  overflow-hidden">
 
                         <!-- Header dengan Gradient -->
                         <div class="relative bg-emerald-600 px-8 py-12">
@@ -34,13 +34,13 @@
 
                               <!-- Deskripsi -->
                               <div class="space-y-3">
-                                    <div class="flex items-center gap-2 text-slate-700 dark:text-slate-300">
-                                          <svg class="w-5 h-5 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <div class="flex items-center gap-2 text-slate-700 ">
+                                          <svg class="w-5 h-5 text-green-600 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                           </svg>
                                           <h2 class="text-lg font-semibold">Tentang</h2>
                                     </div>
-                                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed pl-7">
+                                    <p class="text-slate-600  leading-relaxed pl-7">
                                           {{ $profile->deskripsi }}
                                     </p>
                               </div>
@@ -49,7 +49,7 @@
                               <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
                                     <!-- Tahun Berdiri -->
-                                    <div class="bg-gradient-to-br from-emerald-50 to-emerald-100 dark:from-emerald-900/20 dark:to-emerald-900/10 rounded-xl p-6 border border-emerald-200 dark:border-emerald-800/30">
+                                    <div class="bg-gradient-to-br from-emerald-50 to-emerald-100   rounded-xl p-6 border border-emerald-200 ">
                                           <div class="flex items-start justify-between mb-3">
                                                 <div class="w-12 h-12 bg-emerald-500 rounded-lg flex items-center justify-center shadow-lg">
                                                       <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -57,12 +57,12 @@
                                                       </svg>
                                                 </div>
                                           </div>
-                                          <p class="text-sm font-medium text-emerald-700 dark:text-emerald-400 mb-1">Tahun Berdiri</p>
-                                          <p class="text-3xl font-bold text-emerald-900 dark:text-emerald-300">{{ $profile->tahun_berdiri }}</p>
+                                          <p class="text-sm font-medium text-emerald-700  mb-1">Tahun Berdiri</p>
+                                          <p class="text-3xl font-bold text-emerald-900 ">{{ $profile->tahun_berdiri }}</p>
                                     </div>
 
                                     <!-- Penerima Manfaat -->
-                                    <div class="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-900/10 rounded-xl p-6 border border-green-200 dark:border-green-800/30">
+                                    <div class="bg-gradient-to-br from-green-50 to-green-100   rounded-xl p-6 border border-green-200 ">
                                           <div class="flex items-start justify-between mb-3">
                                                 <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center shadow-lg">
                                                       <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -70,13 +70,13 @@
                                                       </svg>
                                                 </div>
                                           </div>
-                                          <p class="text-sm font-medium text-green-700 dark:text-green-400 mb-1">Penerima Manfaat</p>
-                                          <p class="text-3xl font-bold text-green-900 dark:text-green-300">{{ number_format($profile->penerima_manfaat, 0, ',', '.') }}</p>
-                                          <p class="text-xs text-green-600 dark:text-green-500 mt-1">orang terdampak</p>
+                                          <p class="text-sm font-medium text-green-700  mb-1">Penerima Manfaat</p>
+                                          <p class="text-3xl font-bold text-green-900 ">{{ number_format($profile->penerima_manfaat, 0, ',', '.') }}</p>
+                                          <p class="text-xs text-green-600  mt-1">orang terdampak</p>
                                     </div>
 
                                     <!-- Program Tersalurkan -->
-                                    <div class="bg-gradient-to-br from-emerald-50 to-emerald-100 dark:from-emerald-900/20 dark:to-emerald-900/10 rounded-xl p-6 border border-emerald-200 dark:border-emerald-800/30">
+                                    <div class="bg-gradient-to-br from-emerald-50 to-emerald-100   rounded-xl p-6 border border-emerald-200 ">
                                           <div class="flex items-start justify-between mb-3">
                                                 <div class="w-12 h-12 bg-emerald-500 rounded-lg flex items-center justify-center shadow-lg">
                                                       <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -84,14 +84,14 @@
                                                       </svg>
                                                 </div>
                                           </div>
-                                          <p class="text-sm font-medium text-emerald-700 dark:text-emerald-400 mb-1">Program Tersalurkan</p>
-                                          <p class="text-3xl font-bold text-emerald-900 dark:text-emerald-300">{{ $profile->program_tersalurkan }}</p>
-                                          <p class="text-xs text-emerald-600 dark:text-emerald-500 mt-1">program aktif</p>
+                                          <p class="text-sm font-medium text-emerald-700  mb-1">Program Tersalurkan</p>
+                                          <p class="text-3xl font-bold text-emerald-900 ">{{ $profile->program_tersalurkan }}</p>
+                                          <p class="text-xs text-emerald-600  mt-1">program aktif</p>
                                     </div>
                               </div>
 
                               <!-- Visi Section -->
-                              <div class="bg-white dark:from-amber-900/10 dark:to-orange-900/10 rounded-xl p-6 border dark:border-amber-800/30">
+                              <div class="bg-white   rounded-xl p-6 border ">
                                     <div class="flex items-start gap-4">
                                           <div class="w-12 h-12 bg-emerald-500 rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg">
                                                 <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -100,22 +100,22 @@
                                                 </svg>
                                           </div>
                                           <div class="flex-1">
-                                                <h2 class="text-lg font-bold text-black dark:text-amber-300 mb-2">Visi Organisasi</h2>
-                                                <p class="text-black dark:text-amber-400 leading-relaxed">{{ $profile->visi }}</p>
+                                                <h2 class="text-lg font-bold text-black  mb-2">Visi Organisasi</h2>
+                                                <p class="text-black  leading-relaxed">{{ $profile->visi }}</p>
                                           </div>
                                     </div>
                               </div>
 
                               <!-- Misi Section -->
                               @if($profile->missions->count() > 0)
-                              <div class="bg-white dark:from-emerald-900/10 dark:to-cyan-900/10 rounded-xl p-6 border border-emerald-200 dark:border-emerald-800/30">
+                              <div class="bg-white   rounded-xl p-6 border border-emerald-200 ">
                                     <div class="flex items-center gap-3 mb-4">
                                           <div class="w-10 h-10 bg-emerald-500 rounded-lg flex items-center justify-center shadow-lg">
                                                 <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                                 </svg>
                                           </div>
-                                          <h2 class="text-lg font-bold text-emerald-900 dark:text-emerald-300">Misi Organisasi</h2>
+                                          <h2 class="text-lg font-bold text-emerald-900 ">Misi Organisasi</h2>
                                     </div>
                                     <div class="space-y-3 pl-13">
                                           @foreach($profile->missions as $mission)
@@ -123,7 +123,7 @@
                                                 <div class="flex-shrink-0 w-6 h-6 bg-emerald-600 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">
                                                       {{ $loop->iteration }}
                                                 </div>
-                                                <p class="text-emerald-800 dark:text-emerald-400 leading-relaxed flex-1">{{ $mission->text }}</p>
+                                                <p class="text-emerald-800  leading-relaxed flex-1">{{ $mission->text }}</p>
                                           </div>
                                           @endforeach
                                     </div>
@@ -139,20 +139,20 @@
                                                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                                                 </svg>
                                           </div>
-                                          <h2 class="text-lg font-bold text-slate-900 dark:text-white">Pilar Program</h2>
+                                          <h2 class="text-lg font-bold text-slate-900 ">Pilar Program</h2>
                                     </div>
 
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                           @foreach($profile->pillars as $pillar)
-                                          <div class="bg-gradient-to-br from-emerald-50 to-pink-50 dark:from-emerald-900/10 dark:to-pink-900/10 rounded-xl p-5 border border-emerald-200 dark:border-emerald-800/30 hover:shadow-lg transition-shadow duration-200">
+                                          <div class="bg-gradient-to-br from-emerald-50 to-pink-50   rounded-xl p-5 border border-emerald-200  hover:shadow-lg transition-shadow duration-200">
                                                 <div class="flex items-start gap-3">
                                                       <div class="flex-shrink-0 w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center text-white text-sm font-bold">
                                                             {{ $loop->iteration }}
                                                       </div>
                                                       <div class="flex-1">
-                                                            <h3 class="font-bold text-emerald-900 dark:text-emerald-300 mb-2">{{ $pillar->title }}</h3>
+                                                            <h3 class="font-bold text-emerald-900  mb-2">{{ $pillar->title }}</h3>
                                                             @if($pillar->deskripsi)
-                                                            <p class="text-sm text-emerald-800 dark:text-emerald-400 leading-relaxed">{{ $pillar->deskripsi }}</p>
+                                                            <p class="text-sm text-emerald-800  leading-relaxed">{{ $pillar->deskripsi }}</p>
                                                             @endif
                                                       </div>
                                                 </div>
@@ -163,10 +163,10 @@
                               @endif
 
                               <!-- Action Buttons -->
-                              <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6 border-t border-slate-200 dark:border-zinc-800">
+                              <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6 border-t border-slate-200 ">
                                     <a
                                           href="{{ route('profiles.index') }}"
-                                          class="px-6 py-3 bg-slate-100 hover:bg-slate-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-slate-700 dark:text-slate-300 rounded-lg font-medium transition-all duration-200 flex items-center gap-2 w-full sm:w-auto justify-center">
+                                          class="px-6 py-3 bg-slate-100 hover:bg-slate-200   text-slate-700  rounded-lg font-medium transition-all duration-200 flex items-center gap-2 w-full sm:w-auto justify-center">
                                           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                                           </svg>

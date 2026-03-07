@@ -18,15 +18,15 @@ class QurbanRegistrationController extends Controller
     {
         $periods = QurbanPeriod::orderByDesc('tahun')->get();
 
-        $registrations = QurbanRegistration::with(['hewan', 'period', 'paymentConfirmation'])
-            ->when($request->period_id, fn ($q) => $q->ofPeriod($request->period_id))
-            ->when($request->status, fn ($q) => $q->where('status', $request->status))
-            ->when($request->jenis, fn ($q) => $q->whereHas('hewan', fn ($h) => $h->ofJenis($request->jenis)))
-            ->when($request->search, fn ($q) => $q->where(function ($q2) use ($request) {
-                $q2->where('kode_registrasi', 'like', '%'.$request->search.'%')
-                    ->orWhere('nama_peserta', 'like', '%'.$request->search.'%')
-                    ->orWhere('email', 'like', '%'.$request->search.'%')
-                    ->orWhere('telepon', 'like', '%'.$request->search.'%');
+        $registrations = QurbanRegistration::with(['hewan', 'period', 'paymentConfirmation', 'confirmedBy'])
+            ->when($request->period_id, fn($q) => $q->ofPeriod($request->period_id))
+            ->when($request->status, fn($q) => $q->where('status', $request->status))
+            ->when($request->jenis, fn($q) => $q->whereHas('hewan', fn($h) => $h->ofJenis($request->jenis)))
+            ->when($request->search, fn($q) => $q->where(function ($q2) use ($request) {
+                $q2->where('kode_registrasi', 'like', '%' . $request->search . '%')
+                    ->orWhere('nama_peserta', 'like', '%' . $request->search . '%')
+                    ->orWhere('email', 'like', '%' . $request->search . '%')
+                    ->orWhere('telepon', 'like', '%' . $request->search . '%');
             }))
             ->latest()
             ->paginate(20)
@@ -91,12 +91,12 @@ class QurbanRegistrationController extends Controller
     public function export(Request $request)
     {
         $registrations = QurbanRegistration::with(['hewan', 'period'])
-            ->when($request->period_id, fn ($q) => $q->ofPeriod($request->period_id))
-            ->when($request->status, fn ($q) => $q->where('status', $request->status))
+            ->when($request->period_id, fn($q) => $q->ofPeriod($request->period_id))
+            ->when($request->status, fn($q) => $q->where('status', $request->status))
             ->latest()
             ->get();
 
-        $filename = 'qurban-laziznu-'.now()->format('Y-m-d').'.csv';
+        $filename = 'qurban-laziznu-' . now()->format('Y-m-d') . '.csv';
 
         return response()->stream(function () use ($registrations) {
             $file = fopen('php://output', 'w');
