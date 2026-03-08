@@ -25,11 +25,11 @@
                               <h3 class="text-base font-bold text-slate-900  mb-4 pb-3 border-b border-slate-200 ">
                                     Cari Berita
                               </h3>
-                              <form action="{{ route('berita.public.index') }}" method="GET" class="flex flex-col gap-3">
+                              <form action="{{ route("berita.public.index") }}" method="GET" class="flex flex-col gap-3">
                                     <div class="relative">
                                           <input type="text"
                                                 name="search"
-                                                value="{{ request('search') }}"
+                                                value="{{ request("search") }}"
                                                 placeholder="Ketik kata kunci..."
                                                 class="w-full px-3 py-2 bg-slate-50  border border-slate-300  rounded-lg text-sm text-slate-900  placeholder-slate-500  focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all">
                                           <svg class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -40,12 +40,12 @@
                                           Cari
                                     </button>
                               </form>
-                              @if (request('search') || request('category'))
+                              @if (request("search") || request("category"))
                               <div class="mt-3 pt-3 border-t border-slate-200 ">
-                                    @if (request('search'))
-                                    <p class="text-xs text-slate-600  mb-2">Pencarian: <span class="font-semibold text-slate-900 ">{{ request('search') }}</span></p>
+                                    @if (request("search"))
+                                    <p class="text-xs text-slate-600  mb-2">Pencarian: <span class="font-semibold text-slate-900 ">{{ request("search") }}</span></p>
                                     @endif
-                                    <a href="{{ route('berita.public.index') }}" class="text-xs text-emerald-600  hover:underline font-medium">
+                                    <a href="{{ route("berita.public.index") }}" class="text-xs text-emerald-600  hover:underline font-medium">
                                           Hapus Filter
                                     </a>
                               </div>
@@ -60,25 +60,25 @@
 
                               <div class="space-y-2">
                                     <a href="{{ route('berita.public.index') }}"
-                                          class="flex items-center justify-between px-3 py-2 rounded-lg transition-colors text-sm {{ !request('category') ? 'bg-emerald-100  text-emerald-700  font-medium' : 'text-slate-700  hover:bg-slate-100  }}">
+                                          class="flex items-center justify-between px-3 py-2 rounded-lg transition-colors text-sm {{ !request('category') ? 'bg-emerald-100 text-emerald-700 font-medium' : 'text-slate-700 hover:bg-slate-100' }}">
                                           <span>Semua Berita</span>
-                                          <span class="text-xs bg-slate-200  px-2 py-0.5 rounded-full">
-                                                {{ $allCategories->sum('news_count') ?? 0 }}
+                                          <span class="text-xs bg-slate-200 px-2 py-0.5 rounded-full">
+                                                {{ $allCategories->sum(fn($item) => $item->news_count) ?? 0 }}
                                           </span>
                                     </a>
 
                                     @if ($allCategories && $allCategories->count() > 0)
                                     @foreach ($allCategories as $category)
                                     <a href="{{ route('berita.public.index', ['category' => $category->id]) }}"
-                                          class="flex items-center justify-between px-3 py-2 rounded-lg transition-colors text-sm {{ request('category') == $category->id ? 'bg-emerald-100  text-emerald-700  font-medium' : 'text-slate-700  hover:bg-slate-100  }}">
+                                          class="flex items-center justify-between px-3 py-2 rounded-lg transition-colors text-sm {{ request('category') == $category->id ? 'bg-emerald-100 text-emerald-700 font-medium' : 'text-slate-700 hover:bg-slate-100' }}">
                                           <span>{{ $category->name }}</span>
-                                          <span class="text-xs bg-slate-200  px-2 py-0.5 rounded-full">
+                                          <span class="text-xs bg-slate-200 px-2 py-0.5 rounded-full">
                                                 {{ $category->news_count ?? 0 }}
                                           </span>
                                     </a>
                                     @endforeach
                                     @else
-                                    <p class="text-xs text-slate-500  py-2">Tidak ada kategori</p>
+                                    <p class="text-xs text-slate-500 py-2">Tidak ada kategori</p>
                                     @endif
                               </div>
                         </div>
@@ -95,7 +95,10 @@
                                     <!-- Featured Image -->
                                     @if ($item->featured_image)
                                     <div class="relative h-48 overflow-hidden">
-                                          <img src="{{ asset('storage/' . $item->featured_image) }}"
+                                          @php
+                                          $imageUrl = asset('storage/' . $item->featured_image);
+                                          @endphp
+                                          <img src="{{ $imageUrl }}"
                                                 alt="{{ $item->title }}"
                                                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
                                     </div>
@@ -127,7 +130,7 @@
                                                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                                                       </svg>
-                                                      {{ $item->published_at->format('d M Y') }}
+                                                      {{ $item->published_at->format("d M Y") }}
                                                 </span>
                                           </div>
 
@@ -139,7 +142,7 @@
                                           <!-- Read More Link -->
                                           <a href="{{ route('berita.show', $item->slug) }}"
                                                 class="inline-flex items-center gap-2 text-blue-600  hover:text-blue-700  font-medium text-sm transition-colors">
-                                                {{ __('Baca Selengkapnya') }}
+                                                {{ __("Baca Selengkapnya") }}
                                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                                                 </svg>
@@ -161,9 +164,9 @@
                               <svg class="mx-auto h-16 w-16 text-slate-300  mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v4m2 10a2 2 0 002-2m0 0V9a2 2 0 00-2-2m2 2V5m2 0a2 2 0 012 2v10a2 2 0 01-2 2m0 0H9m0 0a2 2 0 01-2-2m2 2v4"></path>
                               </svg>
-                              <p class="text-slate-600  font-medium">{{ __('Tidak ada berita yang sesuai dengan pencarian') }}</p>
-                              <p class="text-slate-500  text-sm mt-1">{{ __('Coba ubah filter atau kata kunci pencarian') }}</p>
-                              <a href="{{ route('berita.public.index') }}" class="inline-flex items-center gap-2 mt-4 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium rounded-lg transition-colors">
+                              <p class="text-slate-600  font-medium">{{ __("Tidak ada berita yang sesuai dengan pencarian") }}</p>
+                              <p class="text-slate-500  text-sm mt-1">{{ __("Coba ubah filter atau kata kunci pencarian") }}</p>
+                              <a href="{{ route("berita.public.index") }}" class="inline-flex items-center gap-2 mt-4 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium rounded-lg transition-colors">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                                     </svg>
