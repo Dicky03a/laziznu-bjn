@@ -95,64 +95,106 @@
 
                                     <!-- Featured Image -->
                                     <div>
-                                          <label class="block text-sm font-semibold text-slate-900  mb-2">
+                                          <label class="block text-sm font-semibold text-slate-900 mb-2">
                                                 {{ __('Gambar Unggulan') }}
                                           </label>
 
-                                          <!-- Current Image Preview -->
-                                          @if ($news->featured_image)
-                                          <div id="currentImagePreview" class="mb-4 p-4 bg-slate-50  rounded-xl border border-slate-200 ">
-                                                <div class="flex items-start justify-between mb-2">
-                                                      <p class="text-sm font-medium text-slate-700 ">{{ __('Gambar Saat Ini:') }}</p>
-                                                      <label class="inline-flex items-center gap-2 cursor-pointer">
-                                                            <input type="checkbox" id="remove_image" name="remove_image" value="1"
-                                                                  class="w-4 h-4 text-red-600 bg-slate-100  border-slate-300  rounded focus:ring-red-500"
-                                                                  onchange="toggleImageRemoval(this)">
-                                                            <span class="text-sm text-red-600  font-medium">{{ __('Hapus gambar') }}</span>
+                                          <div class="grid md:grid-cols-2 gap-6">
+
+                                                <!-- Current Image -->
+                                                @if ($news->featured_image)
+                                                <div id="currentImageContainer"
+                                                      class="bg-slate-50 rounded-xl p-4 border border-slate-200 transition-all duration-300">
+
+                                                      <p class="text-sm font-medium text-slate-700 mb-3">
+                                                            {{ __('Gambar Saat Ini') }}
+                                                      </p>
+
+                                                      <img id="currentImagePreview"
+                                                            src="{{ asset('storage/' . $news->featured_image) }}"
+                                                            class="rounded-lg shadow-md w-full h-48 object-cover">
+
+                                                      <label class="flex items-center gap-2 mt-3 cursor-pointer hover:opacity-80 transition-opacity">
+                                                            <input type="checkbox"
+                                                                  id="remove_image"
+                                                                  name="remove_image"
+                                                                  value="1"
+                                                                  class="w-4 h-4 text-red-600 border-slate-300 rounded cursor-pointer">
+
+                                                            <span class="text-sm text-red-600 font-medium">
+                                                                  {{ __('Hapus gambar') }}
+                                                            </span>
                                                       </label>
                                                 </div>
-                                                <div class="relative inline-block" id="imageContainer">
-                                                      <img src="{{ asset('storage/' . $news->featured_image) }}"
-                                                            alt="{{ $news->title }}"
-                                                            class="h-40 w-auto object-cover rounded-lg shadow-md border border-slate-200 ">
-                                                </div>
-                                          </div>
-                                          @endif
+                                                @endif
 
-                                          <!-- New Image Upload -->
-                                          <div class="relative border-2 border-dashed border-slate-300  rounded-xl p-8 transition-all hover:border-blue-400  hover:bg-slate-50 " id="dropZone">
-                                                <input type="file" id="featured_image" name="featured_image" accept="image/*"
-                                                      class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                                                      onchange="handleFileChange(this)">
-                                                <div class="text-center" id="uploadPrompt">
-                                                      <svg class="mx-auto h-16 w-16 text-slate-400 " stroke="currentColor" fill="none" viewBox="0 0 48 48">
-                                                            <path d="M28 8H12a4 4 0 00-4 4v20a4 4 0 004 4h24a4 4 0 004-4V20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                                            <circle cx="14" cy="20" r="4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                                            <path d="M40 24L26 10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                                      </svg>
-                                                      <p class="mt-3 text-base font-medium text-slate-700 ">
-                                                            @if ($news->featured_image)
-                                                            {{ __('Klik atau seret untuk mengganti gambar') }}
-                                                            @else
-                                                            {{ __('Klik atau seret gambar ke sini') }}
-                                                            @endif
-                                                      </p>
-                                                      <p class="mt-1 text-sm text-slate-500 ">{{ __('JPG, PNG, GIF (max 2MB)') }}</p>
-                                                </div>
-                                                <!-- Preview for new image -->
-                                                <div id="newImagePreview" class="hidden">
-                                                      <div class="flex items-center justify-between mb-3">
-                                                            <p class="text-sm font-medium text-slate-700 ">{{ __('Gambar Baru:') }}</p>
-                                                            <button type="button" onclick="clearNewImage()" class="text-sm text-red-600  hover:text-red-700  font-medium">
-                                                                  {{ __('Batal') }}
-                                                            </button>
+                                                <!-- Upload Area -->
+                                                <div id="dropZone"
+                                                      class="relative border-2 border-dashed border-slate-300 rounded-xl p-6 text-center hover:border-blue-400 hover:bg-blue-50 transition-all duration-200 cursor-pointer">
+
+                                                      <input type="file"
+                                                            id="featured_image"
+                                                            name="featured_image"
+                                                            accept="image/*"
+                                                            class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+
+                                                      <div id="uploadPrompt" class="pointer-events-none">
+
+                                                            <svg class="mx-auto h-12 w-12 text-slate-400"
+                                                                  stroke="currentColor"
+                                                                  fill="none"
+                                                                  viewBox="0 0 48 48">
+
+                                                                  <path d="M28 8H12a4 4 0 00-4 4v20a4 4 0 004 4h24a4 4 0 004-4V20"
+                                                                        stroke-width="2"
+                                                                        stroke-linecap="round"
+                                                                        stroke-linejoin="round" />
+
+                                                                  <path d="M40 24L26 10"
+                                                                        stroke-width="2"
+                                                                        stroke-linecap="round"
+                                                                        stroke-linejoin="round" />
+
+                                                            </svg>
+
+                                                            <p class="mt-2 text-sm text-slate-600">
+                                                                  {{ __('Klik atau drag gambar ke sini') }}
+                                                            </p>
+
+                                                            <p class="text-xs text-slate-400">
+                                                                  JPG, PNG (Max 2MB)
+                                                            </p>
+
                                                       </div>
-                                                      <img id="previewImage" src="" alt="Preview" class="h-40 w-auto object-cover rounded-lg shadow-md border border-slate-200 ">
+
+                                                      <!-- Preview Image -->
+                                                      <div id="newImagePreview" class="hidden">
+
+                                                            <p class="text-sm font-medium text-slate-700 mb-3 pointer-events-none">
+                                                                  {{ __('Preview Gambar Baru') }}
+                                                            </p>
+
+                                                            <img id="previewImage"
+                                                                  class="rounded-lg shadow-md w-full h-48 object-cover">
+
+                                                            <div class="flex gap-2 mt-3 justify-center">
+                                                                  <button type="button"
+                                                                        onclick="clearNewImage()"
+                                                                        class="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-red-600 hover:bg-red-50 rounded transition-colors">
+                                                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                                                        </svg>
+                                                                        {{ __('Batal') }}
+                                                                  </button>
+                                                                  <span class="text-xs text-slate-500 py-1.5">{{ __('Siap untuk diunggah') }}</span>
+                                                            </div>
+
+                                                      </div>
+
                                                 </div>
+
                                           </div>
-                                          @error('featured_image')
-                                          <p class="text-red-600  text-sm mt-1.5">{{ $message }}</p>
-                                          @enderror
+
                                     </div>
 
                                     <!-- Excerpt -->
@@ -177,7 +219,7 @@
                                                 class="hidden"
                                                 required>{{ old('content', $news->content) }}</textarea>
                                           <div data-tiptap-editor data-tiptap-input="content"
-                                                class="w-full min-h-96 px-4 py-3 bg-slate-50  border border-slate-300  rounded-b-lg text-slate-900  placeholder-slate-500 ">
+                                                class="w-full min-h-96 px-4 py-3 bg-slate-50  border border-slate-300  rounded-b-lg text-slate-900  placeholder-slate-500">
                                           </div>
                                           @error('content')
                                           <p class="text-red-600  text-sm mt-2">{{ $message }}</p>
@@ -187,7 +229,7 @@
                                     <!-- Published Status Info -->
                                     <div class="bg-slate-50  rounded-xl p-4 border border-slate-200 ">
                                           <div class="flex items-start gap-3">
-                                                <svg class="w-5 h-5 mt-0.5 flex-shrink-0 {{ $news->published_at ? 'text-green-600  : 'text-yellow-600  }}" fill="currentColor" viewBox="0 0 20 20">
+                                                <svg class="w-5 h-5 mt-0.5 flex-shrink-0 {{ $news->published_at ? 'text-green-600'  : 'text-yellow-600'  }}" fill="currentColor" viewBox="0 0 20 20">
                                                       <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
                                                 </svg>
                                                 <div>
@@ -278,7 +320,7 @@
       </div>
 
       <script>
-            // Generate slug from title
+            // ==================== SLUG GENERATION ====================
             function generateSlug() {
                   const title = document.getElementById('title').value;
                   const slug = title.toLowerCase()
@@ -296,69 +338,18 @@
                   }
             });
 
-            // Handle file change with preview
-            function handleFileChange(input) {
-                  const file = input.files[0];
-                  if (file) {
-                        // Check file size (2MB)
-                        if (file.size > 2 * 1024 * 1024) {
-                              alert('{{ __("Ukuran file terlalu besar. Maksimal 2MB") }}');
-                              input.value = '';
-                              return;
-                        }
-
-                        // Uncheck remove image if checked
-                        const removeCheckbox = document.getElementById('remove_image');
-                        if (removeCheckbox) {
-                              removeCheckbox.checked = false;
-                        }
-
-                        // Show preview
-                        const reader = new FileReader();
-                        reader.onload = function(e) {
-                              document.getElementById('uploadPrompt').classList.add('hidden');
-                              document.getElementById('newImagePreview').classList.remove('hidden');
-                              document.getElementById('previewImage').src = e.target.result;
-                        };
-                        reader.readAsDataURL(file);
-                  }
-            }
-
-            // Clear new image selection
-            function clearNewImage() {
-                  document.getElementById('featured_image').value = '';
-                  document.getElementById('uploadPrompt').classList.remove('hidden');
-                  document.getElementById('newImagePreview').classList.add('hidden');
-            }
-
-            // Toggle image removal
-            function toggleImageRemoval(checkbox) {
-                  const imageContainer = document.getElementById('imageContainer');
-                  const fileInput = document.getElementById('featured_image');
-
-                  if (checkbox.checked) {
-                        imageContainer.style.opacity = '0.5';
-                        imageContainer.style.filter = 'grayscale(100%)';
-                        // Clear file input if user wants to remove current image
-                        fileInput.value = '';
-                        clearNewImage();
-                  } else {
-                        imageContainer.style.opacity = '1';
-                        imageContainer.style.filter = 'none';
-                  }
-            }
-
-            // Confirm delete
-            function confirmDelete() {
-                  if (confirm('{{ __("Apakah Anda yakin ingin menghapus berita ini? Tindakan ini tidak dapat dibatalkan.") }}')) {
-                        document.getElementById('deleteForm').submit();
-                  }
-            }
-
-            // Drag and drop support
+            // ==================== IMAGE UPLOAD & PREVIEW ====================
             const dropZone = document.getElementById('dropZone');
             const fileInput = document.getElementById('featured_image');
+            const removeImageCheckbox = document.getElementById('remove_image');
+            const currentImageContainer = document.getElementById('currentImageContainer');
 
+            // Handle file input change
+            fileInput.addEventListener('change', function(e) {
+                  handleFileChange(this);
+            });
+
+            // Prevent default drag behaviors
             ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
                   dropZone.addEventListener(eventName, preventDefaults, false);
             });
@@ -368,23 +359,96 @@
                   e.stopPropagation();
             }
 
+            // Highlight drop zone when dragging over
             ['dragenter', 'dragover'].forEach(eventName => {
                   dropZone.addEventListener(eventName, () => {
-                        dropZone.classList.add('border-blue-500', 'bg-blue-50', '
-                  }, false);
+                        dropZone.classList.add('border-blue-500', 'bg-blue-50');
+                  });
             });
 
+            // Remove highlight when leaving
             ['dragleave', 'drop'].forEach(eventName => {
                   dropZone.addEventListener(eventName, () => {
-                        dropZone.classList.remove('border-blue-500', 'bg-blue-50', '
-                  }, false);
+                        dropZone.classList.remove('border-blue-500', 'bg-blue-50');
+                  });
             });
 
+            // Handle dropped files
             dropZone.addEventListener('drop', (e) => {
-                  const dt = e.dataTransfer;
-                  const files = dt.files;
+                  const files = e.dataTransfer.files;
                   fileInput.files = files;
                   handleFileChange(fileInput);
-            }, false);
+            });
+
+            // Handle file change with preview and auto-remove logic
+            function handleFileChange(input) {
+                  const file = input.files[0];
+                  if (!file) return;
+
+                  // Validate file size
+                  const maxSize = 2 * 1024 * 1024; // 2MB
+                  if (file.size > maxSize) {
+                        alert("{{ __('Ukuran gambar maksimal 2MB') }}");
+                        input.value = "";
+                        return;
+                  }
+
+                  // Validate file type
+                  if (!file.type.startsWith('image/')) {
+                        alert("{{ __('Silakan pilih file gambar yang valid') }}");
+                        input.value = "";
+                        return;
+                  }
+
+                  // Read and preview the file
+                  const reader = new FileReader();
+                  reader.onload = function(e) {
+                        // Hide current image if exists
+                        if (currentImageContainer) {
+                              currentImageContainer.classList.add('opacity-50', 'pointer-events-none');
+                        }
+
+                        // Hide upload prompt and show preview
+                        document.getElementById('uploadPrompt').classList.add('hidden');
+                        document.getElementById('newImagePreview').classList.remove('hidden');
+
+                        // Set preview image
+                        document.getElementById('previewImage').src = e.target.result;
+
+                        // Auto-check remove_image checkbox if current image exists
+                        if (removeImageCheckbox && currentImageContainer) {
+                              removeImageCheckbox.checked = true;
+                        }
+                  };
+
+                  reader.readAsDataURL(file);
+            }
+
+            // Clear new image selection
+            function clearNewImage() {
+                  // Clear file input
+                  document.getElementById('featured_image').value = "";
+
+                  // Hide preview, show upload prompt
+                  document.getElementById('uploadPrompt').classList.remove('hidden');
+                  document.getElementById('newImagePreview').classList.add('hidden');
+
+                  // Restore current image visibility
+                  if (currentImageContainer) {
+                        currentImageContainer.classList.remove('opacity-50', 'pointer-events-none');
+                  }
+
+                  // Uncheck remove checkbox
+                  if (removeImageCheckbox) {
+                        removeImageCheckbox.checked = false;
+                  }
+            }
+
+            // ==================== DELETE CONFIRMATION ====================
+            function confirmDelete() {
+                  if (confirm('{{ __("Apakah Anda yakin ingin menghapus berita ini? Tindakan ini tidak dapat dibatalkan.") }}')) {
+                        document.getElementById('deleteForm').submit();
+                  }
+            }
       </script>
 </x-layouts::app>
