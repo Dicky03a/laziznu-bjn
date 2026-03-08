@@ -3,158 +3,357 @@
 
 <head>
       <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Laporan PCNU Laziznu Bojonegoro</title>
-      @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+      <style>
+            @page {
+                  margin: 40px 50px;
+            }
+
+            body {
+                  font-family: "Times New Roman", serif;
+                  font-size: 14px;
+                  line-height: 1.5;
+            }
+
+            .container {
+                  width: 100%;
+            }
+
+            .header {
+                  text-align: center;
+                  border-bottom: 2px solid black;
+                  padding-bottom: 10px;
+                  margin-bottom: 20px;
+            }
+
+            .logo {
+                  width: 70px;
+            }
+
+            .header-table {
+                  width: 100%;
+                  border: 0;
+            }
+
+            .header-table td {
+                  border: 0;
+                  vertical-align: top;
+            }
+
+            .title {
+                  font-size: 18px;
+                  font-weight: bold;
+            }
+
+            .subtitle {
+                  color: #0a7a0a;
+                  font-weight: bold;
+            }
+
+            .email {
+                  color: #0047ab;
+                  text-decoration: underline;
+            }
+
+            .row {
+                  width: 100%;
+                  margin-bottom: 15px;
+            }
+
+            .row table {
+                  width: 100%;
+                  border: 0;
+            }
+
+            .row td {
+                  border: 0;
+            }
+
+            .judul {
+                  text-align: center;
+                  font-weight: bold;
+                  font-size: 18px;
+                  margin: 20px 0;
+            }
+
+            .paragraph {
+                  text-align: justify;
+                  margin-bottom: 15px;
+            }
+
+            table {
+                  width: 100%;
+                  border-collapse: collapse;
+                  margin-top: 10px;
+            }
+
+            table,
+            th,
+            td {
+                  border: 1px solid black;
+            }
+
+            th {
+                  text-align: center;
+                  padding: 6px;
+            }
+
+            td {
+                  padding: 6px;
+            }
+
+            .text-center {
+                  text-align: center;
+            }
+
+            .text-right {
+                  text-align: right;
+            }
+
+            .total {
+                  margin-top: 10px;
+            }
+
+            .ttd {
+                  width: 100%;
+                  margin-top: 200px;
+            }
+
+            .ttd table {
+                  width: 100%;
+                  border: 0;
+                  text-align: center;
+            }
+
+            .ttd td {
+                  border: 0;
+                  width: 33%;
+            }
+
+            .spacer {
+                  height: 70px;
+            }
+
+            tr {
+                  page-break-inside: avoid;
+            }
+      </style>
 </head>
 
-<body class="bg-white">
-      <!-- Header Blue Bar -->
-      <div class="h-2 bg-blue-900"></div>
+<body>
 
-      <!-- Main Container -->
-      <div class="max-w-4xl mx-auto px-8 py-12">
-            <!-- Header -->
-            <div class="text-center mb-12">
-                  <div class="mb-4">
-                        <div class="text-xl font-bold text-gray-900 mb-2 tracking-wide">LAZISNU BOJONEGORO</div>
-                        <div class="text-xs text-gray-600">LEMBAGA ZAKAT INFAQ SHODAQAH NAHDLATUL ULAMA</div>
-                  </div>
+      <div class="container">
 
-                  <h1 class="text-3xl font-bold text-gray-900 mb-3">
-                        {{ $report_title }}
-                  </h1>
+            <!-- HEADER -->
+            <div class="header">
 
-                  <div class="inline-block bg-blue-100 px-6 py-2 rounded-full mb-4">
-                        <p class="text-gray-700 font-semibold text-sm">Laporan Transaksi</p>
-                  </div>
+                  <table class="header-table">
 
-                  <div class="text-gray-600 text-sm">
-                        Periode: Semua Waktu
-                  </div>
+                        <tr>
+                              <td>
+                                    <!-- <img src="{{ public_path('images/logo.png') }}" width="80"> -->
+                                    <div class="title">
+                                          PENGURUS CABANG NAHDLATUL ULAMA BOJONEGORO
+                                    </div>
+
+                                    <div class="subtitle">
+                                          Lembaga Amil Zakat Infaq dan Shodaqoh Nahdlatul Ulama (LAZISNU)
+                                    </div>
+
+                                    <div>
+                                          Gedung PCNU Bojonegoro
+                                    </div>
+
+                                    <div>
+                                          Jl. Ahmad Yani No. 12 Bojonegoro 62115
+                                    </div>
+
+                                    <div>
+                                          085257578178 | 08113321926
+                                    </div>
+
+                                    <div class="email">
+                                          Email: pc.lazisnu.bojonegoro@gmail.com
+                                    </div>
+
+                              </td>
+
+                        </tr>
+
+                  </table>
+
             </div>
 
-            <!-- Content -->
-            <div class="space-y-8 mb-20">
-                  @if($transactions->count() > 0)
-                  <!-- Detail Transaksi -->
-                  <div>
-                        <h3 class="text-sm font-bold text-gray-900 mb-4">A. DETAIL TRANSAKSI</h3>
 
-                        <div class="overflow-x-auto">
-                              <table class="w-full border-collapse">
-                                    <thead>
-                                          <tr class="bg-black">
-                                                <th class="border border-black px-3 py-2 text-left text-white font-bold text-xs w-10">No</th>
-                                                <th class="border border-black px-3 py-2 text-left text-white font-bold text-xs w-20">Tanggal</th>
-                                                <th class="border border-black px-3 py-2 text-left text-white font-bold text-xs w-32">Nama Donatur</th>
-                                                <th class="border border-black px-3 py-2 text-left text-white font-bold text-xs w-24">Tipe</th>
-                                                <th class="border border-black px-3 py-2 text-left text-white font-bold text-xs">Nama Program</th>
-                                                <th class="border border-black px-3 py-2 text-right text-white font-bold text-xs w-28">Jumlah</th>
-                                          </tr>
-                                    </thead>
-                                    <tbody>
-                                          @foreach($transactions as $index => $transaction)
-                                          <tr class="@if($index % 2 == 0) bg-gray-50 @else bg-white @endif">
-                                                <td class="border border-gray-300 px-3 py-2 text-xs text-center">{{ $index + 1 }}</td>
-                                                <td class="border border-gray-300 px-3 py-2 text-xs">{{ $transaction->created_at->format('d/m/Y') }}</td>
-                                                <td class="border border-gray-300 px-3 py-2 text-xs">{{ $transaction->is_anonim ? 'Hamba Allah' : $transaction->nama_donatur }}</td>
-                                                <td class="border border-gray-300 px-3 py-2 text-xs">
-                                                      @if($transaction->type === 'infaq')
-                                                      DSKL
-                                                      @elseif($transaction->type === 'donasi')
-                                                      Infaq
-                                                      @else
-                                                      {{ ucfirst($transaction->type) }}
-                                                      @endif
-                                                </td>
-                                                <td class="border border-gray-300 px-3 py-2 text-xs">{{ $transaction->program?->nama ?? 'Program Tidak Terdaftar' }}</td>
-                                                <td class="border border-gray-300 px-3 py-2 text-xs text-right">Rp {{ number_format($transaction->jumlah, 0, ',', '.') }}</td>
-                                          </tr>
-                                          @endforeach
-                                    </tbody>
-                              </table>
-                        </div>
-                  </div>
+            <!-- NOMOR -->
+            <div class="row">
 
-                  <!-- Total Per Program -->
-                  <div>
-                        <h3 class="text-sm font-bold text-gray-900 mb-4 underline">B. TOTAL PER PROGRAM</h3>
+                  <table>
 
-                        <div class="overflow-x-auto">
-                              <table class="w-full border-collapse">
-                                    <thead>
-                                          <tr class="bg-black">
-                                                <th class="border border-black px-4 py-2 text-left text-white font-bold text-xs">Nama Program</th>
-                                                <th class="border border-black px-4 py-2 text-center text-white font-bold text-xs w-20">Jumlah</th>
-                                                <th class="border border-black px-4 py-2 text-right text-white font-bold text-xs w-28">Total (Rp)</th>
-                                          </tr>
-                                    </thead>
-                                    <tbody>
-                                          @foreach($totalByProgram as $program => $summary)
-                                          <tr class="bg-white hover:bg-gray-50">
-                                                <td class="border border-gray-300 px-4 py-2 text-xs font-semibold">{{ $summary['program_name'] }}</td>
-                                                <td class="border border-gray-300 px-4 py-2 text-xs text-center">{{ $summary['count'] }}</td>
-                                                <td class="border border-gray-300 px-4 py-2 text-xs text-right">{{ number_format($summary['total'], 0, ',', '.') }}</td>
-                                          </tr>
-                                          @endforeach
-                                          <tr class="bg-gray-100">
-                                                <td class="border border-black px-4 py-2 text-xs font-bold">JUMLAH TOTAL</td>
-                                                <td class="border border-black px-4 py-2 text-xs text-center font-bold">{{ $transactions->count() }}</td>
-                                                <td class="border border-black px-4 py-2 text-xs text-right font-bold">Rp {{ number_format($grandTotal, 0, ',', '.') }}</td>
-                                          </tr>
-                                    </tbody>
-                              </table>
-                        </div>
-                  </div>
+                        <tr>
 
-                  <!-- Footer -->
-                  <div class="mt-20 pt-8">
-                        <div class="mb-8 text-left text-xs">
-                              Bojonegoro, {{ $generatedDate->format('d F Y') }}
-                              <br><br>
-                              Mengetahui,
-                        </div>
+                              <td>
+                                    Perihal : Laporan Penerimaan Infaq / Sedekah <br>
+                              </td>
 
-                        <div class="grid grid-cols-2 gap-10">
-                              <div class="text-center">
-                                    <div class="text-xs font-bold mb-16">Ketua LAZISNU</div>
-                                    <div class="border-t-2 border-black pt-1 text-xs">(.....................)</div>
-                                    <div class="text-xs italic text-gray-600 mt-1">Ketua</div>
-                              </div>
+                              <td align="right">
+                                    Bojonegoro, {{ $generatedDate->format('d F Y') }}
+                              </td>
 
-                              <div class="text-center">
-                                    <div class="text-xs font-bold mb-16">Bendahara</div>
-                                    <div class="border-t-2 border-black pt-1 text-xs">(.....................)</div>
-                                    <div class="text-xs italic text-gray-600 mt-1">Bendahara</div>
-                              </div>
-                        </div>
-                  </div>
+                        </tr>
 
+                  </table>
+
+            </div>
+
+
+            <!-- JUDUL -->
+            @php
+            $type = $transactions->first()->type ?? null;
+            @endphp
+
+            <div class="judul">
+                  BERITA ACARA PENGHITUNGAN
+                  @if($type === 'infaq')
+                  DSKL DANA SOSIAL KEAGAMAAN LAINYA
+                  @elseif($type === 'donasi')
+                  INFAQ SHODAQOH DAN PEDULI BENCANA
                   @else
-                  <div class="text-center py-12 italic text-gray-500">
-                        <p>Tidak ada data transaksi {{ $title }} yang dikonfirmasi.</p>
-                  </div>
+                  {{ ucfirst($type) }}
                   @endif
             </div>
+
+
+            <!-- PARAGRAF -->
+            <div class="paragraph">
+                  Pada hari ini, ______ tanggal ______ bulan ______ tahun ______,
+                  kami yang bertanda tangan di bawah ini telah melakukan
+                  penghitungan penerimaan Zakat/Infaq/Sedekah yang
+                  dilaksanakan oleh LAZISNU PCNU Bojonegoro,
+                  dengan rincian sebagai berikut:
+            </div>
+
+
+            @if($transactions->count() > 0)
+
+            <table>
+
+                  <thead>
+                        <tr>
+                              <th width="40">No</th>
+                              <th width="90">Tanggal</th>
+                              <th>Nama Donatur</th>
+                              <th width="100">Jenis ZIS</th>
+                              <th>Program</th>
+                              <th width="120">Total Nominal (Rp)</th>
+                        </tr>
+                  </thead>
+
+                  <tbody>
+
+                        @foreach($transactions as $index => $transaction)
+
+                        <tr>
+
+                              <td class="text-center">
+                                    {{ $index+1 }}
+                              </td>
+
+                              <td class="text-center">
+                                    {{ $transaction->created_at->format('d/m/Y') }}
+                              </td>
+
+                              <td>
+                                    {{ $transaction->is_anonim ? 'Hamba Allah' : $transaction->nama_donatur }}
+                              </td>
+
+                              <td class="text-center">
+
+                                    @if($transaction->type === 'infaq')
+                                    DSKL
+                                    @elseif($transaction->type === 'donasi')
+                                    Infaq
+                                    @else
+                                    {{ ucfirst($transaction->type) }}
+                                    @endif
+
+                              </td>
+
+                              <td>
+                                    {{ $transaction->program?->nama ?? 'Program Tidak Terdaftar' }}
+                              </td>
+
+                              <td class="text-right">
+                                    {{ number_format($transaction->jumlah,0,',','.') }}
+                              </td>
+
+                        </tr>
+
+                        @endforeach
+
+                  </tbody>
+
+            </table>
+
+
+            <div class="total">
+                  Total keseluruhan penerimaan ZIS : <br>
+                  Rp {{ number_format($grandTotal,0,',','.') }}
+            </div>
+
+
+            <div class="paragraph">
+                  Penghitungan dilakukan secara terbuka dan disaksikan
+                  oleh para petugas terkait. Demikian berita acara ini
+                  dibuat dengan sebenar-benarnya untuk digunakan
+                  sebagaimana mestinya.
+            </div>
+
+
+            <!-- TTD -->
+            <div class="ttd">
+
+                  <table>
+
+                        <tr>
+
+                              <td>
+                                    Petugas Penghitung
+                                    <div class="spacer"></div>
+                                    (.....................)
+                              </td>
+
+                              <td>
+                                    Saksi
+                                    <div class="spacer"></div>
+                                    (.....................)
+                              </td>
+
+                              <td>
+                                    Penanggung Jawab
+                                    <div class="spacer"></div>
+                                    (.....................)
+                              </td>
+
+                        </tr>
+
+                  </table>
+
+            </div>
+
+
+            @else
+
+            <div style="text-align:center;margin-top:50px;">
+                  Tidak ada data transaksi.
+            </div>
+
+            @endif
+
+
       </div>
 
-      <!-- Decorative Wave Footer -->
-      <div class="relative mt-12 pt-8">
-            <svg
-                  viewBox="0 0 1440 120"
-                  class="w-full h-auto"
-                  preserveAspectRatio="none">
-                  <path
-                        d="M0,40 Q360,0 720,40 T1440,40 L1440,120 L0,120 Z"
-                        fill="#f5e6d3"
-                        opacity="0.8"></path>
-                  <path
-                        d="M0,50 Q360,20 720,50 T1440,50 L1440,120 L0,120 Z"
-                        fill="#f9ede6"
-                        opacity="0.6"></path>
-            </svg>
-      </div>
 </body>
 
 </html>
