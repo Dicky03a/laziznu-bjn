@@ -1,5 +1,5 @@
 @extends('layouts.public.app')
-@section('title', 'Rekening - LAZIZNU Bojonegoro')
+@section('title', 'Rekening - Lazisnu Bojonegoro')
 @section('content')
 
 <!-- HERO -->

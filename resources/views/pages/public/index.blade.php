@@ -1,5 +1,5 @@
 @extends('layouts.public.app')
-@section('title', 'Beranda - NU Care LAZIZNU Bojonegoro')
+@section('title', 'Beranda - NU Care Lazisnu Bojonegoro')
 
 @section('content')
 
@@ -20,7 +20,7 @@
             <div class="relative px-6 sm:px-12 lg:px-16 py-20 sm:py-24 lg:py-32">
                   <div class="max-w-2xl">
                         <div class="inline-block mb-4 px-4 py-1.5 bg-emerald-500/20 backdrop-blur-sm rounded-full border border-emerald-400/30">
-                              <span class="text-emerald-200 text-sm font-medium">Laziznu Bojonegoro</span>
+                              <span class="text-emerald-200 text-sm font-medium">Lazisnu Bojonegoro</span>
                         </div>
 
                         <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight tracking-tight">

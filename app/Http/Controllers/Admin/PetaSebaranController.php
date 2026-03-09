@@ -8,34 +8,38 @@ use App\Models\Kecamatan;
 use App\Models\Mustahik;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PetaSebaranController extends Controller
 {
     public function index(Request $request)
     {
-        // Get all kecamatans & desas for filter dropdown
+        // Get all kecamatans & desas for filter dropdown (optimized)
         $kecamatans = Kecamatan::orderBy('nama')->get();
         $desas = Desa::when($request->kecamatan_id, function ($query) use ($request) {
             return $query->where('kecamatan_id', $request->kecamatan_id);
         })->orderBy('nama')->get();
 
+        // Build base query untuk mustahik yang aktif
         $mustahikQuery = Mustahik::with(['kecamatan', 'desa'])
             ->where('status', 'aktif')
             ->orderBy('nama');
 
         // Build base query untuk muzaki yang dikonfirmasi
         $query = Transaction::with(['kecamatan', 'desa'])
-            ->where('status', 'confirmed') // Ubah sesuai status di database Anda
+            ->where('status', 'confirmed')
             ->where('type', 'zakat')
             ->orderBy('created_at', 'desc');
 
-        // Apply filters
+        // Apply filters to both queries
         if ($request->filled('kecamatan_id')) {
             $query->where('kecamatan_id', $request->kecamatan_id);
+            $mustahikQuery->where('kecamatan_id', $request->kecamatan_id);
         }
 
         if ($request->filled('desa_id')) {
             $query->where('desa_id', $request->desa_id);
+            $mustahikQuery->where('desa_id', $request->desa_id);
         }
 
         if ($request->filled('type')) {
@@ -55,20 +59,7 @@ class PetaSebaranController extends Controller
                     ->orWhere('telepon', 'like', "%{$search}%")
                     ->orWhere('kode_transaksi', 'like', "%{$search}%");
             });
-        }
 
-        // Apply filters for mustahik
-        if ($request->filled('kecamatan_id')) {
-            $mustahikQuery->where('kecamatan_id', $request->kecamatan_id);
-        }
-
-        if ($request->filled('desa_id')) {
-            $mustahikQuery->where('desa_id', $request->desa_id);
-        }
-
-        // Apply search for mustahik
-        if ($request->filled('search')) {
-            $search = $request->search;
             $mustahikQuery->where(function ($q) use ($search) {
                 $q->where('nama', 'like', "%{$search}%")
                     ->orWhere('nik', 'like', "%{$search}%")
@@ -76,33 +67,20 @@ class PetaSebaranController extends Controller
             });
         }
 
-        // Get paginated mustahik
-        $mustahiks = $mustahikQuery->paginate(15, ['*'], 'mustahik_page')->appends($request->query());
-
-        // Statistics by Kecamatan (Mustahik)
-        $statistikKecamatanMustahik = $this->getStatistikKecamatanMustahik();
-
-        // Statistics by Desa (Mustahik) - jika kecamatan dipilih
-        $statistikDesaMustahik = $this->getStatistikDesaMustahik($request->kecamatan_id);
-
-        // Overall mustahik statistics
-        $totalMustahik = Mustahik::where('status', 'aktif')->count();
-
         // Get paginated results
         $muzakis = $query->paginate(15)->appends($request->query());
+        $mustahiks = $mustahikQuery->paginate(15, ['*'], 'mustahik_page')->appends($request->query());
 
-        // Statistics by Kecamatan
-        $statistikKecamatan = $this->getStatistikKecamatan();
-
-        // Statistics by Desa (jika kecamatan dipilih)
-        $statistikDesa = $this->getStatistikDesa($request->kecamatan_id);
-
-        // Overall statistics
+        // Overall statistics - Optimized with batch queries
         $totalMuzaki = Transaction::where('status', 'confirmed')->where('type', 'zakat')->count();
         $totalDonasi = Transaction::where('status', 'confirmed')->where('type', 'zakat')->sum('jumlah');
+        $totalMustahik = Mustahik::where('status', 'aktif')->count();
         $totalKecamatan = Kecamatan::count();
         $totalDesa = Desa::count();
-        $totalMustahikByKecamatan = Kecamatan::count();
+
+        // Optimized: Use raw SQL untuk statistik kompleks
+        $statistikKecamatan = $this->getOptimizedStatistikKecamatan();
+        $statistikDesa = $this->getOptimizedStatistikDesa($request->kecamatan_id);
 
         return view('admin.peta-sebaran.index', compact(
             'muzakis',
@@ -115,11 +93,63 @@ class PetaSebaranController extends Controller
             'totalKecamatan',
             'totalDesa',
             'mustahiks',
-            'statistikKecamatanMustahik',
-            'statistikDesaMustahik',
-            'totalMustahik',
-            'totalMustahikByKecamatan'
+            'totalMustahik'
         ));
+    }
+
+    /**
+     * Optimized: Get statistik kecamatan menggunakan raw SQL (1 query)
+     */
+    private function getOptimizedStatistikKecamatan()
+    {
+        return DB::table('kecamatans')
+            ->leftJoin('transactions as t', function ($join) {
+                $join->on('t.kecamatan_id', '=', 'kecamatans.id')
+                    ->where('t.status', '=', 'confirmed')
+                    ->where('t.type', '=', 'zakat');
+            })
+            ->leftJoin('mustahiks as m', function ($join) {
+                $join->on('m.kecamatan_id', '=', 'kecamatans.id')
+                    ->where('m.status', '=', 'aktif');
+            })
+            ->selectRaw('kecamatans.id')
+            ->selectRaw('kecamatans.nama')
+            ->selectRaw('COUNT(DISTINCT t.id) as total_muzaki')
+            ->selectRaw('COUNT(DISTINCT m.id) as total_mustahik')
+            ->selectRaw('COALESCE(SUM(t.jumlah), 0) as total_donasi')
+            ->groupBy('kecamatans.id', 'kecamatans.nama')
+            ->orderByDesc('total_muzaki')
+            ->get();
+    }
+
+    /**
+     * Optimized: Get statistik desa menggunakan raw SQL (1 query)
+     */
+    private function getOptimizedStatistikDesa($kecamatanId = null)
+    {
+        $query = DB::table('desas')
+            ->leftJoin('transactions as t', function ($join) {
+                $join->on('t.desa_id', '=', 'desas.id')
+                    ->where('t.status', '=', 'confirmed')
+                    ->where('t.type', '=', 'zakat');
+            })
+            ->leftJoin('mustahiks as m', function ($join) {
+                $join->on('m.desa_id', '=', 'desas.id')
+                    ->where('m.status', '=', 'aktif');
+            })
+            ->selectRaw('desas.id')
+            ->selectRaw('desas.nama')
+            ->selectRaw('desas.kecamatan_id')
+            ->selectRaw('COUNT(DISTINCT t.id) as total_muzaki')
+            ->selectRaw('COUNT(DISTINCT m.id) as total_mustahik')
+            ->selectRaw('COALESCE(SUM(t.jumlah), 0) as total_donasi')
+            ->groupBy('desas.id', 'desas.nama', 'desas.kecamatan_id');
+
+        if ($kecamatanId) {
+            $query->where('desas.kecamatan_id', $kecamatanId);
+        }
+
+        return $query->orderByDesc('total_muzaki')->get();
     }
 
     private function getStatistikDesaMustahik($kecamatanId = null)

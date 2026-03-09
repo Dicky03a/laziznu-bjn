@@ -1,5 +1,5 @@
 @extends('layouts.public.app')
-@section('title', 'Laporan Tahunan - LAZIZNU Bojonegoro')
+@section('title', 'Laporan Tahunan - Lazisnu Bojonegoro')
 @section('content')
 
 <div class="min-h-screen bg-gradient-to-b from-slate-50 to-white  ">

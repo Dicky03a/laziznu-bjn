@@ -1,5 +1,5 @@
 @extends('layouts.public.app')
-@section('title', 'Laporan Tahunan - LAZIZNU Bojonegoro')
+@section('title', 'Laporan Tahunan - Lazisnu Bojonegoro')
 @section('content')
 
 <!-- Hero Section -->
@@ -11,7 +11,7 @@
                   {{ $laporan->nama_laporan }}
             </h1>
             <p class="text-emerald-50 max-w-2xl mx-auto leading-relaxed text-lg">
-                  Transparansi penuh dalam setiap laporan bulanan LAZIZNU Bojonegoro. Akses dan download laporan lengkap kami di sini.
+                  Transparansi penuh dalam setiap laporan bulanan Lazisnu Bojonegoro. Akses dan download laporan lengkap kami di sini.
             </p>
       </div>
 </section>

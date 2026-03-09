@@ -12,7 +12,7 @@
             </div>
 
             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-                  NU CARE LAZIZNU
+                  NU CARE Lazisnu
             </h1>
 
             <p class="text-base sm:text-lg text-emerald-100 max-w-2xl mx-auto">

@@ -1,10 +1,5 @@
-{{--
-  FILE: resources/views/public/Donasi/index.blade.php
-  FILE: resources/views/public/donasi/index.blade.php  — sama strukturnya, ganti variable
-  Untuk donasi, route('donasi.show') dan judul "Donasi"
---}}
 @extends('layouts.public.app')
-@section('title', 'Program Donasi - LAZIZNU Bojonegoro')
+@section('title', 'Program Donasi - Lazisnu Bojonegoro')
 @section('content')
 
 {{-- Hero --}}
@@ -15,13 +10,13 @@
       </div>
       <div class="relative max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
             <div class="inline-block mb-6 px-4 py-1.5 bg-emerald-500/20 backdrop-blur-sm rounded-full border border-emerald-400/30">
-                  <span class="text-emerald-200 text-sm font-medium">Program LAZIZNU Bojonegoro</span>
+                  <span class="text-emerald-200 text-sm font-medium">Program Lazisnu Bojonegoro</span>
             </div>
             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-4">
                   Program Infaq Shodaqoh dan Peduli Bencana
             </h1>
             <p class="text-base sm:text-lg text-emerald-100/90 max-w-2xl mx-auto leading-relaxed">
-                  Salurkan Infaq Shodaqoh dan Peduli Bencana terbaik Anda untuk program-program kemanusiaan dan sosial LAZIZNU Bojonegoro
+                  Salurkan Infaq Shodaqoh dan Peduli Bencana terbaik Anda untuk program-program kemanusiaan dan sosial Lazisnu Bojonegoro
             </p>
       </div>
 </section>

@@ -1,5 +1,5 @@
 @extends('layouts.public.app')
-@section('title', 'Pengurus - LAZIZNU Bojonegoro')
+@section('title', 'Pengurus - Lazisnu Bojonegoro')
 @section('content')
 
 

@@ -1,5 +1,5 @@
 @extends('layouts.public.app')
-@section('title', 'Fidyah - LAZIZNU Bojonegoro')
+@section('title', 'Fidyah - Lazisnu Bojonegoro')
 @section('content')
 
 {{-- HERO --}}
@@ -196,7 +196,7 @@
                         <div class="sticky top-8 space-y-6">
                               <div class="p-8">
                                     <div class="flex items-center gap-4 mb-6">
-                                          <img src="{{ asset('asset/laziznulogo.svg') }}" class="w-20" alt="Laziznu Bojonegoro">
+                                          <img src="{{ asset('asset/laziznulogo.svg') }}" class="w-20" alt="Lazisnu Bojonegoro">
                                           <div class="flex-1">
                                                 <h3 class="font-bold text-gray-900 text-lg mb-1">LAZISNU Bojonegoro</h3>
                                                 <p class="text-emerald-600 text-sm font-medium flex items-center gap-1">

@@ -6,7 +6,7 @@
                   <div class="flex items-center space-x-3">
                         <img
                               src="{{ asset('asset/laziznulogo.svg') }}"
-                              alt="Laziznu Bojonegoro"
+                              alt="Lazisnu Bojonegoro"
                               class="h-12 sm:h-16 md:h-12 lg:h-16 w-auto object-contain" />
                   </div>
 
@@ -37,14 +37,14 @@
                                           class="block px-4 py-3 rounded-xl text-sm text-gray-600
                            hover:bg-green-50 hover:text-green-600 hover:translate-x-1
                            transition-all duration-200">
-                                          Sekilas NU Care Laziznu
+                                          Sekilas NU Care Lazisnu
                                     </a>
 
                                     <a href="{{ route('pengurus-laziznu-bojonegoro') }}"
                                           class="block px-4 py-3 rounded-xl text-sm text-gray-600
                            hover:bg-green-50 hover:text-green-600 hover:translate-x-1
                            transition-all duration-200">
-                                          Pengurus Laziznu PCNU Bojonegoro
+                                          Pengurus Lazisnu PCNU Bojonegoro
                                     </a>
 
                                     <a href="{{ route('rekening-lengkap') }}"
@@ -108,7 +108,14 @@
                                           class="block px-4 py-3 rounded-xl text-sm text-gray-600
                            hover:bg-green-50 hover:text-green-600 hover:translate-x-1
                            transition-all duration-200">
-                                          Fidyah & Qurban
+                                          Fidyah
+                                    </a>
+
+                                    <a href="{{ route('qurban.index') }}"
+                                          class="block px-4 py-3 rounded-xl text-sm text-gray-600
+                           hover:bg-green-50 hover:text-green-600 hover:translate-x-1
+                           transition-all duration-200">
+                                          Qurban
                                     </a>
                               </div>
                         </div>
@@ -205,7 +212,7 @@
 
                         <div class="mobile-content hidden pl-4 mt-1 space-y-1">
                               <a href="{{ route('profile') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Sekilas NU Care</a>
-                              <a href="{{ route('pengurus-laziznu-bojonegoro') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Pengurus Laziznu</a>
+                              <a href="{{ route('pengurus-laziznu-bojonegoro') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Pengurus Lazisnu</a>
                               <a href="{{ route('rekening-lengkap') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Rekening Lengkap</a>
                               <a href="{{ route('dokumen') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Unduh Dokumen</a>
                               <a href="{{ route('berita.public.index') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Berita</a>

@@ -7,7 +7,6 @@ use App\Http\Requests\MustahikRequest;
 use App\Models\Desa;
 use App\Models\Kecamatan;
 use App\Models\Mustahik;
-use Illuminate\Support\Facades\DB;
 
 class MustahikController extends Controller
 {
@@ -52,9 +51,16 @@ class MustahikController extends Controller
         // Paginate results
         $mustahiks = $query->latest()->paginate(10);
 
-        // Get all kecamatans and desas for filter dropdowns
+        // Get all kecamatans for filter dropdowns
         $kecamatans = Kecamatan::orderBy('nama')->get();
-        $desas = Desa::orderBy('nama')->get();
+
+        // Get desas only for selected kecamatan (or empty if none selected)
+        $desas = collect();
+        if (request('kecamatan_id')) {
+            $desas = Desa::where('kecamatan_id', request('kecamatan_id'))
+                ->orderBy('nama')
+                ->get();
+        }
 
         // Calculate statistics
         $totalMustahik = Mustahik::count();
@@ -67,7 +73,7 @@ class MustahikController extends Controller
             'mustahiks',
             'mustahiks as mustahiks_aktif' => function ($query) {
                 $query->where('status', 'aktif');
-            }
+            },
         ])->get();
 
         // Statistik per Desa (jika ada filter kecamatan)
@@ -78,7 +84,7 @@ class MustahikController extends Controller
                     'mustahiks',
                     'mustahiks as mustahiks_aktif' => function ($query) {
                         $query->where('status', 'aktif');
-                    }
+                    },
                 ])->get();
         }
 
@@ -110,6 +116,7 @@ class MustahikController extends Controller
     {
         $kecamatans = Kecamatan::orderBy('nama')->get();
         $desas = Desa::orderBy('nama')->get();
+
         return view('admin.mustahiks.create', compact('kecamatans', 'desas'));
     }
 
@@ -119,6 +126,7 @@ class MustahikController extends Controller
     public function store(MustahikRequest $request)
     {
         Mustahik::create($request->validated());
+
         return redirect()->route('mustahiks.index')
             ->with('success', 'Data mustahik berhasil ditambahkan');
     }
@@ -129,6 +137,7 @@ class MustahikController extends Controller
     public function show(Mustahik $mustahik)
     {
         $mustahik->load(['kecamatan', 'desa']);
+
         return view('admin.mustahiks.show', compact('mustahik'));
     }
 
@@ -139,6 +148,7 @@ class MustahikController extends Controller
     {
         $kecamatans = Kecamatan::orderBy('nama')->get();
         $desas = Desa::orderBy('nama')->get();
+
         return view('admin.mustahiks.edit', compact('mustahik', 'kecamatans', 'desas'));
     }
 
@@ -148,6 +158,7 @@ class MustahikController extends Controller
     public function update(MustahikRequest $request, Mustahik $mustahik)
     {
         $mustahik->update($request->validated());
+
         return redirect()->route('mustahiks.index')
             ->with('success', 'Data mustahik berhasil diperbarui');
     }
@@ -159,6 +170,7 @@ class MustahikController extends Controller
     {
         $nama = $mustahik->nama;
         $mustahik->delete();
+
         return redirect()->route('mustahiks.index')
             ->with('success', "Data mustahik {$nama} berhasil dihapus");
     }
@@ -171,6 +183,7 @@ class MustahikController extends Controller
         $desas = Desa::where('kecamatan_id', $kecamatanId)
             ->orderBy('nama')
             ->get(['id', 'nama']);
+
         return response()->json($desas);
     }
 
@@ -182,6 +195,7 @@ class MustahikController extends Controller
         $mustahiks = Mustahik::byKategori($kategori)
             ->with(['kecamatan', 'desa'])
             ->get();
+
         return response()->json($mustahiks);
     }
 
@@ -196,6 +210,7 @@ class MustahikController extends Controller
         $byKategori = Mustahik::selectRaw('kategori_asnaf, COUNT(*) as count')
             ->groupBy('kategori_asnaf')
             ->get();
+
         return response()->json([
             'total' => $total,
             'aktif' => $aktif,

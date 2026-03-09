@@ -12,7 +12,7 @@
             <div class="flex items-center gap-1">
                 <img src="{{ asset('asset/laziznulogo.svg') }}" alt="Logo NU Care" class="h-12 w-auto">
                 <div class="">
-                    <h2 class="font-bold text-xs text-green-800">NU CARE Laziznu</h2>
+                    <h2 class="font-bold text-xs text-green-800">NU CARE Lazisnu</h2>
                     <h2 class="font-bold text-green-800 -mt-1">Bojonegoro</h2>
                 </div>
             </div>
