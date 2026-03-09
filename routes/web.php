@@ -97,7 +97,7 @@ Route::prefix('qurban')->name('qurban.')->group(function () {
 // Admin Routes (Protected by auth & verified middleware)
 Route::middleware(['auth', 'verified'])->group(function () {
 
-    Route::get('dashboard', fn () => view('dashboard'))->name('dashboard');
+    Route::get('dashboard', fn() => view('dashboard'))->name('dashboard');
 
     // Export Reports
     Route::get('laporan/export-dskl', [ExportReportController::class, 'exportDskl'])->name('laporan.export-dskl');
@@ -172,7 +172,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
     Route::resource('mustahiks', MustahikController::class);
-    Route::get('/mustahiks/desa/{kecamatanId}', [MustahikController::class, 'getDesa']);
+
+    Route::get('/mustahiks/getDesa/{kecamatan_id}', [MustahikController::class, 'getDesa'])
+        ->name('mustahiks.getDesa');
+
+    Route::get('/mustahiks/filterByKategori/{kategori}', [MustahikController::class, 'filterByKategori'])
+        ->name('mustahiks.filterByKategori');
+
+    Route::get('/mustahiks/statistik', [MustahikController::class, 'statistik'])
+        ->name('mustahiks.statistik');
 });
 
-require __DIR__.'/settings.php';
+require __DIR__ . '/settings.php';

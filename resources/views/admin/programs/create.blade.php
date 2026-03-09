@@ -1,4 +1,3 @@
-{{-- resources/views/admin/programs/create.blade.php --}}
 <x-layouts::app :title="__('Tambah Program')">
 
       {{-- Header --}}

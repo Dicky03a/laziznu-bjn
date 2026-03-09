@@ -1,4 +1,3 @@
-{{-- resources/views/admin/programs/edit.blade.php --}}
 <x-layouts::app :title="__('Edit Program')">
 
       {{-- Header --}}

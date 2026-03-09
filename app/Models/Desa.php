@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -31,7 +32,7 @@ class Desa extends Model
      */
     public function scopeSearch($query, $search)
     {
-        return $query->where('nama', 'like', '%'.$search.'%');
+        return $query->where('nama', 'like', '%' . $search . '%');
     }
 
     /**
@@ -40,5 +41,10 @@ class Desa extends Model
     public function scopeByKecamatan($query, $kecamatanId)
     {
         return $query->where('kecamatan_id', $kecamatanId);
+    }
+
+    public function mustahiks(): HasMany
+    {
+        return $this->hasMany(Mustahik::class);
     }
 }

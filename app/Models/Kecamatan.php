@@ -21,4 +21,9 @@ class Kecamatan extends Model
     {
         return $this->hasMany(Desa::class);
     }
+
+    public function mustahiks(): HasMany
+    {
+        return $this->hasMany(Mustahik::class);
+    }
 }
