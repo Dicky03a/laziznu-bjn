@@ -271,6 +271,13 @@
       </div>
 </section>
 
+<!-- PEMETAAN ZAKAT BOJONEGORO -->
+<section class="w-full bg-slate-50/50 py-16 sm:py-20 lg:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <livewire:pemetaan-zakat />
+      </div>
+</section>
+
 <!-- 5 PILLARS -->
 <section class="w-full bg-gradient-to-br from-emerald-600 to-emerald-700 py-16 sm:py-20 lg:py-24">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

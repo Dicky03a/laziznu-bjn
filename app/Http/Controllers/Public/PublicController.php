@@ -33,11 +33,6 @@ class PublicController extends Controller
         return view('pages.public.index', compact('profile', 'news', 'programs'));
     }
 
-    public function contohDashboard()
-    {
-        return view('pages.public.contoh-dashboard');
-    }
-
     public function profile()
     {
         $profile = Profile::with(['missions', 'pillars'])->latest()->first();

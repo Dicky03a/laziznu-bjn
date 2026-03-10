@@ -15,7 +15,14 @@ class Kecamatan extends Model
 
     protected $fillable = [
         'nama',
+        'latitude',
+        'longitude',
     ];
+
+    /**
+     * Appended attributes untuk menghitung jumlah muzakki dan mustahik secara dinamis
+     */
+    protected $appends = ['jumlah_muzakki', 'jumlah_mustahik'];
 
     public function desas(): HasMany
     {
@@ -25,5 +32,32 @@ class Kecamatan extends Model
     public function mustahiks(): HasMany
     {
         return $this->hasMany(Mustahik::class);
+    }
+
+    /**
+     * Relasi ke Transaction untuk menghitung muzakki
+     */
+    public function transactions(): HasMany
+    {
+        return $this->hasMany(Transaction::class);
+    }
+
+    /**
+     * Accessor: Hitung jumlah muzakki (donatur unik) per kecamatan dari Transaction
+     */
+    public function getJumlahMuzakkiAttribute(): int
+    {
+        return $this->transactions()
+            ->where('status', 'confirmed')
+            ->distinct('nama_donatur')
+            ->count('nama_donatur');
+    }
+
+    /**
+     * Accessor: Hitung jumlah mustahik (penerima manfaat) per kecamatan
+     */
+    public function getJumlahMustahikAttribute(): int
+    {
+        return $this->mustahiks()->count();
     }
 }
