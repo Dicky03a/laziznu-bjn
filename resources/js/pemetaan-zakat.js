@@ -82,16 +82,6 @@ export function initPemetaanZakat() {
         }
     });
 
-    document.querySelectorAll('.kecamatan-card').forEach(card => {
-        card.addEventListener('click', function () {
-            const lat = parseFloat(this.dataset.lat);
-            const lng = parseFloat(this.dataset.lng);
-            map.flyTo([lat, lng], 13, {
-                duration: 1,
-            });
-        });
-    });
-
     window.addEventListener('resize', () => {
         setTimeout(() => {
             map.invalidateSize();

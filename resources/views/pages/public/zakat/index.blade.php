@@ -275,6 +275,31 @@
                               </button>
                         </form>
 
+
+                        @if($riwayatDonasi->count() > 0)
+                        <div class="bg-white rounded-3xl shadow-sm border border-gray-100 p-8">
+                              <h2 class="text-xl font-bold text-gray-900 mb-5">Donatur Terbaru</h2>
+                              <div class="space-y-3">
+                                    @foreach($riwayatDonasi as $trx)
+                                    <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-2xl border border-gray-100">
+                                          <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700 font-bold text-sm flex-shrink-0">
+                                                {{ strtoupper(substr($trx->nama_tampil, 0, 1)) }}
+                                          </div>
+                                          <div class="flex-1 min-w-0">
+                                                <p class="font-semibold text-gray-900 text-sm truncate">{{ $trx->nama_tampil }}</p>
+                                                <p class="text-xs text-gray-500">{{ $trx->created_at->diffForHumans() }}</p>
+                                          </div>
+                                          <div class="text-right">
+                                                <p class="font-bold text-emerald-600 text-sm">{{ $trx->jumlah_format }}</p>
+                                                @if($trx->catatan)
+                                                <p class="text-xs text-gray-400 max-w-32 truncate">{{ $trx->catatan }}</p>
+                                                @endif
+                                          </div>
+                                    </div>
+                                    @endforeach
+                              </div>
+                        </div>
+                        @endif
                   </div>
 
                   {{-- RIGHT — Sidebar --}}

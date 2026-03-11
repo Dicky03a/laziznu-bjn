@@ -30,7 +30,23 @@ class ZakatController extends Controller
         $totalMuzakki = Transaction::ofType('zakat')->confirmed()->count();
         $totalTerkumpul = Transaction::ofType('zakat')->confirmed()->sum('jumlah');
 
-        return view('pages.public.zakat.index', compact('settings', 'kecamatans', 'totalMuzakki', 'totalTerkumpul'));
+        $riwayatDonasi = Transaction::where('type', 'zakat')
+            ->where('status', 'confirmed')
+            ->latest()
+            ->take(10)
+            ->get()
+            ->map(function ($trx) {
+
+                $trx->nama_tampil = $trx->is_anonim
+                    ? 'Hamba Allah'
+                    : $trx->nama_donatur;
+
+                $trx->jumlah_format = 'Rp ' . number_format($trx->jumlah, 0, ',', '.');
+
+                return $trx;
+            });
+
+        return view('pages.public.zakat.index', compact('settings', 'kecamatans', 'totalMuzakki', 'totalTerkumpul', 'riwayatDonasi'));
     }
 
     public function getDesa($kecamatanId)

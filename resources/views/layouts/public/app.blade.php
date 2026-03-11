@@ -6,6 +6,9 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
       <title>@yield('title', 'NU Care LAZISNU Bojonegoro')</title>
+      <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+      <link rel="shortcut icon" href="{{ asset('favicon.png') }}">
+      <link rel="apple-touch-icon" href="{{ asset('favicon.png') }}">
 
       <meta name="description" content="@yield('description','LAZISNU Bojonegoro - Lembaga Amil Zakat, Infaq dan Shadaqah Nahdlatul Ulama Bojonegoro')">
 
