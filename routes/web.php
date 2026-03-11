@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Admin\DokumenController as AdminDokumenController;
 // Admin Controllers
+use App\Http\Controllers\Admin\DokumenController as AdminDokumenController;
 use App\Http\Controllers\Admin\ExportReportController;
 use App\Http\Controllers\Admin\LaporanBulananController as AdminLaporanBulananController;
 use App\Http\Controllers\Admin\LaporanMwcController as AdminLaporanMwcController;
@@ -94,7 +94,7 @@ Route::prefix('qurban')->name('qurban.')->group(function () {
     Route::post('/pembayaran/{kode}/konfirmasi', [QurbanPaymentController::class, 'confirm'])->name('payment.confirm');
 });
 
-// Admin Routes (Protected by auth & verified middleware)
+// Admin Routes 
 Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('dashboard', fn() => view('dashboard'))->name('dashboard');

@@ -50,7 +50,7 @@ class Mustahik extends Model
     }
 
     /**
-     * Scope untuk filter by kategori
+     * Scope untuk filter kategori
      */
     public function scopeByKategori($query, $kategori)
     {
@@ -58,7 +58,7 @@ class Mustahik extends Model
     }
 
     /**
-     * Accessor untuk format kategori asnaf
+     * Accessor untuk format asnaf
      */
     public function getKategoriAsnafFormatted()
     {

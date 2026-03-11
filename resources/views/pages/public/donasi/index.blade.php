@@ -2,7 +2,7 @@
 @section('title', 'Program Donasi - Lazisnu Bojonegoro')
 @section('content')
 
-{{-- Hero --}}
+<!-- Hero -->
 <section class="relative bg-gradient-to-br from-emerald-600 to-emerald-700 py-20 sm:py-24 overflow-hidden">
       <div class="absolute inset-0 opacity-10">
             <div class="absolute top-0 left-0 w-96 h-96 bg-emerald-500 rounded-full blur-3xl"></div>
@@ -21,7 +21,7 @@
       </div>
 </section>
 
-{{-- Programs Grid --}}
+<!-- Program -->
 <section class="bg-gray-50 py-16 sm:py-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -92,7 +92,7 @@
                   @endforeach
             </div>
 
-            {{-- Pagination --}}
+            <!-- Pagination -->
             @if($programs->hasPages())
             <div class="mt-10 flex justify-center">
                   {{ $programs->links() }}

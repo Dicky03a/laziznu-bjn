@@ -6,9 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateDokumenRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
         return true;
@@ -35,7 +32,7 @@ class UpdateDokumenRequest extends FormRequest
                 'nullable',
                 'file',
                 'mimes:pdf,doc,docx,xls,xlsx,ppt,pptx,txt',
-                'max:10240', // 10MB
+                'max:10240',
             ],
         ];
     }

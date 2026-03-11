@@ -50,7 +50,6 @@ class QurbanHewanController extends Controller
         $validated = $request->validated();
         $validated['is_active'] = $request->boolean('is_active', true);
 
-        // Auto-set max_peserta dan harga_per_slot dari jenis
         $validated = QurbanHewan::buildFromJenis($validated);
 
         if ($request->hasFile('gambar')) {
@@ -80,7 +79,6 @@ class QurbanHewanController extends Controller
         $validated['is_active'] = $request->boolean('is_active');
         $validated['period_id'] = $request->period_id;
 
-        // Recalculate slot & harga jika jenis atau harga berubah
         $validated = QurbanHewan::buildFromJenis($validated);
 
         if ($request->hasFile('gambar')) {

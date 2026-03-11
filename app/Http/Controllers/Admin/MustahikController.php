@@ -10,12 +10,8 @@ use App\Models\Mustahik;
 
 class MustahikController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        // Base query with relationships
         $query = Mustahik::with(['kecamatan', 'desa']);
 
         // Search functionality
@@ -28,33 +24,30 @@ class MustahikController extends Controller
             });
         }
 
-        // Filter by Kecamatan
+        // Filter Kecamatan
         if (request('kecamatan_id')) {
             $query->where('kecamatan_id', request('kecamatan_id'));
         }
 
-        // Filter by Desa
+        // Filter Desa
         if (request('desa_id')) {
             $query->where('desa_id', request('desa_id'));
         }
 
-        // Filter by Kategori
+        // Filter Kategori
         if (request('kategori_asnaf')) {
             $query->where('kategori_asnaf', request('kategori_asnaf'));
         }
 
-        // Filter by Status
+        // Filter Status
         if (request('status')) {
             $query->where('status', request('status'));
         }
 
-        // Paginate results
         $mustahiks = $query->latest()->paginate(10);
 
-        // Get all kecamatans for filter dropdowns
         $kecamatans = Kecamatan::orderBy('nama')->get();
 
-        // Get desas only for selected kecamatan (or empty if none selected)
         $desas = collect();
         if (request('kecamatan_id')) {
             $desas = Desa::where('kecamatan_id', request('kecamatan_id'))
@@ -62,13 +55,13 @@ class MustahikController extends Controller
                 ->get();
         }
 
-        // Calculate statistics
+        // statistics
         $totalMustahik = Mustahik::count();
         $totalAktif = Mustahik::where('status', 'aktif')->count();
         $totalNonaktif = Mustahik::where('status', 'nonaktif')->count();
         $totalDesa = Desa::count();
 
-        // Statistik per Kecamatan
+        // Statistik Kecamatan
         $statistikKecamatan = Kecamatan::withCount([
             'mustahiks',
             'mustahiks as mustahiks_aktif' => function ($query) {
@@ -76,7 +69,7 @@ class MustahikController extends Controller
             },
         ])->get();
 
-        // Statistik per Desa (jika ada filter kecamatan)
+        // Statistik Desa 
         $statistikDesa = collect();
         if (request('kecamatan_id')) {
             $statistikDesa = Desa::where('kecamatan_id', request('kecamatan_id'))
@@ -88,7 +81,7 @@ class MustahikController extends Controller
                 ])->get();
         }
 
-        // Statistik per Kategori Asnaf
+        // Statistik Kategori Asnaf
         $statistikKategori = Mustahik::select('kategori_asnaf')
             ->selectRaw('COUNT(*) as total')
             ->selectRaw("SUM(CASE WHEN status = 'aktif' THEN 1 ELSE 0 END) as aktif")
@@ -109,9 +102,6 @@ class MustahikController extends Controller
         ));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $kecamatans = Kecamatan::orderBy('nama')->get();
@@ -120,9 +110,6 @@ class MustahikController extends Controller
         return view('admin.mustahiks.create', compact('kecamatans', 'desas'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(MustahikRequest $request)
     {
         Mustahik::create($request->validated());
@@ -131,9 +118,6 @@ class MustahikController extends Controller
             ->with('success', 'Data mustahik berhasil ditambahkan');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Mustahik $mustahik)
     {
         $mustahik->load(['kecamatan', 'desa']);
@@ -141,9 +125,6 @@ class MustahikController extends Controller
         return view('admin.mustahiks.show', compact('mustahik'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Mustahik $mustahik)
     {
         $kecamatans = Kecamatan::orderBy('nama')->get();
@@ -152,9 +133,6 @@ class MustahikController extends Controller
         return view('admin.mustahiks.edit', compact('mustahik', 'kecamatans', 'desas'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(MustahikRequest $request, Mustahik $mustahik)
     {
         $mustahik->update($request->validated());
@@ -163,9 +141,6 @@ class MustahikController extends Controller
             ->with('success', 'Data mustahik berhasil diperbarui');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Mustahik $mustahik)
     {
         $nama = $mustahik->nama;
@@ -175,9 +150,6 @@ class MustahikController extends Controller
             ->with('success', "Data mustahik {$nama} berhasil dihapus");
     }
 
-    /**
-     * Get desa by kecamatan (AJAX API endpoint)
-     */
     public function getDesa($kecamatanId)
     {
         $desas = Desa::where('kecamatan_id', $kecamatanId)
@@ -187,9 +159,6 @@ class MustahikController extends Controller
         return response()->json($desas);
     }
 
-    /**
-     * Filter mustahik by kategori (API endpoint)
-     */
     public function filterByKategori($kategori)
     {
         $mustahiks = Mustahik::byKategori($kategori)
@@ -198,10 +167,7 @@ class MustahikController extends Controller
 
         return response()->json($mustahiks);
     }
-
-    /**
-     * Get statistik mustahik (API endpoint)
-     */
+    
     public function statistik()
     {
         $total = Mustahik::count();

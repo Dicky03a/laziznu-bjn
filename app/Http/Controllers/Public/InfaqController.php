@@ -32,7 +32,6 @@ class InfaqController extends Controller
             ->where('slug', $slug)
             ->firstOrFail();
 
-        // Transaksi terkonfirmasi untuk ditampilkan publik
         $riwayatDonasi = $program->confirmedTransactions()
             ->latest()
             ->take(10)

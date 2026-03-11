@@ -25,7 +25,6 @@ class ZakatController extends Controller
             'harga_emas_per_gram' => Setting::hargaEmasPerGram(),
         ];
 
-        // Ambil semua kecamatan
         $kecamatans = Kecamatan::orderBy('nama')->get();
 
         $totalMuzakki = Transaction::ofType('zakat')->confirmed()->count();

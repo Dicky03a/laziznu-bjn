@@ -10,7 +10,7 @@ class PengurusRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true; // Sesuaikan dengan gate/policy Anda
+        return true; 
     }
 
     public function rules(): array

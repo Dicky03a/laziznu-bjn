@@ -1,6 +1,6 @@
-{{-- FILE: resources/views/public/qurban/show.blade.php --}}
+
 @extends('layouts.public.app')
-@section('title', $hewan->nama . ' - Qurban LAZIZNU')
+@section('title', $hewan->nama . ' - Qurban Lazisnu Bojonegoro')
 @section('content')
 
 {{-- Breadcrumb --}}
@@ -31,7 +31,7 @@
                             class="w-full h-full object-cover">
                         <div class="absolute top-4 left-4">
                             <span class="px-3 py-1.5 bg-white/90 backdrop-blur-sm text-gray-900 font-bold text-sm rounded-full shadow-sm">
-                                {{ $hewan->jenis_icon }} {{ $hewan->jenis_label }}
+                                {{ $hewan->jenis_label }}
                             </span>
                         </div>
                     </div>

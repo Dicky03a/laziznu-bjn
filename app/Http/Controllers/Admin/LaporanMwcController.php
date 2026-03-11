@@ -10,9 +10,6 @@ use Illuminate\Support\Facades\Storage;
 
 class LaporanMwcController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $laporanMwc = LaporanMwc::latest()->paginate(10);
@@ -20,17 +17,11 @@ class LaporanMwcController extends Controller
         return view('admin.laporan-mwc.index', compact('laporanMwc'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('admin.laporan-mwc.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreLaporanMwc $request)
     {
         try {
@@ -56,25 +47,16 @@ class LaporanMwcController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(LaporanMwc $laporanMwc)
     {
         return view('admin.laporan-mwc.show', compact('laporanMwc'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(LaporanMwc $laporanMwc)
     {
         return view('admin.laporan-mwc.edit', compact('laporanMwc'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateLaporanMwc $request, LaporanMwc $laporanMwc)
     {
         try {
@@ -106,13 +88,9 @@ class LaporanMwcController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(LaporanMwc $laporanMwc)
     {
         try {
-            // Delete file
             if ($laporanMwc->file_laporan && Storage::disk('public')->exists('laporan-mwc/'.$laporanMwc->file_laporan)) {
                 Storage::disk('public')->delete('laporan-mwc/'.$laporanMwc->file_laporan);
             }

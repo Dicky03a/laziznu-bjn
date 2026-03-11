@@ -19,9 +19,6 @@ class Kecamatan extends Model
         'longitude',
     ];
 
-    /**
-     * Appended attributes untuk menghitung jumlah muzakki dan mustahik secara dinamis
-     */
     protected $appends = ['jumlah_muzakki', 'jumlah_mustahik'];
 
     public function desas(): HasMany
@@ -43,7 +40,7 @@ class Kecamatan extends Model
     }
 
     /**
-     * Accessor: Hitung jumlah muzakki (donatur unik) per kecamatan dari Transaction
+     * Accessor: Hitung jumlah muzakki 
      */
     public function getJumlahMuzakkiAttribute(): int
     {
@@ -54,7 +51,7 @@ class Kecamatan extends Model
     }
 
     /**
-     * Accessor: Hitung jumlah mustahik (penerima manfaat) per kecamatan
+     * Accessor: Hitung jumlah mustahik 
      */
     public function getJumlahMustahikAttribute(): int
     {

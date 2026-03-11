@@ -99,7 +99,6 @@ class QurbanRegistration extends Model
 
     public function scopeActive(Builder $query): void
     {
-        // Slot yang "aktif" = pending + confirmed (belum batal)
         $query->whereIn('status', [self::STATUS_PENDING, self::STATUS_CONFIRMED]);
     }
 

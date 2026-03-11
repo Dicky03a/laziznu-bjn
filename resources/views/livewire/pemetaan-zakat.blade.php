@@ -4,13 +4,9 @@
             <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-3">
                   Pemetaan Zakat Bojonegoro
             </h2>
-            <p class="text-slate-600 text-sm mt-2">
-                  Visualisasi distribusi Muzakki <span class="text-red-500 font-semibold">●</span> dan Mustahik
-                  <span class="text-blue-500 font-semibold">●</span> per Kecamatan
-            </p>
       </div>
 
-      <!-- Data Store untuk JavaScript -->
+      <!-- Data Store -->
       <script type="application/json" id="pemetaan-data">
             @json(['kecamatans' => $kecamatans, 'center' => $center, 'zoom' => $zoom])
       </script>
@@ -42,50 +38,139 @@
             </div>
       </div>
 
-      <!-- Info Kecamatan -->
+      <!-- Info Kecamatan - Dropdown/Accordion -->
       <div class="px-6 py-6 bg-white">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  @forelse($kecamatans as $kec)
-                  @if ($kec['has_coordinates'])
-                  <div class="p-4 rounded-lg border border-slate-200 hover:border-emerald-300 hover:shadow-md transition-all cursor-pointer bg-slate-50 hover:bg-emerald-50 kecamatan-card"
-                        data-lat="{{ $kec['latitude'] }}" data-lng="{{ $kec['longitude'] }}" title="Klik untuk pindah ke lokasi">
-                        <h3 class="font-semibold text-slate-900 text-sm">{{ $kec['nama'] }}</h3>
-                        <div class="mt-3 flex gap-4">
-                              <div class="flex items-center gap-1">
-                                    <span class="text-xs font-medium text-red-600">●</span>
-                                    <span class="text-xs text-slate-600">Muzakki: <span
-                                                class="font-bold text-slate-900">{{ $kec['jumlah_muzakki'] }}</span></span>
+            <h3 class="font-semibold text-slate-900 text-base mb-4">Daftar Kecamatan</h3>
+            <div class="space-y-2">
+                  @forelse($kecamatans as $index => $kec)
+
+                  <div class="border border-slate-200 rounded-lg overflow-hidden hover:border-emerald-300 transition-all">
+                        <!-- Accordion Header -->
+                        <button class="kecamatan-toggle w-full px-4 py-3 flex items-center justify-between bg-slate-50 hover:bg-slate-100 transition-colors text-left"
+                              data-target="accordion-{{ $index }}"
+                              @if ($kec['has_coordinates'])
+                              data-lat="{{ $kec['latitude'] }}"
+                              data-lng="{{ $kec['longitude'] }}"
+                              @endif
+                              title="{{ $kec['has_coordinates'] ? 'Klik untuk pindah ke lokasi' : 'Belum ada koordinat' }}">
+
+                              <div class="flex items-center gap-3 flex-1">
+                                    <svg class="w-5 h-5 text-slate-600 transition-transform duration-300 accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                    <span class="font-semibold text-slate-900">{{ $kec['nama'] }}</span>
+                                    @if (!$kec['has_coordinates'])
+                                    <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">⚠️ Belum ada koordinat</span>
+                                    @endif
                               </div>
-                              <div class="flex items-center gap-1">
-                                    <span class="text-xs font-medium text-blue-600">●</span>
-                                    <span class="text-xs text-slate-600">Mustahik: <span
-                                                class="font-bold text-slate-900">{{ $kec['jumlah_mustahik'] }}</span></span>
+
+                              <div class="flex items-center gap-4 text-xs text-slate-600">
+                                    <div class="flex items-center gap-1">
+                                          <span class="text-red-600 font-medium">●</span>
+                                          <span>{{ $kec['jumlah_muzakki'] }}</span>
+                                    </div>
+                                    <div class="flex items-center gap-1">
+                                          <span class="text-blue-600 font-medium">●</span>
+                                          <span>{{ $kec['jumlah_mustahik'] }}</span>
+                                    </div>
                               </div>
+                        </button>
+
+                        <!-- Accordion Body -->
+                        <div id="accordion-{{ $index }}" class="accordion-body hidden px-4 py-3 bg-white border-t border-slate-200">
+                              <div class="grid grid-cols-2 gap-4">
+                                    <div class="bg-red-50 p-3 rounded">
+                                          <p class="text-xs text-slate-600 mb-1">Muzakki (Donatur)</p>
+                                          <p class="text-xl font-bold text-red-600">{{ $kec['jumlah_muzakki'] }}</p>
+                                    </div>
+                                    <div class="bg-blue-50 p-3 rounded">
+                                          <p class="text-xs text-slate-600 mb-1">Mustahik (Penerima)</p>
+                                          <p class="text-xl font-bold text-blue-600">{{ $kec['jumlah_mustahik'] }}</p>
+                                    </div>
+                              </div>
+                              @if ($kec['has_coordinates'])
+                              <button class="mt-3 w-full px-3 py-2 bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-medium rounded transition-colors kecamatan-card"
+                                    data-lat="{{ $kec['latitude'] }}"
+                                    data-lng="{{ $kec['longitude'] }}">
+                                    Lihat di Peta
+                              </button>
+                              @endif
                         </div>
                   </div>
-                  @else
-                  <div class="p-4 rounded-lg border border-slate-200 bg-slate-100 opacity-60">
-                        <h3 class="font-semibold text-slate-700 text-sm">{{ $kec['nama'] }}</h3>
-                        <div class="mt-3 flex gap-4">
-                              <div class="flex items-center gap-1">
-                                    <span class="text-xs font-medium text-red-600">●</span>
-                                    <span class="text-xs text-slate-600">Muzakki: <span
-                                                class="font-bold text-slate-900">{{ $kec['jumlah_muzakki'] }}</span></span>
-                              </div>
-                              <div class="flex items-center gap-1">
-                                    <span class="text-xs font-medium text-blue-600">●</span>
-                                    <span class="text-xs text-slate-600">Mustahik: <span
-                                                class="font-bold text-slate-900">{{ $kec['jumlah_mustahik'] }}</span></span>
-                              </div>
-                        </div>
-                        <p class="text-xs text-slate-500 mt-2 italic">⚠️ Belum ada koordinat</p>
-                  </div>
-                  @endif
+
                   @empty
-                  <div class="col-span-full text-center py-8 text-slate-500">
+                  <div class="text-center py-8 text-slate-500">
                         <p class="text-sm">Belum ada data kecamatan</p>
                   </div>
                   @endforelse
             </div>
       </div>
+
+      <!-- JavaScript untuk Accordion dan Map Navigation -->
+      <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                  // Accordion Toggle
+                  const toggleButtons = document.querySelectorAll('.kecamatan-toggle');
+
+                  toggleButtons.forEach(button => {
+                        button.addEventListener('click', function(e) {
+                              const targetId = this.getAttribute('data-target');
+                              const targetBody = document.getElementById(targetId);
+                              const icon = this.querySelector('.accordion-icon');
+
+                              // Toggle body visibility
+                              targetBody.classList.toggle('hidden');
+
+                              // Rotate icon
+                              if (targetBody.classList.contains('hidden')) {
+                                    icon.style.transform = 'rotate(0deg)';
+                              } else {
+                                    icon.style.transform = 'rotate(90deg)';
+                              }
+
+                              // Jika ada koordinat dan bukan klik pada tombol "Lihat di Peta", navigasi ke lokasi
+                              const lat = this.getAttribute('data-lat');
+                              const lng = this.getAttribute('data-lng');
+
+                              // Cek apakah target klik adalah tombol sendiri (bukan child button)
+                              if (lat && lng && e.target === this) {
+                                    navigateToLocation(lat, lng);
+                              }
+                        });
+                  });
+
+                  // Klik pada "Lihat di Peta" button
+                  const mapButtons = document.querySelectorAll('.kecamatan-card[data-lat][data-lng]');
+                  mapButtons.forEach(button => {
+                        button.addEventListener('click', function(e) {
+                              e.stopPropagation();
+                              const lat = this.getAttribute('data-lat');
+                              const lng = this.getAttribute('data-lng');
+                              navigateToLocation(lat, lng);
+                        });
+                  });
+
+                  function navigateToLocation(lat, lng) {
+
+                        const mapElement = document.getElementById('peta-zakat');
+
+                        mapElement.scrollIntoView({
+                              behavior: 'smooth',
+                              block: 'center'
+                        });
+
+                        if (window.pemetaanZakatMap) {
+                              window.pemetaanZakatMap.flyTo([lat, lng], 13, {
+                                    duration: 1
+                              });
+                        }
+                  }
+            });
+      </script>
+
+      <style>
+            .accordion-icon {
+                  transition: transform 0.3s ease;
+            }
+      </style>
 </div>

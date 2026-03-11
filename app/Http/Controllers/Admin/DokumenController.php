@@ -18,17 +18,11 @@ class DokumenController extends Controller
         return view('admin.dokumens.index', compact('dokumens'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('admin.dokumens.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreDokumenRequest $request)
     {
         $data = $request->validated();
@@ -51,25 +45,16 @@ class DokumenController extends Controller
             ->with('success', 'Dokumen berhasil ditambahkan');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Dokuemen $dokumen)
     {
         return view('admin.dokumens.show', compact('dokumen'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Dokuemen $dokumen)
     {
         return view('admin.dokumens.edit', compact('dokumen'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateDokumenRequest $request, Dokuemen $dokumen)
     {
         $data = $request->validated();
@@ -99,9 +84,6 @@ class DokumenController extends Controller
             ->with('success', 'Dokumen berhasil diperbarui');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Dokuemen $dokumen)
     {
         if ($dokumen->file && Storage::disk('public')->exists($dokumen->file)) {
@@ -115,9 +97,6 @@ class DokumenController extends Controller
             ->with('success', 'Dokumen berhasil dihapus');
     }
 
-    /**
-     * Download document + increment counter
-     */
     public function download(Dokuemen $dokumen)
     {
         $dokumen->increment('jumlah_download');

@@ -1,6 +1,5 @@
-{{-- FILE: resources/views/public/qurban/index.blade.php --}}
 @extends('layouts.public.app')
-@section('title', 'Program Qurban - LAZIZNU Bojonegoro')
+@section('title', 'Program Qurban - LAZISNU Bojonegoro')
 @section('content')
 
 {{-- Hero --}}
@@ -11,10 +10,10 @@
     </div>
     <div class="relative max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
         <div class="inline-block mb-6 px-4 py-1.5 bg-white/20 backdrop-blur-sm rounded-full border border-white/30">
-            <span class="text-orange-100 text-sm font-medium">LAZIZNU Bojonegoro</span>
+            <span class="text-orange-100 text-sm font-medium">LAZISNU Bojonegoro</span>
         </div>
         <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-4">
-            Qurban Bersama LAZIZNU
+            Qurban Bersama LAZISNU
         </h1>
         @if($period)
         <p class="text-base sm:text-lg text-orange-100/90 max-w-2xl mx-auto mb-6">
@@ -224,7 +223,7 @@
                 <div class="p-5 flex flex-col flex-1">
                     <h3 class="font-bold text-gray-900 text-lg mb-1">{{ $h->nama }}</h3>
                     @if($h->berat_estimasi)
-                    <p class="text-xs text-gray-400 mb-3">🏋️ {{ $h->berat_estimasi }}</p>
+                    <p class="text-xs text-gray-400 mb-3">{{ $h->berat_estimasi }}</p>
                     @endif
 
                     {{-- Info 1 orang --}}

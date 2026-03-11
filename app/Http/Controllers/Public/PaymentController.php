@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Public;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePaymentConfirmationRequest;
 use App\Models\PaymentConfirmation;
-use App\Models\Rekening;       // Model rekening bank yang sudah ada
+use App\Models\Rekening;     
 use App\Models\Transaction;
 
 class PaymentController extends Controller

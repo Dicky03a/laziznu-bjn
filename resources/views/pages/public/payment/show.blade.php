@@ -1,5 +1,5 @@
 @extends('layouts.public.app')
-@section('title', 'Pembayaran ' . $transaction->kode_transaksi . ' - LAZIZNU Bojonegoro')
+@section('title', 'Pembayaran ' . $transaction->kode_transaksi . ' - Lazisnu Bojonegoro')
 @section('content')
 
 <section class="bg-gray-50 py-12 sm:py-16 min-h-screen">
@@ -321,12 +321,12 @@
                   {{-- RIGHT — Sidebar Info --}}
                   <div class="lg:col-span-2 space-y-4">
 
-                        {{-- Info LAZIZNU --}}
+                        {{-- Info Lazisnu --}}
                         <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
                               <div class="flex items-center gap-3 mb-4">
                                     <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-600 to-emerald-500 flex items-center justify-center text-white font-bold shadow">NU</div>
                                     <div>
-                                          <h3 class="font-bold text-gray-900 text-sm">LAZIZNU Bojonegoro</h3>
+                                          <h3 class="font-bold text-gray-900 text-sm">Lazisnu Bojonegoro</h3>
                                           <p class="text-xs text-emerald-600">Lembaga Terverifikasi</p>
                                     </div>
                               </div>
@@ -410,8 +410,8 @@
 
       function shareWebsite() {
             const shareData = {
-                  title: 'LAZIZNU Bojonegoro',
-                  text: 'Salurkan zakat, infak, dan sedekah Anda melalui LAZIZNU Bojonegoro.',
+                  title: 'Lazisnu Bojonegoro',
+                  text: 'Salurkan zakat, infak, dan sedekah Anda melalui Lazisnu Bojonegoro.',
                   url: '{{ url(' / ') }}'
             };
 

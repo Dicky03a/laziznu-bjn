@@ -196,16 +196,13 @@
 </article>
 
 <style>
-      /* Custom CSS untuk menangani whitespace dari Tiptap */
       .tiptap-content p:empty {
             min-height: 1.5em;
-            /* Memberikan tinggi minimum untuk paragraph kosong */
             display: block;
       }
 
       .tiptap-content p:empty::before {
             content: '\00a0';
-            /* Non-breaking space untuk memastikan paragraph memiliki konten */
             display: inline-block;
             visibility: hidden;
       }
@@ -214,13 +211,10 @@
             display: block;
             content: "";
             margin-top: 0.5em;
-            /* Memberikan spacing untuk br tag */
       }
 
-      /* Alternatif: Preserve whitespace dari HTML */
       .tiptap-content {
             white-space: pre-wrap;
-            /* Mempertahankan whitespace dari HTML */
       }
 </style>
 

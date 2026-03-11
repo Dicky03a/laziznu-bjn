@@ -11,9 +11,6 @@ use Illuminate\Support\Str;
 
 class RekeningController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $rekenings = Rekening::latest()->paginate(10);
@@ -21,17 +18,11 @@ class RekeningController extends Controller
         return view('admin.rekenings.index', compact('rekenings'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('admin.rekenings.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreRekeningRequest $request)
     {
         $data = $request->validated();
@@ -45,37 +36,28 @@ class RekeningController extends Controller
         return redirect()->route('rekenings.index')->with('success', 'Rekening berhasil ditambahkan');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Rekening $rekening)
     {
         return view('admin.rekenings.show', compact('rekening'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Rekening $rekening)
     {
         return view('admin.rekenings.edit', compact('rekening'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateRekeningRequest $request, Rekening $rekening)
     {
         $data = $request->validated();
 
         if ($request->hasFile('icon')) {
 
-            // Hapus icon lama jika ada
+            // Hapus icon lama 
             if ($rekening->icon && Storage::disk('public')->exists($rekening->icon)) {
                 Storage::disk('public')->delete($rekening->icon);
             }
 
-            // Simpan icon baru dengan nama unik
+            // Simpan icon baru
             $file = $request->file('icon');
 
             $data['icon'] = $file->storeAs(
@@ -92,9 +74,6 @@ class RekeningController extends Controller
             ->with('success', 'Rekening berhasil diperbarui');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Rekening $rekening)
     {
         if ($rekening->icon) {

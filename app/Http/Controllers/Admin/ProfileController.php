@@ -11,9 +11,6 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
-    /**
-     * List profil
-     */
     public function index(): View
     {
         $profiles = Profile::latest()->get();
@@ -21,23 +18,15 @@ class ProfileController extends Controller
         return view('admin.profiles.index', compact('profiles'));
     }
 
-    /**
-     * Form create
-     */
     public function create(): View
     {
         return view('admin.profiles.create');
     }
 
-    /**
-     * Simpan profil
-     */
     public function store(StoreProfileRequest $request): RedirectResponse
     {
-        // Create profile
         $profile = Profile::create($request->validated());
 
-        // Save missions if exists
         if ($request->has('missions')) {
             foreach ($request->missions as $missionData) {
                 $profile->missions()->create([
@@ -47,7 +36,6 @@ class ProfileController extends Controller
             }
         }
 
-        // Save pillars if exists
         if ($request->has('pillars')) {
             foreach ($request->pillars as $pillarData) {
                 $profile->pillars()->create([
@@ -63,9 +51,6 @@ class ProfileController extends Controller
             ->with('success', 'Profil berhasil ditambahkan');
     }
 
-    /**
-     * Detail profil
-     */
     public function show(Profile $profile): View
     {
         $profile->load(['missions', 'pillars']);
@@ -73,9 +58,6 @@ class ProfileController extends Controller
         return view('admin.profiles.show', compact('profile'));
     }
 
-    /**
-     * Form edit
-     */
     public function edit(Profile $profile): View
     {
         $profile->load(['missions', 'pillars']);
@@ -83,19 +65,12 @@ class ProfileController extends Controller
         return view('admin.profiles.edit', compact('profile'));
     }
 
-    /**
-     * Update profil
-     */
     public function update(UpdateProfileRequest $request, Profile $profile): RedirectResponse
     {
-        // Update profile
         $profile->update($request->validated());
 
-        // Sync missions
-        // Delete all existing missions
         $profile->missions()->delete();
 
-        // Create new missions
         if ($request->has('missions')) {
             foreach ($request->missions as $missionData) {
                 $profile->missions()->create([
@@ -105,11 +80,8 @@ class ProfileController extends Controller
             }
         }
 
-        // Sync pillars
-        // Delete all existing pillars
         $profile->pillars()->delete();
 
-        // Create new pillars
         if ($request->has('pillars')) {
             foreach ($request->pillars as $pillarData) {
                 $profile->pillars()->create([
@@ -125,9 +97,6 @@ class ProfileController extends Controller
             ->with('success', 'Profil berhasil diupdate');
     }
 
-    /**
-     * Hapus profil
-     */
     public function destroy(Profile $profile): RedirectResponse
     {
         $profile->delete();

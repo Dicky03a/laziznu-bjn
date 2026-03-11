@@ -6,9 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateLaporanBulanan extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
         return true;
@@ -27,9 +24,6 @@ class UpdateLaporanBulanan extends FormRequest
         ];
     }
 
-    /**
-     * Get the validation error messages.
-     */
     public function messages(): array
     {
         return [

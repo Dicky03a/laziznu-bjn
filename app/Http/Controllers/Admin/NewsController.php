@@ -11,9 +11,6 @@ use Illuminate\Support\Facades\Storage;
 
 class NewsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $news = News::with('category')
@@ -23,9 +20,6 @@ class NewsController extends Controller
         return view('admin.news.index', compact('news'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $categories = Category::all();
@@ -33,9 +27,6 @@ class NewsController extends Controller
         return view('admin.news.create', compact('categories'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreNewsRequest $request)
     {
         $data = $request->validated();
@@ -44,7 +35,7 @@ class NewsController extends Controller
             $data['featured_image'] = $request->file('featured_image')->store('news', 'public');
         }
 
-        // Handle publish/draft action
+        // publish/draft 
         $action = $request->input('action', 'draft');
         if ($action === 'publish') {
             $data['published_at'] = now();
@@ -57,9 +48,6 @@ class NewsController extends Controller
         return redirect()->route('news.index')->with('success', 'Berita berhasil ditambahkan');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(News $news)
     {
         $relatedNews = News::where('published_at', '<=', now())
@@ -78,9 +66,6 @@ class NewsController extends Controller
         return view('pages.public.berita.show', compact('news', 'relatedNews', 'allCategories'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(News $news)
     {
         $categories = Category::all();
@@ -88,22 +73,19 @@ class NewsController extends Controller
         return view('admin.news.edit', compact('news', 'categories'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateNewsRequest $request, News $news)
     {
         $data = $request->validated();
 
-        // Handle featured image
+        // Handle image
         if ($request->hasFile('featured_image')) {
-            // Delete old image if exists
+            // Delete image lama
             if ($news->featured_image && Storage::disk('public')->exists($news->featured_image)) {
                 Storage::disk('public')->delete($news->featured_image);
             }
             $data['featured_image'] = $request->file('featured_image')->store('news', 'public');
         } elseif ($request->input('remove_image') === '1') {
-            // Remove image if checkbox is checked
+            // Remove image if cek
             if ($news->featured_image && Storage::disk('public')->exists($news->featured_image)) {
                 Storage::disk('public')->delete($news->featured_image);
             }
@@ -112,7 +94,7 @@ class NewsController extends Controller
             unset($data['featured_image']);
         }
 
-        // Handle publish/draft action
+        // publish/draft action
         $action = $request->input('action');
 
         if ($action === 'publish') {
@@ -128,9 +110,6 @@ class NewsController extends Controller
         return redirect()->route('news.index')->with('success', 'Berita berhasil diperbarui');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(News $news)
     {
         if ($news->featured_image && Storage::disk('public')->exists($news->featured_image)) {

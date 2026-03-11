@@ -1,5 +1,5 @@
 @extends('layouts.public.app')
-@section('title', 'Kebijakan Privasi - LAZIZNU Bojonegoro')
+@section('title', 'Kebijakan Privasi - Lazisnu Bojonegoro')
 
 @section('content')
 

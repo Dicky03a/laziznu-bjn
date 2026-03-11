@@ -1,5 +1,4 @@
 <footer class="bg-white text-black">
-      <!-- Main Footer -->
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
 
@@ -128,7 +127,6 @@
             </div>
       </div>
 
-      <!-- Scroll to Top Button -->
       <button id="scroll-to-top" class="fixed bottom-8 right-8 bg-green-600 hover:bg-green-700 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 transform hover:scale-110 z-50">
             <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
@@ -137,7 +135,6 @@
 </footer>
 
 <script>
-      // Scroll to Top Button Functionality
       const scrollToTopButton = document.getElementById('scroll-to-top');
 
       window.addEventListener('scroll', () => {

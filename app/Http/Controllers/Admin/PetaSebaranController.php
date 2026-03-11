@@ -14,24 +14,20 @@ class PetaSebaranController extends Controller
 {
     public function index(Request $request)
     {
-        // Get all kecamatans & desas for filter dropdown (optimized)
         $kecamatans = Kecamatan::orderBy('nama')->get();
         $desas = Desa::when($request->kecamatan_id, function ($query) use ($request) {
             return $query->where('kecamatan_id', $request->kecamatan_id);
         })->orderBy('nama')->get();
 
-        // Build base query untuk mustahik yang aktif
         $mustahikQuery = Mustahik::with(['kecamatan', 'desa'])
             ->where('status', 'aktif')
             ->orderBy('nama');
 
-        // Build base query untuk muzaki yang dikonfirmasi
         $query = Transaction::with(['kecamatan', 'desa'])
             ->where('status', 'confirmed')
             ->where('type', 'zakat')
             ->orderBy('created_at', 'desc');
 
-        // Apply filters to both queries
         if ($request->filled('kecamatan_id')) {
             $query->where('kecamatan_id', $request->kecamatan_id);
             $mustahikQuery->where('kecamatan_id', $request->kecamatan_id);
@@ -50,7 +46,7 @@ class PetaSebaranController extends Controller
             $query->whereJsonContains('metadata->jenis', $request->jenis);
         }
 
-        // Apply search
+        // search
         if ($request->filled('search')) {
             $search = $request->search;
             $query->where(function ($q) use ($search) {
@@ -67,18 +63,15 @@ class PetaSebaranController extends Controller
             });
         }
 
-        // Get paginated results
         $muzakis = $query->paginate(15)->appends($request->query());
         $mustahiks = $mustahikQuery->paginate(15, ['*'], 'mustahik_page')->appends($request->query());
 
-        // Overall statistics - Optimized with batch queries
         $totalMuzaki = Transaction::where('status', 'confirmed')->where('type', 'zakat')->count();
         $totalDonasi = Transaction::where('status', 'confirmed')->where('type', 'zakat')->sum('jumlah');
         $totalMustahik = Mustahik::where('status', 'aktif')->count();
         $totalKecamatan = Kecamatan::count();
         $totalDesa = Desa::count();
 
-        // Optimized: Use raw SQL untuk statistik kompleks
         $statistikKecamatan = $this->getOptimizedStatistikKecamatan();
         $statistikDesa = $this->getOptimizedStatistikDesa($request->kecamatan_id);
 
@@ -97,9 +90,6 @@ class PetaSebaranController extends Controller
         ));
     }
 
-    /**
-     * Optimized: Get statistik kecamatan menggunakan raw SQL (1 query)
-     */
     private function getOptimizedStatistikKecamatan()
     {
         return DB::table('kecamatans')
@@ -122,9 +112,6 @@ class PetaSebaranController extends Controller
             ->get();
     }
 
-    /**
-     * Optimized: Get statistik desa menggunakan raw SQL (1 query)
-     */
     private function getOptimizedStatistikDesa($kecamatanId = null)
     {
         $query = DB::table('desas')
@@ -226,7 +213,6 @@ class PetaSebaranController extends Controller
 
     public function exportExcel(Request $request)
     {
-        // Build query sesuai filter
         $query = Transaction::with(['kecamatan', 'desa'])
             ->where('status', Transaction::STATUS_CONFIRMED)
             ->orderBy('created_at', 'desc');
@@ -255,7 +241,6 @@ class PetaSebaranController extends Controller
 
         $muzakis = $query->get();
 
-        // Create Excel manually menggunakan array
         $data = [];
         $data[] = ['Peta Sebaran Muzaki - Export Data'];
         $data[] = [];
@@ -290,27 +275,17 @@ class PetaSebaranController extends Controller
             ];
         }
 
-        // Generate Excel using PHP
+        // Generate Excel 
         return $this->generateExcel($data);
     }
 
     private function generateExcel($data)
     {
-        // Menggunakan method manual Excel
-        // Jika menggunakan Laravel Excel, uncomment code di bawah:
-
-        /*
-        use Maatwebsite\Excel\Facades\Excel;
-        return Excel::download(new PetaSebaranExport($data), 'peta-sebaran-muzaki-' . date('Y-m-d-His') . '.xlsx');
-        */
-
-        // Fallback: CSV export (lebih simple)
         $filename = 'peta-sebaran-muzaki-'.date('Y-m-d-His').'.csv';
 
         $callback = function () use ($data) {
             $file = fopen('php://output', 'w');
 
-            // Set header untuk UTF-8 BOM (agar Excel recognize charset)
             fprintf($file, chr(0xEF).chr(0xBB).chr(0xBF));
 
             foreach ($data as $row) {

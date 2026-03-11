@@ -89,9 +89,6 @@ class TransactionController extends Controller
             ->with('success', 'Transaksi ditolak.');
     }
 
-    /**
-     * Export CSV
-     */
     public function export(Request $request)
     {
         $transactions = Transaction::query()

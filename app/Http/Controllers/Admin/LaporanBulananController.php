@@ -10,9 +10,6 @@ use Illuminate\Support\Facades\Storage;
 
 class LaporanBulananController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $laporanBulanans = LaporanBulanan::latest()->paginate(10);
@@ -20,17 +17,11 @@ class LaporanBulananController extends Controller
         return view('admin.laporan-bulanan.index', compact('laporanBulanans'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('admin.laporan-bulanan.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreLaporanBulanan $request)
     {
         try {
@@ -56,25 +47,16 @@ class LaporanBulananController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(LaporanBulanan $laporanBulanan)
     {
         return view('admin.laporan-bulanan.show', compact('laporanBulanan'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(LaporanBulanan $laporanBulanan)
     {
         return view('admin.laporan-bulanan.edit', compact('laporanBulanan'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateLaporanBulanan $request, LaporanBulanan $laporanBulanan)
     {
         try {
@@ -106,13 +88,9 @@ class LaporanBulananController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(LaporanBulanan $laporanBulanan)
     {
         try {
-            // Delete file
             if ($laporanBulanan->file_laporan && Storage::disk('public')->exists('laporan-bulanan/'.$laporanBulanan->file_laporan)) {
                 Storage::disk('public')->delete('laporan-bulanan/'.$laporanBulanan->file_laporan);
             }

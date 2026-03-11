@@ -8,7 +8,7 @@ class StoreProfileRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true; // ganti dengan policy nanti kalau perlu
+        return true; 
     }
 
     public function rules(): array

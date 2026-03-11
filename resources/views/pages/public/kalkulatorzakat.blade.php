@@ -1,5 +1,5 @@
 @extends('layouts.public.app')
-@section('title', 'Hitung Zakat - LAZIZNU Bojonegoro')
+@section('title', 'Hitung Zakat - Lazisnu Bojonegoro')
 @section('content')
 
 <section class="relative bg-gradient-to-br from-emerald-900 via-emerald-800 to-emerald-700 py-16 sm:py-20 lg:py-24 overflow-hidden">

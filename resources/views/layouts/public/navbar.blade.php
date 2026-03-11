@@ -13,7 +13,6 @@
                   <!-- Desktop Menu -->
                   <div class="hidden lg:flex lg:items-center lg:space-x-10">
 
-                        <!-- Menu Item -->
                         <a href="{{ route('home') }}"
                               class="relative text-gray-700 text-sm font-medium transition-colors duration-300 hover:text-green-600 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-green-600 after:transition-all after:duration-300 hover:after:w-full">
                               Beranda
@@ -184,7 +183,6 @@
       </div>
 
       <!-- Mobile Menu -->
-      <!-- Mobile Menu -->
       <div id="mobile-menu"
             class="hidden lg:hidden bg-white border-t border-gray-100 shadow-lg">
 
@@ -291,7 +289,6 @@
                   closeIcon.classList.toggle('hidden');
             });
 
-            // Dropdown Mobile
             const dropdownButtons = document.querySelectorAll('.mobile-dropdown');
 
             dropdownButtons.forEach(button => {

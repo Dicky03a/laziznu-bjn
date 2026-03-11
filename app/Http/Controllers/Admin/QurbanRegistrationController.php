@@ -84,7 +84,7 @@ class QurbanRegistrationController extends Controller
         $this->qurbanService->cancel($registration, auth()->id(), $request->catatan_admin);
 
         return redirect()
-            ->route('admin.qurban.registrations.show', $registration)
+            ->route('qurban.registrations.show', $registration)
             ->with('success', 'Pendaftaran berhasil dibatalkan.');
     }
 

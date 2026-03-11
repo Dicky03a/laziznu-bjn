@@ -1,4 +1,3 @@
-{{-- FILE: resources/views/public/qurban/payment.blade.php --}}
 @extends('layouts.public.app')
 @section('title', 'Pembayaran Qurban ' . $registration->kode_registrasi)
 @section('content')
@@ -116,10 +115,6 @@
                             class="px-4 py-2.5 text-sm font-semibold text-emerald-600 border-b-2 border-emerald-600 -mb-px">
                             Transfer Bank
                         </button>
-                        <button onclick="showTab('qris')" id="tab-qris"
-                            class="px-4 py-2.5 text-sm font-semibold text-gray-400 hover:text-gray-600 -mb-px">
-                            QRIS
-                        </button>
                     </div>
 
                     {{-- Tab Transfer --}}
@@ -149,28 +144,6 @@
                                 dan gunakan kode pendaftaran <strong>{{ $registration->kode_registrasi }}</strong> sebagai berita acara transfer.
                             </p>
                         </div>
-                    </div>
-
-                    {{-- Tab QRIS --}}
-                    <div id="content-qris" class="hidden">
-                        <div class="text-center">
-                            <img src="{{ asset('asset/qris-qurban.png') }}"
-                                onerror="this.src='{{ asset('asset/qris-infaq.png') }}'"
-                                alt="QRIS LAZIZNU"
-                                class="mx-auto max-w-xs rounded-2xl shadow-md border-4 border-white shadow-gray-200">
-                            <p class="text-sm text-gray-600 mt-4">Scan dengan aplikasi e-wallet atau mobile banking apapun</p>
-                        </div>
-                    </div>
-
-                    {{-- Steps --}}
-                    <div class="mt-6 space-y-2">
-                        <h4 class="text-sm font-semibold text-gray-700">Langkah-langkah:</h4>
-                        <ol class="space-y-1.5 text-sm text-gray-600">
-                            <li class="flex gap-2"><span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 text-xs flex items-center justify-center font-bold flex-shrink-0 mt-0.5">1</span> Lakukan transfer sesuai nominal di atas</li>
-                            <li class="flex gap-2"><span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 text-xs flex items-center justify-center font-bold flex-shrink-0 mt-0.5">2</span> Simpan bukti transfer</li>
-                            <li class="flex gap-2"><span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 text-xs flex items-center justify-center font-bold flex-shrink-0 mt-0.5">3</span> Isi form konfirmasi di bawah (opsional tapi sangat membantu)</li>
-                            <li class="flex gap-2"><span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 text-xs flex items-center justify-center font-bold flex-shrink-0 mt-0.5">4</span> Tim kami akan memverifikasi dalam 1×24 jam</li>
-                        </ol>
                     </div>
                 </div>
                 @endif
@@ -293,12 +266,12 @@
             {{-- RIGHT — Sidebar Info --}}
             <div class="lg:col-span-2 space-y-4">
 
-                {{-- Info LAZIZNU --}}
+                {{-- Info Lazisnu --}}
                 <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
                     <div class="flex items-center gap-3 mb-4">
                         <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-600 to-emerald-500 flex items-center justify-center text-white font-bold shadow">NU</div>
                         <div>
-                            <h3 class="font-bold text-gray-900 text-sm">LAZIZNU Bojonegoro</h3>
+                            <h3 class="font-bold text-gray-900 text-sm">Lazisnu Bojonegoro</h3>
                             <p class="text-xs text-emerald-600">Lembaga Terverifikasi</p>
                         </div>
                     </div>
@@ -349,18 +322,6 @@
 
     function copyKode(kode) {
         navigator.clipboard.writeText(kode);
-    }
-
-    function showTab(tab) {
-        document.getElementById('content-transfer').classList.toggle('hidden', tab !== 'transfer');
-        document.getElementById('content-qris').classList.toggle('hidden', tab !== 'qris');
-
-        document.getElementById('tab-transfer').className = tab === 'transfer' ?
-            'px-4 py-2.5 text-sm font-semibold text-emerald-600 border-b-2 border-emerald-600 -mb-px' :
-            'px-4 py-2.5 text-sm font-semibold text-gray-400 hover:text-gray-600 -mb-px';
-        document.getElementById('tab-qris').className = tab === 'qris' ?
-            'px-4 py-2.5 text-sm font-semibold text-emerald-600 border-b-2 border-emerald-600 -mb-px' :
-            'px-4 py-2.5 text-sm font-semibold text-gray-400 hover:text-gray-600 -mb-px';
     }
 </script>
 @endpush
