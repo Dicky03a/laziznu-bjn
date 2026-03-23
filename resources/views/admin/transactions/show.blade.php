@@ -205,6 +205,16 @@
                   <div class="bg-white rounded-2xl border border-gray-200 p-6">
                         <h3 class="font-bold text-gray-900 mb-4">Aksi Verifikasi</h3>
 
+                        {{-- Ingatkan Donatur --}}
+                        @if(!$transaction->paymentConfirmation && $transaction->telepon)
+                        <a href="{{ route('transactions.reminder', $transaction) }}"
+                              target="_blank"
+                              rel="noopener"
+                              class="w-full py-3 mb-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl transition-all shadow-sm flex items-center justify-center gap-2">
+                              Ingatkan Donatur via WhatsApp
+                        </a>
+                        @endif
+
                         {{-- Konfirmasi --}}
                         <form action="{{ route('transactions.confirm', $transaction) }}" method="POST" class="mb-4">
                               @csrf

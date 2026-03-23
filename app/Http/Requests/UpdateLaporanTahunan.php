@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateLaporanTahunan extends FormRequest
 {
@@ -14,7 +15,12 @@ class UpdateLaporanTahunan extends FormRequest
     public function rules(): array
     {
         return [
-            'nama' => 'required|string|max:255|unique:laporan_tahunans,nama',
+            'nama' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('laporan_tahunans', 'nama')->ignore($this->laporanTahunan->id),
+            ],
             'link_from' => 'required|string|max:255',
         ];
     }
@@ -23,7 +29,6 @@ class UpdateLaporanTahunan extends FormRequest
     {
         return [
             'nama.required' => __('Nama laporan harus diisi'),
-            'nama.unique' => __('Nama laporan sudah ada'),
             'link_from.required' => __('Link harus diisi'),
         ];
     }

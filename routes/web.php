@@ -94,10 +94,10 @@ Route::prefix('qurban')->name('qurban.')->group(function () {
     Route::post('/pembayaran/{kode}/konfirmasi', [QurbanPaymentController::class, 'confirm'])->name('payment.confirm');
 });
 
-// Admin Routes 
+// Admin Routes
 Route::middleware(['auth', 'verified'])->group(function () {
 
-    Route::get('dashboard', fn() => view('dashboard'))->name('dashboard');
+    Route::get('dashboard', fn () => view('dashboard'))->name('dashboard');
 
     // Export Reports
     Route::get('laporan/export-dskl', [ExportReportController::class, 'exportDskl'])->name('laporan.export-dskl');
@@ -121,6 +121,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('transactions/{transaction}', [TransactionController::class, 'show'])->name('transactions.show');
     Route::post('transactions/{transaction}/confirm', [TransactionController::class, 'confirm'])->name('transactions.confirm');
     Route::post('transactions/{transaction}/reject', [TransactionController::class, 'reject'])->name('transactions.reject');
+    Route::get('transactions/{transaction}/reminder', [TransactionController::class, 'reminder'])->name('transactions.reminder');
 
     // Pengurus management
     Route::resource('pengurus', PengurusController::class)
@@ -183,4 +184,4 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('mustahiks.statistik');
 });
 
-require __DIR__ . '/settings.php';
+require __DIR__.'/settings.php';

@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Transaction;
 use App\Services\TransactionService;
+use App\Services\WhatsAppReminderService;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
     public function __construct(
-        protected TransactionService $transactionService
+        protected TransactionService $transactionService,
+        protected WhatsAppReminderService $whatsAppReminderService,
     ) {}
 
     public function index(Request $request)
@@ -141,5 +143,21 @@ class TransactionController extends Controller
         };
 
         return response()->stream($callback, 200, $headers);
+    }
+
+    public function reminder(Transaction $transaction)
+    {
+        if ($transaction->status !== Transaction::STATUS_PENDING) {
+            return back()->with('error', 'Hanya dapat mengirim pengingat untuk transaksi yang masih pending.');
+        }
+
+        $reminder = $this->whatsAppReminderService->generateReminder($transaction);
+
+        if (! $reminder['success']) {
+            return back()->with('error', $reminder['message']);
+        }
+
+        return redirect($reminder['wa_link'])
+            ->with('success', 'Silakan kirim pesan pengingat kepada donatur melalui WhatsApp.');
     }
 }
