@@ -160,6 +160,7 @@
 
                         {{-- FORM PEMBAYARAN --}}
                         <form action="{{ route('zakat.store') }}" method="POST" id="form-zakat"
+                              data-payment-form="zakat"
                               class="bg-white rounded-3xl shadow-sm border border-gray-100 p-6"
                               x-data="zakatForm()">
                               @csrf

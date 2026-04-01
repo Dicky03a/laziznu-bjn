@@ -37,6 +37,9 @@
       <!-- Include Footer -->
       @include('layouts.public.footer')
 
+      <!-- Payment Instructions Modal -->
+      <livewire:payment-instructions-modal />
+
       @stack('scripts')
 
 </body>

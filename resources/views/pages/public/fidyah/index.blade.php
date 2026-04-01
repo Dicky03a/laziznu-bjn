@@ -121,7 +121,7 @@
                         </div>
 
                         {{-- Form --}}
-                        <form action="{{ route('fidyah.store') }}" method="POST"
+                        <form action="{{ route('fidyah.store') }}" method="POST" data-payment-form="fidyah"
                               class="bg-white rounded-3xl shadow-sm border border-gray-100 p-6">
                               @csrf
                               <input type="hidden" name="jumlah_hari" id="input-jumlah-hari" value="1">

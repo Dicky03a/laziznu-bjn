@@ -1,6 +1,7 @@
 import Alpine from 'alpinejs'
 import './tiptap-editor.js';
 import './pemetaan-zakat.js';
+import './payment-instructions-integration.js';
 
 window.Alpine = Alpine
 Alpine.start()

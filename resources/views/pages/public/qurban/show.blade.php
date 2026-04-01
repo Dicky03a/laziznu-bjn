@@ -1,4 +1,3 @@
-
 @extends('layouts.public.app')
 @section('title', $hewan->nama . ' - Qurban Lazisnu Bojonegoro')
 @section('content')
@@ -229,7 +228,7 @@
                     </div>
                     @endif
 
-                    <form action="{{ route('qurban.store', $hewan) }}" method="POST" class="space-y-4">
+                    <form action="{{ route('qurban.store', $hewan) }}" method="POST" data-payment-form="qurban" class="space-y-4">
                         @csrf
 
                         <div>

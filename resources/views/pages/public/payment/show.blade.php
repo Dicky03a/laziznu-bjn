@@ -60,8 +60,6 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
-
-                  {{-- LEFT — Detail Transaksi + Instruksi --}}
                   <div class="lg:col-span-3 space-y-6">
 
                         {{-- Ringkasan Transaksi --}}
@@ -318,6 +316,15 @@
 
                   </div>
 
+                  <div class="bg-white rounded-2xl border border-gray-100 p-5">
+                        <p class="text-sm font-semibold text-gray-700 mb-3">Konfirmasi Ke Admin</p>
+                        <button
+                              onclick="confirmToAdmin()"
+                              class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold rounded-lg transition-all mb-2">
+                              Konfirmasi Pembayaran
+                        </button>
+                  </div>
+
                   {{-- RIGHT — Sidebar Info --}}
                   <div class="lg:col-span-2 space-y-4">
 
@@ -355,6 +362,9 @@
                               <p class="text-xs text-amber-700">Bookmark halaman ini atau catat kode transaksi <strong>{{ $transaction->kode_transaksi }}</strong> untuk melacak status pembayaran Anda.</p>
                         </div>
                         @endif
+
+                        {{-- Konfirmasi ke Admin --}}
+
 
                         {{-- Bagikan --}}
                         <div class="bg-white rounded-2xl border border-gray-100 p-5">
@@ -423,6 +433,20 @@
                         .then(() => alert('Link berhasil disalin'))
                         .catch(() => alert('Gagal menyalin link'));
             }
+      }
+
+      function confirmToAdmin() {
+            const kodeTransaksi = '{{ $transaction->kode_transaksi }}';
+            const jenis = '{{ $transaction->type_label }}';
+            const nama = '{{ $transaction->nama_tampil }}';
+            const jumlah = '{{ $transaction->jumlah_format }}';
+            const status = '{{ ucfirst($transaction->status) }}';
+            const adminPhone = '6285743229703';
+
+            const message = `Assalamu'alaikum Admin,\n\nSaya ingin mengonfirmasi pembayaran dengan rincian:\n\n📋 *Kode Transaksi:* ${kodeTransaksi}\n💳 *Jenis Pembayaran:* ${jenis}\n👤 *Nama:* ${nama}\n💰 *Jumlah:* ${jumlah}\n📊 *Status:* ${status}\n\nMohon untuk memverifikasi pembayaran saya. Terima kasih.`;
+
+            const whatsappUrl = `https://wa.me/${adminPhone}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
       }
 </script>
 @endpush

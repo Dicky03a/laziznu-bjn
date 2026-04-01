@@ -145,7 +145,7 @@
                     </div>
                     @endif
 
-                    <form action="{{ route($program->type . '.store', $program->slug) }}" method="POST">
+                    <form action="{{ route($program->type . '.store', $program->slug) }}" method="POST" data-payment-form="infaq">
                         @csrf
 
                         {{-- Pilihan nominal cepat --}}
