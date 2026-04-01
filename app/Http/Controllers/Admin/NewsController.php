@@ -35,7 +35,7 @@ class NewsController extends Controller
             $data['featured_image'] = $request->file('featured_image')->store('news', 'public');
         }
 
-        // publish/draft 
+        // publish/draft
         $action = $request->input('action', 'draft');
         if ($action === 'publish') {
             $data['published_at'] = now();

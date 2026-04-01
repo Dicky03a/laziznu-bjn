@@ -33,8 +33,8 @@
                         </p>
 
                         <div class="flex flex-wrap gap-4">
-                              <a href="{{ route('donasi.index') }}" class="group px-6 py-3 bg-white text-emerald-900 rounded-lg font-semibold hover:bg-emerald-50 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
-                                    Mulai Berdonasi
+                              <a href="{{ route('payment.info') }}" class="group px-6 py-3 bg-white text-emerald-900 rounded-lg font-semibold hover:bg-emerald-50 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+                                    Cara Pembayaran
                                     <span class="inline-block ml-2 transition-transform duration-200 group-hover:translate-x-1">→</span>
                               </a>
                               </button>

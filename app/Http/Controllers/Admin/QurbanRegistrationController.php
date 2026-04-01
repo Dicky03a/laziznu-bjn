@@ -6,12 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Models\QurbanPeriod;
 use App\Models\QurbanRegistration;
 use App\Services\QurbanService;
+use App\Services\WhatsAppReminderService;
 use Illuminate\Http\Request;
 
 class QurbanRegistrationController extends Controller
 {
     public function __construct(
-        protected QurbanService $qurbanService
+        protected QurbanService $qurbanService,
+        protected WhatsAppReminderService $whatsAppReminderService,
     ) {}
 
     public function index(Request $request)
@@ -131,5 +133,21 @@ class QurbanRegistrationController extends Controller
             'Content-Type' => 'text/csv',
             'Content-Disposition' => "attachment; filename=\"{$filename}\"",
         ]);
+    }
+
+    public function reminder(QurbanRegistration $registration)
+    {
+        if ($registration->status !== QurbanRegistration::STATUS_PENDING) {
+            return back()->with('error', 'Hanya dapat mengirim pengingat untuk registrasi yang masih pending.');
+        }
+
+        $reminder = $this->whatsAppReminderService->generateReminderQurban($registration);
+
+        if (! $reminder['success']) {
+            return back()->with('error', $reminder['message']);
+        }
+
+        return redirect($reminder['wa_link'])
+            ->with('success', 'Silakan kirim pesan pengingat kepada peserta melalui WhatsApp.');
     }
 }

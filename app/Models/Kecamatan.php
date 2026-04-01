@@ -40,7 +40,7 @@ class Kecamatan extends Model
     }
 
     /**
-     * Accessor: Hitung jumlah muzakki 
+     * Accessor: Hitung jumlah muzakki
      */
     public function getJumlahMuzakkiAttribute(): int
     {
@@ -51,7 +51,7 @@ class Kecamatan extends Model
     }
 
     /**
-     * Accessor: Hitung jumlah mustahik 
+     * Accessor: Hitung jumlah mustahik
      */
     public function getJumlahMustahikAttribute(): int
     {

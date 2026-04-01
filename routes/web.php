@@ -45,6 +45,7 @@ Route::controller(PublicPublicController::class)->group(function () {
     Route::get('/terms-conditions', 'syarat')->name('terms-conditions');
     Route::get('/disclaimer', 'disclaimer')->name('disclaimer');
     Route::get('/berita', 'berita')->name('berita.public.index');
+    Route::get('/pembayaran-info', 'paymentInfo')->name('payment.info');
 });
 
 // News & Dokumen Routes
@@ -97,7 +98,7 @@ Route::prefix('qurban')->name('qurban.')->group(function () {
 // Admin Routes
 Route::middleware(['auth', 'verified'])->group(function () {
 
-    Route::get('dashboard', fn () => view('dashboard'))->name('dashboard');
+    Route::get('dashboard', fn() => view('dashboard'))->name('dashboard');
 
     // Export Reports
     Route::get('laporan/export-dskl', [ExportReportController::class, 'exportDskl'])->name('laporan.export-dskl');
@@ -155,6 +156,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
             ->name('registrations.confirm');
         Route::post('registrations/{registration}/cancel', [QurbanRegistrationController::class, 'cancel'])
             ->name('registrations.cancel');
+        Route::get('registrations/{registration}/reminder', [QurbanRegistrationController::class, 'reminder'])
+            ->name('registrations.reminder');
     });
 
     Route::resource('laporan-bulanan', AdminLaporanBulananController::class)
@@ -184,4 +187,4 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('mustahiks.statistik');
 });
 
-require __DIR__.'/settings.php';
+require __DIR__ . '/settings.php';

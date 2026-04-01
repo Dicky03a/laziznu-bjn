@@ -275,7 +275,7 @@ class PetaSebaranController extends Controller
             ];
         }
 
-        // Generate Excel 
+        // Generate Excel
         return $this->generateExcel($data);
     }
 

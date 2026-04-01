@@ -33,6 +33,11 @@ class PublicController extends Controller
         return view('pages.public.index', compact('profile', 'news', 'programs'));
     }
 
+    public function paymentInfo()
+    {
+        return view('pages.public.paymentinfo');
+    }
+
     public function profile()
     {
         $profile = Profile::with(['missions', 'pillars'])->latest()->first();
@@ -47,7 +52,7 @@ class PublicController extends Controller
         $pengurusList = Pengurus::active()
             ->ordered()
             ->get()
-            ->groupBy(fn($p) => "{$p->masa_khidmat_mulai}-{$p->masa_khidmat_selesai}");
+            ->groupBy(fn ($p) => "{$p->masa_khidmat_mulai}-{$p->masa_khidmat_selesai}");
 
         $noSk = Pengurus::active()->value('no_sk');
 
@@ -59,7 +64,7 @@ class PublicController extends Controller
         $pengurusByJabatan = Pengurus::active()
             ->when(
                 $periodeAktif,
-                fn($q) => $q
+                fn ($q) => $q
                     ->where('masa_khidmat_mulai', $periodeAktif->masa_khidmat_mulai)
                     ->where('masa_khidmat_selesai', $periodeAktif->masa_khidmat_selesai)
             )

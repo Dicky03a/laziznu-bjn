@@ -69,7 +69,7 @@ class MustahikController extends Controller
             },
         ])->get();
 
-        // Statistik Desa 
+        // Statistik Desa
         $statistikDesa = collect();
         if (request('kecamatan_id')) {
             $statistikDesa = Desa::where('kecamatan_id', request('kecamatan_id'))
@@ -167,7 +167,7 @@ class MustahikController extends Controller
 
         return response()->json($mustahiks);
     }
-    
+
     public function statistik()
     {
         $total = Mustahik::count();

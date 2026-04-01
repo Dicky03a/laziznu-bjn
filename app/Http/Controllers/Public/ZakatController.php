@@ -41,7 +41,7 @@ class ZakatController extends Controller
                     ? 'Hamba Allah'
                     : $trx->nama_donatur;
 
-                $trx->jumlah_format = 'Rp ' . number_format($trx->jumlah, 0, ',', '.');
+                $trx->jumlah_format = 'Rp '.number_format($trx->jumlah, 0, ',', '.');
 
                 return $trx;
             });

@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::table('kecamatans', function (Blueprint $table) {
             // Kolom untuk menyimpan koordinat peta. Opsional untuk kecamatan yang belum memiliki data.
-            if (!Schema::hasColumn('kecamatans', 'latitude')) {
+            if (! Schema::hasColumn('kecamatans', 'latitude')) {
                 $table->decimal('latitude', 10, 8)->nullable()->change();
             }
-            if (!Schema::hasColumn('kecamatans', 'longitude')) {
+            if (! Schema::hasColumn('kecamatans', 'longitude')) {
                 $table->decimal('longitude', 11, 8)->nullable()->change();
             }
         });

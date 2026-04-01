@@ -19,15 +19,15 @@ class TransactionController extends Controller
     {
         $transactions = Transaction::query()
             ->with(['program', 'paymentConfirmation', 'kecamatan', 'desa'])
-            ->when($request->type, fn($q) => $q->ofType($request->type))
-            ->when($request->status, fn($q) => $q->withStatus($request->status))
-            ->when($request->search, fn($q) => $q->where(function ($q2) use ($request) {
-                $q2->where('kode_transaksi', 'like', '%' . $request->search . '%')
-                    ->orWhere('nama_donatur', 'like', '%' . $request->search . '%')
-                    ->orWhere('email', 'like', '%' . $request->search . '%');
+            ->when($request->type, fn ($q) => $q->ofType($request->type))
+            ->when($request->status, fn ($q) => $q->withStatus($request->status))
+            ->when($request->search, fn ($q) => $q->where(function ($q2) use ($request) {
+                $q2->where('kode_transaksi', 'like', '%'.$request->search.'%')
+                    ->orWhere('nama_donatur', 'like', '%'.$request->search.'%')
+                    ->orWhere('email', 'like', '%'.$request->search.'%');
             }))
-            ->when($request->tanggal_dari, fn($q) => $q->whereDate('created_at', '>=', $request->tanggal_dari))
-            ->when($request->tanggal_sampai, fn($q) => $q->whereDate('created_at', '<=', $request->tanggal_sampai))
+            ->when($request->tanggal_dari, fn ($q) => $q->whereDate('created_at', '>=', $request->tanggal_dari))
+            ->when($request->tanggal_sampai, fn ($q) => $q->whereDate('created_at', '<=', $request->tanggal_sampai))
             ->latest()
             ->paginate(20)
             ->withQueryString();
@@ -95,14 +95,14 @@ class TransactionController extends Controller
     {
         $transactions = Transaction::query()
             ->with(['program', 'kecamatan', 'desa'])
-            ->when($request->type, fn($q) => $q->ofType($request->type))
-            ->when($request->status, fn($q) => $q->withStatus($request->status))
-            ->when($request->tanggal_dari, fn($q) => $q->whereDate('created_at', '>=', $request->tanggal_dari))
-            ->when($request->tanggal_sampai, fn($q) => $q->whereDate('created_at', '<=', $request->tanggal_sampai))
+            ->when($request->type, fn ($q) => $q->ofType($request->type))
+            ->when($request->status, fn ($q) => $q->withStatus($request->status))
+            ->when($request->tanggal_dari, fn ($q) => $q->whereDate('created_at', '>=', $request->tanggal_dari))
+            ->when($request->tanggal_sampai, fn ($q) => $q->whereDate('created_at', '<=', $request->tanggal_sampai))
             ->latest()
             ->get();
 
-        $filename = 'transaksi-laziznu-' . now()->format('Y-m-d') . '.csv';
+        $filename = 'transaksi-laziznu-'.now()->format('Y-m-d').'.csv';
 
         $headers = [
             'Content-Type' => 'text/csv',
@@ -128,7 +128,7 @@ class TransactionController extends Controller
                 fputcsv($file, [
                     $t->kode_transaksi,
                     $t->created_at->format('d/m/Y H:i'),
-                    $t->type_label . ($t->subtype ? " ({$t->subtype})" : ''),
+                    $t->type_label.($t->subtype ? " ({$t->subtype})" : ''),
                     $t->program?->nama ?? '-',
                     $t->nama_tampil,
                     $t->email ?? '-',

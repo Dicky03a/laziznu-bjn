@@ -52,7 +52,7 @@ class RekeningController extends Controller
 
         if ($request->hasFile('icon')) {
 
-            // Hapus icon lama 
+            // Hapus icon lama
             if ($rekening->icon && Storage::disk('public')->exists($rekening->icon)) {
                 Storage::disk('public')->delete($rekening->icon);
             }
