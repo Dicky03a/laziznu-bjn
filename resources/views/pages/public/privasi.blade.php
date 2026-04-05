@@ -4,9 +4,7 @@
 @section('content')
 
 {{-- HERO SECTION --}}
-<section class="relative bg-gradient-to-r from-emerald-900 via-emerald-800 to-emerald-700 py-24">
-      <div class="absolute inset-0 bg-black/20"></div>
-
+<section class="relative bg-emerald-600 py-24">
       <div class="relative max-w-6xl mx-auto px-6 text-center text-white">
             <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">
                   Kebijakan Privasi
@@ -98,7 +96,7 @@
                         </p>
 
                         <a href="{{ route('infaq.index') }}"
-                              class="inline-block bg-emerald-700 text-white px-8 py-3 rounded-lg font-semibold hover:bg-emerald-800 transition duration-300 shadow-md">
+                              class="inline-block bg-emerald-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-emerald-800 transition duration-300 shadow-md">
                               Infaq Sekarang
                         </a>
                   </div>

@@ -82,20 +82,6 @@
 
                                     {{-- KIRI : Avatar + Nama --}}
                                     <div class="flex items-center gap-4 min-w-0">
-                                          {{-- Avatar --}}
-                                          <div class="w-12 h-12 rounded-xl overflow-hidden shrink-0 shadow-sm">
-                                                @if($p->foto)
-                                                <img src="{{ $p->foto_url }}" alt="{{ $p->nama }}"
-                                                      class="w-full h-full object-cover object-top" />
-                                                @else
-                                                <div class="w-full h-full bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center">
-                                                      <span class="text-white font-bold text-base">
-                                                            {{ strtoupper(substr($p->nama, 0, 1)) }}
-                                                      </span>
-                                                </div>
-                                                @endif
-                                          </div>
-
                                           {{-- Nama --}}
                                           <p class="font-semibold text-gray-900 text-sm truncate">
                                                 {{ $p->nama_lengkap }}
@@ -146,19 +132,6 @@
                               <div class="divide-y divide-gray-50">
                                     @foreach($members as $p)
                                     <div class="flex items-center gap-3 px-5 py-3.5">
-                                          {{-- Small photo-fill avatar --}}
-                                          <div class="w-11 h-11 rounded-2xl overflow-hidden shrink-0 shadow-sm">
-                                                @if($p->foto)
-                                                <img src="{{ $p->foto_url }}" alt="{{ $p->nama }}"
-                                                      class="w-full h-full object-cover object-top" />
-                                                @else
-                                                <div class="w-full h-full bg-gradient-to-br from-teal-400 to-emerald-500 flex items-center justify-center">
-                                                      <span class="text-white font-bold text-base">
-                                                            {{ strtoupper(substr($p->nama, 0, 1)) }}
-                                                      </span>
-                                                </div>
-                                                @endif
-                                          </div>
                                           <div class="min-w-0">
                                                 <p class="font-semibold text-gray-900 text-sm truncate">{{ $p->nama_lengkap }}</p>
                                                 <p class="text-xs text-gray-400 truncate">Anggota</p>

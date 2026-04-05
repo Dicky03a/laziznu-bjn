@@ -2,7 +2,7 @@
 @section('title', 'Hitung Zakat - Lazisnu Bojonegoro')
 @section('content')
 
-<section class="relative bg-gradient-to-br from-emerald-900 via-emerald-800 to-emerald-700 py-16 sm:py-20 lg:py-24 overflow-hidden">
+<section class="relative bg-gradient-to-br from-emerald-600 to-emerald-700 py-16 sm:py-20 lg:py-24 overflow-hidden">
 
       <div class="absolute inset-0 opacity-10">
             <div class="absolute top-0 right-0 w-72 sm:w-96 h-72 sm:h-96 bg-white rounded-full blur-3xl"></div>
@@ -46,7 +46,6 @@
 </section>
 
 
-{{-- ================= CALCULATOR ================= --}}
 <section class="py-16 sm:py-20 bg-gradient-to-b from-gray-50 to-white" x-data="{ activeTab: 'maal' }">
       <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
 
@@ -64,7 +63,6 @@
                   </button>
             </div>
 
-            {{-- ================= ZAKAT MAAL ================= --}}
             <div
                   x-data="zakatMaal()"
                   x-show="activeTab === 'maal'"
@@ -249,9 +247,6 @@
 
                               <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 mb-6 border border-white/20">
                                     <div class="flex items-start gap-3">
-                                          <svg class="w-5 h-5 text-yellow-300 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" />
-                                          </svg>
                                           <p class="text-sm text-white">
                                                 <strong>Contoh:</strong> Jika harta Rp 150.000.000, maka zakat = 2.5% × Rp 150.000.000 = <strong>Rp 3.750.000</strong> per tahun.
                                           </p>
@@ -272,7 +267,9 @@
                                     </button>
                                     <button
                                           class="flex-1 border-2 border-white py-4 rounded-xl font-bold hover:bg-white/10 transition">
-                                          <a href="http://">Konsultasi Gratis</a>
+                                          <a href="https://wa.me/6285743229703" target="_blank">
+                                                Konsultasi Gratis
+                                          </a>
                                     </button>
                               </div>
 
@@ -456,7 +453,7 @@
                                           <a href="{{ route('zakat.index') }}">Tunaikan Zakat Fitrah</a>
                                     </button>
                                     <button class="flex-1 border border-white py-4 rounded-xl font-bold hover:bg-white/10 transition">
-                                          <a href="http://">Konsultasi</a>
+                                          <a href="https://wa.me/6285743229703">Konsultasi</a>
                                     </button>
                               </div>
 

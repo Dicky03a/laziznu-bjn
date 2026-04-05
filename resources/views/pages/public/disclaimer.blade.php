@@ -4,9 +4,7 @@
 @section('content')
 
 {{-- HERO SECTION --}}
-<section class="relative bg-gradient-to-r from-emerald-900 via-emerald-800 to-emerald-700 py-24">
-      <div class="absolute inset-0 bg-black/20"></div>
-
+<section class="relative bg-gradient-to-br from-emerald-600 to-emerald-700 py-24">
       <div class="relative max-w-6xl mx-auto px-6 text-center text-white">
             <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">
                   Syarat & Ketentuan
@@ -101,7 +99,7 @@
                   </div>
 
                   {{-- CTA BOX --}}
-                  <div class="bg-gradient-to-r from-emerald-700 to-emerald-800 text-white rounded-xl p-10 text-center shadow-lg">
+                  <div class="bg-gradient-to-br from-emerald-600 to-emerald-700 text-white rounded-xl p-10 text-center shadow-lg">
                         <h3 class="text-2xl font-semibold mb-4">
                               Mari Berkontribusi dalam Kebaikan
                         </h3>

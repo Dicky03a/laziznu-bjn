@@ -2,13 +2,7 @@
 @section('title', 'Program - Lazisnu Bojonegoro')
 @section('content')
 
-<section class="relative bg-gradient-to-br from-emerald-900 via-emerald-800 to-emerald-700 py-16 sm:py-20 lg:py-24 overflow-hidden">
-
-      {{-- Decorative Blur --}}
-      <div class="absolute inset-0 opacity-10">
-            <div class="absolute top-0 right-0 w-72 sm:w-96 h-72 sm:h-96 bg-white rounded-full blur-3xl"></div>
-            <div class="absolute bottom-0 left-0 w-64 sm:w-80 h-64 sm:h-80 bg-white rounded-full blur-3xl"></div>
-      </div>
+<section class="relative bg-gradient-to-br from-emerald-600 to-emerald-700 py-16 sm:py-20 lg:py-24 overflow-hidden">
 
       <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
 
@@ -108,7 +102,7 @@
 
             <div class="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
 
-                  <div class="bg-gradient-to-r from-emerald-600 to-emerald-500 px-5 sm:px-8 py-5 sm:py-6">
+                  <div class="bg-gradient-to-br from-emerald-600 to-emerald-700 px-5 sm:px-8 py-5 sm:py-6">
                         <div class="flex flex-col sm:flex-row sm:justify-between gap-3">
                               <h3 class="text-xl sm:text-2xl font-bold text-white">
                                     Donasi Terbaru
@@ -164,7 +158,7 @@
             <div class="flex flex-col md:flex-row md:justify-between gap-6 mb-10 sm:mb-12">
                   <div>
                         <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-2">
-                              Semua Program
+                              Program
                         </h2>
                         <p class="text-gray-600">
                               Pilih program sesuai kepedulian Anda

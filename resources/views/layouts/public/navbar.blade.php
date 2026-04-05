@@ -17,10 +17,6 @@
                               class="relative text-gray-700 text-sm font-medium transition-colors duration-300 hover:text-green-600 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-green-600 after:transition-all after:duration-300 hover:after:w-full">
                               Beranda
                         </a>
-                        <a href="{{ route('payment.info') }}"
-                              class="relative text-gray-700 text-sm font-medium transition-colors duration-300 hover:text-green-600 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-green-600 after:transition-all after:duration-300 hover:after:w-full">
-                              Pembayaran Info
-                        </a>
                         <!-- Profile -->
                         <div class="relative group">
                               <button class="relative text-gray-700 text-sm font-medium flex items-center gap-1 transition-colors duration-300 hover:text-green-600">

@@ -308,31 +308,30 @@
                         <div class="sticky top-8 space-y-6">
 
                               {{-- Info Organisasi --}}
-                              <div class="p-8">
-                                    <div class="flex items-center gap-4 mb-6">
-                                          <img src="{{ asset('asset/laziznulogo.svg') }}" class="w-20" alt="Lazisnu Bojonegoro">
-                                          <div class="flex-1">
-                                                <h3 class="font-bold text-gray-900 text-lg mb-1">LAZISNU Bojonegoro</h3>
-                                                <p class="text-emerald-600 text-sm font-medium flex items-center gap-1">
-                                                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                                            <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                                      </svg>
-                                                      Verified Organization
-                                                </p>
+                              <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
+                                    <div class="flex items-center gap-3 mb-4">
+                                          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-600 to-emerald-500 flex items-center justify-center text-white font-bold shadow">NU</div>
+                                          <div>
+                                                <h3 class="font-bold text-gray-900 text-sm">Lazisnu Bojonegoro</h3>
+                                                <p class="text-xs text-emerald-600">Lembaga Terverifikasi</p>
                                           </div>
                                     </div>
-                                    <div class="space-y-3 mb-6 text-sm text-gray-600">
+                                    <div class="space-y-2 text-xs text-gray-600">
                                           <div class="flex items-center gap-2">
-                                                <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <svg class="w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                                </svg>
+                                                <span>085743229703</span>
+                                                (Admin)</span>
+                                          </div>
+                                          <div class="flex items-center gap-2">
+                                                <svg class="w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                                 </svg>
                                                 <span>Bojonegoro, Jawa Timur</span>
                                           </div>
                                     </div>
-                                    <a href="{{ route('profile') }}" class="block w-full py-3 border-2 border-emerald-600 text-emerald-600 rounded-xl font-semibold hover:bg-emerald-50 transition-all text-center">
-                                          Lihat Profil
-                                    </a>
                               </div>
                         </div>
 

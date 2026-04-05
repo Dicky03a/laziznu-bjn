@@ -12,6 +12,12 @@ export function initPemetaanZakat() {
         return;
     }
 
+    // Destroy previous map if exists
+    if (window.pemetaanZakatMap) {
+        window.pemetaanZakatMap.remove();
+        window.pemetaanZakatMap = null;
+    }
+
     const data = JSON.parse(dataElement.textContent);
     const kecamatans = data.kecamatans;
     const center = data.center;
@@ -92,6 +98,20 @@ export function initPemetaanZakat() {
     
 }
 
-document.addEventListener('DOMContentLoaded', initPemetaanZakat);
+// Add guard to prevent multiple simultaneous initializations
+let isInitializing = false;
+const initWithGuard = () => {
+    if (isInitializing) return;
+    isInitializing = true;
+    
+    initPemetaanZakat();
+    
+    // Reset flag after a short delay
+    setTimeout(() => {
+        isInitializing = false;
+    }, 100);
+};
 
-document.addEventListener('livewire:navigated', initPemetaanZakat);
+document.addEventListener('DOMContentLoaded', initWithGuard);
+
+document.addEventListener('livewire:navigated', initWithGuard);

@@ -59,6 +59,10 @@ class TransactionController extends Controller
             return back()->with('error', 'Transaksi ini sudah diproses.');
         }
 
+        if (! $transaction->paymentConfirmation) {
+            return back()->with('error', 'Donatur belum mengirim bukti transfer. Konfirmasi transaksi tidak dapat diproses sampai ada bukti dari donatur.');
+        }
+
         $this->transactionService->confirm(
             $transaction,
             auth()->id(),

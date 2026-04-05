@@ -216,6 +216,7 @@
                         @endif
 
                         {{-- Konfirmasi --}}
+                        @if($transaction->paymentConfirmation)
                         <form action="{{ route('transactions.confirm', $transaction) }}" method="POST" class="mb-4">
                               @csrf
                               <div class="mb-3">
@@ -232,14 +233,25 @@
                                     Konfirmasi Transaksi
                               </button>
                         </form>
+                        @else
+                        <button type="button" disabled
+                              class="w-full mb-4 py-3 bg-gray-300 text-gray-500 font-bold rounded-xl cursor-not-allowed opacity-50 flex items-center justify-center gap-2" title="Donatur harus mengirim bukti transfer terlebih dahulu">
+                              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                              </svg>
+                              Konfirmasi Transaksi
+                        </button>
+                        @endif
 
+                        @if($transaction->paymentConfirmation)
                         <div class="relative">
                               <div class="absolute inset-0 flex items-center"><span class="w-full border-t border-gray-200"></span></div>
                               <div class="relative flex justify-center"><span class="bg-white px-3 text-xs text-gray-400">atau</span></div>
                         </div>
+                        @endif
 
                         {{-- Tolak --}}
-                        <form action="{{ route('transactions.reject', $transaction) }}" method="POST" class="mt-4">
+                        <form action="{{ route('transactions.reject', $transaction) }}" method="POST" class="{{ $transaction->paymentConfirmation ? 'mt-4' : 'mt-0' }}">
                               @csrf
                               <div class="mb-3">
                                     <label class="block text-xs font-medium text-gray-600 mb-1">Alasan Penolakan <span class="text-red-500">*</span></label>

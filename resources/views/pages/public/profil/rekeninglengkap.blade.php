@@ -213,46 +213,6 @@
       </div>
 </section>
 
-<!-- HELPDESK -->
-<section class="relative bg-gradient-to-br from-emerald-600 to-emerald-700 py-12 sm:py-16 overflow-hidden">
-      <!-- Decorative Elements -->
-      <div class="absolute inset-0 opacity-10">
-            <div class="absolute top-0 right-0 w-64 h-64 bg-white rounded-full blur-3xl"></div>
-            <div class="absolute bottom-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl"></div>
-      </div>
-
-      <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 sm:p-8">
-                  <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-
-                        <div class="flex items-start gap-4 text-white">
-                              <div class="flex items-center justify-center w-12 h-12 bg-white/20 rounded-xl flex-shrink-0">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                                    </svg>
-                              </div>
-                              <div>
-                                    <h3 class="text-lg font-semibold mb-1">Butuh Konfirmasi Transfer?</h3>
-                                    <p class="text-emerald-100 text-sm">
-                                          Hubungi tim kami untuk konfirmasi dan informasi donasi
-                                    </p>
-                              </div>
-                        </div>
-
-                        <div class="text-center md:text-right bg-white/10 backdrop-blur-sm rounded-xl px-6 py-4 border border-white/20">
-                              <a href="https://wa.me/6285743229703?text=Assalamu%E2%80%99alaikum,%20saya%20ingin%20menghubungi%20admin%20zakat,%20sedekah,%20dan%20donasi."
-                                    target="_blank"
-                                    rel="noopener">
-                                    <p class="text-white font-bold text-lg mb-1">085743229703</p>
-                              </a>
-                              <p class="text-emerald-100 text-sm">Admin</p>
-                        </div>
-
-                  </div>
-            </div>
-      </div>
-</section>
-
 <script>
       function copyToClipboard(text, button) {
             navigator.clipboard.writeText(text).then(function() {

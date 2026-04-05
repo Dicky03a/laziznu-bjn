@@ -20,7 +20,7 @@
             <div class="relative px-6 sm:px-12 lg:px-16 py-20 sm:py-24 lg:py-32">
                   <div class="max-w-2xl">
                         <div class="inline-block mb-4 px-4 py-1.5 bg-emerald-500/20 backdrop-blur-sm rounded-full border border-emerald-400/30">
-                              <span class="text-emerald-200 text-sm font-medium">Lazisnu Bojonegoro</span>
+                              <span class="text-emerald-200 text-sm font-medium">PCNU Lazisnu Bojonegoro</span>
                         </div>
 
                         <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight tracking-tight">
@@ -46,6 +46,46 @@
             </div>
       </div>
 </section>
+
+<!-- CEK TRANSAKSI SECTION -->
+<section class="max-w-7xl mx-auto py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 mt-4">
+      <div class="p-8 sm:p-10 lg:p-12">
+
+            <!-- Section Header -->
+            <div class="text-center mb-8 lg:mb-10">
+                  <h3 class="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-900 mb-2">
+                        Cek Status Transaksi Anda
+                  </h3>
+                  <p class="text-sm sm:text-base text-slate-600">
+                        Masukkan kode transaksi untuk melacak status pembayaran Anda
+                  </p>
+            </div>
+
+            <!-- Search Form -->
+            <form action="#" method="GET" class="flex flex-col sm:flex-row gap-3 max-w-2xl mx-auto" onsubmit="handleCheckTransaction(event)">
+                  <div class="flex-1">
+                        <input
+                              type="text"
+                              id="transactionCode"
+                              name="kode"
+                              placeholder="Masukkan kode transaksi (mis: TRX-2024-001)"
+                              class="w-full px-5 py-3 sm:py-4 text-base rounded-lg border-2 border-emerald-200 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 transition-all duration-200"
+                              required>
+                  </div>
+                  <button
+                        type="submit"
+                        class="px-8 py-3 sm:py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 whitespace-nowrap">
+                        Cek Transaksi
+                  </button>
+            </form>
+
+            <!-- Help Text -->
+            <p class="text-center text-xs sm:text-sm text-slate-600 mt-6">
+                  Kode transaksi didapat melalui pesan WhatsApp setelah melakukan pembayaran
+            </p>
+      </div>
+</section>
+
 
 <!-- QUICK ACCESS MENU -->
 <section class="max-w-7xl mx-auto py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
@@ -113,7 +153,6 @@
             </div>
       </div>
 </section>
-
 
 <!-- DONATION PROGRAMS -->
 <section class="w-full bg-slate-50/50 py-16 sm:py-20 lg:py-24">
@@ -335,5 +374,15 @@
             </div>
       </div>
 </section>
+
+<script>
+      function handleCheckTransaction(event) {
+            event.preventDefault();
+            const transactionCode = document.getElementById('transactionCode').value.trim();
+            if (transactionCode) {
+                  window.location.href = `/pembayaran/${transactionCode}`;
+            }
+      }
+</script>
 
 @endsection

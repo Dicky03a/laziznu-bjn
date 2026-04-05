@@ -73,7 +73,7 @@ new class extends Component
         $this->pendingTransactions = Transaction::where('status', 'pending')
             ->with('program')
             ->orderBy('created_at', 'desc')
-            ->take(10)
+            ->take(5)
             ->get(['id', 'kode_transaksi', 'nama_donatur', 'jumlah', 'program_id', 'created_at']);
 
         // Pending payment confirmations

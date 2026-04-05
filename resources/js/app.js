@@ -4,7 +4,12 @@ import './pemetaan-zakat.js';
 import './payment-instructions-integration.js';
 
 window.Alpine = Alpine
-Alpine.start()
+
+// Check if Alpine is already initialized before starting
+// This prevents "Detected multiple instances of Alpine running" warning
+if (!window.Alpine.startingUp && !window.Alpine._isRunning) {
+    Alpine.start()
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize Tiptap editors
