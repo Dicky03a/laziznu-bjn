@@ -5,10 +5,10 @@
                   <!-- Header -->
                   <div>
                         <h1 class="text-3xl font-bold text-slate-900 ">
-                              {{ __('Tambah Rekening Baru') }}
+                              Tambah Rekening Baru
                         </h1>
                         <p class="text-slate-600  mt-2">
-                              {{ __('Isi formulir di bawah untuk membuat rekening baru') }}
+                              Isi formulir di bawah untuk membuat rekening baru
                         </p>
                   </div>
 
@@ -20,10 +20,10 @@
                               <!-- Nama -->
                               <div>
                                     <label for="nama" class="block text-sm font-semibold text-slate-900  mb-2">
-                                          {{ __('Nama') }} <span class="text-red-500">*</span>
+                                          Nama <span class="text-red-500">*</span>
                                     </label>
                                     <input type="text" id="nama" name="nama" value="{{ old('nama') }}"
-                                          placeholder="{{ __('Contoh: Bank Mandiri') }}"
+                                          placeholder="Contoh: Bank Mandiri"
                                           class="w-full px-4 py-2.5 bg-slate-50  border border-slate-300  rounded-lg text-slate-900  placeholder-slate-500  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                                           required>
                                     @error('nama')
@@ -57,10 +57,10 @@
                               <!-- Bank Atas Nama -->
                               <div>
                                     <label for="bank_atas_nama" class="block text-sm font-semibold text-slate-900  mb-2">
-                                          {{ __('Bank Atas Nama') }} <span class="text-red-500">*</span>
+                                          Bank Atas Nama <span class="text-red-500">*</span>
                                     </label>
                                     <input type="text" id="bank_atas_nama" name="bank_atas_nama" value="{{ old('bank_atas_nama') }}"
-                                          placeholder="{{ __('Nama pemilik rekening') }}"
+                                          placeholder="Nama pemilik rekening"
                                           class="w-full px-4 py-2.5 bg-slate-50  border border-slate-300  rounded-lg text-slate-900  placeholder-slate-500  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                                           required>
                                     @error('bank_atas_nama')
@@ -71,10 +71,10 @@
                               <!-- Nomor Rekening -->
                               <div>
                                     <label for="nomor_rekening" class="block text-sm font-semibold text-slate-900  mb-2">
-                                          {{ __('Nomor Rekening') }} <span class="text-red-500">*</span>
+                                          Nomor Rekening <span class="text-red-500">*</span>
                                     </label>
                                     <input type="text" id="nomor_rekening" name="nomor_rekening" value="{{ old('nomor_rekening') }}"
-                                          placeholder="{{ __('Nomor rekening bank') }}"
+                                          placeholder="Nomor rekening bank"
                                           class="w-full px-4 py-2.5 bg-slate-50  border border-slate-300  rounded-lg text-slate-900  placeholder-slate-500  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                                           required>
                                     @error('nomor_rekening')

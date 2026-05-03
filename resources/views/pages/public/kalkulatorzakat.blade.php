@@ -11,13 +11,6 @@
 
       <div class="max-w-5xl mx-auto px-5 sm:px-6 lg:px-8 text-center relative z-10">
 
-            <div class="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-white/10 rounded-2xl mb-6 border border-white/20">
-                  <svg class="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                  </svg>
-            </div>
-
             <h1 class="text-3xl sm:text-4xl lg:text-6xl font-bold text-white mb-6">
                   Kalkulator <span class="text-emerald-300">Zakat</span>
             </h1>
@@ -170,12 +163,6 @@
                               :class="total >= nisab ? 'from-emerald-600 to-emerald-500 border-emerald-300' : 'from-red-50 to-orange-50 border-red-300'">
 
                               <div class="flex items-start gap-3">
-                                    <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
-                                          :class="total >= nisab ? 'bg-emerald-100' : 'bg-red-100'">
-                                          <svg class="w-6 h-6" :class="total >= nisab ? 'text-emerald-600' : 'text-red-600'" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" />
-                                          </svg>
-                                    </div>
 
                                     <div class="flex-1">
                                           <h4 class="font-bold text-emerald-900 mb-1">Status Nisab</h4>
@@ -356,18 +343,7 @@
                                                 <button @click="jenisZakat = 'beras'"
                                                       :class="jenisZakat === 'beras' ? 'border-emerald-500 bg-emerald-50' : 'border-gray-200 bg-white hover:border-gray-300'"
                                                       class="relative border-2 rounded-xl p-5 text-left transition">
-                                                      <div class="flex items-start justify-between mb-2">
-                                                            <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-amber-100">
-                                                                  <svg class="w-6 h-6 text-amber-600" fill="currentColor" viewBox="0 0 20 20">
-                                                                        <path d="M10 2a8 8 0 100 16 8 8 0 000-16zM9 12a1 1 0 01-1-1V7a1 1 0 112 0v4a1 1 0 01-1 1z" />
-                                                                  </svg>
-                                                            </div>
-                                                            <div x-show="jenisZakat === 'beras'" class="w-5 h-5 bg-emerald-500 rounded-full flex items-center justify-center">
-                                                                  <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-                                                                  </svg>
-                                                            </div>
-                                                      </div>
+                                                      
                                                       <h4 class="font-bold text-gray-900 mb-1">Beras</h4>
                                                       <p class="text-sm text-gray-600">2.5 kg per jiwa</p>
                                                       <p class="text-xs text-gray-500 mt-2">≈ Rp <span x-text="(15000 * 2.5).toLocaleString('id-ID')"></span>/jiwa</p>
@@ -376,19 +352,6 @@
                                                 <button @click="jenisZakat = 'uang'"
                                                       :class="jenisZakat === 'uang' ? 'border-emerald-500 bg-emerald-50' : 'border-gray-200 bg-white hover:border-gray-300'"
                                                       class="relative border-2 rounded-xl p-5 text-left transition">
-                                                      <div class="flex items-start justify-between mb-2">
-                                                            <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-emerald-100">
-                                                                  <svg class="w-6 h-6 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
-                                                                        <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
-                                                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" />
-                                                                  </svg>
-                                                            </div>
-                                                            <div x-show="jenisZakat === 'uang'" class="w-5 h-5 bg-emerald-500 rounded-full flex items-center justify-center">
-                                                                  <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-                                                                  </svg>
-                                                            </div>
-                                                      </div>
                                                       <h4 class="font-bold text-gray-900 mb-1">Uang</h4>
                                                       <p class="text-sm text-gray-600">Setara harga beras</p>
                                                 </button>
@@ -439,9 +402,6 @@
 
                               <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 mb-6 border border-white/20">
                                     <div class="flex items-start gap-3">
-                                          <svg class="w-5 h-5 text-yellow-300 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" />
-                                          </svg>
                                           <p class="text-sm text-blue-50">
                                                 Zakat fitrah wajib bagi setiap Muslim yang memiliki kelebihan makanan pokok pada malam dan hari Idul Fitri
                                           </p>
@@ -467,11 +427,6 @@
             <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
                   <div class="bg-white p-6 rounded-2xl shadow border border-gray-100">
-                        <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mb-4">
-                              <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                              </svg>
-                        </div>
                         <h3 class="font-bold text-lg mb-2">Perhitungan Akurat</h3>
                         <p class="text-gray-600 text-sm">
                               Mengikuti ketentuan syariat Islam dan fatwa MUI.
@@ -479,11 +434,6 @@
                   </div>
 
                   <div class="bg-white p-6 rounded-2xl shadow border border-gray-100">
-                        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
-                              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                              </svg>
-                        </div>
                         <h3 class="font-bold text-lg mb-2">Privasi Terjamin</h3>
                         <p class="text-gray-600 text-sm">
                               Data Anda aman dan tidak disimpan di server kami.
@@ -491,11 +441,6 @@
                   </div>
 
                   <div class="bg-white p-6 rounded-2xl shadow border border-gray-100">
-                        <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
-                              <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
-                              </svg>
-                        </div>
                         <h3 class="font-bold text-lg mb-2">Konsultasi Gratis</h3>
                         <p class="text-gray-600 text-sm">
                               Tim ustadz kami siap membantu pertanyaan Anda.

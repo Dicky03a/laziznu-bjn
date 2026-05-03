@@ -3,7 +3,7 @@
 
 @section('content')
 
-{{-- HERO SECTION --}}
+<!-- $1 -->
 <section class="relative bg-emerald-600 py-24">
       <div class="relative max-w-6xl mx-auto px-6 text-center text-white">
             <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">
@@ -17,13 +17,13 @@
 </section>
 
 
-{{-- CONTENT SECTION --}}
+<!-- $1 -->
 <section class="bg-gray-50 py-20">
       <div class="max-w-5xl mx-auto px-6">
 
             <div class="bg-white rounded-2xl shadow-lg p-10 md:p-14 space-y-12">
 
-                  {{-- Intro --}}
+                  <!-- $1 -->
                   <div class="text-gray-700 leading-relaxed">
                         <p>
                               Kebijakan privasi ini menjelaskan bagaimana LAZISNU Bojonegoro
@@ -32,7 +32,7 @@
                         </p>
                   </div>
 
-                  {{-- Section Item --}}
+                  <!-- $1 -->
                   <div>
                         <h2 class="text-2xl font-semibold text-emerald-800 mb-4">
                               Informasi yang Kami Kumpulkan
@@ -85,7 +85,7 @@
                         </p>
                   </div>
 
-                  {{-- CTA BOX --}}
+                  <!-- $1 -->
                   <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-8 text-center">
                         <h3 class="text-xl font-semibold text-emerald-900 mb-3">
                               Dukung Program Kebaikan Kami

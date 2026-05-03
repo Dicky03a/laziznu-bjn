@@ -6,7 +6,7 @@
                   <div class="flex items-center justify-between">
                         <div>
                               <h1 class="text-3xl font-bold text-slate-900 ">
-                                    {{ __('Edit Berita') }}
+                                    Edit Berita
                               </h1>
                               <p class="text-slate-600  mt-2">
                                     {{ $news->title }}
@@ -20,14 +20,14 @@
                                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                           <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                                     </svg>
-                                    {{ __('Dipublikasikan') }}
+                                    Dipublikasikan
                               </span>
                               @else
                               <span class="inline-flex items-center gap-2 px-4 py-2 bg-yellow-100  text-yellow-800  rounded-lg font-medium">
                                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                           <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
                                     </svg>
-                                    {{ __('Draft') }}
+                                    Draft
                               </span>
                               @endif
                         </div>
@@ -44,10 +44,10 @@
                                     <!-- Title -->
                                     <div>
                                           <label for="title" class="block text-sm font-semibold text-slate-900  mb-2">
-                                                {{ __('Judul') }} <span class="text-red-500">*</span>
+                                                Judul <span class="text-red-500">*</span>
                                           </label>
                                           <input type="text" id="title" name="title" value="{{ old('title', $news->title) }}"
-                                                placeholder="{{ __('Masukkan judul berita') }}"
+                                                placeholder="Masukkan judul berita"
                                                 class="w-full px-4 py-3 bg-slate-50  border border-slate-300  rounded-lg text-slate-900  placeholder-slate-500  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                                                 required>
                                           @error('title')
@@ -58,15 +58,15 @@
                                     <!-- Slug -->
                                     <div>
                                           <label for="slug" class="block text-sm font-semibold text-slate-900  mb-2">
-                                                {{ __('Slug') }} <span class="text-red-500">*</span>
+                                                Slug <span class="text-red-500">*</span>
                                           </label>
                                           <div class="relative">
                                                 <input type="text" id="slug" name="slug" value="{{ old('slug', $news->slug) }}"
-                                                      placeholder="{{ __('slug-berita') }}"
+                                                      placeholder="slug-berita"
                                                       class="w-full px-4 py-3 bg-slate-50  border border-slate-300  rounded-lg text-slate-900  placeholder-slate-500  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                                                       required>
                                                 <button type="button" onclick="generateSlug()" class="absolute right-2 top-1/2 -translate-y-1/2 px-3 py-1.5 text-xs font-medium text-blue-600  hover:bg-blue-50  rounded transition-colors">
-                                                      {{ __('Generate') }}
+                                                      Generate
                                                 </button>
                                           </div>
                                           @error('slug')
@@ -77,11 +77,11 @@
                                     <!-- Category -->
                                     <div>
                                           <label for="category_id" class="block text-sm font-semibold text-slate-900  mb-2">
-                                                {{ __('Kategori') }}
+                                                Kategori
                                           </label>
                                           <select id="category_id" name="category_id"
                                                 class="w-full px-4 py-3 bg-slate-50  border border-slate-300  rounded-lg text-slate-900  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
-                                                <option value="">{{ __('Pilih Kategori') }}</option>
+                                                <option value="">Pilih Kategori</option>
                                                 @foreach ($categories as $category)
                                                 <option value="{{ $category->id }}" {{ old('category_id', $news->category_id) == $category->id ? 'selected' : '' }}>
                                                       {{ $category->name }}
@@ -96,7 +96,7 @@
                                     <!-- Featured Image -->
                                     <div>
                                           <label class="block text-sm font-semibold text-slate-900 mb-2">
-                                                {{ __('Gambar Unggulan') }}
+                                                Gambar Unggulan
                                           </label>
 
                                           <div class="grid md:grid-cols-2 gap-6">
@@ -107,7 +107,7 @@
                                                       class="bg-slate-50 rounded-xl p-4 border border-slate-200 transition-all duration-300">
 
                                                       <p class="text-sm font-medium text-slate-700 mb-3">
-                                                            {{ __('Gambar Saat Ini') }}
+                                                            Gambar Saat Ini
                                                       </p>
 
                                                       <img id="currentImagePreview"
@@ -122,7 +122,7 @@
                                                                   class="w-4 h-4 text-red-600 border-slate-300 rounded cursor-pointer">
 
                                                             <span class="text-sm text-red-600 font-medium">
-                                                                  {{ __('Hapus gambar') }}
+                                                                  Hapus gambar
                                                             </span>
                                                       </label>
                                                 </div>
@@ -158,7 +158,7 @@
                                                             </svg>
 
                                                             <p class="mt-2 text-sm text-slate-600">
-                                                                  {{ __('Klik atau drag gambar ke sini') }}
+                                                                  Klik atau drag gambar ke sini
                                                             </p>
 
                                                             <p class="text-xs text-slate-400">
@@ -171,7 +171,7 @@
                                                       <div id="newImagePreview" class="hidden">
 
                                                             <p class="text-sm font-medium text-slate-700 mb-3 pointer-events-none">
-                                                                  {{ __('Preview Gambar Baru') }}
+                                                                  Preview Gambar Baru
                                                             </p>
 
                                                             <img id="previewImage"
@@ -184,9 +184,9 @@
                                                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                                                                         </svg>
-                                                                        {{ __('Batal') }}
+                                                                        Batal
                                                                   </button>
-                                                                  <span class="text-xs text-slate-500 py-1.5">{{ __('Siap untuk diunggah') }}</span>
+                                                                  <span class="text-xs text-slate-500 py-1.5">Siap untuk diunggah</span>
                                                             </div>
 
                                                       </div>
@@ -200,10 +200,10 @@
                                     <!-- Excerpt -->
                                     <div>
                                           <label for="excerpt" class="block text-sm font-semibold text-slate-900  mb-2">
-                                                {{ __('Ringkasan') }}
+                                                Ringkasan
                                           </label>
                                           <textarea id="excerpt" name="excerpt" rows="3"
-                                                placeholder="{{ __('Ringkasan singkat berita (opsional)') }}"
+                                                placeholder="Ringkasan singkat berita (opsional)"
                                                 class="w-full px-4 py-3 bg-slate-50  border border-slate-300  rounded-lg text-slate-900  placeholder-slate-500  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none">{{ old('excerpt', $news->excerpt) }}</textarea>
                                           @error('excerpt')
                                           <p class="text-red-600  text-sm mt-1.5">{{ $message }}</p>
@@ -213,7 +213,7 @@
                                     <!-- Content with Tiptap Editor -->
                                     <div>
                                           <label for="content" class="block text-sm font-semibold text-slate-900  mb-2">
-                                                {{ __('Konten') }} <span class="text-red-500">*</span>
+                                                Konten <span class="text-red-500">*</span>
                                           </label>
                                           <textarea id="content" name="content"
                                                 class="hidden"
@@ -234,16 +234,16 @@
                                                 </svg>
                                                 <div>
                                                       <p class="text-sm font-semibold text-slate-900  mb-1">
-                                                            {{ __('Status Publikasi') }}
+                                                            Status Publikasi
                                                       </p>
                                                       @if ($news->published_at)
                                                       <p class="text-sm text-slate-600 ">
-                                                            {{ __('Berita ini dipublikasikan pada ') }}
+                                                            Berita ini dipublikasikan pada
                                                             <span class="font-medium text-slate-900 ">{{ $news->published_at->format('d F Y, H:i') }}</span>
                                                       </p>
                                                       @else
                                                       <p class="text-sm text-slate-600 ">
-                                                            {{ __('Berita ini masih dalam status draft dan belum dipublikasikan') }}
+                                                            Berita ini masih dalam status draft dan belum dipublikasikan
                                                       </p>
                                                       @endif
                                                 </div>
@@ -260,13 +260,13 @@
                                                       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                                                       </svg>
-                                                      {{ __('Kembali') }}
+                                                      Kembali
                                                 </a>
                                                 <button type="button" onclick="confirmDelete()" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-red-600  hover:bg-red-50  rounded-lg transition-colors font-medium border border-red-300 ">
                                                       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
                                                       </svg>
-                                                      {{ __('Hapus') }}
+                                                      Hapus
                                                 </button>
                                           </div>
 
@@ -279,14 +279,14 @@
                                                       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                                       </svg>
-                                                      {{ __('Jadikan Draft') }}
+                                                      Jadikan Draft
                                                 </button>
                                                 <button type="submit" name="action" value="publish"
                                                       class="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl">
                                                       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                                       </svg>
-                                                      {{ __('Perbarui') }}
+                                                      Perbarui
                                                 </button>
                                                 @else
                                                 <!-- If draft, show save as draft and publish buttons -->
@@ -295,14 +295,14 @@
                                                       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                                                       </svg>
-                                                      {{ __('Simpan Draft') }}
+                                                      Simpan Draft
                                                 </button>
                                                 <button type="submit" name="action" value="publish"
                                                       class="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl">
                                                       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3v-6"></path>
                                                       </svg>
-                                                      {{ __('Publikasikan') }}
+                                                      Publikasikan
                                                 </button>
                                                 @endif
                                           </div>
@@ -388,14 +388,14 @@
                   // Validate file size
                   const maxSize = 2 * 1024 * 1024; // 2MB
                   if (file.size > maxSize) {
-                        alert("{{ __('Ukuran gambar maksimal 2MB') }}");
+                        alert("Ukuran gambar maksimal 2MB");
                         input.value = "";
                         return;
                   }
 
                   // Validate file type
                   if (!file.type.startsWith('image/')) {
-                        alert("{{ __('Silakan pilih file gambar yang valid') }}");
+                        alert("Silakan pilih file gambar yang valid");
                         input.value = "";
                         return;
                   }
@@ -446,7 +446,7 @@
 
             // ==================== DELETE CONFIRMATION ====================
             function confirmDelete() {
-                  if (confirm('{{ __("Apakah Anda yakin ingin menghapus berita ini? Tindakan ini tidak dapat dibatalkan.") }}')) {
+                  if (confirm('Apakah Anda yakin ingin menghapus berita ini? Tindakan ini tidak dapat dibatalkan.')) {
                         document.getElementById('deleteForm').submit();
                   }
             }

@@ -3,7 +3,7 @@
 
 @section('content')
 
-{{-- HERO HEADER --}}
+<!-- $1 -->
 <section class="relative bg-gradient-to-br from-emerald-600 to-emerald-700 py-20 sm:py-24 overflow-hidden">
       <div class="relative max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
 
@@ -23,11 +23,11 @@
 </section>
 
 
-{{-- PROFILE CONTENT --}}
+<!-- $1 -->
 <section class="max-w-7xl mx-auto py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-            {{-- TEXT --}}
+            <!-- $1 -->
             <div>
 
                   <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-6">
@@ -38,7 +38,7 @@
                         <p>{{ $profile->deskripsi }}</p>
                   </div>
 
-                  {{-- STATS --}}
+                  <!-- $1 -->
                   <div class="grid grid-cols-3 gap-6 mt-8 pt-8 border-t">
 
                         <div>
@@ -66,7 +66,7 @@
 
             </div>
 
-            {{-- IMAGE --}}
+            <!-- $1 -->
             <div>
                   <img src="{{ asset('asset/hero.png') }}"
                         class="rounded-2xl shadow-2xl w-full"
@@ -77,7 +77,7 @@
 </section>
 
 
-{{-- VISI MISI --}}
+<!-- $1 -->
 <section class="bg-slate-50 py-16 sm:py-20 lg:py-24">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -87,7 +87,7 @@
 
             <div class="grid md:grid-cols-2 gap-8">
 
-                  {{-- VISI --}}
+                  <!-- $1 -->
 
                   <div class="bg-white p-8 rounded-2xl shadow border">
                         <div class="flex items-center gap-3 mb-6">
@@ -98,7 +98,7 @@
                         </p>
                   </div>
 
-                  {{-- MISI DINAMIS --}}
+                  <!-- $1 -->
                   <div class="bg-white p-8 rounded-2xl shadow border">
                         <div class="flex items-center gap-3 mb-6">
                               <h3 class="text-xl font-bold">Misi</h3>
@@ -107,7 +107,6 @@
                         <ul class="space-y-3 text-slate-600">
                               @foreach($profile->missions as $mission)
                               <li class="flex gap-3">
-                                    <span class="text-emerald-500">✔</span>
                                     <span>{{ $mission->text }}</span>
                               </li>
                               @endforeach
@@ -121,7 +120,7 @@
 </section>
 
 
-{{-- PILAR DINAMIS --}}
+<!-- $1 -->
 <section class="w-full bg-gradient-to-br from-emerald-600 to-emerald-700 py-16 sm:py-20 lg:py-24">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 

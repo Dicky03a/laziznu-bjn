@@ -2,17 +2,17 @@
 
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-      {{-- ─── Kolom Utama ─── --}}
+      <!-- $1 -->
       <div class="lg:col-span-2 space-y-6">
 
-            {{-- Identitas --}}
+            <!-- $1 -->
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
                   <h2 class="text-base font-semibold text-gray-800 mb-5 pb-3 border-b border-gray-100">
                         Identitas Pengurus
                   </h2>
                   <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
 
-                        {{-- Gelar Depan --}}
+                        <!-- $1 -->
                         <div>
                               <label class="block text-sm font-medium text-gray-700 mb-1.5">
                                     Gelar Depan <span class="text-gray-400 font-normal">(opsional)</span>
@@ -28,7 +28,7 @@
                               @enderror
                         </div>
 
-                        {{-- Nama --}}
+                        <!-- $1 -->
                         <div>
                               <label for="nama" class="block text-sm font-medium text-gray-700 mb-1.5">
                                     Nama <span class="text-red-500">*</span>
@@ -45,7 +45,7 @@
                               @enderror
                         </div>
 
-                        {{-- Gelar Belakang --}}
+                        <!-- $1 -->
                         <div class="sm:col-span-2">
                               <label class="block text-sm font-medium text-gray-700 mb-1.5">
                                     Gelar Belakang <span class="text-gray-400 font-normal">(opsional)</span>
@@ -61,7 +61,7 @@
                               @enderror
                         </div>
 
-                        {{-- Email --}}
+                        <!-- $1 -->
                         <div>
                               <label class="block text-sm font-medium text-gray-700 mb-1.5">Email</label>
                               <input type="email" name="email" id="email"
@@ -75,7 +75,7 @@
                               @enderror
                         </div>
 
-                        {{-- No HP --}}
+                        <!-- $1 -->
                         <div>
                               <label class="block text-sm font-medium text-gray-700 mb-1.5">No. HP / WhatsApp</label>
                               <input type="text" name="no_hp" id="no_hp"
@@ -91,14 +91,14 @@
                   </div>
             </div>
 
-            {{-- Jabatan & Periode --}}
+            <!-- $1 -->
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
                   <h2 class="text-base font-semibold text-gray-800 mb-5 pb-3 border-b border-gray-100">
                         Jabatan &amp; Masa Khidmat
                   </h2>
                   <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
 
-                        {{-- Jabatan --}}
+                        <!-- $1 -->
                         <div>
                               <label for="jabatan" class="block text-sm font-medium text-gray-700 mb-1.5">
                                     Jabatan <span class="text-red-500">*</span>
@@ -121,7 +121,7 @@
                               @enderror
                         </div>
 
-                        {{-- Urutan --}}
+                        <!-- $1 -->
                         <div>
                               <label for="urutan" class="block text-sm font-medium text-gray-700 mb-1.5">
                                     Urutan Tampil <span class="text-red-500">*</span>
@@ -132,7 +132,7 @@
                               <p class="mt-1 text-xs text-gray-400">Angka kecil tampil lebih dahulu.</p>
                         </div>
 
-                        {{-- Bidang (hidden default) --}}
+                        <!-- $1 -->
                         <div id="bidang-wrapper"
                               class="{{ old('jabatan', $pengurus->jabatan ?? '') === 'Anggota' ? '' : 'hidden' }} sm:col-span-2">
                               <label for="bidang" class="block text-sm font-medium text-gray-700 mb-1.5">
@@ -155,7 +155,7 @@
                               @enderror
                         </div>
 
-                        {{-- Masa Khidmat Mulai --}}
+                        <!-- $1 -->
                         <div>
                               <label for="masa_khidmat_mulai" class="block text-sm font-medium text-gray-700 mb-1.5">
                                     Tahun Mulai <span class="text-red-500">*</span>
@@ -170,7 +170,7 @@
                               @enderror
                         </div>
 
-                        {{-- Masa Khidmat Selesai --}}
+                        <!-- $1 -->
                         <div>
                               <label for="masa_khidmat_selesai" class="block text-sm font-medium text-gray-700 mb-1.5">
                                     Tahun Selesai <span class="text-red-500">*</span>
@@ -185,7 +185,7 @@
                               @enderror
                         </div>
 
-                        {{-- Nomor SK --}}
+                        <!-- $1 -->
                         <div class="sm:col-span-2">
                               <label for="no_sk" class="block text-sm font-medium text-gray-700 mb-1.5">
                                     Nomor SK
@@ -199,16 +199,16 @@
             </div>
       </div>
 
-      {{-- ─── Kolom Samping ─── --}}
+      <!-- $1 -->
       <div class="space-y-6">
 
-            {{-- Foto --}}
+            <!-- $1 -->
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
                   <h2 class="text-base font-semibold text-gray-800 mb-5 pb-3 border-b border-gray-100">
                         Foto Pengurus
                   </h2>
 
-                  {{-- Preview --}}
+                  <!-- $1 -->
                   <div class="flex justify-center mb-4">
                         <div id="foto-preview-wrapper"
                               class="w-32 h-32 rounded-full overflow-hidden bg-gray-100 border-2 border-gray-200 flex items-center justify-center">
@@ -240,7 +240,7 @@
                   <p class="mt-1 text-xs text-red-500 text-center">{{ $message }}</p>
                   @enderror
 
-                  {{-- Tombol hapus foto (edit saja) --}}
+                  <!-- $1 -->
                   @if($isEdit && $pengurus->foto)
                   <form method="POST"
                         action="{{ route('pengurus.destroy-foto', $pengurus) }}"
@@ -255,7 +255,7 @@
                   @endif
             </div>
 
-            {{-- Status --}}
+            <!-- $1 -->
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
                   <h2 class="text-base font-semibold text-gray-800 mb-4">Status</h2>
                   <label class="flex items-center gap-3 cursor-pointer select-none">
@@ -267,7 +267,7 @@
                   </label>
             </div>
 
-            {{-- Action Buttons --}}
+            <!-- $1 -->
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-3">
                   <button type="submit"
                         class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2.5 px-4 rounded-lg transition-colors duration-200 text-sm">

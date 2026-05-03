@@ -1,6 +1,6 @@
 <x-layouts::app :title="__('Laporan MWC')">
 
-      {{-- Header --}}
+      <!-- $1 -->
       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
             <div>
                   <h1 class="text-2xl font-bold text-gray-900">Laporan MWC</h1>
@@ -15,7 +15,7 @@
             </a>
       </div>
 
-      {{-- Flash Messages --}}
+      <!-- $1 -->
       @if($errors->any())
       <div class="mb-4 px-4 py-3 bg-red-50 border border-red-200 rounded-lg text-sm">
             <p class="font-semibold text-red-800 mb-1">Terjadi Kesalahan:</p>
@@ -48,7 +48,7 @@
       </div>
       @endif
 
-      {{-- Tabel --}}
+      <!-- $1 -->
       @if($laporanMwc->count() > 0)
       <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
             <div class="px-5 py-4 border-b border-gray-100 flex items-center gap-2">
@@ -142,7 +142,7 @@
       </div>
 
       @else
-      {{-- Empty State --}}
+      <!-- $1 -->
       <div class="bg-white rounded-xl border border-gray-200 py-20 text-center">
             <div class="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-4">
                   <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">

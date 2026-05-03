@@ -2,7 +2,7 @@
 @section('title', 'Fidyah - Lazisnu Bojonegoro')
 @section('content')
 
-{{-- HERO --}}
+<!-- $1 -->
 <section class="relative bg-gray-900 overflow-hidden">
       <div class="absolute inset-0">
             <img src="https://images.unsplash.com/photo-1564769625905-50e93615e769"
@@ -41,7 +41,7 @@
       </div>
 </section>
 
-{{-- MAIN --}}
+<!-- $1 -->
 <section class="bg-gray-50 py-16">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -53,10 +53,10 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
 
-                  {{-- LEFT --}}
+                  <!-- $1 -->
                   <div class="lg:col-span-2 space-y-6">
 
-                        {{-- Info Fidyah --}}
+                        <!-- $1 -->
                         <div class="bg-amber-50 border border-amber-200 rounded-3xl p-6">
                               <h3 class="font-bold text-amber-900 mb-3 flex items-center gap-2">
                                     <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -84,7 +84,7 @@
                               </div>
                         </div>
 
-                        {{-- Kalkulator Fidyah --}}
+                        <!-- $1 -->
                         <div class="bg-white rounded-3xl shadow-sm border border-gray-100 p-6">
                               <h3 class="font-bold text-gray-900 mb-2">Kalkulator Fidyah</h3>
                               <p class="text-sm text-gray-500 mb-5">
@@ -120,7 +120,7 @@
                               </div>
                         </div>
 
-                        {{-- Form --}}
+                        <!-- $1 -->
                         <form action="{{ route('fidyah.store') }}" method="POST" data-payment-form="fidyah"
                               class="bg-white rounded-3xl shadow-sm border border-gray-100 p-6">
                               @csrf
@@ -191,9 +191,9 @@
 
                   </div>
 
-                  {{-- RIGHT sidebar (sama dengan zakat) --}}
+                  <!-- $1 -->
                   <div class="lg:col-span-1">
-                        <div class="sticky top-8 space-y-6">
+                        <div class="bg-white rounded-3xl mb-10 shadow-xl border border-gray-100 overflow-hidden">
                               <div class="p-8">
                                     <div class="flex items-center gap-4 mb-6">
                                           <img src="{{ asset('asset/laziznulogo.svg') }}" class="w-20" alt="Lazisnu Bojonegoro">
@@ -223,7 +223,8 @@
                         </div>
 
 
-                        <div class="bg-gradient-to-br from-emerald-50 to-emerald-100/50 rounded-3xl p-6 border border-emerald-200">
+
+                        <div class="bg-gradient-to-br  from-emerald-50 to-emerald-100/50 rounded-3xl p-6 border border-emerald-200">
                               <h4 class="font-bold text-gray-900 mb-4">Jaminan Kami</h4>
                               <div class="space-y-3 text-sm text-gray-700">
                                     <p class="flex items-start gap-2">

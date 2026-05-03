@@ -37,10 +37,10 @@
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-            {{-- LEFT: Detail --}}
+            <!-- $1 -->
             <div class="lg:col-span-2 space-y-5">
 
-                  {{-- Info Transaksi --}}
+                  <!-- $1 -->
                   <div class="bg-white rounded-2xl border border-gray-200 p-6">
                         <h2 class="font-bold text-gray-900 mb-5">Detail Transaksi</h2>
                         <dl class="grid grid-cols-2 gap-x-6 gap-y-4 text-sm">
@@ -98,7 +98,7 @@
                               @endif
                         </dl>
 
-                        {{-- Metadata khusus --}}
+                        <!-- $1 -->
                         @if($transaction->metadata && count($transaction->metadata) > 0)
                         <div class="mt-5 pt-5 border-t border-gray-100">
                               <h3 class="text-sm font-semibold text-gray-700 mb-3">Detail Perhitungan</h3>
@@ -135,7 +135,7 @@
                         </div>
                   </div>
 
-                  {{-- Bukti Transfer --}}
+                  <!-- $1 -->
                   @if($transaction->paymentConfirmation)
                   <div class="bg-white rounded-2xl border border-gray-200 p-6">
                         <h2 class="font-bold text-gray-900 mb-5">Konfirmasi Transfer dari Donatur</h2>
@@ -184,7 +184,7 @@
                   </div>
                   @endif
 
-                  {{-- Admin Notes --}}
+                  <!-- $1 -->
                   @if($transaction->catatan_admin)
                   <div class="bg-amber-50 rounded-2xl border border-amber-200 p-5">
                         <p class="text-sm font-semibold text-amber-800 mb-1">Catatan Admin</p>
@@ -197,15 +197,15 @@
 
             </div>
 
-            {{-- RIGHT: Actions --}}
+            <!-- $1 -->
             <div class="space-y-5">
 
-                  {{-- Aksi Konfirmasi --}}
+                  <!-- $1 -->
                   @if($transaction->is_pending)
                   <div class="bg-white rounded-2xl border border-gray-200 p-6">
                         <h3 class="font-bold text-gray-900 mb-4">Aksi Verifikasi</h3>
 
-                        {{-- Ingatkan Donatur --}}
+                        <!-- $1 -->
                         @if(!$transaction->paymentConfirmation && $transaction->telepon)
                         <a href="{{ route('transactions.reminder', $transaction) }}"
                               target="_blank"
@@ -215,7 +215,7 @@
                         </a>
                         @endif
 
-                        {{-- Konfirmasi --}}
+                        <!-- $1 -->
                         @if($transaction->paymentConfirmation)
                         <form action="{{ route('transactions.confirm', $transaction) }}" method="POST" class="mb-4">
                               @csrf
@@ -250,7 +250,7 @@
                         </div>
                         @endif
 
-                        {{-- Tolak --}}
+                        <!-- $1 -->
                         <form action="{{ route('transactions.reject', $transaction) }}" method="POST" class="{{ $transaction->paymentConfirmation ? 'mt-4' : 'mt-0' }}">
                               @csrf
                               <div class="mb-3">
@@ -287,7 +287,7 @@
                   </div>
                   @endif
 
-                  {{-- Link publik --}}
+                  <!-- $1 -->
                   @php
                   $phone = $transaction->telepon
                   ? '62' . ltrim($transaction->telepon, '0')
@@ -352,13 +352,13 @@
 
                         <div class="flex items-center gap-2 p-2.5 bg-gray-50 rounded-xl border border-gray-200">
 
-                              {{-- Status Info --}}
+                              <!-- $1 -->
                               <p class="text-xs font-semibold flex-1 
             {{ $transaction->is_confirmed ? 'text-emerald-600' : 'text-red-600' }}">
                                     {{ $statusText }}
                               </p>
 
-                              {{-- Tombol WA --}}
+                              <!-- $1 -->
                               @if($phone)
                               <a href="https://wa.me/{{ $phone }}?text={{ $encodedMessage }}"
                                     target="_blank"

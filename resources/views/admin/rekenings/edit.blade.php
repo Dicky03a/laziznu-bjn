@@ -5,10 +5,10 @@
                   <!-- Header -->
                   <div>
                         <h1 class="text-3xl font-bold text-slate-900 ">
-                              {{ __('Edit Rekening') }}
+                              Edit Rekening
                         </h1>
                         <p class="text-slate-600  mt-2">
-                              {{ __('Perbarui informasi rekening') }}
+                              Perbarui informasi rekening
                         </p>
                   </div>
 
@@ -21,10 +21,10 @@
                               <!-- Nama -->
                               <div>
                                     <label for="nama" class="block text-sm font-semibold text-slate-900  mb-2">
-                                          {{ __('Nama') }} <span class="text-red-500">*</span>
+                                          Nama <span class="text-red-500">*</span>
                                     </label>
                                     <input type="text" id="nama" name="nama" value="{{ old('nama', $rekening->nama) }}"
-                                          placeholder="{{ __('Contoh: Dana Pendidikan') }}"
+                                          placeholder="Contoh: Dana Pendidikan"
                                           class="w-full px-4 py-2.5 bg-slate-50  border border-slate-300  rounded-lg text-slate-900  placeholder-slate-500  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                                           required>
                                     @error('nama')
@@ -35,10 +35,10 @@
                               <!-- Bank Atas Nama -->
                               <div>
                                     <label for="bank_atas_nama" class="block text-sm font-semibold text-slate-900  mb-2">
-                                          {{ __('Bank Atas Nama') }} <span class="text-red-500">*</span>
+                                          Bank Atas Nama <span class="text-red-500">*</span>
                                     </label>
                                     <input type="text" id="bank_atas_nama" name="bank_atas_nama" value="{{ old('bank_atas_nama', $rekening->bank_atas_nama) }}"
-                                          placeholder="{{ __('Nama pemilik rekening') }}"
+                                          placeholder="Nama pemilik rekening"
                                           class="w-full px-4 py-2.5 bg-slate-50  border border-slate-300  rounded-lg text-slate-900  placeholder-slate-500  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                                           required>
                                     @error('bank_atas_nama')
@@ -62,7 +62,7 @@
                                     <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
                                     @enderror
 
-                                    {{-- Preview Icon Lama --}}
+                                    <!-- $1 -->
                                     @if($rekening->icon)
                                     <div class="mt-4" x-show="!iconPreview">
                                           <p class="text-sm mb-2">Icon Saat Ini:</p>
@@ -71,7 +71,7 @@
                                     </div>
                                     @endif
 
-                                    {{-- Preview Icon Baru --}}
+                                    <!-- $1 -->
                                     <div class="mt-4" x-show="iconPreview">
                                           <p class="text-sm mb-2">Preview Baru:</p>
                                           <img :src="iconPreview"
@@ -83,10 +83,10 @@
                               <!-- Nomor Rekening -->
                               <div>
                                     <label for="nomor_rekening" class="block text-sm font-semibold text-slate-900  mb-2">
-                                          {{ __('Nomor Rekening') }} <span class="text-red-500">*</span>
+                                          Nomor Rekening <span class="text-red-500">*</span>
                                     </label>
                                     <input type="text" id="nomor_rekening" name="nomor_rekening" value="{{ old('nomor_rekening', $rekening->nomor_rekening) }}"
-                                          placeholder="{{ __('Nomor rekening bank') }}"
+                                          placeholder="Nomor rekening bank"
                                           class="w-full px-4 py-2.5 bg-slate-50  border border-slate-300  rounded-lg text-slate-900  placeholder-slate-500  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                                           required>
                                     @error('nomor_rekening')
@@ -100,13 +100,13 @@
                                           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                                           </svg>
-                                          {{ __('Kembali') }}
+                                          Kembali
                                     </a>
                                     <button type="submit" class="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-lg transition-all duration-200 shadow-lg">
                                           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                           </svg>
-                                          {{ __('Perbarui') }}
+                                          Perbarui
                                     </button>
                               </div>
                         </form>

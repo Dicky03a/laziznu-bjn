@@ -1,7 +1,7 @@
 <x-layouts::app :title="__('Sekilas NU Care')">
       <div class="space-y-6">
 
-            {{-- Breadcrumb --}}
+            <!-- $1 -->
             <nav class="flex items-center gap-2 text-sm text-gray-500">
                   <a href="{{ route('pengurus.index') }}" class="hover:text-emerald-600 transition">Data Pengurus</a>
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -10,19 +10,19 @@
                   <span class="text-gray-900 font-medium truncate max-w-xs">{{ $pengurus->nama_lengkap }}</span>
             </nav>
 
-            {{-- Flash --}}
+            <!-- $1 -->
             @if(session('success'))
             <x-alert type="success" :message="session('success')" />
             @endif
 
-            {{-- Header Card --}}
+            <!-- $1 -->
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-                  {{-- Banner --}}
+                  <!-- $1 -->
                   <div class="h-24 bg-gradient-to-r from-emerald-600 to-teal-500"></div>
 
                   <div class="px-6 pb-6">
                         <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 -mt-12 mb-4">
-                              {{-- Avatar --}}
+                              <!-- $1 -->
                               <div class="w-24 h-24 rounded-full border-4 border-white shadow-md overflow-hidden bg-emerald-100 flex items-center justify-center shrink-0">
                                     @if($pengurus->foto)
                                     <img src="{{ $pengurus->foto_url }}" alt="{{ $pengurus->nama }}"
@@ -34,7 +34,7 @@
                                     @endif
                               </div>
 
-                              {{-- Action Buttons --}}
+                              <!-- $1 -->
                               <div class="flex items-center gap-2">
                                     <a href="{{ route('pengurus.edit', $pengurus) }}"
                                           class="inline-flex items-center gap-1.5 bg-amber-500 hover:bg-amber-600 text-white text-sm font-medium px-4 py-2 rounded-lg transition">
@@ -60,7 +60,7 @@
                               </div>
                         </div>
 
-                        {{-- Nama & Status --}}
+                        <!-- $1 -->
                         <div class="flex flex-wrap items-center gap-3">
                               <h1 class="text-xl font-bold text-gray-900">{{ $pengurus->nama_lengkap }}</h1>
                               @if($pengurus->is_active)
@@ -77,10 +77,10 @@
                   </div>
             </div>
 
-            {{-- Detail Grid --}}
+            <!-- $1 -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
-                  {{-- Informasi Jabatan --}}
+                  <!-- $1 -->
                   <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
                         <h2 class="text-base font-semibold text-gray-800 mb-4 pb-3 border-b border-gray-100">
                               Informasi Jabatan
@@ -115,7 +115,7 @@
                         </dl>
                   </div>
 
-                  {{-- Informasi Kontak --}}
+                  <!-- $1 -->
                   <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
                         <h2 class="text-base font-semibold text-gray-800 mb-4 pb-3 border-b border-gray-100">
                               Informasi Kontak
@@ -165,7 +165,7 @@
                   </div>
             </div>
 
-            {{-- Meta --}}
+            <!-- $1 -->
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
                   <div class="flex flex-wrap gap-6 text-xs text-gray-400">
                         <span>ID: #{{ $pengurus->id }}</span>
@@ -174,7 +174,7 @@
                   </div>
             </div>
 
-            {{-- Back --}}
+            <!-- $1 -->
             <div>
                   <a href="{{ route('pengurus.index') }}"
                         class="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-700 transition">

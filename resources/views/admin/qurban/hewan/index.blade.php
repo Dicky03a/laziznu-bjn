@@ -23,7 +23,7 @@
     </div>
     @endif
 
-    {{-- Filter --}}
+    <!-- $1 -->
     <div class="bg-white rounded-2xl border border-gray-200 p-4 mb-5">
         <form method="GET" action="{{ route('qurban.binatang.index') }}" class="flex flex-wrap gap-3 items-end">
             <div>
@@ -53,7 +53,7 @@
         </form>
     </div>
 
-    {{-- Grid binatang --}}
+    <!-- $1 -->
     <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
         @forelse($hewan as $h)
         @php
@@ -64,20 +64,20 @@
             @endphp
             <div class="bg-white rounded-2xl border {{ $isPenuh ? 'border-red-200' : ($h->is_active ? 'border-gray-200' : 'border-gray-100 opacity-60') }} overflow-hidden">
 
-            {{-- Gambar --}}
+            <!-- $1 -->
             <div class="relative h-40 bg-gray-100">
                 <img src="{{ $h->gambar_url }}"
                     alt="{{ $h->nama }}"
                     class="w-full h-full object-cover">
 
-                {{-- Badge Jenis --}}
+                <!-- $1 -->
                 <div class="absolute top-3 left-3">
                     <span class="px-2.5 py-1 bg-white/90 backdrop-blur-sm text-gray-800 text-xs font-bold rounded-full shadow-sm">
                         {{ $h->jenis_label }}
                     </span>
                 </div>
 
-                {{-- Status Slot --}}
+                <!-- $1 -->
                 <div class="absolute top-3 right-3">
                     @if($isPenuh)
                     <span class="px-2.5 py-1 bg-red-500 text-white text-xs font-bold rounded-full">PENUH</span>
@@ -93,7 +93,7 @@
                 @endif
             </div>
 
-            {{-- Content --}}
+            <!-- $1 -->
             <div class="p-5">
                 <h3 class="font-bold text-gray-900 mb-1 truncate">{{ $h->nama }}</h3>
                 <p class="text-xs text-gray-400 mb-1">{{ $h->period->nama }}</p>
@@ -101,7 +101,7 @@
                 <p class="text-xs text-gray-500 mb-3">Berat: {{ $h->berat_estimasi }}</p>
                 @endif
 
-                {{-- Harga --}}
+                <!-- $1 -->
                 <div class="flex justify-between items-baseline mb-4">
                     <div>
                         <p class="text-xs text-gray-400">
@@ -117,7 +117,7 @@
                     @endif
                 </div>
 
-                {{-- Progress Slot --}}
+                <!-- $1 -->
                 @if($h->is_patungan)
                 <div class="mb-4">
                     <div class="flex justify-between text-xs text-gray-500 mb-1.5">
@@ -130,26 +130,26 @@
                             style="width: {{ $persen }}%">
                         </div>
                     </div>
-                    {{-- Detail slot: pending vs confirmed --}}
+                    <!-- $1 -->
                     <div class="flex gap-3 mt-1.5 text-xs text-gray-400">
                         <span>{{ $h->slot_confirmed ?? 0 }} konfirmasi</span>
                         <span>{{ $h->slot_pending ?? 0 }} pending</span>
                     </div>
                 </div>
                 @else
-                {{-- Kambing: terisi/tidak --}}
+                <!-- $1 -->
                 <div class="mb-4 p-2.5 rounded-lg text-xs text-center font-semibold
                     {{ $isPenuh ? 'bg-red-50 text-red-600 border border-red-200' : 'bg-emerald-50 text-emerald-600 border border-emerald-200' }}">
                     {{ $isPenuh ? 'Sudah Ada Pendaftar' : 'Tersedia' }}
                 </div>
                 @endif
 
-                {{-- Stats --}}
+                <!-- $1 -->
                 <div class="flex justify-between text-xs text-gray-500 mb-4">
                     <span>Terkumpul: <strong>Rp {{ number_format($h->terkumpul ?? 0, 0, ',', '.') }}</strong></span>
                 </div>
 
-                {{-- Actions --}}
+                <!-- $1 -->
                 <div class="flex gap-2">
                     <form action="{{ route('qurban.hewan.toggle-active', $h) }}" method="POST" class="flex-1">
                         @csrf @method('PATCH')

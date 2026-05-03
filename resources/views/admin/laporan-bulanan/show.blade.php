@@ -1,6 +1,6 @@
 <x-layouts::app :title="$laporanBulanan->nama_laporan">
 
-      {{-- Header --}}
+      <!-- $1 -->
       <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
             <div class="flex items-start gap-3">
                   <a href="{{ route('laporan-bulanan.index') }}"
@@ -59,7 +59,7 @@
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-            {{-- PDF Viewer --}}
+            <!-- $1 -->
             <div class="lg:col-span-2">
                   @if($laporanBulanan->file_laporan)
                   <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
@@ -71,7 +71,7 @@
                               <span class="ml-auto text-xs text-gray-400 font-mono">{{ $laporanBulanan->file_laporan }}</span>
                         </div>
 
-                        {{-- PDF Iframe --}}
+                        <!-- $1 -->
                         <iframe
                               src="{{ asset('storage/laporan-bulanan/' . $laporanBulanan->file_laporan) }}"
                               class="w-full border-none"
@@ -133,10 +133,10 @@
                   @endif
             </div>
 
-            {{-- Sidebar --}}
+            <!-- $1 -->
             <div class="space-y-5">
 
-                  {{-- Informasi Laporan --}}
+                  <!-- $1 -->
                   <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
                         <div class="px-5 py-4 border-b border-gray-100">
                               <h2 class="font-semibold text-gray-900 text-sm">Informasi Laporan</h2>
@@ -178,7 +178,7 @@
                         </div>
                   </div>
 
-                  {{-- Aksi --}}
+                  <!-- $1 -->
                   <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
                         <div class="px-5 py-4 border-b border-gray-100">
                               <h2 class="font-semibold text-gray-900 text-sm">Aksi</h2>

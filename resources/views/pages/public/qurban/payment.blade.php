@@ -5,7 +5,7 @@
 <section class="bg-gray-50 py-12 sm:py-16 min-h-screen">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {{-- Alert Messages --}}
+        <!-- $1 -->
         @if(session('success'))
         <div class="mb-6 p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-700 text-sm font-medium flex items-center gap-3">
             <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -15,7 +15,7 @@
         </div>
         @endif
 
-        {{-- Header Status --}}
+        <!-- $1 -->
         <div class="bg-white rounded-3xl shadow-sm border border-gray-100 p-6 mb-6">
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
@@ -49,10 +49,10 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
 
-            {{-- LEFT — Detail Pendaftaran + Instruksi --}}
+            <!-- $1 -->
             <div class="lg:col-span-3 space-y-6">
 
-                {{-- Ringkasan Pendaftaran --}}
+                <!-- $1 -->
                 <div class="bg-white rounded-3xl shadow-sm border border-gray-100 p-6">
                     <h2 class="font-bold text-gray-900 mb-5 text-lg">Detail Pendaftaran</h2>
 
@@ -103,13 +103,13 @@
                     </div>
                 </div>
 
-                {{-- Instruksi Pembayaran (hanya tampil jika masih pending) --}}
+                <!-- $1 -->
                 @if($registration->is_pending)
                 <div class="bg-white rounded-3xl shadow-sm border border-gray-100 p-6">
                     <h2 class="font-bold text-gray-900 mb-2 text-lg">Cara Pembayaran</h2>
                     <p class="text-sm text-gray-500 mb-6">Pilih metode pembayaran berikut:</p>
 
-                    {{-- Tabs --}}
+                    <!-- $1 -->
                     <div class="flex border-b border-gray-200 mb-5">
                         <button onclick="showTab('transfer')" id="tab-transfer"
                             class="px-4 py-2.5 text-sm font-semibold text-emerald-600 border-b-2 border-emerald-600 -mb-px">
@@ -117,7 +117,7 @@
                         </button>
                     </div>
 
-                    {{-- Tab Transfer --}}
+                    <!-- $1 -->
                     <div id="content-transfer">
                         @forelse($rekenings as $rek)
                         <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl border border-gray-100 mb-3 last:mb-0">
@@ -148,7 +148,7 @@
                 </div>
                 @endif
 
-                {{-- Form Konfirmasi Transfer --}}
+                <!-- $1 -->
                 @if(!$registration->paymentConfirmation && $registration->is_pending)
                 <div class="bg-white rounded-3xl shadow-sm border border-gray-100 p-6">
                     <h2 class="font-bold text-gray-900 mb-2 text-lg">Konfirmasi Transfer</h2>
@@ -214,7 +214,7 @@
                     </form>
                 </div>
                 @elseif($registration->paymentConfirmation)
-                {{-- Sudah konfirmasi --}}
+                <!-- $1 -->
                 <div class="bg-emerald-50 rounded-3xl border border-emerald-200 p-6">
                     <div class="flex items-center gap-3 mb-4">
                         <svg class="w-7 h-7 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
@@ -230,7 +230,7 @@
                 </div>
                 @endif
 
-                {{-- Status confirmed atau cancelled --}}
+                <!-- $1 -->
                 @if($registration->is_confirmed)
                 <div class="bg-emerald-50 rounded-3xl border border-emerald-200 p-6 text-center">
                     <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -263,10 +263,10 @@
 
             </div>
 
-            {{-- RIGHT — Sidebar Info --}}
+            <!-- $1 -->
             <div class="lg:col-span-2 space-y-4">
 
-                {{-- Info Lazisnu --}}
+                <!-- $1 -->
                 <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
                     <div class="flex items-center gap-3 mb-4">
                         <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-600 to-emerald-500 flex items-center justify-center text-white font-bold shadow">NU</div>
@@ -292,7 +292,7 @@
                     </div>
                 </div>
 
-                {{-- Reminder --}}
+                <!-- $1 -->
                 @if($registration->is_pending)
                 <div class="bg-amber-50 rounded-2xl border border-amber-200 p-5">
                     <p class="text-xs font-semibold text-amber-800 mb-1">💡 Simpan halaman ini</p>

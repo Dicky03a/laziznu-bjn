@@ -23,7 +23,7 @@
         @csrf
         @if(isset($hewan)) @method('PUT') @endif
 
-        {{-- LEFT: Form Utama --}}
+        <!-- $1 -->
         <div class="lg:col-span-2 space-y-5">
 
             @if($errors->any())
@@ -34,7 +34,7 @@
             </div>
             @endif
 
-            {{-- Periode --}}
+            <!-- $1 -->
             <div class="bg-white rounded-2xl border border-gray-200 p-6">
                 <h3 class="font-semibold text-gray-900 mb-4">Periode Qurban</h3>
                 <select name="period_id"
@@ -50,16 +50,16 @@
                 @error('period_id')<p class="text-xs text-red-600 mt-1">{{ $message }}</p>@enderror
             </div>
 
-            {{-- Jenis Hewan --}}
+            <!-- $1 -->
             <div class="bg-white rounded-2xl border border-gray-200 p-6">
                 <h3 class="font-semibold text-gray-900 mb-4">Jenis Hewan</h3>
 
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-3" id="jenis-selector">
                     @foreach([
-                    'sapi' => ['emoji' => '🐄', 'label' => 'Sapi', 'info' => 'Max 7 orang'],
-                    'unta' => ['emoji' => '🐪', 'label' => 'Unta', 'info' => 'Max 7 orang'],
-                    'kambing' => ['emoji' => '🐐', 'label' => 'Kambing', 'info' => '1 orang saja'],
-                    'domba' => ['emoji' => '🐑', 'label' => 'Domba', 'info' => '1 orang saja'],
+                    'sapi' => ['label' => 'Sapi', 'info' => 'Max 7 orang'],
+                    'unta' => ['label' => 'Unta', 'info' => 'Max 7 orang'],
+                    'kambing' => ['label' => 'Kambing', 'info' => '1 orang saja'],
+                    'domba' => ['label' => 'Domba', 'info' => '1 orang saja'],
                     ] as $val => $opt)
                     <label class="cursor-pointer">
                         <input type="radio" name="jenis" value="{{ $val }}"
@@ -67,7 +67,6 @@
                             class="sr-only peer"
                             onchange="updateJenisInfo('{{ $val }}')">
                         <div class="p-4 rounded-xl border-2 border-gray-200 peer-checked:border-emerald-500 peer-checked:bg-emerald-50 hover:border-gray-300 transition-all text-center">
-                            <span class="text-3xl block mb-2">{{ $opt['emoji'] }}</span>
                             <p class="font-semibold text-gray-900 text-sm">{{ $opt['label'] }}</p>
                             <p class="text-xs text-gray-400 mt-0.5">{{ $opt['info'] }}</p>
                         </div>
@@ -75,7 +74,7 @@
                     @endforeach
                 </div>
 
-                {{-- Info dinamis --}}
+                <!-- $1 -->
                 <div id="jenis-info" class="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-xl hidden">
                     <p class="text-sm text-blue-800" id="jenis-info-text"></p>
                 </div>
@@ -83,7 +82,7 @@
                 @error('jenis')<p class="text-xs text-red-600 mt-2">{{ $message }}</p>@enderror
             </div>
 
-            {{-- Info Hewan --}}
+            <!-- $1 -->
             <div class="bg-white rounded-2xl border border-gray-200 p-6 space-y-4">
                 <h3 class="font-semibold text-gray-900">Informasi Hewan</h3>
 
@@ -123,7 +122,7 @@
                     </div>
                 </div>
 
-                {{-- Preview harga per slot --}}
+                <!-- $1 -->
                 <div id="preview-harga" class="p-4 bg-emerald-50 border border-emerald-200 rounded-xl hidden">
                     <div class="flex justify-between items-center text-sm">
                         <span class="text-emerald-700" id="preview-label">Harga per slot:</span>
@@ -140,7 +139,7 @@
                 </div>
             </div>
 
-            {{-- Info slot jika edit --}}
+            <!-- $1 -->
             @if(isset($hewan, $summary))
             <div class="bg-amber-50 rounded-2xl border border-amber-200 p-5">
                 <p class="text-sm font-semibold text-amber-800 mb-3">Status Slot Saat Ini</p>
@@ -166,10 +165,10 @@
 
         </div>
 
-        {{-- RIGHT: Gambar + Status --}}
+        <!-- $1 -->
         <div class="space-y-5">
 
-            {{-- Gambar --}}
+            <!-- $1 -->
             <div class="bg-white rounded-2xl border border-gray-200 p-6">
                 <h3 class="font-semibold text-gray-900 mb-4">Foto Hewan</h3>
 
@@ -184,7 +183,6 @@
 
                 <label class="block cursor-pointer">
                     <div class="border-2 border-dashed border-gray-300 rounded-xl p-5 text-center hover:border-emerald-400 hover:bg-emerald-50/30 transition-all">
-                        <span class="text-3xl block mb-2">📸</span>
                         <p class="text-sm text-gray-500">Klik untuk upload foto</p>
                         <p class="text-xs text-gray-400 mt-1">JPG, PNG, WEBP. Maks 2MB</p>
                     </div>
@@ -194,7 +192,7 @@
                 <img id="preview-gambar" src="" alt="" class="hidden w-full h-40 object-cover rounded-xl mt-3">
             </div>
 
-            {{-- Status --}}
+            <!-- $1 -->
             <div class="bg-white rounded-2xl border border-gray-200 p-6">
                 <h3 class="font-semibold text-gray-900 mb-4">Status</h3>
                 <label class="flex items-start gap-3 cursor-pointer">
@@ -212,7 +210,7 @@
                 </label>
             </div>
 
-            {{-- Actions --}}
+            <!-- $1 -->
             <div class="flex gap-3">
                 <a href="{{ route('qurban.binatang.index') }}"
                     class="flex-1 py-3 border-2 border-gray-300 text-gray-700 text-sm font-semibold rounded-xl text-center hover:bg-gray-50 transition-all">

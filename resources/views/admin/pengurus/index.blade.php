@@ -1,7 +1,7 @@
 <x-layouts::app :title="__('Sekilas NU Care')">
       <div class="space-y-6">
 
-            {{-- Page Header --}}
+            <!-- $1 -->
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                   <div>
                         <h1 class="text-2xl font-bold text-gray-900 tracking-tight">Data Pengurus</h1>
@@ -18,7 +18,7 @@
                   </a>
             </div>
 
-            {{-- Flash Message --}}
+            <!-- $1 -->
             @if(session('success'))
             <x-alert type="success" :message="session('success')" />
             @endif
@@ -26,12 +26,12 @@
             <x-alert type="error" :message="session('error')" />
             @endif
 
-            {{-- Filter Card --}}
+            <!-- $1 -->
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
                   <form method="GET" action="{{ route('pengurus.index') }}"
                         class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 
-                        {{-- Search --}}
+                        <!-- $1 -->
                         <div class="relative lg:col-span-2">
                               <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -44,7 +44,7 @@
                                     class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition" />
                         </div>
 
-                        {{-- Filter Jabatan --}}
+                        <!-- $1 -->
                         <div>
                               <select name="jabatan"
                                     class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition">
@@ -55,7 +55,7 @@
                               </select>
                         </div>
 
-                        {{-- Filter Status --}}
+                        <!-- $1 -->
                         <div class="flex gap-2">
                               <select name="is_active"
                                     class="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition">
@@ -77,10 +77,10 @@
                   </form>
             </div>
 
-            {{-- Table Card --}}
+            <!-- $1 -->
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
 
-                  {{-- Table Info --}}
+                  <!-- $1 -->
                   <div class="px-5 py-3 border-b border-gray-100 bg-gray-50 flex items-center justify-between">
                         <span class="text-xs text-gray-500">
                               Menampilkan {{ $pengurusList->firstItem() }}–{{ $pengurusList->lastItem() }}
@@ -103,12 +103,12 @@
                               <tbody class="divide-y divide-gray-100 bg-white">
                                     @forelse($pengurusList as $index => $p)
                                     <tr class="hover:bg-gray-50 transition-colors">
-                                          {{-- No --}}
+                                          <!-- $1 -->
                                           <td class="px-4 py-3 text-gray-400 font-mono text-xs">
                                                 {{ $pengurusList->firstItem() + $index }}
                                           </td>
 
-                                          {{-- Pengurus --}}
+                                          <!-- $1 -->
                                           <td class="px-4 py-3">
                                                 <div class="flex items-center gap-3">
                                                       <div class="w-10 h-10 rounded-full overflow-hidden bg-emerald-100 flex items-center justify-center shrink-0">
@@ -130,19 +130,19 @@
                                                 </div>
                                           </td>
 
-                                          {{-- Jabatan --}}
+                                          <!-- $1 -->
                                           <td class="px-4 py-3">
                                                 <span class="font-medium text-gray-700">{{ $p->jabatan_label }}</span>
                                           </td>
 
-                                          {{-- Periode --}}
+                                          <!-- $1 -->
                                           <td class="px-4 py-3">
                                                 <span class="inline-flex items-center gap-1 bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full text-xs font-medium">
                                                       {{ $p->periode }}
                                                 </span>
                                           </td>
 
-                                          {{-- Status --}}
+                                          <!-- $1 -->
                                           <td class="px-4 py-3 text-center">
                                                 <form method="POST"
                                                       action="{{ route('pengurus.toggle-status', $p) }}"
@@ -160,7 +160,7 @@
                                                 </form>
                                           </td>
 
-                                          {{-- Aksi --}}
+                                          <!-- $1 -->
                                           <td class="px-4 py-3">
                                                 <div class="flex items-center justify-center gap-1">
                                                       <a href="{{ route('pengurus.show', $p) }}"
@@ -211,7 +211,7 @@
                         </table>
                   </div>
 
-                  {{-- Pagination --}}
+                  <!-- $1 -->
                   @if($pengurusList->hasPages())
                   <div class="px-5 py-3 border-t border-gray-100">
                         {{ $pengurusList->links() }}

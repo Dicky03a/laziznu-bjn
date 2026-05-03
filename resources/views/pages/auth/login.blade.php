@@ -32,7 +32,7 @@
 
                 @if (Route::has('password.request'))
                 <flux:link class="absolute top-0 text-sm end-0" :href="route('password.request')" wire:navigate>
-                    {{ __('Forgot your password?') }}
+                    Forgot your password?
                 </flux:link>
                 @endif
             </div>
@@ -42,7 +42,7 @@
 
             <div class="flex items-center justify-end">
                 <flux:button variant="primary" type="submit" class="w-full" data-test="login-button">
-                    {{ __('Log in') }}
+                    Log in
                 </flux:button>
             </div>
         </form>

@@ -1,4 +1,4 @@
-{{-- FILE: resources/views/admin/qurban/registrations/index.blade.php --}}
+<!-- $1 -->
 <x-layouts::app :title="__('Pendaftaran Qurban')">
 
     <div class="flex items-center justify-between mb-6">
@@ -15,7 +15,7 @@
         </a>
     </div>
 
-    {{-- Stats --}}
+    <!-- $1 -->
     @if($stats)
     <div class="grid grid-cols-3 gap-4 mb-6">
         <div class="bg-white rounded-2xl border border-gray-200 p-5 text-center">
@@ -33,7 +33,7 @@
     </div>
     @endif
 
-    {{-- Filter --}}
+    <!-- $1 -->
     <div class="bg-white rounded-2xl border border-gray-200 p-4 mb-5">
         <form method="GET" action="{{ route('qurban.registrations.index') }}" class="flex flex-wrap gap-3 items-end">
             <div>
@@ -78,7 +78,7 @@
         </form>
     </div>
 
-    {{-- Table --}}
+    <!-- $1 -->
     <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
         <div class="overflow-x-auto">
             <table class="min-w-full divide-y divide-gray-200">

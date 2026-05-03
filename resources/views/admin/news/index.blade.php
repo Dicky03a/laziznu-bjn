@@ -6,17 +6,17 @@
                   <div class="flex items-center justify-between">
                         <div>
                               <h1 class="text-3xl font-bold text-slate-900 ">
-                                    {{ __('Berita') }}
+                                    Berita
                               </h1>
                               <p class="mt-2 text-slate-600 ">
-                                    {{ __('Kelola semua berita di sini') }}
+                                    Kelola semua berita di sini
                               </p>
                         </div>
                         <a href="{{ route('news.create') }}" class="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-lg transition-all duration-200 shadow-lg">
                               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                               </svg>
-                              {{ __('Tambah Berita') }}
+                              Tambah Berita
                         </a>
                   </div>
 
@@ -33,11 +33,11 @@
                               <table class="w-full">
                                     <thead class="bg-slate-50  border-b border-slate-200 ">
                                           <tr>
-                                                <th class="px-6 py-3 text-left text-sm font-semibold text-slate-900 ">{{ __('Judul') }}</th>
-                                                <th class="px-6 py-3 text-left text-sm font-semibold text-slate-900 ">{{ __('Kategori') }}</th>
-                                                <th class="px-6 py-3 text-left text-sm font-semibold text-slate-900 ">{{ __('Tanggal') }}</th>
-                                                <th class="px-6 py-3 text-left text-sm font-semibold text-slate-900 ">{{ __('Status') }}</th>
-                                                <th class="px-6 py-3 text-right text-sm font-semibold text-slate-900 ">{{ __('Aksi') }}</th>
+                                                <th class="px-6 py-3 text-left text-sm font-semibold text-slate-900 ">Judul</th>
+                                                <th class="px-6 py-3 text-left text-sm font-semibold text-slate-900 ">Kategori</th>
+                                                <th class="px-6 py-3 text-left text-sm font-semibold text-slate-900 ">Tanggal</th>
+                                                <th class="px-6 py-3 text-left text-sm font-semibold text-slate-900 ">Status</th>
+                                                <th class="px-6 py-3 text-right text-sm font-semibold text-slate-900 ">Aksi</th>
                                           </tr>
                                     </thead>
                                     <tbody class="divide-y divide-slate-200 ">
@@ -66,11 +66,11 @@
                                                 <td class="px-6 py-4">
                                                       @if ($item->published_at && $item->published_at <= now())
                                                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100  text-green-800 ">
-                                                            {{ __('Dipublikasikan') }}
+                                                            Dipublikasikan
                                                             </span>
                                                             @else
                                                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100  text-yellow-800 ">
-                                                                  {{ __('Draft') }}
+                                                                  Draft
                                                             </span>
                                                             @endif
                                                 </td>
@@ -80,22 +80,22 @@
                                                                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                                                                   </svg>
-                                                                  {{ __('Edit') }}
+                                                                  Edit
                                                             </a>
                                                             <a href="{{ route('berita.show', $item->slug) }}" class="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-blue-600  hover:bg-blue-50  rounded-lg transition-colors">
                                                                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                                                                   </svg>
-                                                                  {{ __('Show') }}
+                                                                  Show
                                                             </a>
-                                                            <form action="{{ route('news.destroy', $item) }}" method="POST" class="inline" onsubmit="return confirm('{{ __('Yakin ingin menghapus?') }}')">
+                                                            <form action="{{ route('news.destroy', $item) }}" method="POST" class="inline" onsubmit="return confirm('Yakin ingin menghapus?')">
                                                                   @csrf
                                                                   @method('DELETE')
                                                                   <button type="submit" class="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-red-600  hover:bg-red-50  rounded-lg transition-colors">
                                                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
                                                                         </svg>
-                                                                        {{ __('Hapus') }}
+                                                                        Hapus
                                                                   </button>
                                                             </form>
                                                       </div>
@@ -108,13 +108,13 @@
                                                             <svg class="w-16 h-16 text-slate-300  mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v4m2 10a2 2 0 002-2m0 0V9a2 2 0 00-2-2m2 2V5m2 0a2 2 0 012 2v10a2 2 0 01-2 2m0 0H9m0 0a2 2 0 01-2-2m2 2v4"></path>
                                                             </svg>
-                                                            <p class="text-slate-600  font-medium">{{ __('Belum ada berita') }}</p>
-                                                            <p class="text-slate-500  text-sm mt-1">{{ __('Mulai buat berita pertama Anda dengan klik tombol di atas') }}</p>
+                                                            <p class="text-slate-600  font-medium">Belum ada berita</p>
+                                                            <p class="text-slate-500  text-sm mt-1">Mulai buat berita pertama Anda dengan klik tombol di atas</p>
                                                             <a href="{{ route('news.create') }}" class="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-lg transition-all duration-200">
                                                                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                                                                   </svg>
-                                                                  {{ __('Buat Berita') }}
+                                                                  Buat Berita
                                                             </a>
                                                       </div>
                                                 </td>

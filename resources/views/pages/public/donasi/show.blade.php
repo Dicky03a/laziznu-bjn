@@ -2,7 +2,7 @@
 @section('title', $program->nama . ' - Lazisnu Bojonegoro')
 @section('content')
 
-{{-- Hero --}}
+<!-- $1 -->
 <section class="relative bg-gray-900 overflow-hidden">
       <div class="absolute inset-0">
             <img src="{{ $program->thumbnail_url }}"
@@ -39,7 +39,7 @@
       </div>
 </section>
 
-{{-- Main --}}
+<!-- $1 -->
 <section class="bg-gray-50 py-16">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -51,10 +51,10 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
 
-                  {{-- LEFT: Stats + Deskripsi + Riwayat --}}
+                  <!-- $1 -->
                   <div class="lg:col-span-2 space-y-8">
 
-                        {{-- Stats & Progress --}}
+                        <!-- $1 -->
                         <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
                               <div class="p-8 space-y-6">
 
@@ -104,7 +104,7 @@
                                     <p class="text-sm text-gray-600">Program berkelanjutan untuk mendukung kegiatan kemanusiaan</p>
                                     @endif
 
-                                    {{-- CTA tombol donasi - scroll ke form --}}
+                                    <!-- $1 -->
                                     <a href="#form-donasi"
                                           class="flex-1 group bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-700 hover:to-emerald-600 text-white py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3">
                                           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -118,7 +118,7 @@
                               </div>
                         </div>
 
-                        {{-- Deskripsi Program --}}
+                        <!-- $1 -->
                         <div class="bg-white rounded-3xl shadow-sm border border-gray-100 p-8">
                               <h2 class="text-xl font-bold text-gray-900 mb-5">Tentang Program</h2>
                               <div class="prose prose-emerald max-w-none text-gray-700 leading-relaxed">
@@ -130,7 +130,7 @@
                               </div>
                         </div>
 
-                        {{-- FORM DONASI --}}
+                        <!-- $1 -->
                         @if($program->is_open)
                         <div id="form-donasi" class="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 scroll-mt-8">
                               <h2 class="text-xl font-bold text-gray-900 mb-6">
@@ -148,7 +148,7 @@
                               <form action="{{ route($program->type . '.store', $program->slug) }}" method="POST" data-payment-form="donasi">
                                     @csrf
 
-                                    {{-- Pilihan nominal cepat --}}
+                                    <!-- $1 -->
                                     <div class="mb-5">
                                           <label class="block text-sm font-medium text-gray-700 mb-3">
                                                 Pilih Nominal <span class="text-red-500">*</span>
@@ -177,7 +177,7 @@
                                           @enderror
                                     </div>
 
-                                    {{-- Anonim --}}
+                                    <!-- $1 -->
                                     <div class="flex items-center gap-3 mb-5">
                                           <label class="relative inline-flex items-center cursor-pointer">
                                                 <input type="checkbox" name="is_anonim" value="1" class="sr-only peer"
@@ -237,7 +237,7 @@
                         </div>
                         @endif
 
-                        {{-- Riwayat Donatur --}}
+                        <!-- $1 -->
                         @if($riwayatDonasi->count() > 0)
                         <div class="bg-white rounded-3xl shadow-sm border border-gray-100 p-8">
                               <h2 class="text-xl font-bold text-gray-900 mb-5">Donatur Terbaru</h2>
@@ -265,7 +265,7 @@
 
                   </div>
 
-                  {{-- RIGHT: Org Card --}}
+                  <!-- $1 -->
                   <div class="lg:col-span-1">
                         <div class="sticky top-8 space-y-6">
                               <div class="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">

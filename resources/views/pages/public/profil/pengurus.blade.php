@@ -64,31 +64,31 @@
             $anggota = $pengurusByJabatan->get('Anggota', collect());
             @endphp
 
-            {{-- ─── Pimpinan Utama ─── --}}
+            <!-- $1 -->
             @if($pimpinan->isNotEmpty())
             <div class="mb-14">
                   <div class="bg-white items-center text-center rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
-                        {{-- Header Card --}}
+                        <!-- $1 -->
                         <div class="bg-emerald-50 px-5 py-3 border-b border-gray-100">
                               <p class="text-xs font-bold uppercase tracking-wider text-emerald-700">Pimpinan</p>
                               <h4 class="font-bold text-gray-800 text-sm leading-tight">Pengurus Inti</h4>
                         </div>
 
-                        {{-- List Pimpinan --}}
-                        {{-- List Pimpinan --}}
+                        <!-- $1 -->
+                        <!-- $1 -->
                         <div class="divide-y divide-gray-100">
                               @foreach($pimpinan as $p)
                               <div class="flex items-center justify-between px-6 py-4 hover:bg-gray-50 transition">
 
-                                    {{-- KIRI : Avatar + Nama --}}
+                                    <!-- $1 -->
                                     <div class="flex items-center gap-4 min-w-0">
-                                          {{-- Nama --}}
+                                          <!-- $1 -->
                                           <p class="font-semibold text-gray-900 text-sm truncate">
                                                 {{ $p->nama_lengkap }}
                                           </p>
                                     </div>
 
-                                    {{-- KANAN : Jabatan --}}
+                                    <!-- $1 -->
                                     <span class="text-xs font-semibold uppercase tracking-wide px-3 py-1 rounded-full
             {{ $p->jabatan == 'Ketua'
                 ? 'bg-emerald-100 text-emerald-700'
@@ -104,7 +104,7 @@
             </div>
             @endif
 
-            {{-- ─── Anggota Bidang ─── --}}
+            <!-- $1 -->
             @if($anggota->isNotEmpty())
             <div>
                   <div class="flex items-center gap-3 mb-8">
@@ -122,13 +122,13 @@
                   <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         @foreach($anggotaByBidang as $bidang => $members)
                         <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-200">
-                              {{-- Header Bidang --}}
+                              <!-- $1 -->
                               <div class="bg-gradient-to-r from-teal-50 to-emerald-50 px-5 py-3 border-b border-gray-100">
                                     <p class="text-xs font-bold uppercase tracking-wider text-teal-700">Bidang</p>
                                     <h4 class="font-bold text-gray-800 text-sm leading-tight">{{ $bidang ?: 'Umum' }}</h4>
                               </div>
 
-                              {{-- Members list --}}
+                              <!-- $1 -->
                               <div class="divide-y divide-gray-50">
                                     @foreach($members as $p)
                                     <div class="flex items-center gap-3 px-5 py-3.5">
@@ -145,7 +145,7 @@
             </div>
             @endif
 
-            @endif {{-- end isEmpty --}}
+            @endif <!-- $1 -->
       </div>
 </section>
 

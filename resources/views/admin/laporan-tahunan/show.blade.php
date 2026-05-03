@@ -8,7 +8,7 @@
                               {{ $laporanTahunan->nama }}
                         </h1>
                         <p class="text-slate-600  mt-2">
-                              {{ __('Detail informasi laporan tahunan') }}
+                              Detail informasi laporan tahunan
                         </p>
                   </div>
 
@@ -26,7 +26,7 @@
                               <!-- Nama Laporan -->
                               <div>
                                     <label class="block text-sm font-semibold text-slate-900  mb-2">
-                                          {{ __('Nama Laporan') }}
+                                          Nama Laporan
                                     </label>
                                     <div class="px-4 py-3 bg-slate-50  border border-slate-300  rounded-lg text-slate-900 ">
                                           {{ $laporanTahunan->nama }}
@@ -36,7 +36,7 @@
                               <!-- Link -->
                               <div>
                                     <label class="block text-sm font-semibold text-slate-900  mb-2">
-                                          {{ __('Link') }}
+                                          Link
                                     </label>
                                     <div class="px-4 py-3 bg-slate-50  border border-slate-300  rounded-lg">
                                           <a href="{{ $laporanTahunan->link_from }}" target="_blank" class="text-blue-600  hover:underline break-all">
@@ -49,7 +49,7 @@
                               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
                                           <label class="block text-sm font-semibold text-slate-900  mb-2">
-                                                {{ __('Dibuat') }}
+                                                Dibuat
                                           </label>
                                           <div class="px-4 py-3 bg-slate-50  border border-slate-300  rounded-lg text-slate-900 ">
                                                 {{ $laporanTahunan->created_at->format('d M Y H:i') }}
@@ -57,7 +57,7 @@
                                     </div>
                                     <div>
                                           <label class="block text-sm font-semibold text-slate-900  mb-2">
-                                                {{ __('Diperbarui') }}
+                                                Diperbarui
                                           </label>
                                           <div class="px-4 py-3 bg-slate-50  border border-slate-300  rounded-lg text-slate-900 ">
                                                 {{ $laporanTahunan->updated_at->format('d M Y H:i') }}
@@ -80,7 +80,7 @@
                                                 </svg>
                                                 Edit
                                           </a>
-                                          <form action="{{ route('laporan-tahunans.destroy', $laporanTahunan) }}" method="POST" class="inline" onsubmit="return confirm('{{ __('Yakin ingin menghapus?') }}')">
+                                          <form action="{{ route('laporan-tahunans.destroy', $laporanTahunan) }}" method="POST" class="inline" onsubmit="return confirm('Yakin ingin menghapus?')">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white font-medium rounded-lg transition-all duration-200 shadow-lg">

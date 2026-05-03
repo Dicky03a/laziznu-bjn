@@ -14,7 +14,7 @@
             </a>
       </div>
 
-      {{-- Stats Cards --}}
+      <!-- $1 -->
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
             @php
             $statCards = [
@@ -32,7 +32,7 @@
             @endforeach
       </div>
 
-      {{-- Filter --}}
+      <!-- $1 -->
       <div class="bg-white rounded-2xl border border-gray-200 p-4 mb-5">
             <form method="GET" action="{{ route('transactions.index') }}" class="flex flex-wrap gap-3 items-end">
                   <div>
@@ -76,7 +76,7 @@
             </form>
       </div>
 
-      {{-- Table --}}
+      <!-- $1 -->
       <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
             <div class="overflow-x-auto">
                   <table class="min-w-full divide-y divide-gray-200">

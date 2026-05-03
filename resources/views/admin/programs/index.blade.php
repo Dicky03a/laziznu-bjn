@@ -14,7 +14,7 @@
             </a>
       </div>
 
-      {{-- Alert --}}
+      <!-- $1 -->
       @if(session('success'))
       <div class="mb-5 p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-700 text-sm flex items-center gap-2">
             <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -24,7 +24,7 @@
       </div>
       @endif
 
-      {{-- Filter --}}
+      <!-- $1 -->
       <div class="bg-white rounded-2xl border border-gray-200 p-4 mb-5">
             <form method="GET" action="{{ route('programs.index') }}" class="flex flex-wrap gap-3 items-end">
                   <div>
@@ -52,7 +52,7 @@
             </form>
       </div>
 
-      {{-- Table --}}
+      <!-- $1 -->
       <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
             <div class="overflow-x-auto">
                   <table class="min-w-full divide-y divide-gray-200">

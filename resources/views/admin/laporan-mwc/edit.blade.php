@@ -1,6 +1,6 @@
 <x-layouts::app :title="__('Edit Laporan MWC')">
 
-      {{-- Header --}}
+      <!-- $1 -->
       <div class="flex items-center gap-3 mb-6">
             <a href="{{ route('laporan-mwc.show', $laporanMwc->id) }}"
                   class="p-2 text-gray-500 hover:bg-gray-100 rounded-lg transition-colors">
@@ -30,7 +30,7 @@
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-            {{-- Form --}}
+            <!-- $1 -->
             <div class="lg:col-span-2 space-y-6">
                   <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
                         <div class="px-5 py-4 border-b border-gray-100 flex items-center gap-2">
@@ -44,7 +44,7 @@
                               enctype="multipart/form-data" class="p-5 md:p-6 space-y-5">
                               @csrf @method('PUT')
 
-                              {{-- Nama Laporan --}}
+                              <!-- $1 -->
                               <div>
                                     <label for="nama_laporan" class="block text-sm font-medium text-gray-700 mb-1.5">
                                           Nama Laporan <span class="text-red-500">*</span>
@@ -59,7 +59,7 @@
                                     @enderror
                               </div>
 
-                              {{-- Info file saat ini --}}
+                              <!-- $1 -->
                               @if($laporanMwc->file_laporan)
                               <div class="flex items-start gap-3 p-3.5 bg-blue-50 border border-blue-200 rounded-xl text-sm">
                                     <svg class="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -73,7 +73,7 @@
                               </div>
                               @endif
 
-                              {{-- Upload PDF Baru --}}
+                              <!-- $1 -->
                               <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-1.5">
                                           Ganti File PDF
@@ -113,7 +113,7 @@
                                     @enderror
                               </div>
 
-                              {{-- Preview File Baru --}}
+                              <!-- $1 -->
                               <div id="previewContainerNew" class="hidden">
                                     <p class="text-sm font-medium text-gray-700 mb-1.5 flex items-center gap-2">
                                           <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
@@ -133,7 +133,7 @@
                                     </div>
                               </div>
 
-                              {{-- Preview File Lama --}}
+                              <!-- $1 -->
                               @if($laporanMwc->file_laporan)
                               <div>
                                     <p class="text-sm font-medium text-gray-700 mb-1.5 flex items-center gap-2">
@@ -158,7 +158,7 @@
                               </div>
                               @endif
 
-                              {{-- Actions --}}
+                              <!-- $1 -->
                               <div class="flex flex-col sm:flex-row gap-3 pt-2 border-t border-gray-100">
                                     <button type="submit"
                                           class="flex-1 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg text-sm transition-colors shadow-sm flex items-center justify-center gap-2">
@@ -179,10 +179,10 @@
                   </div>
             </div>
 
-            {{-- Sidebar --}}
+            <!-- $1 -->
             <div class="space-y-5">
 
-                  {{-- Info Laporan --}}
+                  <!-- $1 -->
                   <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
                         <div class="px-5 py-4 border-b border-gray-100">
                               <h3 class="font-semibold text-gray-900 text-sm">Info Laporan</h3>
@@ -222,7 +222,7 @@
                         </div>
                   </div>
 
-                  {{-- Danger Zone --}}
+                  <!-- $1 -->
                   <div class="bg-white rounded-xl border border-red-200 overflow-hidden">
                         <div class="px-5 py-4 border-b border-red-100">
                               <h3 class="font-semibold text-red-700 text-sm flex items-center gap-2">

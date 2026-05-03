@@ -7,12 +7,15 @@
 <section class="max-w-7xl mx-auto mt-8 md:mt-12 px-4 sm:px-6 lg:px-8">
       <div class="relative rounded-2xl md:rounded-3xl overflow-hidden bg-gradient-to-br from-slate-900 to-slate-800 shadow-xl">
 
-            <!-- Background Image with Overlay -->
             <div class="absolute inset-0">
-                  <img src="{{ asset('asset/hero.png') }}"
-                        class="w-full h-full object-cover opacity-40"
-                        alt="Hero Background"
-                        loading="eager">
+                  <picture>
+                        <source srcset="{{ asset('asset/hero-mobile.webp') }}" media="(max-width: 768px)">
+                        <img src="{{ asset('asset/hero.webp') }}"
+                              class="w-full h-full object-cover opacity-40"
+                              alt="Hero Background"
+                              fetchpriority="high"
+                              decoding="sync">
+                  </picture>
                   <div class="absolute inset-0 bg-gradient-to-r from-emerald-900/90 via-emerald-800/80 to-transparent"></div>
             </div>
 

@@ -2,7 +2,7 @@
 @section('title', $hewan->nama . ' - Qurban Lazisnu Bojonegoro')
 @section('content')
 
-{{-- Breadcrumb --}}
+<!-- $1 -->
 <div class="bg-white border-b border-gray-100">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
         <nav class="flex items-center gap-2 text-sm text-gray-500">
@@ -19,10 +19,10 @@
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
 
-            {{-- LEFT: Detail Hewan ───────────────────────────────────── --}}
+            <!-- $1 -->
             <div class="lg:col-span-3 space-y-5">
 
-                {{-- Gambar + Slot --}}
+                <!-- $1 -->
                 <div class="bg-white rounded-3xl border border-gray-200 overflow-hidden shadow-sm">
                     <div class="relative h-64 sm:h-80 overflow-hidden">
                         <img src="{{ $hewan->gambar_url }}"
@@ -47,7 +47,7 @@
 
                         <p class="text-sm text-gray-500 mb-5">{{ $hewan->period->nama }}</p>
 
-                        {{-- Harga --}}
+                        <!-- $1 -->
                         @if($hewan->is_patungan)
                         <div class="grid grid-cols-2 gap-3 p-4 bg-emerald-50 rounded-2xl border border-emerald-100 mb-5">
                             <div>
@@ -66,14 +66,14 @@
                         </div>
                         @endif
 
-                        {{-- Deskripsi --}}
+                        <!-- $1 -->
                         @if($hewan->deskripsi)
                         <p class="text-gray-600 text-sm leading-relaxed">{{ $hewan->deskripsi }}</p>
                         @endif
                     </div>
                 </div>
 
-                {{-- Slot Progress (hanya patungan) --}}
+                <!-- $1 -->
                 @if($hewan->is_patungan)
                 <div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
                     <h2 class="font-bold text-gray-900 mb-4">Status Slot Qurban Ini</h2>
@@ -86,7 +86,7 @@
                     $persen = $maxPeserta > 0 ? round(($slotTerisi / $maxPeserta) * 100) : 0;
                     @endphp
 
-                    {{-- Visual slots --}}
+                    <!-- $1 -->
                     <div class="flex gap-2 mb-4">
                         @for($i = 1; $i <= $maxPeserta; $i++)
                             @php
@@ -131,7 +131,7 @@
             </div>
             @endif
 
-            {{-- Peserta terdaftar --}}
+            <!-- $1 -->
             @if($pesertaTerdaftar->isNotEmpty())
             <div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
                 <h2 class="font-bold text-gray-900 mb-4">
@@ -161,12 +161,12 @@
 
         </div>
 
-        {{-- RIGHT: Form Daftar ───────────────────────────────────── --}}
+        <!-- $1 -->
         <div class="lg:col-span-2">
             <div class="sticky top-6">
 
                 @if(!$hewan->is_active || !$hewan->period->is_open)
-                {{-- Tidak aktif --}}
+                <!-- $1 -->
                 <div class="bg-white rounded-3xl border border-gray-200 p-8 text-center shadow-sm">
                     <span class="text-4xl block mb-3">🔒</span>
                     <h3 class="font-bold text-gray-900 mb-2">Pendaftaran Ditutup</h3>
@@ -177,7 +177,7 @@
                 </div>
 
                 @elseif($summary['is_penuh'])
-                {{-- Penuh --}}
+                <!-- $1 -->
                 <div class="bg-white rounded-3xl border border-red-200 p-8 text-center shadow-sm">
                     <span class="text-4xl block mb-3">😔</span>
                     <h3 class="font-bold text-gray-900 mb-2">Slot Penuh</h3>
@@ -189,10 +189,10 @@
                 </div>
 
                 @else
-                {{-- Form Pendaftaran --}}
+                <!-- $1 -->
                 <div class="bg-white rounded-3xl border border-gray-200 p-6 shadow-sm">
 
-                    {{-- Ringkasan biaya --}}
+                    <!-- $1 -->
                     <div class="mb-6 p-4 bg-gray-50 rounded-2xl border border-gray-100">
                         <div class="flex justify-between items-center text-sm mb-2">
                             <span class="text-gray-600">Jenis Hewan</span>
@@ -287,7 +287,7 @@
                                 class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-amber-500 text-sm resize-none">{{ old('catatan') }}</textarea>
                         </div>
 
-                        {{-- Konfirmasi --}}
+                        <!-- $1 -->
                         <div class="p-3 bg-amber-50 rounded-xl border border-amber-200 text-xs text-amber-800">
                             <p class="font-semibold mb-1">⚠ Penting:</p>
                             @if($hewan->is_patungan)
@@ -305,7 +305,7 @@
                 </div>
                 @endif
 
-                {{-- Kembali --}}
+                <!-- $1 -->
                 <a href="{{ route('qurban.index') }}"
                     class="mt-4 block text-center text-sm text-gray-500 hover:text-gray-700">
                     ← Kembali ke daftar hewan

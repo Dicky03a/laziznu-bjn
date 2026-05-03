@@ -151,14 +151,13 @@
                   });
 
                   function navigateToLocation(lat, lng) {
-
                         const mapElement = document.getElementById('peta-zakat');
-
                         mapElement.scrollIntoView({
                               behavior: 'smooth',
                               block: 'center'
                         });
 
+                        // Karena lazy load, peta mungkin belum siap saat tombol diklik pertama kali
                         if (window.pemetaanZakatMap) {
                               window.pemetaanZakatMap.flyTo([lat, lng], 13, {
                                     duration: 1

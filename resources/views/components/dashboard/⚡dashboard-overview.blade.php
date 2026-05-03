@@ -446,7 +446,7 @@ new class extends Component
                 <div class="divide-y divide-gray-200 ">
                     @forelse ($topPrograms as $program)
                     <div class="px-6 py-5 hover:bg-gray-50  transition-colors duration-150">
-                        <div class="flex items-start justify-between gap-4">
+                        <div class="flex items-start justify-between gap-4">    
                             <div class="flex-1 min-w-0">
                                 <h3 class="font-semibold text-gray-900  truncate text-sm">{{ $program->nama }}</h3>
                                 <p class="text-xs text-gray-600  mt-1.5">
@@ -455,7 +455,7 @@ new class extends Component
                             </div>
                             <div class="text-right">
                                 <p class="font-bold text-gray-900  text-sm">Rp {{ number_format($program->transactions_sum_jumlah ?? 0, 0, ',', '.') }}</p>
-                                <a href="/admin/programs/{{ $program->id }}" class="text-xs text-blue-600  hover:text-blue-700  font-semibold mt-2 inline-flex items-center gap-1 transition-colors">
+                                <a href="{{ route('programs.edit', $program) }}" class="text-xs text-blue-600  hover:text-blue-700  font-semibold mt-2 inline-flex items-center gap-1 transition-colors">
                                     Kelola
                                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
@@ -495,7 +495,7 @@ new class extends Component
                                 <span class="font-medium text-gray-900 ">{{ $confirmation->tanggal_transfer }}</span>
                             </div>
                         </div>
-                        <a href="/admin/payment-confirmations/{{ $confirmation->id }}" class="text-xs text-blue-600  hover:text-blue-700  font-semibold mt-3 inline-flex items-center gap-1 transition-colors">
+                        <a href="{{ route('transactions.show', $confirmation->transaction) }}" class="text-xs text-blue-600  hover:text-blue-700  font-semibold mt-3 inline-flex items-center gap-1 transition-colors">
                             Verifikasi
                             <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
@@ -517,11 +517,10 @@ new class extends Component
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
                 <div>
                     <h2 class="text-xl font-bold text-gray-900  flex items-center gap-2">
-                        <span class="text-2xl">🐑</span>
                         Program Qurban - {{ $qurbanStats['period_name'] }}
                     </h2>
                 </div>
-                <a href="/admin/qurban" class="inline-flex items-center gap-1 text-emerald-600  hover:text-emerald-700  text-sm font-semibold transition-colors">
+                <a href="{{ route('qurban.binatang.index') }}" class="inline-flex items-center gap-1 text-emerald-600  hover:text-emerald-700  text-sm font-semibold transition-colors">
                     Kelola Qurban
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />

@@ -10,11 +10,11 @@
 
             <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-                  {{-- LEFT CONTENT --}}
+                  <!-- $1 -->
                   <div class="space-y-6 sm:space-y-8">
 
                         <div>
-                              <span class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600/30 backdrop-blur-sm rounded-full text-emerald-100 text-xs sm:text-sm font-medium mb-4">
+                              <span class="inline-flex mb-6 px-4 py-1.5 bg-emerald-500/20 rounded-full border border-emerald-400/30 text-white text-sm font-medium">
                                     Program Unggulan
                               </span>
 
@@ -27,7 +27,7 @@
                               {{ \Illuminate\Support\Str::limit($programUnggulan->deskripsi, 180) }}
                         </p>
 
-                        {{-- Stats --}}
+                        <!-- $1 -->
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6 sm:mt-10">
 
                               <div class="bg-white/10 backdrop-blur-md rounded-2xl p-5 sm:p-6 border border-white/20">
@@ -46,7 +46,7 @@
 
                         </div>
 
-                        {{-- Progress --}}
+                        <!-- $1 -->
                         <div class="space-y-3">
                               <div class="flex justify-between items-center">
                                     <span class="text-emerald-100 text-sm font-medium">Progress Donasi</span>
@@ -70,7 +70,7 @@
                         </div>
                   </div>
 
-                  {{-- RIGHT IMAGE --}}
+                  <!-- $1 -->
                   <div class="relative mt-10 lg:mt-0">
 
                         <div>
@@ -84,7 +84,7 @@
 
             @else
 
-            {{-- Fallback jika tidak ada program unggulan --}}
+            <!-- $1 -->
             <div class="text-center text-white py-20">
                   <h2 class="text-3xl font-bold mb-4">Belum Ada Program Unggulan</h2>
                   <p class="text-emerald-200">Silakan tambahkan program unggulan dari panel admin.</p>
@@ -115,7 +115,7 @@
 
                   <div class="p-5 sm:p-6 lg:p-8 space-y-4">
 
-                        {{-- Donation Item --}}
+                        <!-- $1 -->
                         @forelse($donasiTerbaru as $donasi)
                         <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-5 p-5 rounded-2xl bg-gray-50 border border-gray-100 hover:shadow-md transition">
 
@@ -166,10 +166,10 @@
                   </div>
             </div>
 
-            {{-- Grid --}}
+            <!-- $1 -->
             <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
 
-                  {{-- Card --}}
+                  <!-- $1 -->
                   @forelse($programs as $program)
                   <div class="bg-white rounded-3xl shadow-md hover:shadow-xl transition overflow-hidden border border-gray-100">
 

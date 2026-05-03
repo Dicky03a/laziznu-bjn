@@ -5,10 +5,10 @@
                   <!-- Header -->
                   <div>
                         <h1 class="text-3xl font-bold text-slate-900 ">
-                              {{ __('Edit Laporan Tahunan') }}
+                              Edit Laporan Tahunan
                         </h1>
                         <p class="text-slate-600  mt-2">
-                              {{ __('Perbarui informasi laporan tahunan') }}
+                              Perbarui informasi laporan tahunan
                         </p>
                   </div>
 
@@ -21,10 +21,10 @@
                               <!-- Nama Laporan -->
                               <div>
                                     <label for="nama" class="block text-sm font-semibold text-slate-900  mb-2">
-                                          {{ __('Nama Laporan') }} <span class="text-red-500">*</span>
+                                          Nama Laporan <span class="text-red-500">*</span>
                                     </label>
                                     <input type="text" id="nama" name="nama" value="{{ old('nama', $laporanTahunan->nama) }}"
-                                          placeholder="{{ __('Contoh: Laporan Tahunan 2024') }}"
+                                          placeholder="Contoh: Laporan Tahunan 2024"
                                           class="w-full px-4 py-2.5 bg-slate-50  border border-slate-300  rounded-lg text-slate-900  placeholder-slate-500  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                                           required>
                                     @error('nama')
@@ -35,10 +35,10 @@
                               <!-- Link -->
                               <div>
                                     <label for="link_from" class="block text-sm font-semibold text-slate-900  mb-2">
-                                          {{ __('Link') }} <span class="text-red-500">*</span>
+                                          Link <span class="text-red-500">*</span>
                                     </label>
                                     <input type="url" id="link_from" name="link_from" value="{{ old('link_from', $laporanTahunan->link_from) }}"
-                                          placeholder="{{ __('https://example.com/laporan-2024') }}"
+                                          placeholder="https://example.com/laporan-2024"
                                           class="w-full px-4 py-2.5 bg-slate-50  border border-slate-300  rounded-lg text-slate-900  placeholder-slate-500  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                                           required>
                                     @error('link_from')
@@ -52,13 +52,13 @@
                                           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                                           </svg>
-                                          {{ __('Kembali') }}
+                                          Kembali
                                     </a>
                                     <button type="submit" class="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-lg transition-all duration-200 shadow-lg">
                                           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                           </svg>
-                                          {{ __('Perbarui') }}
+                                          Perbarui
                                     </button>
                               </div>
                         </form>

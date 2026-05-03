@@ -2,7 +2,7 @@
 @section('title', 'DSKL - Lazisnu Bojonegoro')
 @section('content')
 
-{{-- Hero --}}
+<!-- $1 -->
 <section class="relative bg-gradient-to-br from-emerald-600 to-emerald-700 py-20 sm:py-24 overflow-hidden">
     <div class="absolute inset-0 opacity-10">
         <div class="absolute top-0 left-0 w-96 h-96 bg-emerald-500 rounded-full blur-3xl"></div>
@@ -21,7 +21,7 @@
     </div>
 </section>
 
-{{-- Programs Grid --}}
+<!-- $1 -->
 <section class="bg-gray-50 py-16 sm:py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -39,7 +39,7 @@
             <a href="{{ route('infaq.show', $program->slug) }}"
                 class="group bg-white rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-emerald-200 overflow-hidden flex flex-col">
 
-                {{-- Thumbnail --}}
+                <!-- $1 -->
                 <div class="relative h-48 overflow-hidden bg-gray-100">
                     <img src="{{ $program->thumbnail_url }}"
                         alt="{{ $program->nama }}"
@@ -56,7 +56,7 @@
                         @endif
                 </div>
 
-                {{-- Content --}}
+                <!-- $1 -->
                 <div class="p-6 flex flex-col flex-1">
                     <div class="flex items-center gap-2 mb-3">
                         <span class="px-2.5 py-0.5 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full">Infaq</span>
@@ -70,7 +70,7 @@
                     </h3>
                     <p class="text-gray-500 text-sm line-clamp-3 flex-1">{{ $program->deskripsi }}</p>
 
-                    {{-- Stats --}}
+                    <!-- $1 -->
                     <div class="mt-5 pt-4 border-t border-gray-100">
                         <div class="flex justify-between items-center text-sm">
                             <div>
@@ -92,7 +92,7 @@
             @endforeach
         </div>
 
-        {{-- Pagination --}}
+        <!-- $1 -->
         @if($programs->hasPages())
         <div class="mt-10 flex justify-center">
             {{ $programs->links() }}

@@ -1,7 +1,7 @@
 <x-layouts::app :title="__('Sekilas NU Care')">
       <div class="space-y-6">
 
-            {{-- Breadcrumb --}}
+            <!-- $1 -->
             <nav class="flex items-center gap-2 text-sm text-gray-500">
                   <a href="{{ route('pengurus.index') }}" class="hover:text-emerald-600 transition">Data Pengurus</a>
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -16,7 +16,7 @@
                   <span class="text-gray-900 font-medium">Edit</span>
             </nav>
 
-            {{-- Page Title --}}
+            <!-- $1 -->
             <div class="flex items-start justify-between">
                   <div>
                         <h1 class="text-2xl font-bold text-gray-900 tracking-tight">Edit Data Pengurus</h1>
@@ -32,7 +32,7 @@
                   </a>
             </div>
 
-            {{-- Form --}}
+            <!-- $1 -->
             <form method="POST" action="{{ route('pengurus.update', $pengurus) }}"
                   enctype="multipart/form-data" novalidate>
                   @csrf @method('PUT')

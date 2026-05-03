@@ -33,10 +33,10 @@
                               <table class="w-full">
                                     <thead class="bg-slate-50  border-b border-slate-200 ">
                                           <tr>
-                                                <th class="px-6 py-3 text-left text-sm font-semibold text-slate-900 ">{{ __('Nama Laporan') }}</th>
-                                                <th class="px-6 py-3 text-left text-sm font-semibold text-slate-900 ">{{ __('Link') }}</th>
-                                                <th class="px-6 py-3 text-left text-sm font-semibold text-slate-900 ">{{ __('Dibuat') }}</th>
-                                                <th class="px-6 py-3 text-right text-sm font-semibold text-slate-900 ">{{ __('Aksi') }}</th>
+                                                <th class="px-6 py-3 text-left text-sm font-semibold text-slate-900 ">Nama Laporan</th>
+                                                <th class="px-6 py-3 text-left text-sm font-semibold text-slate-900 ">Link</th>
+                                                <th class="px-6 py-3 text-left text-sm font-semibold text-slate-900 ">Dibuat</th>
+                                                <th class="px-6 py-3 text-right text-sm font-semibold text-slate-900 ">Aksi</th>
                                           </tr>
                                     </thead>
                                     <tbody class="divide-y divide-slate-200 ">
@@ -70,7 +70,7 @@
                                                                   </svg>
                                                                   Edit
                                                             </a>
-                                                            <form action="{{ route('laporan-tahunans.destroy', $item) }}" method="POST" class="inline" onsubmit="return confirm('{{ __('Yakin ingin menghapus?') }}')">
+                                                            <form action="{{ route('laporan-tahunans.destroy', $item) }}" method="POST" class="inline" onsubmit="return confirm('Yakin ingin menghapus?')">
                                                                   @csrf
                                                                   @method('DELETE')
                                                                   <button type="submit" class="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-red-600  hover:bg-red-50  rounded-lg transition-colors">
@@ -90,13 +90,13 @@
                                                             <svg class="w-16 h-16 text-slate-300  mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                                                             </svg>
-                                                            <p class="text-slate-600  font-medium">{{ __('Belum ada laporan tahunan') }}</p>
-                                                            <p class="text-slate-500  text-sm mt-1">{{ __('Mulai buat laporan pertama Anda dengan klik tombol di atas') }}</p>
+                                                            <p class="text-slate-600  font-medium">Belum ada laporan tahunan</p>
+                                                            <p class="text-slate-500  text-sm mt-1">Mulai buat laporan pertama Anda dengan klik tombol di atas</p>
                                                             <a href="{{ route('laporan-tahunans.create') }}" class="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-lg transition-all duration-200">
                                                                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                                                                   </svg>
-                                                                  {{ __('Buat Laporan') }}
+                                                                  Buat Laporan
                                                             </a>
                                                       </div>
                                                 </td>

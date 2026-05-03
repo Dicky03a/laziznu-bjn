@@ -3,7 +3,7 @@
 
 @section('content')
 
-{{-- HERO SECTION --}}
+<!-- $1 -->
 <section class="relative bg-gradient-to-br from-emerald-600 to-emerald-700 py-24">
       <div class="relative max-w-6xl mx-auto px-6 text-center text-white">
             <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">
@@ -19,13 +19,13 @@
 </section>
 
 
-{{-- MAIN CONTENT --}}
+<!-- $1 -->
 <section class="bg-gray-50 py-20">
       <div class="max-w-6xl mx-auto px-6">
 
             <div class="bg-white rounded-2xl shadow-xl p-10 md:p-14 space-y-14">
 
-                  {{-- Intro --}}
+                  <!-- $1 -->
                   <div class="text-gray-700 leading-relaxed space-y-4">
                         <p>
                               Selamat datang di website resmi LAZISNU Bojonegoro.
@@ -39,7 +39,7 @@
                         </p>
                   </div>
 
-                  {{-- Penggunaan Konten --}}
+                  <!-- $1 -->
                   <div>
                         <h2 class="text-2xl font-semibold text-emerald-800 mb-6 border-b pb-3">
                               Penggunaan Konten
@@ -51,7 +51,7 @@
                         </ul>
                   </div>
 
-                  {{-- Kebijakan Privasi --}}
+                  <!-- $1 -->
                   <div>
                         <h2 class="text-2xl font-semibold text-emerald-800 mb-6 border-b pb-3">
                               Kebijakan Privasi
@@ -63,7 +63,7 @@
                         </p>
                   </div>
 
-                  {{-- Tautan Eksternal --}}
+                  <!-- $1 -->
                   <div>
                         <h2 class="text-2xl font-semibold text-emerald-800 mb-6 border-b pb-3">
                               Tautan Eksternal
@@ -75,7 +75,7 @@
                         </p>
                   </div>
 
-                  {{-- Batasan Tanggung Jawab --}}
+                  <!-- $1 -->
                   <div>
                         <h2 class="text-2xl font-semibold text-emerald-800 mb-6 border-b pb-3">
                               Batasan Tanggung Jawab
@@ -87,7 +87,7 @@
                         </p>
                   </div>
 
-                  {{-- Perubahan Ketentuan --}}
+                  <!-- $1 -->
                   <div>
                         <h2 class="text-2xl font-semibold text-emerald-800 mb-6 border-b pb-3">
                               Perubahan Syarat & Ketentuan
@@ -98,7 +98,7 @@
                         </p>
                   </div>
 
-                  {{-- CTA BOX --}}
+                  <!-- $1 -->
                   <div class="bg-gradient-to-br from-emerald-600 to-emerald-700 text-white rounded-xl p-10 text-center shadow-lg">
                         <h3 class="text-2xl font-semibold mb-4">
                               Mari Berkontribusi dalam Kebaikan

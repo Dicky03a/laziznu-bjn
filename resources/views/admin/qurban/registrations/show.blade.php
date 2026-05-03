@@ -1,7 +1,7 @@
-{{-- FILE: resources/views/admin/qurban/registrations/show.blade.php --}}
+<!-- $1 -->
 <x-layouts::app :title="'Pendaftaran ' . $registration->kode_registrasi">
 
-    {{-- Header --}}
+    <!-- $1 -->
     <div class="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div class="flex items-center gap-3">
             <a href="{{ route('qurban.registrations.index') }}"
@@ -43,13 +43,12 @@
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-        {{-- LEFT: Detail ───────────────────────────────────────────────── --}}
+        <!-- $1 -->
         <div class="lg:col-span-2 space-y-5">
 
-            {{-- Info Hewan --}}
+            <!-- $1 -->
             <div class="bg-white rounded-2xl border border-gray-200 p-6">
                 <h2 class="font-bold text-gray-900 mb-5 flex items-center gap-2">
-                    <span class="text-xl">{{ $registration->hewan?->jenis_icon }}</span>
                     Detail Hewan Qurban
                 </h2>
 
@@ -91,7 +90,7 @@
                     </div>
                 </div>
 
-                {{-- Slot Progress --}}
+                <!-- $1 -->
                 @if($registration->hewan?->is_patungan)
                 <div class="mt-5 pt-5 border-t border-gray-100">
                     <div class="flex justify-between text-sm mb-2">
@@ -104,15 +103,15 @@
                             style="width: {{ $persen }}%"></div>
                     </div>
                     <div class="flex gap-4 mt-2 text-xs text-gray-500">
-                        <span>✅ {{ $summary['confirmed'] }} terkonfirmasi</span>
-                        <span>⏳ {{ $summary['pending'] }} pending</span>
-                        <span>🔓 {{ $summary['slot_tersedia'] }} tersedia</span>
+                        <span>{{ $summary['confirmed'] }} terkonfirmasi</span>
+                        <span>{{ $summary['pending'] }} pending</span>
+                        <span>{{ $summary['slot_tersedia'] }} tersedia</span>
                     </div>
                 </div>
                 @endif
             </div>
 
-            {{-- Info Peserta --}}
+            <!-- $1 -->
             <div class="bg-white rounded-2xl border border-gray-200 p-6">
                 <h2 class="font-bold text-gray-900 mb-5">Data Peserta (Shohibul Qurban)</h2>
                 <dl class="grid grid-cols-2 gap-x-6 gap-y-4 text-sm">
@@ -158,7 +157,7 @@
                 </div>
             </div>
 
-            {{-- Bukti Transfer --}}
+            <!-- $1 -->
             @if($registration->paymentConfirmation)
             <div class="bg-white rounded-2xl border border-gray-200 p-6">
                 <h2 class="font-bold text-gray-900 mb-5">Konfirmasi Transfer dari Peserta</h2>
@@ -206,7 +205,7 @@
             </div>
             @endif
 
-            {{-- Catatan Admin --}}
+            <!-- $1 -->
             @if($registration->catatan_admin && !$registration->is_pending)
             <div class="bg-amber-50 rounded-2xl border border-amber-200 p-5">
                 <p class="text-sm font-semibold text-amber-800 mb-1">Catatan Admin</p>
@@ -219,15 +218,15 @@
 
         </div>
 
-        {{-- RIGHT: Actions ─────────────────────────────────────────────── --}}
+        <!-- $1 -->
         <div class="space-y-5">
 
-            {{-- Aksi Verifikasi --}}
+            <!-- $1 -->
             @if($registration->is_pending)
             <div class="bg-white rounded-2xl border border-gray-200 p-6">
                 <h3 class="font-bold text-gray-900 mb-4">Aksi Verifikasi</h3>
 
-                {{-- Ingatkan Peserta --}}
+                <!-- $1 -->
                 @if(!$registration->paymentConfirmation && $registration->telepon)
                 <a href="{{ route('qurban.registrations.reminder', $registration) }}"
                     target="_blank"
@@ -237,7 +236,7 @@
                 </a>
                 @endif
 
-                {{-- Konfirmasi --}}
+                <!-- $1 -->
                 <form action="{{ route('qurban.registrations.confirm', $registration) }}" method="POST" class="mb-4">
                     @csrf
                     <div class="mb-3">
@@ -261,7 +260,7 @@
                     <div class="relative flex justify-center"><span class="bg-white px-3 text-xs text-gray-400">atau</span></div>
                 </div>
 
-                {{-- Batalkan --}}
+                <!-- $1 -->
                 <form action="{{ route('qurban.registrations.cancel', $registration) }}" method="POST" class="mt-4">
                     @csrf
                     <div class="mb-3">
@@ -297,7 +296,7 @@
             </div>
             @endif
 
-            {{-- Link Halaman Pembayaran --}}
+            <!-- $1 -->
             <div class="bg-white rounded-2xl border border-gray-200 p-5">
                 <p class="text-xs font-semibold text-gray-600 mb-2">Link Pembayaran Peserta</p>
                 <div class="flex items-center gap-2 p-2.5 bg-gray-50 rounded-xl border border-gray-200">
@@ -315,7 +314,7 @@
                 </a>
             </div>
 
-            {{-- WhatsApp --}}
+            <!-- $1 -->
             @if($registration->telepon)
             <div class="bg-white rounded-2xl border border-gray-200 p-5">
                 <p class="text-xs font-semibold text-gray-600 mb-2">Hubungi via WhatsApp</p>

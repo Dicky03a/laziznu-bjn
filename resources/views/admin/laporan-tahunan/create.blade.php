@@ -5,10 +5,10 @@
                   <!-- Header -->
                   <div>
                         <h1 class="text-3xl font-bold text-slate-900 ">
-                              {{ __('Tambah Laporan Tahunan') }}
+                              Tambah Laporan Tahunan
                         </h1>
                         <p class="text-slate-600  mt-2">
-                              {{ __('Isi formulir di bawah untuk membuat laporan tahunan baru') }}
+                              Isi formulir di bawah untuk membuat laporan tahunan baru
                         </p>
                   </div>
 
@@ -20,10 +20,10 @@
                               <!-- Nama Laporan -->
                               <div>
                                     <label for="nama" class="block text-sm font-semibold text-slate-900  mb-2">
-                                          {{ __('Nama Laporan') }} <span class="text-red-500">*</span>
+                                          Nama Laporan <span class="text-red-500">*</span>
                                     </label>
                                     <input type="text" id="nama" name="nama" value="{{ old('nama') }}"
-                                          placeholder="{{ __('Contoh: Laporan Tahunan 2024') }}"
+                                          placeholder="Contoh: Laporan Tahunan 2024"
                                           class="w-full px-4 py-2.5 bg-slate-50  border border-slate-300  rounded-lg text-slate-900  placeholder-slate-500  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                                           required>
                                     @error('nama')
@@ -34,10 +34,10 @@
                               <!-- Link -->
                               <div>
                                     <label for="link_from" class="block text-sm font-semibold text-slate-900  mb-2">
-                                          {{ __('Link') }} <span class="text-red-500">*</span>
+                                          Link <span class="text-red-500">*</span>
                                     </label>
                                     <input type="url" id="link_from" name="link_from" value="{{ old('link_from') }}"
-                                          placeholder="{{ __('https://example.com/laporan-2024') }}"
+                                          placeholder="https://example.com/laporan-2024"
                                           class="w-full px-4 py-2.5 bg-slate-50  border border-slate-300  rounded-lg text-slate-900  placeholder-slate-500  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                                           required>
                                     @error('link_from')

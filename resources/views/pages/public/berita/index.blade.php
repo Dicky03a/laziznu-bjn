@@ -142,7 +142,7 @@
                                           <!-- Read More Link -->
                                           <a href="{{ route('berita.show', $item->slug) }}"
                                                 class="inline-flex items-center gap-2 text-blue-600  hover:text-blue-700  font-medium text-sm transition-colors">
-                                                {{ __("Baca Selengkapnya") }}
+                                                Baca Selengkapnya
                                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                                                 </svg>
@@ -161,11 +161,8 @@
                         @else
                         <!-- Empty State -->
                         <div class="text-center py-20">
-                              <svg class="mx-auto h-16 w-16 text-slate-300  mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v4m2 10a2 2 0 002-2m0 0V9a2 2 0 00-2-2m2 2V5m2 0a2 2 0 012 2v10a2 2 0 01-2 2m0 0H9m0 0a2 2 0 01-2-2m2 2v4"></path>
-                              </svg>
-                              <p class="text-slate-600  font-medium">{{ __("Tidak ada berita yang sesuai dengan pencarian") }}</p>
-                              <p class="text-slate-500  text-sm mt-1">{{ __("Coba ubah filter atau kata kunci pencarian") }}</p>
+                              <p class="text-slate-600  font-medium">Tidak ada berita yang sesuai dengan pencarian</p>
+                              <p class="text-slate-500  text-sm mt-1">Coba ubah filter atau kata kunci pencarian</p>
                               <a href="{{ route("berita.public.index") }}" class="inline-flex items-center gap-2 mt-4 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium rounded-lg transition-colors">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>

@@ -48,13 +48,13 @@
             @foreach($rekenings as $rekening)
             <div class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 p-6 lg:p-8 border border-slate-200 hover:border-emerald-200">
 
-                  {{-- Header --}}
+                  <!-- $1 -->
                   <div class="flex justify-between items-start mb-6">
                         <div class="flex-1">
 
                               <div class="flex items-center gap-3 mb-2">
 
-                                    {{-- ICON --}}
+                                    <!-- $1 -->
                                     <div class="w-14 flex items-center justify-center bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden p-1">
 
                                           @if(!empty($rekening->icon))
@@ -71,7 +71,7 @@
                                     </div>
 
 
-                                    {{-- NAMA BANK --}}
+                                    <!-- $1 -->
                                     <div>
                                           <h3 class="font-semibold text-slate-900 text-base">
                                                 {{ $rekening->nama }}
@@ -92,7 +92,7 @@
                         </span>
                   </div>
 
-                  {{-- Nomor Rekening --}}
+                  <!-- $1 -->
                   <div class="flex items-center gap-3 bg-slate-50 p-4 rounded-xl border border-slate-100 group-hover:border-emerald-100 transition-colors duration-300">
 
                         <span class="flex-1 font-mono text-slate-900 text-base font-semibold tracking-wide">
@@ -141,10 +141,6 @@
 
                         <div class="text-center mb-6">
                               <span class="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-50 text-emerald-700 text-sm font-semibold rounded-full border border-emerald-200">
-                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                          <path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
-                                          <path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z" />
-                                    </svg>
                                     QRIS Zakat
                               </span>
                         </div>
@@ -178,9 +174,6 @@
 
                         <div class="text-center mb-6">
                               <span class="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-50 text-emerald-700 text-sm font-semibold rounded-full border border-emerald-200">
-                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                          <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
-                                    </svg>
                                     QRIS Infaq & Shadaqah
                               </span>
                         </div>

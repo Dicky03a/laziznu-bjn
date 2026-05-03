@@ -25,7 +25,7 @@
                         Tunaikan zakat Anda melalui Lazisnu Bojonegoro — amanah, transparan, dan tepat sasaran
                   </p>
 
-                  {{-- Quick stats --}}
+                  <!-- $1 -->
                   <div class="flex gap-6 mt-8">
                         <div>
                               <p class="text-2xl font-bold text-white">{{ number_format($totalMuzakki) }}</p>
@@ -52,10 +52,10 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
 
-                  {{-- LEFT — Tab pilih jenis + kalkulator + form --}}
+                  <!-- $1 -->
                   <div class="lg:col-span-2 space-y-6">
 
-                        {{-- Pilih Jenis Zakat --}}
+                        <!-- $1 -->
                         <div class="bg-white rounded-3xl shadow-sm border border-gray-100 p-6">
                               <h2 class="text-lg font-bold text-gray-900 mb-4">Pilih Jenis Zakat</h2>
                               <div class="grid grid-cols-2 gap-4">
@@ -91,7 +91,7 @@
                               </div>
                         </div>
 
-                        {{-- Kalkulator Zakat Mal --}}
+                        <!-- $1 -->
                         <div id="calc-mal" class="bg-white rounded-3xl shadow-sm border border-gray-100 p-6">
                               <h3 class="font-bold text-gray-900 mb-2">Kalkulator Zakat Mal</h3>
                               <p class="text-sm text-gray-500 mb-5">
@@ -125,7 +125,7 @@
                               </div>
                         </div>
 
-                        {{-- Kalkulator Zakat Fitrah --}}
+                        <!-- $1 -->
                         <div id="calc-fitrah" class="hidden bg-white rounded-3xl shadow-sm border border-gray-100 p-6">
                               <h3 class="font-bold text-gray-900 mb-2">Kalkulator Zakat Fitrah</h3>
                               <p class="text-sm text-gray-500 mb-5">
@@ -158,7 +158,7 @@
                               </div>
                         </div>
 
-                        {{-- FORM PEMBAYARAN --}}
+                        <!-- $1 -->
                         <form action="{{ route('zakat.store') }}" method="POST" id="form-zakat"
                               data-payment-form="zakat"
                               class="bg-white rounded-3xl shadow-sm border border-gray-100 p-6"
@@ -182,7 +182,7 @@
                               </div>
                               @endif
 
-                              {{-- Anonim toggle --}}
+                              <!-- $1 -->
                               <div class="flex items-center gap-3 mb-5">
                                     <label class="relative inline-flex items-center cursor-pointer">
                                           <input type="checkbox" name="is_anonim" value="1" class="sr-only peer"
@@ -217,7 +217,7 @@
                                                 class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500">
                                     </div>
 
-                                    {{-- SELECT KECAMATAN --}}
+                                    <!-- $1 -->
                                     <div>
                                           <label class="block text-sm font-medium text-gray-700 mb-1.5">Kecamatan <span class="text-red-500">*</span></label>
                                           <select name="kecamatan_id"
@@ -239,7 +239,7 @@
                                           @enderror
                                     </div>
 
-                                    {{-- SELECT DESA --}}
+                                    <!-- $1 -->
                                     <div>
                                           <label class="block text-sm font-medium text-gray-700 mb-1.5">Desa / Kelurahan <span class="text-red-500">*</span></label>
                                           <select name="desa_id"
@@ -258,7 +258,7 @@
                                     </div>
                               </div>
 
-                              {{-- Ringkasan nominal --}}
+                              <!-- $1 -->
                               <div class="mt-6 p-4 bg-gray-50 rounded-xl border border-gray-200">
                                     <div class="flex justify-between items-center">
                                           <span class="text-gray-600 text-sm">Total yang akan dibayar:</span>
@@ -303,11 +303,11 @@
                         @endif
                   </div>
 
-                  {{-- RIGHT — Sidebar --}}
+                  <!-- $1 -->
                   <div class="lg:col-span-1">
                         <div class="sticky top-8 space-y-6">
 
-                              {{-- Info Organisasi --}}
+                              <!-- $1 -->
                               <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
                                     <div class="flex items-center gap-3 mb-4">
                                           <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-600 to-emerald-500 flex items-center justify-center text-white font-bold shadow">NU</div>
@@ -336,7 +336,7 @@
                         </div>
 
 
-                        {{-- Ketentuan Zakat --}}
+                        <!-- $1 -->
                         <div class="bg-gradient-to-br from-emerald-50 to-emerald-100/50 rounded-3xl p-6 border border-emerald-200">
                               <h4 class="font-bold text-gray-900 mb-4 flex items-center gap-2">
                                     <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -366,7 +366,7 @@
                               </div>
                         </div>
 
-                        {{-- Hubungi Kami --}}
+                        <!-- $1 -->
                         <div class="bg-white rounded-3xl p-5 border border-gray-100">
                               <p class="text-sm text-gray-600 mb-2">Ada pertanyaan tentang zakat?</p>
                               <a href="https://wa.me/6285743229703" target="_blank"

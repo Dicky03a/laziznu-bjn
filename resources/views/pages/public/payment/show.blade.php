@@ -5,7 +5,7 @@
 <section class="bg-gray-50 py-12 sm:py-16 min-h-screen">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
-            {{-- Alert Messages --}}
+            <!-- $1 -->
             @if(session('success'))
             <div class="mb-6 p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-700 text-sm font-medium flex items-center gap-3">
                   <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -21,7 +21,7 @@
             </div>
             @endif
 
-            {{-- Header Status --}}
+            <!-- $1 -->
             <div class="bg-white rounded-3xl shadow-sm border border-gray-100 p-6 mb-6">
                   <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                         <div>
@@ -62,7 +62,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                   <div class="space-y-6">
                         @if($transaction->is_pending)
-                        {{-- Instruksi Transfer --}}
+                        <!-- $1 -->
                         <div class="bg-white rounded-3xl shadow-sm border border-gray-100 p-6">
                               <h2 class="font-bold text-gray-900 mb-2 text-lg">Cara Pembayaran</h2>
                               <div class="mt-6 space-y-2">
@@ -74,7 +74,7 @@
                                           <li class="flex gap-2"><span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 text-xs flex items-center justify-center font-bold flex-shrink-0 mt-0.5">4</span> Tim kami akan memverifikasi dalam 1×24 jam</li>
                                     </ol>
                               </div>
-                              {{-- Tabs --}}
+                              <!-- $1 -->
                               <div class="flex border-b border-gray-200 mb-5">
                                     <button onclick="showTab('transfer')" id="tab-transfer"
                                           class="px-4 py-2.5 text-sm font-semibold text-emerald-600 border-b-2 border-emerald-600 -mb-px">
@@ -86,7 +86,7 @@
                                     </button>
                               </div>
 
-                              {{-- Tab Transfer --}}
+                              <!-- $1 -->
                               <div id="content-transfer">
                                     @forelse($rekenings as $rekening)
                                     <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl border border-gray-100 mb-3 last:mb-0">
@@ -125,7 +125,7 @@
                                     </div>
                               </div>
 
-                              {{-- Tab QRIS --}}
+                              <!-- $1 -->
                               <div id="content-qris" class="hidden">
                                     <div class="text-center">
                                           <img src="{{ asset('asset/qris-' . $qrisType . '.jpeg') }}"
@@ -135,7 +135,7 @@
                                     </div>
                               </div>
 
-                              {{-- Steps --}}
+                              <!-- $1 -->
 
                         </div>
                         <div class="bg-white rounded-3xl shadow-sm border border-gray-100 p-6">
@@ -159,7 +159,7 @@
                                     </div>
                                     @endif
 
-                                    {{-- Detail Metadata --}}
+                                    <!-- $1 -->
                                     @if($transaction->type === 'zakat' && $transaction->metadata)
                                     @if($transaction->metadata['jenis'] === 'mal')
                                     <div class="flex justify-between text-sm">
@@ -199,11 +199,6 @@
                         @else
                         @if($transaction->is_confirmed)
                         <div class="bg-emerald-50 rounded-3xl border border-emerald-200 p-6 text-center">
-                              <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                                    <svg class="w-8 h-8 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
-                                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                    </svg>
-                              </div>
                               <h3 class="font-bold text-emerald-800 text-xl mb-2">Jazakallah Khair!</h3>
                               <p class="text-emerald-700 text-sm">
                                     Pembayaran Anda sebesar <strong>{{ $transaction->jumlah_format }}</strong> telah dikonfirmasi.
@@ -244,34 +239,34 @@
                                     <div>
                                           <label class="block text-sm font-medium text-gray-700 mb-1.5">Nama Pengirim <span class="text-red-500">*</span></label>
                                           <input type="text" name="nama_pengirim" value="{{ old('nama_pengirim') }}"
-                                                placeholder="Sesuai rekening"
+                                                placeholder="Sesuai rekening" required
                                                 class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500 @error('nama_pengirim') border-red-500 @enderror">
                                     </div>
                                     <div>
                                           <label class="block text-sm font-medium text-gray-700 mb-1.5">Bank / E-Wallet <span class="text-red-500">*</span></label>
                                           <input type="text" name="bank_pengirim" value="{{ old('bank_pengirim') }}"
-                                                placeholder="BCA / Mandiri / GoPay / dll"
+                                                placeholder="BCA / Mandiri / GoPay / dll" required
                                                 class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500 @error('bank_pengirim') border-red-500 @enderror">
                                     </div>
                                     <div>
-                                          <label class="block text-sm font-medium text-gray-700 mb-1.5">No. Rekening Pengirim</label>
-                                          <input type="text" name="nomor_rekening_pengirim" value="{{ old('nomor_rekening_pengirim') }}"
+                                          <label class="block text-sm font-medium text-gray-700 mb-1.5">No. Rekening Pengirim <span class="text-red-500">*</span></label>
+                                          <input type="text" name="nomor_rekening_pengirim" value="{{ old('nomor_rekening_pengirim') }}" required
                                                 class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500">
                                     </div>
                                     <div>
                                           <label class="block text-sm font-medium text-gray-700 mb-1.5">Jumlah Transfer <span class="text-red-500">*</span></label>
-                                          <input type="number" name="jumlah_transfer" value="{{ old('jumlah_transfer', $transaction->jumlah) }}"
+                                          <input type="number" name="jumlah_transfer" value="{{ old('jumlah_transfer', $transaction->jumlah) }}" required
                                                 class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500 @error('jumlah_transfer') border-red-500 @enderror">
                                     </div>
                                     <div>
                                           <label class="block text-sm font-medium text-gray-700 mb-1.5">Tanggal Transfer <span class="text-red-500">*</span></label>
                                           <input type="date" name="tanggal_transfer" value="{{ old('tanggal_transfer', now()->format('Y-m-d')) }}"
-                                                max="{{ now()->format('Y-m-d') }}"
+                                                max="{{ now()->format('Y-m-d') }}" required
                                                 class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500 @error('tanggal_transfer') border-red-500 @enderror">
                                     </div>
                                     <div class="sm:col-span-2">
-                                          <label class="block text-sm font-medium text-gray-700 mb-1.5">Bukti Transfer (foto/screenshot)</label>
-                                          <input type="file" id="bukti_transfer_input" name="bukti_transfer" accept="image/*"
+                                          <label class="block text-sm font-medium text-gray-700 mb-1.5">Bukti Transfer (foto/screenshot) <span class="text-red-500">*</span></label>
+                                          <input type="file" id="bukti_transfer_input" name="bukti_transfer" accept="image/*" required
                                                 class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500 text-sm">
                                           <p class="text-xs text-gray-400 mt-1">JPG, PNG, WEBP. Maks 2MB</p>
 
@@ -303,7 +298,7 @@
                         </form>
                   </div>
                   @else
-                  {{-- Sudah konfirmasi --}}
+                  <!-- $1 -->
                   <div class="bg-emerald-50 rounded-3xl border border-emerald-200 p-6">
                         <div class="flex items-center gap-3 mb-4">
                               <svg class="w-7 h-7 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
@@ -318,13 +313,13 @@
                         </p>
                         <p class="text-sm text-emerald-700 mt-2">
                               Pertanyaan? Hubungi kami di
-                              <a href="https://wa.me/6285743229703" class="font-semibold underline">0857-4322-9703</a>
+                              <a href="https://wa.me/085743229703" class="font-semibold underline">0857-4322-9703</a>
                         </p>
                   </div>
                   @endif
                   <div class="lg:col-span-2 space-y-4">
 
-                        {{-- Info Lazisnu --}}
+                        <!-- $1 -->
                         <div class="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
                               <div class="p-8">
                                     <div class="flex items-center gap-4 mb-6">
@@ -354,16 +349,16 @@
                               </div>
                         </div>
 
-                        {{-- Timer (opsional reminder) --}}
+                        <!-- $1 -->
                         @if($transaction->is_pending)
                         <div class="bg-amber-50 rounded-2xl border border-amber-200 p-5">
-                              <p class="text-xs font-semibold text-amber-800 mb-1">💡 Simpan halaman ini</p>
+                              <p class="text-xs font-semibold text-amber-800 mb-1">Simpan halaman ini</p>
                               <p class="text-xs text-amber-700">Bookmark halaman ini atau catat kode transaksi <strong>{{ $transaction->kode_transaksi }}</strong> untuk melacak status pembayaran Anda.</p>
                         </div>
                         @endif
 
 
-                        {{-- Bagikan --}}
+                        <!-- $1 -->
                         <div class="bg-white rounded-2xl border border-gray-100 p-5">
                               <p class="text-sm font-semibold text-gray-700 mb-3">Ajak keluarga untuk berdonasi juga</p>
                               <div class="flex gap-2">
@@ -428,12 +423,104 @@
             }
       }
 
+      // Validasi form pembayaran
+      function validatePaymentForm() {
+            const form = document.getElementById('payment-confirm-form');
+            const namaPengirim = document.querySelector('input[name="nama_pengirim"]');
+            const bankPengirim = document.querySelector('input[name="bank_pengirim"]');
+            const nomorRekeningPengirim = document.querySelector('input[name="nomor_rekening_pengirim"]');
+            const jumlahTransfer = document.querySelector('input[name="jumlah_transfer"]');
+            const tanggalTransfer = document.querySelector('input[name="tanggal_transfer"]');
+            const buktiTransfer = document.querySelector('input[name="bukti_transfer"]');
+
+            // Reset border validation
+            [namaPengirim, bankPengirim, nomorRekeningPengirim, jumlahTransfer, tanggalTransfer, buktiTransfer].forEach(el => {
+                  if (el) el.classList.remove('border-red-500');
+            });
+
+            // Validasi setiap field
+            let isValid = true;
+            let errorMessages = [];
+
+            if (!namaPengirim.value.trim()) {
+                  namaPengirim.classList.add('border-red-500');
+                  errorMessages.push('Nama Pengirim tidak boleh kosong');
+                  isValid = false;
+            }
+
+            if (!bankPengirim.value.trim()) {
+                  bankPengirim.classList.add('border-red-500');
+                  errorMessages.push('Bank / E-Wallet tidak boleh kosong');
+                  isValid = false;
+            }
+
+            if (!nomorRekeningPengirim.value.trim()) {
+                  nomorRekeningPengirim.classList.add('border-red-500');
+                  errorMessages.push('No. Rekening Pengirim tidak boleh kosong');
+                  isValid = false;
+            }
+
+            if (!jumlahTransfer.value || parseInt(jumlahTransfer.value) <= 0) {
+                  jumlahTransfer.classList.add('border-red-500');
+                  errorMessages.push('Jumlah Transfer harus diisi dengan nilai lebih besar dari 0');
+                  isValid = false;
+            }
+
+            if (!tanggalTransfer.value) {
+                  tanggalTransfer.classList.add('border-red-500');
+                  errorMessages.push('Tanggal Transfer tidak boleh kosong');
+                  isValid = false;
+            }
+
+            if (!buktiTransfer.files || buktiTransfer.files.length === 0) {
+                  buktiTransfer.classList.add('border-red-500');
+                  errorMessages.push('Bukti Transfer harus diunggah');
+                  isValid = false;
+            } else {
+                  // Validasi ukuran file
+                  const file = buktiTransfer.files[0];
+                  if (file.size > 2 * 1024 * 1024) {
+                        buktiTransfer.classList.add('border-red-500');
+                        errorMessages.push('Ukuran file terlalu besar. Maksimal 2MB.');
+                        isValid = false;
+                  }
+            }
+
+            // Tampilkan error messages jika ada
+            if (!isValid) {
+                  const errorDiv = document.createElement('div');
+                  errorDiv.className = 'mb-4 p-4 bg-red-50 border border-red-200 rounded-xl text-red-600 text-sm';
+                  errorDiv.innerHTML = '<ul class="list-disc list-inside space-y-1">' +
+                        errorMessages.map(msg => `<li>${msg}</li>`).join('') +
+                        '</ul>';
+
+                  // Hapus error div sebelumnya jika ada
+                  const existingError = form.querySelector('.bg-red-50');
+                  if (existingError) existingError.remove();
+
+                  form.insertBefore(errorDiv, form.firstChild);
+
+                  // Scroll ke form
+                  form.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                  });
+            }
+
+            return isValid;
+      }
+
       // Handle form submission untuk payment confirmation
       document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('payment-confirm-form');
             if (form) {
                   form.addEventListener('submit', function(e) {
                         e.preventDefault();
+
+                        // Validasi form terlebih dahulu
+                        if (!validatePaymentForm()) {
+                              return;
+                        }
 
                         const formData = new FormData(this);
                         const submitBtn = document.getElementById('btn-submit-confirm');

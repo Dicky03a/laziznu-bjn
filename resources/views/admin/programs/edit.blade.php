@@ -1,6 +1,6 @@
 <x-layouts::app :title="__('Edit Program')">
 
-      {{-- Header --}}
+      <!-- $1 -->
       <div class="mb-6 flex items-center gap-3">
             <a href="{{ route('programs.index') }}"
                   class="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-all">

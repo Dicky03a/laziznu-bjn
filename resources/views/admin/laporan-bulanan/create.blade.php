@@ -1,6 +1,6 @@
 <x-layouts::app :title="__('Tambah Laporan Tahunan')">
 
-    {{-- Header --}}
+    <!-- $1 -->
     <div class="flex items-center gap-3 mb-6">
         <a href="{{ route('laporan-bulanan.index') }}"
             class="p-2 text-gray-500 hover:bg-gray-100 rounded-lg transition-colors">
@@ -30,7 +30,7 @@
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-        {{-- Form --}}
+        <!-- $1 -->
         <div class="lg:col-span-2">
             <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
                 <div class="px-5 py-4 border-b border-gray-100 flex items-center gap-2">
@@ -44,7 +44,7 @@
                     enctype="multipart/form-data" class="p-5 md:p-6 space-y-5">
                     @csrf
 
-                    {{-- Nama Laporan --}}
+                    <!-- $1 -->
                     <div>
                         <label for="nama_laporan" class="block text-sm font-medium text-gray-700 mb-1.5">
                             Nama Laporan <span class="text-red-500">*</span>
@@ -60,7 +60,7 @@
                         @enderror
                     </div>
 
-                    {{-- Upload Area --}}
+                    <!-- $1 -->
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1.5">
                             File PDF <span class="text-red-500">*</span>
@@ -100,7 +100,7 @@
                         @enderror
                     </div>
 
-                    {{-- PDF Preview --}}
+                    <!-- $1 -->
                     <div id="previewContainer" class="hidden">
                         <p class="text-sm font-medium text-gray-700 mb-1.5 flex items-center gap-2">
                             <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -120,7 +120,7 @@
                         </div>
                     </div>
 
-                    {{-- Actions --}}
+                    <!-- $1 -->
                     <div class="flex flex-col sm:flex-row gap-3 pt-2 border-t border-gray-100">
                         <button type="submit"
                             class="flex-1 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg text-sm transition-colors shadow-sm flex items-center justify-center gap-2">
@@ -141,7 +141,7 @@
             </div>
         </div>
 
-        {{-- Sidebar --}}
+        <!-- $1 -->
         <div class="space-y-5">
             <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
                 <div class="px-5 py-4 border-b border-gray-100">
