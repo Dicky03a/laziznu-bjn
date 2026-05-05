@@ -30,7 +30,7 @@ class ProgramController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'type' => ['required', 'in:infaq,donasi'],
+            'type' => ['required', 'in:infaq,donasi,zakat'],
             'nama' => ['required', 'string', 'max:200'],
             'deskripsi' => ['required', 'string'],
             'konten' => ['nullable', 'string'],
@@ -66,7 +66,7 @@ class ProgramController extends Controller
     public function update(Request $request, Program $program)
     {
         $validated = $request->validate([
-            'type' => ['required', 'in:infaq,donasi'],
+            'type' => ['required', 'in:infaq,donasi,zakat'],
             'nama' => ['required', 'string', 'max:200'],
             'deskripsi' => ['required', 'string'],
             'konten' => ['nullable', 'string'],

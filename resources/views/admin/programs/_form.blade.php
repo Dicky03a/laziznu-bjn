@@ -6,6 +6,7 @@
 
         get isInfaq()  { return this.type === 'infaq'  },
         get isDonasi() { return this.type === 'donasi' },
+        get isZakat()  { return this.type === 'zakat' },
         get isChosen() { return this.type !== '' },
     }"
       class="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -39,7 +40,7 @@
 
                   <input type="hidden" name="type" :value="type">
 
-                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
 
                         <!-- $1 -->
                         <button type="button" @click="type = 'infaq'"
@@ -56,16 +57,14 @@
                                     </svg>
                               </span>
 
-                              <p class="font-bold text-gray-900 mb-1">DSKL Dana Sosial Keagamaan Lainya</p>
-                              <p class="text-xs text-gray-500 leading-relaxed">
-                                    Program DSKL Dana Sosial Keagamaan Lainya dan <strong>berkelanjutan</strong> tanpa batas waktu. Cocok untuk kegiatan rutin seperti operasional masjid, pendidikan, dan sosial.
+                              <p class="font-bold text-gray-900 mb-1 leading-tight">DSKL Dana Sosial Lainya</p>
+                              <p class="text-[10px] text-gray-500 leading-relaxed">
+                                    Program Dana Sosial Keagamaan Lainya dan <strong>berkelanjutan</strong>.
                               </p>
 
                               <!-- $1 -->
-                              <div class="flex flex-wrap gap-1.5 mt-4">
-                                    <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">Berkelanjutan</span>
-                                    <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">Nominal Bebas</span>
-                                    <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">Multi Kategori</span>
+                              <div class="flex flex-wrap gap-1 mt-4">
+                                    <span class="text-[9px] font-semibold px-1.5 py-0.5 rounded-full bg-emerald-100 text-emerald-700">Berkelanjutan</span>
                               </div>
                         </button>
 
@@ -84,15 +83,37 @@
                                     </svg>
                               </span>
 
-                              <p class="font-bold text-gray-900 mb-1">Infaq Shodaqoh dan Peduli Bencana </p>
-                              <p class="text-xs text-gray-500 leading-relaxed">
-                                    Program Infaq Shodaqoh dan Peduli Bencana dengan <strong>target dana</strong> dan batas waktu. Cocok untuk kegiatan insidental seperti bencana, pembangunan, dan bantuan khusus.
+                              <p class="font-bold text-gray-900 mb-1 leading-tight">Infaq Shodaqoh Peduli </p>
+                              <p class="text-[10px] text-gray-500 leading-relaxed">
+                                    Program Infaq Peduli Bencana dengan <strong>target dana</strong>.
                               </p>
 
-                              <div class="flex flex-wrap gap-1.5 mt-4">
-                                    <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">Target Dana</span>
-                                    <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">Batas Waktu</span>
-                                    <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">Progress Bar</span>
+                              <div class="flex flex-wrap gap-1 mt-4">
+                                    <span class="text-[9px] font-semibold px-1.5 py-0.5 rounded-full bg-emerald-100 text-emerald-700">Target Dana</span>
+                              </div>
+                        </button>
+
+                        <!-- $1 -->
+                        <button type="button" @click="type = 'zakat'"
+                              :class="isZakat
+                            ? 'border-emerald-500 bg-emerald-50 ring-2 ring-emerald-500 ring-offset-1'
+                            : 'border-gray-200 bg-white hover:border-emerald-300 hover:bg-emerald-50/40'"
+                              class="relative text-left rounded-2xl border-2 p-5 transition-all duration-200 group focus:outline-none focus:ring-2 focus:ring-emerald-400">
+
+                              <span x-show="isZakat"
+                                    class="absolute top-3 right-3 w-5 h-5 bg-emerald-500 rounded-full flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                                    </svg>
+                              </span>
+
+                              <p class="font-bold text-gray-900 mb-1 leading-tight">Zakat</p>
+                              <p class="text-[10px] text-gray-500 leading-relaxed">
+                                    Program Zakat khusus dan <strong>berkelanjutan</strong>. Terintegrasi Peta Sebaran.
+                              </p>
+
+                              <div class="flex flex-wrap gap-1 mt-4">
+                                    <span class="text-[9px] font-semibold px-1.5 py-0.5 rounded-full bg-emerald-100 text-emerald-700">Terpadu Muzakki</span>
                               </div>
                         </button>
                   </div>
@@ -106,7 +127,6 @@
                   </p>
                   @enderror
 
-                  <!-- $1 -->
                   <div x-show="isInfaq" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0"
                         class="mt-4 flex items-start gap-2.5 p-3 bg-emerald-50 rounded-xl border border-emerald-100">
                         <svg class="w-4 h-4 text-emerald-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -114,7 +134,6 @@
                         </svg>
                         <p class="text-xs text-emerald-700">
                               <strong>Program DSKL Dana Sosial Keagamaan Lainya </strong> tidak memerlukan target dana dan tanggal berakhir.
-                              Anda bisa menambahkan nominal infaq rekomendasi dan kategori pengelompokan.
                         </p>
                   </div>
 
@@ -125,7 +144,16 @@
                         </svg>
                         <p class="text-xs text-emerald-700">
                               <strong>Program Infaq Shodaqoh dan Peduli Bencana</strong> memiliki target dana dan batas waktu pengumpulan.
-                              Progress pengumpulan akan ditampilkan secara real-time kepada donatur.
+                        </p>
+                  </div>
+
+                  <div x-show="isZakat" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0"
+                        class="mt-4 flex items-start gap-2.5 p-3 bg-emerald-50 rounded-xl border border-emerald-100">
+                        <svg class="w-4 h-4 text-emerald-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <p class="text-xs text-emerald-700">
+                              <strong>Program Zakat</strong> terpadu dengan Peta Sebaran Muzakki. Donatur akan diminta data Kecamatan & Desa.
                         </p>
                   </div>
             </div>
@@ -149,7 +177,7 @@
                         </label>
                         <input type="text" name="nama" id="nama"
                               value="{{ old('nama', $program->nama ?? '') }}"
-                              :placeholder="isInfaq ? 'Nama Program DSKL Dana Sosial Keagamaan Lainya ' : 'Nama Program Infaq Shodaqoh dan Peduli Bencana'"
+                              :placeholder="isZakat ? 'Nama Program Zakat' : (isInfaq ? 'Nama Program DSKL Dana Sosial Keagamaan Lainya ' : 'Nama Program Infaq Shodaqoh dan Peduli Bencana')"
                               class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition
                               @error('nama') border-red-500 @enderror">
                         @error('nama') <p class="text-xs text-red-600 mt-1">{{ $message }}</p> @enderror
@@ -181,7 +209,7 @@
             </div>
 
             <!-- $1 -->
-            <div x-show="isInfaq"
+            <div x-show="isInfaq || isZakat"
                   x-transition:enter="transition ease-out duration-300 delay-75"
                   x-transition:enter-start="opacity-0 translate-y-2"
                   x-transition:enter-end="opacity-100 translate-y-0"
@@ -190,9 +218,9 @@
                   <div class="flex items-center justify-between">
                         <div class="flex items-center gap-2">
                               <span class="inline-flex items-center justify-center w-6 h-6 bg-emerald-100 text-emerald-700 rounded-full text-xs font-bold">3</span>
-                              <h3 class="font-semibold text-gray-900 text-sm">Pengaturan DSKL Dana Sosial Keagamaan Lainya </h3>
+                              <h3 class="font-semibold text-gray-900 text-sm" x-text="isZakat ? 'Pengaturan Zakat' : 'Pengaturan DSKL Dana Sosial Keagamaan Lainya '"></h3>
                         </div>
-                        <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700">Infaq</span>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700" x-text="isZakat ? 'Zakat' : 'Infaq'"></span>
                   </div>
 
                   <!-- $1 -->
@@ -201,7 +229,7 @@
                               Nominal
                               <span class="text-gray-400 font-normal">(opsional)</span>
                         </label>
-                        <p class="text-xs text-gray-400 mb-3">Berikan pilihan nominal untuk memudahkan. Nominal pertama akan jadi default.</p>
+                        <p class="text-xs text-gray-400 mb-3" x-text="isZakat ? 'Berikan pilihan nominal zakat untuk memudahkan.' : 'Berikan pilihan nominal untuk memudahkan. Nominal pertama akan jadi default.'"></p>
 
                         <div class="space-y-2" id="nominal-list">
                               @php
@@ -214,7 +242,7 @@
                                           <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm font-medium">Rp</span>
                                           <input type="number" name="nominal_rekomendasi[]"
                                                 value="{{ $n }}" min="1000" step="1000"
-                                                placeholder="Nominal infaq"
+                                                placeholder="Nominal"
                                                 class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
                                     </div>
                                     <button type="button" onclick="removeNominal(this)"
@@ -245,7 +273,7 @@
                         <input type="date" name="start_date" id="start_date_infaq"
                               value="{{ old('start_date', isset($program->start_date) ? $program->start_date->format('Y-m-d') : '') }}"
                               class="w-full sm:w-56 px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
-                        <p class="text-xs text-gray-400 mt-1">Program DSKL Dana Sosial Keagamaan Lainya tidak memiliki tanggal berakhir.</p>
+                        <p class="text-xs text-gray-400 mt-1" x-text="isZakat ? 'Program Zakat tidak memiliki tanggal berakhir.' : 'Program DSKL Dana Sosial Keagamaan Lainya tidak memiliki tanggal berakhir.'"></p>
                   </div>
             </div>
 
@@ -411,16 +439,16 @@
                   x-transition:enter-start="opacity-0"
                   x-transition:enter-end="opacity-100"
                   class="rounded-2xl border p-4 text-xs space-y-2"
-                  :class="isInfaq ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-emerald-50 border-emerald-200 text-emerald-800'">
+                  :class="(isInfaq || isZakat) ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-emerald-50 border-emerald-200 text-emerald-800'">
 
-                  <p class="font-bold text-sm" x-text="isInfaq ? 'Ringkasan Program DSKL Dana Sosial Keagamaan Lainya ' : 'Ringkasan Program Infaq Shodaqoh dan Peduli Bencana'"></p>
+                  <p class="font-bold text-sm" x-text="isZakat ? 'Ringkasan Program Zakat' : (isInfaq ? 'Ringkasan Program DSKL Dana Sosial Keagamaan Lainya ' : 'Ringkasan Program Infaq Shodaqoh dan Peduli Bencana')"></p>
 
-                  <template x-if="isInfaq">
+                  <template x-if="isInfaq || isZakat">
                         <ul class="space-y-1">
                               <li class="flex gap-2"><span>✓</span><span>Tidak ada batas waktu pengumpulan</span></li>
                               <li class="flex gap-2"><span>✓</span><span>Nominal bebas ditentukan donatur</span></li>
                               <li class="flex gap-2"><span>✓</span><span>Tidak ada progress bar target dana</span></li>
-                              <li class="flex gap-2"><span>✓</span><span>Cocok untuk program jangka panjang</span></li>
+                              <li class="flex gap-2"><span>✓</span><span x-text="isZakat ? 'Wajib data lokasi untuk Peta Sebaran' : 'Cocok untuk program jangka panjang'"></span></li>
                         </ul>
                   </template>
 

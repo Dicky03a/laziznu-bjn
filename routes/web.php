@@ -24,14 +24,15 @@ use App\Http\Controllers\Public\DonasiController;
 use App\Http\Controllers\Public\FidyahController;
 use App\Http\Controllers\Public\InfaqController;
 use App\Http\Controllers\Public\PaymentController;
-use App\Http\Controllers\Public\PublicController as PublicPublicController;
+use App\Http\Controllers\Public\ProgramZakatController;
+use App\Http\Controllers\Public\PublicController;
 use App\Http\Controllers\Public\QurbanController;
 use App\Http\Controllers\Public\QurbanPaymentController;
 use App\Http\Controllers\Public\ZakatController;
 use Illuminate\Support\Facades\Route;
 
 // Public Routes
-Route::controller(PublicPublicController::class)->group(function () {
+Route::controller(PublicController::class)->group(function () {
     Route::get('/', 'index')->name('home');
     Route::get('/profile', 'profile')->name('profile');
     Route::get('/pengurus-laziznu-bojonegoro', 'pengurus')->name('pengurus-laziznu-bojonegoro');
@@ -74,6 +75,13 @@ Route::prefix('donasi')->name('donasi.')->group(function () {
     Route::post('/{slug}/bayar', [DonasiController::class, 'store'])->name('store');
 });
 
+// Program Zakat Routes
+Route::prefix('program-zakat')->name('program-zakat.')->group(function () {
+    Route::get('/', [ProgramZakatController::class, 'index'])->name('index');
+    Route::get('/{slug}', [ProgramZakatController::class, 'show'])->name('show');
+    Route::post('/{slug}/bayar', [ProgramZakatController::class, 'store'])->name('store');
+});
+
 // Fidyah Routes
 Route::prefix('fidyah')->name('fidyah.')->group(function () {
     Route::get('/', [FidyahController::class, 'index'])->name('index');
@@ -99,7 +107,7 @@ Route::prefix('qurban')->name('qurban.')->group(function () {
 // Admin Routes
 Route::middleware(['auth', 'verified'])->group(function () {
 
-    Route::get('dashboard', fn() => view('dashboard'))->name('dashboard');
+    Route::get('dashboard', fn () => view('dashboard'))->name('dashboard');
 
     // Export Reports
     Route::get('laporan/export-dskl', [ExportReportController::class, 'exportDskl'])->name('laporan.export-dskl');
@@ -191,4 +199,4 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('mustahiks.statistik');
 });
 
-require __DIR__ . '/settings.php';
+require __DIR__.'/settings.php';

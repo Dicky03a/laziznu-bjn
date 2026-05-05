@@ -1,0 +1,38 @@
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class StoreProgramZakatRequest extends FormRequest
+{
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    public function rules(): array
+    {
+        return [
+            'jumlah' => ['required', 'integer', 'min:1000'],
+            'nama_donatur' => ['required', 'string', 'max:100'],
+            'email' => ['required', 'email', 'max:100'],
+            'telepon' => ['required', 'string', 'max:20'],
+            'kecamatan_id' => ['required', 'exists:kecamatans,id'],
+            'desa_id' => ['required', 'exists:desas,id'],
+            'is_anonim' => ['nullable', 'boolean'],
+            'catatan' => ['nullable', 'string', 'max:500'],
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'jumlah.required' => 'Masukkan jumlah zakat.',
+            'jumlah.min' => 'Minimal zakat Rp 1.000.',
+            'nama_donatur.required' => 'Nama muzakky wajib diisi.',
+            'kecamatan_id.required' => 'Kecamatan wajib dipilih.',
+            'desa_id.required' => 'Desa wajib dipilih.',
+        ];
+    }
+}

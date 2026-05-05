@@ -51,6 +51,27 @@ class TransactionService
         });
     }
 
+    public function createProgramZakat(array $data, Program $program): Transaction
+    {
+        return DB::transaction(function () use ($data, $program) {
+            return Transaction::create([
+                'kode_transaksi' => Transaction::generateKode('zakat'),
+                'type' => 'zakat',
+                'program_id' => $program->id,
+                'nama_donatur' => $data['nama_donatur'],
+                'email' => $data['email'] ?? null,
+                'telepon' => $data['telepon'] ?? null,
+                'kecamatan_id' => $data['kecamatan_id'] ?? null,
+                'desa_id' => $data['desa_id'] ?? null,
+                'is_anonim' => (bool) ($data['is_anonim'] ?? false),
+                'jumlah' => (int) $data['jumlah'],
+                'metadata' => ['program_nama' => $program->nama],
+                'catatan' => $data['catatan'] ?? null,
+                'status' => Transaction::STATUS_PENDING,
+            ]);
+        });
+    }
+
     public function createInfaq(array $data, Program $program): Transaction
     {
         return DB::transaction(function () use ($data, $program) {

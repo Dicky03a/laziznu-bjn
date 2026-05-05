@@ -33,6 +33,7 @@
                               <option value="">Semua</option>
                               <option value="infaq" {{ request('type') === 'infaq' ? 'selected' : '' }}>DSKL</option>
                               <option value="donasi" {{ request('type') === 'donasi' ? 'selected' : '' }}>Infaq & Donasi</option>
+                              <option value="zakat" {{ request('type') === 'zakat' ? 'selected' : '' }}>Zakat</option>
                         </select>
                   </div>
                   <div>
@@ -119,7 +120,7 @@
                                     </td>
                                     <td class="px-5 py-4 text-center">
                                           <div class="flex items-center justify-center gap-2">
-                                                <a href="{{ route($program->type . '.show', $program->slug) }}" target="_blank"
+                                                <a href="{{ $program->type === 'zakat' ? route('program-zakat.show', $program->slug) : route($program->type . '.show', $program->slug) }}" target="_blank"
                                                       class="p-1.5 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all" title="Lihat publik">
                                                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />

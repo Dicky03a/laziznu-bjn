@@ -160,28 +160,28 @@
                                     @endif
 
                                     <!-- $1 -->
-                                    @if($transaction->type === 'zakat' && $transaction->metadata)
+                                    @if($transaction->type === 'zakat' && isset($transaction->metadata['jenis']))
                                     @if($transaction->metadata['jenis'] === 'mal')
                                     <div class="flex justify-between text-sm">
                                           <span class="text-gray-500">Nilai Harta</span>
-                                          <span class="text-gray-900">Rp {{ number_format($transaction->metadata['nilai_harta'], 0, ',', '.') }}</span>
+                                          <span class="text-gray-900">Rp {{ number_format($transaction->metadata['nilai_harta'] ?? 0, 0, ',', '.') }}</span>
                                     </div>
                                     @elseif($transaction->metadata['jenis'] === 'fitrah')
                                     <div class="flex justify-between text-sm">
                                           <span class="text-gray-500">Jumlah Jiwa</span>
-                                          <span class="text-gray-900">{{ $transaction->metadata['jumlah_jiwa'] }} orang</span>
+                                          <span class="text-gray-900">{{ $transaction->metadata['jumlah_jiwa'] ?? 0 }} orang</span>
                                     </div>
                                     @endif
                                     @endif
 
-                                    @if($transaction->type === 'fidyah' && $transaction->metadata)
+                                    @if($transaction->type === 'fidyah' && isset($transaction->metadata['jumlah_hari']))
                                     <div class="flex justify-between text-sm">
                                           <span class="text-gray-500">Jumlah Hari</span>
                                           <span class="text-gray-900">{{ $transaction->metadata['jumlah_hari'] }} hari</span>
                                     </div>
                                     <div class="flex justify-between text-sm">
                                           <span class="text-gray-500">Harga/Hari</span>
-                                          <span class="text-gray-900">Rp {{ number_format($transaction->metadata['harga_per_hari'], 0, ',', '.') }}</span>
+                                          <span class="text-gray-900">Rp {{ number_format($transaction->metadata['harga_per_hari'] ?? 0, 0, ',', '.') }}</span>
                                     </div>
                                     @endif
 
