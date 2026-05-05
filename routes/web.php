@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\QurbanRegistrationController;
 use App\Http\Controllers\Admin\RekeningController as AdminRekeningController;
 use App\Http\Controllers\Admin\SettingControllerProgram;
 use App\Http\Controllers\Admin\TransactionController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Public\DonasiController;
 // Public Controllers
 use App\Http\Controllers\Public\FidyahController;
@@ -176,6 +177,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
     Route::resource('mustahiks', MustahikController::class);
+
+    Route::resource('users', UserController::class)
+        ->middleware(['auth', 'verified']);
 
     Route::get('/mustahiks/getDesa/{kecamatan_id}', [MustahikController::class, 'getDesa'])
         ->name('mustahiks.getDesa');

@@ -97,6 +97,14 @@
                 Berita
             </flux:sidebar.item>
 
+            @can('manage-users')
+            <flux:sidebar.group expandable heading="Pengaturan" class="grid">
+                <flux:sidebar.item icon="users" href="{{ route('users.index') }}">
+                    Manajemen User
+                </flux:sidebar.item>
+            </flux:sidebar.group>
+            @endcan
+
         </flux:sidebar.nav>
 
 
