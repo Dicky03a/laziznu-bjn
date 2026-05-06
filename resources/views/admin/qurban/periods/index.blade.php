@@ -131,9 +131,6 @@
         </div>
         @empty
         <div class="bg-white rounded-2xl border border-gray-200 p-12 text-center">
-            <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span class="text-3xl">🐄</span>
-            </div>
             <p class="font-semibold text-gray-700 mb-1">Belum ada periode qurban</p>
             <p class="text-sm text-gray-400 mb-4">Buat periode qurban pertama untuk mulai menerima pendaftaran</p>
             <a href="{{ route('qurban.periods.create') }}"

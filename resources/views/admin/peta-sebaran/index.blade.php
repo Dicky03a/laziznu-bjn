@@ -28,7 +28,7 @@
                               <!-- Search Bar -->
                               <div>
                                     <label class="block text-sm font-semibold text-slate-900  mb-2">
-                                          🔍 Pencarian
+                                          Pencarian
                                     </label>
                                     <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari nama, email, telepon, atau kode transaksi..."
                                           class="w-full px-4 py-3 rounded-xl border border-slate-300  bg-white  text-slate-900  placeholder-slate-400  focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all">
@@ -175,9 +175,6 @@
                                           <tr>
                                                 <td colspan="8" class="px-6 py-12 text-center">
                                                       <div class="flex flex-col items-center justify-center">
-                                                            <svg class="w-16 h-16 text-slate-300  mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
-                                                            </svg>
                                                             <p class="text-slate-600  font-medium">Tidak ada data muzaki</p>
                                                             <p class="text-slate-500  text-sm mt-1">Coba ubah filter atau pencarian Anda</p>
                                                       </div>
@@ -271,11 +268,6 @@
                                           </p>
                                           <p class="text-xs text-slate-500  mt-2">Yang sudah dikonfirmasi</p>
                                     </div>
-                                    <div class="w-12 h-12 rounded-xl bg-blue-100  flex items-center justify-center">
-                                          <svg class="w-6 h-6 text-blue-600 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
-                                          </svg>
-                                    </div>
                               </div>
                         </div>
 
@@ -291,11 +283,6 @@
                                                 {{ 'Rp ' . number_format($totalDonasi, 0, ',', '.') }}
                                           </p>
                                     </div>
-                                    <div class="w-12 h-12 rounded-xl bg-emerald-100  flex items-center justify-center">
-                                          <svg class="w-6 h-6 text-emerald-600 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                          </svg>
-                                    </div>
                               </div>
                         </div>
 
@@ -309,11 +296,6 @@
                                           </p>
                                           <p class="text-xs text-slate-500  mt-2">Yang sudah terdaftar</p>
                                     </div>
-                                    <div class="w-12 h-12 rounded-xl bg-orange-100  flex items-center justify-center">
-                                          <svg class="w-6 h-6 text-orange-600 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                          </svg>
-                                    </div>
                               </div>
                         </div>
 
@@ -326,11 +308,6 @@
                                                 {{ $totalDesa }}
                                           </p>
                                           <p class="text-xs text-slate-500  mt-2">Di semua kecamatan</p>
-                                    </div>
-                                    <div class="w-12 h-12 rounded-xl bg-orange-100  flex items-center justify-center">
-                                          <svg class="w-6 h-6 text-orange-600 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5.217m0 0a1 1 0 00-.02 0m.02 0a5 5 0 010 .217m8.217 0H21" />
-                                          </svg>
                                     </div>
                               </div>
                         </div>

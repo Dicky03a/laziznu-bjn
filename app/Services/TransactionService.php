@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\PaymentConfirmation;
 use App\Models\Program;
 use App\Models\Setting;
 use App\Models\Transaction;
@@ -9,6 +10,76 @@ use Illuminate\Support\Facades\DB;
 
 class TransactionService
 {
+    /**
+     * Manual transaction creation by admin with direct confirmation.
+     */
+    public function manualCreate(array $data, int $adminId): Transaction
+    {
+        return DB::transaction(function () use ($data, $adminId) {
+            $metadata = $this->prepareMetadata($data);
+
+            $transaction = Transaction::create([
+                'kode_transaksi' => Transaction::generateKode($data['type']),
+                'type' => $data['type'],
+                'program_id' => $data['program_id'] ?? null,
+                'nama_donatur' => $data['nama_donatur'],
+                'email' => $data['email'] ?? null,
+                'telepon' => $data['telepon'] ?? null,
+                'kecamatan_id' => $data['kecamatan_id'] ?? null,
+                'desa_id' => $data['desa_id'] ?? null,
+                'is_anonim' => (bool) ($data['is_anonim'] ?? false),
+                'jumlah' => (int) $data['jumlah'],
+                'metadata' => $metadata,
+                'catatan' => $data['catatan'] ?? null,
+                'status' => Transaction::STATUS_CONFIRMED,
+                'confirmed_at' => now(),
+                'confirmed_by' => $adminId,
+            ]);
+
+            if (isset($data['bukti_transfer'])) {
+                $path = $data['bukti_transfer']->store('payment-confirmations/'.now()->format('Y/m'), 'public');
+
+                PaymentConfirmation::create([
+                    'transaction_id' => $transaction->id,
+                    'nama_pengirim' => $data['nama_donatur'],
+                    'bank_pengirim' => 'Manual Admin',
+                    'jumlah_transfer' => $data['jumlah'],
+                    'tanggal_transfer' => now(),
+                    'bukti_transfer' => $path,
+                ]);
+            }
+
+            return $transaction;
+        });
+    }
+
+    /**
+     * Prepare metadata based on transaction type.
+     */
+    protected function prepareMetadata(array $data): array
+    {
+        $metadata = [];
+        if ($data['type'] === 'zakat') {
+            if (($data['zakat_jenis'] ?? '') === 'mal') {
+                $metadata = [
+                    'jenis' => 'mal',
+                    'nilai_harta' => (int) ($data['nilai_harta'] ?? 0),
+                ];
+            } else {
+                $metadata = [
+                    'jenis' => 'fitrah',
+                    'jumlah_jiwa' => (int) ($data['jumlah_jiwa'] ?? 1),
+                ];
+            }
+        } elseif ($data['type'] === 'fidyah') {
+            $metadata = [
+                'jumlah_hari' => (int) ($data['jumlah_hari'] ?? 1),
+            ];
+        }
+
+        return $metadata;
+    }
+
     public function createZakat(array $data): Transaction
     {
         return DB::transaction(function () use ($data) {
@@ -162,5 +233,26 @@ class TransactionService
         ]);
 
         return $transaction->fresh();
+    }
+
+    /**
+     * Get transaction statistics for admin dashboard.
+     */
+    public function getTransactionStats(): array
+    {
+        $stats = Transaction::selectRaw('
+                count(case when status = "pending" then 1 end) as total_pending,
+                count(case when status = "confirmed" then 1 end) as total_confirmed,
+                count(case when date(created_at) = ? then 1 end) as total_today,
+                sum(case when status = "confirmed" then jumlah else 0 end) as total_nominal
+            ', [today()->toDateString()])
+            ->first();
+
+        return [
+            'total_pending' => $stats->total_pending ?? 0,
+            'total_confirmed' => $stats->total_confirmed ?? 0,
+            'total_today' => $stats->total_today ?? 0,
+            'total_nominal' => $stats->total_nominal ?? 0,
+        ];
     }
 }

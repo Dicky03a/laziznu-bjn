@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\PermissionRegistrar;
 
 class RoleSeeder extends Seeder
 {
@@ -14,16 +15,41 @@ class RoleSeeder extends Seeder
     public function run(): void
     {
         // Reset cached roles and permissions
-        app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
+        app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
         // Create permissions
-        Permission::firstOrCreate(['name' => 'manage-users']);
+        $permissions = [
+            'manage-users',
+            'manage-roles',
+            'manage-permissions',
+            'manage-mustahiks',
+            'manage-transactions',
+            'manage-programs',
+            'manage-qurban',
+            'manage-news',
+            'manage-reports',
+            'manage-settings',
+            'view-dashboard',
+        ];
 
-        // Create roles and assign created permissions
-        $superadmin = Role::firstOrCreate(['name' => 'superadmin']);
-        $superadmin->givePermissionTo('manage-users');
+        foreach ($permissions as $permission) {
+            Permission::firstOrCreate(['name' => $permission]);
+        }
 
-        Role::firstOrCreate(['name' => 'admin']);
-        Role::firstOrCreate(['name' => 'user']);
+        // Create roles and assign permissions
+        $superAdmin = Role::firstOrCreate(['name' => 'super-admin']);
+        // Super admin gets all permissions via Gate::before in AppServiceProvider
+        $superAdmin->syncPermissions(Permission::all());
+
+        $admin = Role::firstOrCreate(['name' => 'admin']);
+        // Admin gets all permissions except manage-users
+        $admin->syncPermissions(
+            Permission::where('name', '!=', 'manage-users')->get()
+        );
+
+        $user = Role::firstOrCreate(['name' => 'user']);
+        $user->syncPermissions([
+            'view-dashboard',
+        ]);
     }
 }

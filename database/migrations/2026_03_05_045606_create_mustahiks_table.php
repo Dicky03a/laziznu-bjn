@@ -18,7 +18,7 @@ return new class extends Migration
             $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);
             $table->foreignId('kecamatan_id')->constrained()->onDelete('cascade');
             $table->foreignId('desa_id')->constrained()->onDelete('cascade');
-            $table->string('no_hp', 15);
+            $table->string('no_hp')->nullable();
             $table->enum('kategori_asnaf', ['fakir', 'miskin', 'amil', 'muallaf', 'riqab', 'gharim', 'fisabilillah', 'ibnu_sabil']);
             $table->enum('status', ['aktif', 'nonaktif'])->default('aktif');
             $table->timestamps();

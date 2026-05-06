@@ -178,7 +178,6 @@
     </div>
     @empty
     <div class="sm:col-span-2 xl:col-span-3 bg-white rounded-2xl border border-gray-200 p-12 text-center">
-        <span class="text-5xl block mb-4">🐄</span>
         <p class="font-semibold text-gray-700 mb-1">Belum ada binatang terdaftar</p>
         <p class="text-sm text-gray-400 mb-4">Tambahkan binatang qurban untuk periode ini</p>
         <a href="{{ route('qurban.binatang.create') }}"

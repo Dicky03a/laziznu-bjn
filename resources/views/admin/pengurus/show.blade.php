@@ -18,50 +18,9 @@
             <!-- $1 -->
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
                   <!-- $1 -->
-                  <div class="h-24 bg-gradient-to-r from-emerald-600 to-teal-500"></div>
 
                   <div class="px-6 pb-6">
-                        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 -mt-12 mb-4">
-                              <!-- $1 -->
-                              <div class="w-24 h-24 rounded-full border-4 border-white shadow-md overflow-hidden bg-emerald-100 flex items-center justify-center shrink-0">
-                                    @if($pengurus->foto)
-                                    <img src="{{ $pengurus->foto_url }}" alt="{{ $pengurus->nama }}"
-                                          class="w-full h-full object-cover" />
-                                    @else
-                                    <span class="text-emerald-600 font-bold text-3xl">
-                                          {{ strtoupper(substr($pengurus->nama, 0, 1)) }}
-                                    </span>
-                                    @endif
-                              </div>
-
-                              <!-- $1 -->
-                              <div class="flex items-center gap-2">
-                                    <a href="{{ route('pengurus.edit', $pengurus) }}"
-                                          class="inline-flex items-center gap-1.5 bg-amber-500 hover:bg-amber-600 text-white text-sm font-medium px-4 py-2 rounded-lg transition">
-                                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                      d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                                          </svg>
-                                          Edit
-                                    </a>
-                                    <form method="POST"
-                                          action="{{ route('pengurus.destroy', $pengurus) }}"
-                                          onsubmit="return confirm('Hapus pengurus ini secara permanen?')">
-                                          @csrf @method('DELETE')
-                                          <button type="submit"
-                                                class="inline-flex items-center gap-1.5 bg-red-500 hover:bg-red-600 text-white text-sm font-medium px-4 py-2 rounded-lg transition">
-                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                                </svg>
-                                                Hapus
-                                          </button>
-                                    </form>
-                              </div>
-                        </div>
-
-                        <!-- $1 -->
-                        <div class="flex flex-wrap items-center gap-3">
+                        <div class="flex flex-wrap items-center mt-6 gap-3">
                               <h1 class="text-xl font-bold text-gray-900">{{ $pengurus->nama_lengkap }}</h1>
                               @if($pengurus->is_active)
                               <span class="inline-flex items-center gap-1 bg-emerald-100 text-emerald-700 text-xs font-semibold px-2.5 py-1 rounded-full">

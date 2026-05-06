@@ -111,15 +111,15 @@
                                           <dd class="font-semibold text-gray-900 mt-0.5">
 
                                                 @if(is_numeric($value))
-
-                                                @if(str_contains($key, 'persen'))
-                                                {{ $value }}%
+                                                      @if(str_contains($key, 'jumlah') || str_contains($key, 'hari') || str_contains($key, 'jiwa'))
+                                                            {{ $value }}
+                                                      @elseif(str_contains($key, 'persen'))
+                                                            {{ $value }}%
+                                                      @else
+                                                            Rp {{ number_format((int) $value, 0, ',', '.') }}
+                                                      @endif
                                                 @else
-                                                Rp {{ number_format((int) $value, 0, ',', '.') }}
-                                                @endif
-
-                                                @else
-                                                {{ $value }}
+                                                      {{ $value }}
                                                 @endif
 
                                           </dd>

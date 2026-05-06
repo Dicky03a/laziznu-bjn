@@ -24,11 +24,6 @@
                                           </p>
                                           <p class="text-xs text-slate-500 mt-2">Penerima zakat terdaftar</p>
                                     </div>
-                                    <div class="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center">
-                                          <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
-                                          </svg>
-                                    </div>
                               </div>
                         </div>
 
@@ -43,11 +38,6 @@
                                           <p class="text-xs text-slate-500 mt-2">
                                                 {{ $totalMustahik > 0 ? round(($totalAktif / $totalMustahik) * 100) : 0 }}% dari total
                                           </p>
-                                    </div>
-                                    <div class="w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center">
-                                          <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                          </svg>
                                     </div>
                               </div>
                         </div>
@@ -64,11 +54,6 @@
                                                 {{ $totalMustahik > 0 ? round(($totalNonaktif / $totalMustahik) * 100) : 0 }}% dari total
                                           </p>
                                     </div>
-                                    <div class="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center">
-                                          <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l-2-2m0 0l-2-2m2 2l2-2m-2 2l-2 2m6-6l2 2m0 0l2 2m-2-2l-2 2m2-2l2-2" />
-                                          </svg>
-                                    </div>
                               </div>
                         </div>
 
@@ -81,11 +66,6 @@
                                                 {{ $totalDesa }}
                                           </p>
                                           <p class="text-xs text-slate-500 mt-2">Jangkauan distribusi zakat</p>
-                                    </div>
-                                    <div class="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center">
-                                          <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5.217m0 0a1 1 0 00-.02 0m.02 0a5 5 0 010 .217m8.217 0H21" />
-                                          </svg>
                                     </div>
                               </div>
                         </div>
@@ -114,7 +94,7 @@
                               <!-- Search Bar -->
                               <div>
                                     <label class="block text-sm font-semibold text-slate-900 mb-2">
-                                          🔍 Pencarian
+                                          Pencarian
                                     </label>
                                     <input type="text" name="search" value="{{ request('search') }}"
                                           placeholder="Cari nama, NIK, atau nomor telepon..."
@@ -309,9 +289,6 @@
                                           <tr>
                                                 <td colspan="8" class="px-6 py-12 text-center">
                                                       <div class="flex flex-col items-center justify-center">
-                                                            <svg class="w-16 h-16 text-slate-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
-                                                            </svg>
                                                             <p class="text-slate-600 font-medium">Tidak ada data mustahik</p>
                                                             <p class="text-slate-500 text-sm mt-1">Coba ubah filter atau pencarian Anda</p>
                                                       </div>
@@ -324,7 +301,7 @@
 
                         <!-- Pagination -->
                         @if ($mustahiks->hasPages())
-                        <div class="px-6 py-4 border-t border-slate-200 bg-slate-50">
+                        <div class="px-6 py-4 border-t border-slate-200 bg-sla      te-50">
                               <div class="flex items-center justify-between">
                                     <div class="text-sm text-slate-600">
                                           Menampilkan <strong>{{ ($mustahiks->currentPage() - 1) * $mustahiks->perPage() + 1 }}</strong> sampai

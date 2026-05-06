@@ -28,8 +28,7 @@ class MustahikRequest extends FormRequest
             'kecamatan_id' => ['required', 'integer', 'exists:kecamatans,id'],
             'desa_id' => ['required', 'integer', 'exists:desas,id'],
             'no_hp' => [
-                'required',
-                'string',
+                'nullable',
                 'max:15',
                 'regex:/^(\+62|0)[0-9]{9,12}$/',
             ],
@@ -60,10 +59,6 @@ class MustahikRequest extends FormRequest
 
             'desa_id.required' => 'Desa wajib dipilih',
             'desa_id.exists' => 'Desa tidak ditemukan',
-
-            'no_hp.required' => 'Nomor HP wajib diisi',
-            'no_hp.regex' => 'Format nomor HP tidak valid (081234567890 atau +6281234567890)',
-            'no_hp.max' => 'Nomor HP terlalu panjang',
 
             'kategori_asnaf.required' => 'Kategori asnaf wajib dipilih',
             'kategori_asnaf.in' => 'Kategori asnaf tidak valid',

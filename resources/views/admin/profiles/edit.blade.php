@@ -32,9 +32,6 @@
                         <!-- Profile Info Banner -->
                         <div class="bg-slate-50  px-8 py-4 border-b border-slate-200 ">
                               <div class="flex items-center gap-3">
-                                    <div class="w-12 h-12 bg-emerald-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                                          <span class="text-white font-bold text-lg">{{ substr($profile->title, 0, 2) }}</span>
-                                    </div>
                                     <div>
                                           <p class="font-semibold text-slate-900 ">{{ $profile->title }}</p>
                                           <p class="text-xs text-slate-500 ">ID: #{{ $profile->id }}</p>
@@ -182,9 +179,6 @@
                                     <div class="flex items-center justify-between">
                                           <div>
                                                 <h3 class="text-lg font-semibold text-slate-900  flex items-center gap-2">
-                                                      <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                      </svg>
                                                       Misi Organisasi
                                                 </h3>
                                                 <p class="text-sm text-slate-600  mt-1">Tambahkan misi-misi organisasi</p>
@@ -213,9 +207,6 @@
                                     <div class="flex items-center justify-between">
                                           <div>
                                                 <h3 class="text-lg font-semibold text-slate-900  flex items-center gap-2">
-                                                      <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                                                      </svg>
                                                       Pilar Program
                                                 </h3>
                                                 <p class="text-sm text-slate-600  mt-1">Tambahkan pilar-pilar program organisasi</p>

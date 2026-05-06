@@ -68,7 +68,7 @@
 
             <!-- $1 -->
             <div>
-                  <img src="{{ asset('asset/hero.png') }}"
+                  <img src="{{ asset('asset/hero.webp') }}"
                         class="rounded-2xl shadow-2xl w-full"
                         alt="Profil">
             </div>

@@ -109,41 +109,48 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('dashboard', fn () => view('dashboard'))->name('dashboard');
 
-    // Export Reports
-    Route::get('laporan/export-dskl', [ExportReportController::class, 'exportDskl'])->name('laporan.export-dskl');
-    Route::get('laporan/export-infaq-shodaqah', [ExportReportController::class, 'exportInfaqShodaqah'])->name('laporan.export-infaq-shodaqah');
+    // Users Management
+    Route::middleware('can:manage-users')->group(function () {
+        Route::resource('users', UserController::class);
+    });
 
-    Route::resource('profiles', AdminProfileController::class);
-    Route::resource('rekenings', AdminRekeningController::class);
-    Route::resource('news', AdminNewsController::class)->except('show');
-    Route::resource('dokumens', AdminDokumenController::class);
+    // Mustahik Management
+    Route::middleware('can:manage-mustahiks')->group(function () {
+        Route::resource('mustahiks', MustahikController::class);
 
-    // Program management
-    Route::resource('programs', ProgramController::class);
-    Route::patch('programs/{program}/toggle-active', [ProgramController::class, 'toggleActive'])
-        ->name('programs.toggle-active');
-    Route::get('program/settings', [SettingControllerProgram::class, 'index'])->name('program.edit');
-    Route::put('settings/program', [SettingControllerProgram::class, 'update'])->name('program.settings');
+        Route::get('/mustahiks/getDesa/{kecamatan_id}', [MustahikController::class, 'getDesa'])
+            ->name('mustahiks.getDesa');
 
-    // Transaction management
-    Route::get('transactions', [TransactionController::class, 'index'])->name('transactions.index');
-    Route::get('transactions/export', [TransactionController::class, 'export'])->name('transactions.export');
-    Route::get('transactions/{transaction}', [TransactionController::class, 'show'])->name('transactions.show');
-    Route::post('transactions/{transaction}/confirm', [TransactionController::class, 'confirm'])->name('transactions.confirm');
-    Route::post('transactions/{transaction}/reject', [TransactionController::class, 'reject'])->name('transactions.reject');
-    Route::get('transactions/{transaction}/reminder', [TransactionController::class, 'reminder'])->name('transactions.reminder');
+        Route::get('/mustahiks/filterByKategori/{kategori}', [MustahikController::class, 'filterByKategori'])
+            ->name('mustahiks.filterByKategori');
 
-    // Pengurus management
-    Route::resource('pengurus', PengurusController::class)
-        ->parameters(['pengurus' => 'pengurus']);
-    Route::patch('pengurus/{pengurus}/toggle-status', [PengurusController::class, 'toggleStatus'])
-        ->name('pengurus.toggle-status');
-    Route::delete('pengurus/{pengurus}/foto', [PengurusController::class, 'destroyFoto'])
-        ->name('pengurus.destroy-foto');
+        Route::get('/mustahiks/statistik', [MustahikController::class, 'statistik'])
+            ->name('mustahiks.statistik');
+    });
 
-    // Qurban management
-    Route::prefix('qurban')->name('qurban.')->group(function () {
+    // Transaction Management
+    Route::middleware('can:manage-transactions')->group(function () {
+        Route::get('transactions', [TransactionController::class, 'index'])->name('transactions.index');
+        Route::get('transactions/create', [TransactionController::class, 'create'])->name('transactions.create');
+        Route::post('transactions', [TransactionController::class, 'store'])->name('transactions.store');
+        Route::get('transactions/export', [TransactionController::class, 'export'])->name('transactions.export');
+        Route::get('transactions/{transaction}', [TransactionController::class, 'show'])->name('transactions.show');
+        Route::post('transactions/{transaction}/confirm', [TransactionController::class, 'confirm'])->name('transactions.confirm');
+        Route::post('transactions/{transaction}/reject', [TransactionController::class, 'reject'])->name('transactions.reject');
+        Route::get('transactions/{transaction}/reminder', [TransactionController::class, 'reminder'])->name('transactions.reminder');
+    });
 
+    // Program Management
+    Route::middleware('can:manage-programs')->group(function () {
+        Route::resource('programs', ProgramController::class);
+        Route::patch('programs/{program}/toggle-active', [ProgramController::class, 'toggleActive'])
+            ->name('programs.toggle-active');
+        Route::get('program/settings', [SettingControllerProgram::class, 'index'])->name('program.edit');
+        Route::put('settings/program', [SettingControllerProgram::class, 'update'])->name('program.settings');
+    });
+
+    // Qurban Management
+    Route::middleware('can:manage-qurban')->prefix('qurban')->name('qurban.')->group(function () {
         Route::resource('periods', QurbanPeriodController::class)->names('periods');
         Route::patch('periods/{period}/toggle-active', [QurbanPeriodController::class, 'toggleActive'])
             ->name('periods.toggle-active');
@@ -157,6 +164,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
         Route::get('registrations', [QurbanRegistrationController::class, 'index'])
             ->name('registrations.index');
+        Route::get('registrations/create', [QurbanRegistrationController::class, 'create'])
+            ->name('registrations.create');
+        Route::post('registrations', [QurbanRegistrationController::class, 'store'])
+            ->name('registrations.store');
         Route::get('registrations/export', [QurbanRegistrationController::class, 'export'])
             ->name('registrations.export');
         Route::get('registrations/{registration}', [QurbanRegistrationController::class, 'show'])
@@ -169,34 +180,45 @@ Route::middleware(['auth', 'verified'])->group(function () {
             ->name('registrations.reminder');
     });
 
-    Route::resource('laporan-bulanan', AdminLaporanBulananController::class)
-        ->parameters(['laporan-bulanan' => 'laporanBulanan']);
-
-    Route::resource('laporan-mwc', AdminLaporanMwcController::class)
-        ->parameters(['laporan-mwc' => 'laporanMwc']);
-
-    Route::resource('laporan-tahunans', LaporanTahunanController::class)
-        ->parameters(['laporan-tahunans' => 'laporanTahunan']);
-
-    Route::prefix('peta-sebaran')->name('peta-sebaran.')->group(function () {
-        Route::get('/', [PetaSebaranController::class, 'index'])->name('index');
-        Route::get('/export', [PetaSebaranController::class, 'exportExcel'])->name('export');
-        Route::get('/desa', [PetaSebaranController::class, 'getDesa'])->name('getDesa');
+    // News Management
+    Route::middleware('can:manage-news')->group(function () {
+        Route::resource('news', AdminNewsController::class)->except('show');
     });
 
-    Route::resource('mustahiks', MustahikController::class);
+    // Reports Management
+    Route::middleware('can:manage-reports')->group(function () {
+        Route::get('laporan/export-dskl', [ExportReportController::class, 'exportDskl'])->name('laporan.export-dskl');
+        Route::get('laporan/export-infaq-shodaqah', [ExportReportController::class, 'exportInfaqShodaqah'])->name('laporan.export-infaq-shodaqah');
 
-    Route::resource('users', UserController::class)
-        ->middleware(['auth', 'verified']);
+        Route::resource('laporan-bulanan', AdminLaporanBulananController::class)
+            ->parameters(['laporan-bulanan' => 'laporanBulanan']);
 
-    Route::get('/mustahiks/getDesa/{kecamatan_id}', [MustahikController::class, 'getDesa'])
-        ->name('mustahiks.getDesa');
+        Route::resource('laporan-mwc', AdminLaporanMwcController::class)
+            ->parameters(['laporan-mwc' => 'laporanMwc']);
 
-    Route::get('/mustahiks/filterByKategori/{kategori}', [MustahikController::class, 'filterByKategori'])
-        ->name('mustahiks.filterByKategori');
+        Route::resource('laporan-tahunans', LaporanTahunanController::class)
+            ->parameters(['laporan-tahunans' => 'laporanTahunan']);
+    });
 
-    Route::get('/mustahiks/statistik', [MustahikController::class, 'statistik'])
-        ->name('mustahiks.statistik');
+    // Settings Management
+    Route::middleware('can:manage-settings')->group(function () {
+        Route::resource('profiles', AdminProfileController::class);
+        Route::resource('rekenings', AdminRekeningController::class);
+        Route::resource('dokumens', AdminDokumenController::class);
+
+        Route::resource('pengurus', PengurusController::class)
+            ->parameters(['pengurus' => 'pengurus']);
+        Route::patch('pengurus/{pengurus}/toggle-status', [PengurusController::class, 'toggleStatus'])
+            ->name('pengurus.toggle-status');
+        Route::delete('pengurus/{pengurus}/foto', [PengurusController::class, 'destroyFoto'])
+            ->name('pengurus.destroy-foto');
+
+        Route::prefix('peta-sebaran')->name('peta-sebaran.')->group(function () {
+            Route::get('/', [PetaSebaranController::class, 'index'])->name('index');
+            Route::get('/export', [PetaSebaranController::class, 'exportExcel'])->name('export');
+            Route::get('/desa', [PetaSebaranController::class, 'getDesa'])->name('getDesa');
+        });
+    });
 });
 
 require __DIR__.'/settings.php';

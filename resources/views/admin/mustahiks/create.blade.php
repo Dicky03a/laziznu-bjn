@@ -132,12 +132,11 @@
                               <!-- No HP -->
                               <div>
                                     <label for="no_hp" class="block text-sm font-semibold text-slate-900  mb-2">
-                                          Nomor HP <span class="text-red-500">*</span>
+                                          Nomor HP
                                     </label>
                                     <input type="tel" id="no_hp" name="no_hp" value="{{ old('no_hp') }}"
                                           placeholder="081234567890"
-                                          class="w-full px-4 py-2.5 bg-slate-50  border @error('no_hp') border-red-500 @else border-slate-300  @enderror rounded-lg text-slate-900  placeholder-slate-500  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                                          required>
+                                          class="w-full px-4 py-2.5 bg-slate-50  border @error('no_hp') border-red-500 @else border-slate-300  @enderror rounded-lg text-slate-900  placeholder-slate-500  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
                                     @error('no_hp')
                                     <p class="text-red-600  text-sm mt-1">{{ $message }}</p>
                                     @enderror
@@ -221,7 +220,7 @@
                               try {
 
                                     const response = await fetch(
-                                          `/mustahiks/desa/${this.kecamatanId}`
+                                          `/mustahiks/getDesa/${this.kecamatanId}`
                                     );
 
                                     const data = await response.json();

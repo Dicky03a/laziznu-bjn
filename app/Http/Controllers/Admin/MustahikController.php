@@ -105,9 +105,8 @@ class MustahikController extends Controller
     public function create()
     {
         $kecamatans = Kecamatan::orderBy('nama')->get();
-        $desas = Desa::orderBy('nama')->get();
 
-        return view('admin.mustahiks.create', compact('kecamatans', 'desas'));
+        return view('admin.mustahiks.create', compact('kecamatans'));
     }
 
     public function store(MustahikRequest $request)
@@ -128,9 +127,8 @@ class MustahikController extends Controller
     public function edit(Mustahik $mustahik)
     {
         $kecamatans = Kecamatan::orderBy('nama')->get();
-        $desas = Desa::orderBy('nama')->get();
 
-        return view('admin.mustahiks.edit', compact('mustahik', 'kecamatans', 'desas'));
+        return view('admin.mustahiks.edit', compact('mustahik', 'kecamatans'));
     }
 
     public function update(MustahikRequest $request, Mustahik $mustahik)

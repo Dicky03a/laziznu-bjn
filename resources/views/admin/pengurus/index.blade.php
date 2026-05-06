@@ -92,7 +92,7 @@
                         <table class="min-w-full divide-y divide-gray-200 text-sm">
                               <thead>
                                     <tr class="bg-gray-50 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                                          <th class="px-4 py-3 w-10">#</th>
+                                          <th class="px-4 py-3 w-10">No</th>
                                           <th class="px-4 py-3">Pengurus</th>
                                           <th class="px-4 py-3">Jabatan</th>
                                           <th class="px-4 py-3">Periode</th>
@@ -111,16 +111,6 @@
                                           <!-- $1 -->
                                           <td class="px-4 py-3">
                                                 <div class="flex items-center gap-3">
-                                                      <div class="w-10 h-10 rounded-full overflow-hidden bg-emerald-100 flex items-center justify-center shrink-0">
-                                                            @if($p->foto)
-                                                            <img src="{{ $p->foto_url }}" alt="{{ $p->nama }}"
-                                                                  class="w-full h-full object-cover" />
-                                                            @else
-                                                            <span class="text-emerald-600 font-bold text-sm">
-                                                                  {{ strtoupper(substr($p->nama, 0, 1)) }}
-                                                            </span>
-                                                            @endif
-                                                      </div>
                                                       <div>
                                                             <p class="font-semibold text-gray-900">{{ $p->nama_lengkap }}</p>
                                                             @if($p->email)

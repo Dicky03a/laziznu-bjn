@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\TransactionRequest;
+use App\Models\Kecamatan;
+use App\Models\Program;
 use App\Models\Transaction;
 use App\Services\TransactionService;
 use App\Services\WhatsAppReminderService;
@@ -32,14 +35,29 @@ class TransactionController extends Controller
             ->paginate(20)
             ->withQueryString();
 
-        $stats = [
-            'total_pending' => Transaction::pending()->count(),
-            'total_confirmed' => Transaction::confirmed()->count(),
-            'total_today' => Transaction::whereDate('created_at', today())->count(),
-            'total_nominal' => Transaction::confirmed()->sum('jumlah'),
-        ];
+        $stats = $this->transactionService->getTransactionStats();
 
         return view('admin.transactions.index', compact('transactions', 'stats'));
+    }
+
+    public function create()
+    {
+        $programs = Program::active()->get();
+        $kecamatans = Kecamatan::orderBy('nama')->get();
+
+        return view('admin.transactions.create', compact('programs', 'kecamatans'));
+    }
+
+    public function store(TransactionRequest $request)
+    {
+        $transaction = $this->transactionService->manualCreate(
+            $request->validated(),
+            auth()->id()
+        );
+
+        return redirect()
+            ->route('transactions.show', $transaction)
+            ->with('success', 'Transaksi berhasil dibuat secara manual.');
     }
 
     public function show(Transaction $transaction)
