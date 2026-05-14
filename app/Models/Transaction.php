@@ -77,8 +77,8 @@ class Transaction extends Model
 
     const TYPE_PREFIXES = [
         'zakat' => 'ZKT',
-        'infaq' => 'IFQ',
-        'donasi' => 'DNS',
+        'infaq' => 'DSKL',
+        'donasi' => 'INFQ',
         'fidyah' => 'FDY',
     ];
 

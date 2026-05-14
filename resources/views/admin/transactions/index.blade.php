@@ -113,17 +113,34 @@
                                     </td>
                                     <td class="px-5 py-4">
                                           @php
-                                          $typeColors = ['zakat' => 'emerald', 'infaq' => 'blue', 'donasi' => 'purple', 'fidyah' => 'amber'];
+                                          $typeColors = [
+                                          'zakat' => 'emerald',
+                                          'infaq' => 'blue',
+                                          'donasi' => 'purple',
+                                          'fidyah' => 'amber'
+                                          ];
                                           $color = $typeColors[$trx->type] ?? 'gray';
                                           @endphp
+
                                           <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-{{ $color }}-100 text-{{ $color }}-700">
-                                                {{ $trx->type_label }}
+
+                                                {{
+            $trx->type === 'infaq' ? 'DSKL' :
+            ($trx->type === 'donasi' ? 'Infaq dan Sodakoh' : $trx->type_label)
+        }}
+
                                           </span>
+
                                           @if($trx->subtype)
-                                          <span class="ml-1 text-xs text-gray-400">({{ $trx->subtype }})</span>
+                                          <span class="ml-1 text-xs text-gray-400">
+                                                ({{ $trx->subtype }})
+                                          </span>
                                           @endif
+
                                           @if($trx->program)
-                                          <p class="text-xs text-gray-400 mt-0.5 truncate max-w-32">{{ $trx->program->nama }}</p>
+                                          <p class="text-xs text-gray-400 mt-0.5 truncate max-w-32">
+                                                {{ $trx->program->nama }}
+                                          </p>
                                           @endif
                                     </td>
                                     <td class="px-5 py-4 text-right">

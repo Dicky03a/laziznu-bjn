@@ -27,7 +27,15 @@ class TransactionRequest extends FormRequest
             'bukti_transfer' => ['nullable', 'image', 'max:2048'],
 
             // Metadata for zakat
-            'zakat_jenis' => ['nullable', 'required_if:type,zakat', 'in:mal,fitrah'],
+            'zakat_jenis' => [
+                'nullable',
+                'in:mal,fitrah',
+                function ($attribute, $value, $fail) {
+                    if ($this->type === 'zakat' && ! $value && ! $this->program_id) {
+                        $fail('Jenis zakat atau Program harus dipilih untuk transaksi Zakat.');
+                    }
+                },
+            ],
             'nilai_harta' => ['nullable', 'required_if:zakat_jenis,mal', 'numeric', 'min:0'],
             'jumlah_jiwa' => ['nullable', 'required_if:zakat_jenis,fitrah', 'integer', 'min:1'],
 

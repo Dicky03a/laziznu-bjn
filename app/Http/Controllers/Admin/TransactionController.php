@@ -22,15 +22,15 @@ class TransactionController extends Controller
     {
         $transactions = Transaction::query()
             ->with(['program', 'paymentConfirmation', 'kecamatan', 'desa'])
-            ->when($request->type, fn ($q) => $q->ofType($request->type))
-            ->when($request->status, fn ($q) => $q->withStatus($request->status))
-            ->when($request->search, fn ($q) => $q->where(function ($q2) use ($request) {
-                $q2->where('kode_transaksi', 'like', '%'.$request->search.'%')
-                    ->orWhere('nama_donatur', 'like', '%'.$request->search.'%')
-                    ->orWhere('email', 'like', '%'.$request->search.'%');
+            ->when($request->type, fn($q) => $q->ofType($request->type))
+            ->when($request->status, fn($q) => $q->withStatus($request->status))
+            ->when($request->search, fn($q) => $q->where(function ($q2) use ($request) {
+                $q2->where('kode_transaksi', 'like', '%' . $request->search . '%')
+                    ->orWhere('nama_donatur', 'like', '%' . $request->search . '%')
+                    ->orWhere('email', 'like', '%' . $request->search . '%');
             }))
-            ->when($request->tanggal_dari, fn ($q) => $q->whereDate('created_at', '>=', $request->tanggal_dari))
-            ->when($request->tanggal_sampai, fn ($q) => $q->whereDate('created_at', '<=', $request->tanggal_sampai))
+            ->when($request->tanggal_dari, fn($q) => $q->whereDate('created_at', '>=', $request->tanggal_dari))
+            ->when($request->tanggal_sampai, fn($q) => $q->whereDate('created_at', '<=', $request->tanggal_sampai))
             ->latest()
             ->paginate(20)
             ->withQueryString();
@@ -117,14 +117,14 @@ class TransactionController extends Controller
     {
         $transactions = Transaction::query()
             ->with(['program', 'kecamatan', 'desa'])
-            ->when($request->type, fn ($q) => $q->ofType($request->type))
-            ->when($request->status, fn ($q) => $q->withStatus($request->status))
-            ->when($request->tanggal_dari, fn ($q) => $q->whereDate('created_at', '>=', $request->tanggal_dari))
-            ->when($request->tanggal_sampai, fn ($q) => $q->whereDate('created_at', '<=', $request->tanggal_sampai))
+            ->when($request->type, fn($q) => $q->ofType($request->type))
+            ->when($request->status, fn($q) => $q->withStatus($request->status))
+            ->when($request->tanggal_dari, fn($q) => $q->whereDate('created_at', '>=', $request->tanggal_dari))
+            ->when($request->tanggal_sampai, fn($q) => $q->whereDate('created_at', '<=', $request->tanggal_sampai))
             ->latest()
             ->get();
 
-        $filename = 'transaksi-laziznu-'.now()->format('Y-m-d').'.csv';
+        $filename = 'transaksi-laziznu-' . now()->format('Y-m-d') . '.csv';
 
         $headers = [
             'Content-Type' => 'text/csv',
@@ -132,7 +132,9 @@ class TransactionController extends Controller
         ];
 
         $callback = function () use ($transactions) {
+
             $file = fopen('php://output', 'w');
+
             fputcsv($file, [
                 'Kode',
                 'Tanggal',
@@ -146,20 +148,126 @@ class TransactionController extends Controller
                 'Dikonfirmasi',
             ]);
 
+            $totalDana = 0;
+            $totalDSKL = 0;
+            $totalInfaqSodakoh = 0;
+            $totalZakat = 0;
+            $totalZakatProgram = 0;
+
             foreach ($transactions as $t) {
+
+                // Label Jenis
+                $typeLabel =
+                    $t->type === 'infaq'
+                    ? 'DSKL'
+                    : (
+                        $t->type === 'donasi'
+                        ? 'Infaq dan Sodakoh'
+                        : (
+                            $t->type === 'zakat' && $t->program_id
+                            ? 'Zakat Program'
+                            : (
+                                $t->type === 'zakat'
+                                ? 'Zakat'
+                                : $t->type_label
+                            )
+                        )
+                    );
+
+                // Total keseluruhan
+                $totalDana += $t->jumlah;
+
+                // Total DSKL
+                if ($t->type === 'infaq') {
+                    $totalDSKL += $t->jumlah;
+                }
+
+                // Total Infaq & Sodakoh
+                if ($t->type === 'donasi') {
+                    $totalInfaqSodakoh += $t->jumlah;
+                }
+
+                // Total Zakat Program
+                if ($t->type === 'zakat' && $t->program_id) {
+                    $totalZakatProgram += $t->jumlah;
+                }
+
+                // Total Zakat Biasa
+                if ($t->type === 'zakat' && !$t->program_id) {
+                    $totalZakat += $t->jumlah;
+                }
+
                 fputcsv($file, [
                     $t->kode_transaksi,
                     $t->created_at->format('d/m/Y H:i'),
-                    $t->type_label.($t->subtype ? " ({$t->subtype})" : ''),
+                    $typeLabel . ($t->subtype ? " ({$t->subtype})" : ''),
                     $t->program?->nama ?? '-',
                     $t->nama_tampil,
                     $t->email ?? '-',
                     $t->telepon ?? '-',
-                    $t->jumlah,
+                    'Rp ' . number_format($t->jumlah, 0, ',', '.'),
                     $t->status_label,
                     $t->confirmed_at?->format('d/m/Y H:i') ?? '-',
                 ]);
             }
+
+
+            fputcsv($file, []);
+
+            fputcsv($file, [
+                '',
+                '',
+                '',
+                '',
+                '',
+                '',
+                'TOTAL DANA DSKL',
+                'Rp ' . number_format($totalDSKL, 0, ',', '.'),
+            ]);
+
+            fputcsv($file, [
+                '',
+                '',
+                '',
+                '',
+                '',
+                '',
+                'TOTAL DANA INFAQ & SODAKOH',
+                'Rp ' . number_format($totalInfaqSodakoh, 0, ',', '.'),
+            ]);
+
+            fputcsv($file, [
+                '',
+                '',
+                '',
+                '',
+                '',
+                '',
+                'TOTAL DANA ZAKAT',
+                'Rp ' . number_format($totalZakat, 0, ',', '.'),
+            ]);
+
+            fputcsv($file, [
+                '',
+                '',
+                '',
+                '',
+                '',
+                '',
+                'TOTAL DANA ZAKAT PROGRAM',
+                'Rp ' . number_format($totalZakatProgram, 0, ',', '.'),
+            ]);
+
+            fputcsv($file, [
+                '',
+                '',
+                '',
+                '',
+                '',
+                '',
+                'TOTAL KESELURUHAN',
+                'Rp ' . number_format($totalDana, 0, ',', '.'),
+            ]);
 
             fclose($file);
         };

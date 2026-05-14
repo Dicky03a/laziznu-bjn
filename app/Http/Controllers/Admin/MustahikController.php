@@ -117,13 +117,6 @@ class MustahikController extends Controller
             ->with('success', 'Data mustahik berhasil ditambahkan');
     }
 
-    public function show(Mustahik $mustahik)
-    {
-        $mustahik->load(['kecamatan', 'desa']);
-
-        return view('admin.mustahiks.show', compact('mustahik'));
-    }
-
     public function edit(Mustahik $mustahik)
     {
         $kecamatans = Kecamatan::orderBy('nama')->get();

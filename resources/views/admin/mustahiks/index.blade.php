@@ -259,13 +259,6 @@
                                                 </td>
                                                 <td class="px-6 py-4 text-right">
                                                       <div class="flex items-center justify-end gap-2">
-                                                            <a href="{{ route('mustahiks.show', $item) }}" class="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-cyan-600 hover:bg-cyan-50 rounded-lg transition-colors">
-                                                                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                                                                  </svg>
-                                                                  Lihat
-                                                            </a>
                                                             <a href="{{ route('mustahiks.edit', $item) }}" class="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">
                                                                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
@@ -393,13 +386,29 @@
                   @endif
 
                   <!-- Statistik Per Kecamatan -->
-                  <div class="bg-white rounded-2xl shadow-lg border border-slate-200 p-6">
-                        <h2 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                              </svg>
-                              Statistik Per Kecamatan
-                        </h2>
+                  <div class="bg-white rounded-2xl shadow-lg border border-slate-200 p-6" x-data="{ searchKecamatan: '' }">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                              <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                    </svg>
+                                    Statistik Per Kecamatan
+                              </h2>
+
+                              <div class="relative w-full md:w-72">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                          <svg class="h-5 w-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                          </svg>
+                                    </div>
+                                    <input 
+                                          type="text" 
+                                          x-model="searchKecamatan"
+                                          placeholder="Cari kecamatan..." 
+                                          class="block w-full pl-10 pr-3 py-2 border border-slate-200 rounded-xl leading-5 bg-slate-50 placeholder-slate-400 focus:outline-none focus:placeholder-slate-300 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-all"
+                                    >
+                              </div>
+                        </div>
 
                         <div class="overflow-x-auto">
                               <table class="w-full">
@@ -413,7 +422,10 @@
                                     </thead>
                                     <tbody class="divide-y divide-slate-200">
                                           @forelse ($statistikKecamatan as $stat)
-                                          <tr class="hover:bg-slate-50 transition-colors">
+                                          <tr 
+                                                class="hover:bg-slate-50 transition-colors data-row"
+                                                x-show="'{{ addslashes(strtolower($stat->nama)) }}'.includes(searchKecamatan.toLowerCase())"
+                                          >
                                                 <td class="px-6 py-4 font-medium text-slate-900">
                                                       {{ $stat->nama }}
                                                 </td>
@@ -440,6 +452,18 @@
                                                 </td>
                                           </tr>
                                           @endforelse
+
+                                          <!-- No results found row -->
+                                          <tr x-show="searchKecamatan !== '' && Array.from($el.parentElement.querySelectorAll('.data-row')).filter(el => el.style.display !== 'none').length === 0" style="display: none;">
+                                                <td colspan="4" class="px-6 py-8 text-center text-slate-500">
+                                                      <div class="flex flex-col items-center gap-2">
+                                                            <svg class="w-8 h-8 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                            </svg>
+                                                            <p>Kecamatan "<span x-text="searchKecamatan" class="font-semibold"></span>" tidak ditemukan</p>
+                                                      </div>
+                                                </td>
+                                          </tr>
                                     </tbody>
                               </table>
                         </div>

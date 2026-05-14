@@ -17,7 +17,10 @@
         x-data="transactionForm({
             programs: @js($programs),
             oldKecamatan: @js(old('kecamatan_id')),
-            oldDesa: @js(old('desa_id'))
+            oldDesa: @js(old('desa_id')),
+            oldProgramId: @js(old('program_id')),
+            oldZakatJenis: @js(old('zakat_jenis')),
+            oldType: @js(old('type', 'zakat'))
         })">
         @csrf
 
@@ -50,12 +53,20 @@
                         <button type="button" @click="type = '{{ $t }}'"
                             :class="type === '{{ $t }}' ? 'border-emerald-500 bg-emerald-50 ring-2 ring-emerald-500' : 'border-gray-200 hover:border-emerald-300'"
                             class="relative p-4 text-center rounded-2xl border-2 transition-all duration-200">
+
                             <span x-show="type === '{{ $t }}'" class="absolute top-2 right-2 w-4 h-4 bg-emerald-500 rounded-full flex items-center justify-center">
                                 <svg class="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
                                 </svg>
                             </span>
-                            <p class="font-bold text-gray-900 capitalize">{{ $t }}</p>
+
+                            <p class="font-bold text-gray-900 capitalize">
+                                {{
+                $t === 'infaq' ? 'DSKL' :
+                ($t === 'donasi' ? 'Infaq dan Sodakoh' : $t)
+            }}
+                            </p>
+
                         </button>
                         @endforeach
                     </div>
@@ -71,19 +82,19 @@
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Program -->
-                        <div x-show="type !== 'fidyah'">
+                        <!-- Program (Only for Infaq & Donasi) -->
+                        <div x-show="type === 'infaq' || type === 'donasi'">
                             <label class="block text-sm font-medium text-gray-700 mb-1.5">Program <span class="text-gray-400 font-normal">(opsional)</span></label>
-                            <select name="program_id" class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-emerald-500 outline-none">
+                            <select name="program_id" x-model="programId" class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-emerald-500 outline-none">
                                 <option value="">Pilih Program</option>
                                 <template x-for="p in filteredPrograms" :key="p.id">
-                                    <option :value="p.id" x-text="p.nama"></option>
+                                    <option :value="p.id" x-text="p.nama" :selected="p.id == programId"></option>
                                 </template>
                             </select>
                         </div>
 
                         <!-- Nominal -->
-                        <div>
+                        <div :class="(type === 'infaq' || type === 'donasi') ? '' : 'md:col-span-2'">
                             <label class="block text-sm font-medium text-gray-700 mb-1.5">Jumlah (Rp) <span class="text-red-500">*</span></label>
                             <div class="relative">
                                 <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 font-semibold text-sm">Rp</span>
@@ -96,26 +107,46 @@
                     <!-- Zakat Metadata -->
                     <div x-show="type === 'zakat'" class="p-4 bg-emerald-50 rounded-xl border border-emerald-100 space-y-4">
                         <div>
-                            <label class="block text-sm font-medium text-emerald-800 mb-2">Jenis Zakat</label>
-                            <div class="flex gap-4">
-                                <label class="flex items-center gap-2 cursor-pointer">
-                                    <input type="radio" name="zakat_jenis" value="fitrah" x-model="zakatJenis" class="text-emerald-600 focus:ring-emerald-500">
-                                    <span class="text-sm text-emerald-700">Fitrah</span>
-                                </label>
-                                <label class="flex items-center gap-2 cursor-pointer">
-                                    <input type="radio" name="zakat_jenis" value="mal" x-model="zakatJenis" class="text-emerald-600 focus:ring-emerald-500">
-                                    <span class="text-sm text-emerald-700">Maal (Harta)</span>
-                                </label>
+                            <label class="block text-sm font-medium text-emerald-800 mb-2">Pilih Jenis Zakat</label>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                <button type="button" @click="zakatMode = 'fitrah'; zakatJenis = 'fitrah'; programId = ''"
+                                    :class="zakatMode === 'fitrah' ? 'bg-emerald-600 text-white shadow-md' : 'bg-white text-emerald-700 border border-emerald-200 hover:bg-emerald-50'"
+                                    class="px-4 py-2 rounded-lg text-sm font-semibold transition-all">
+                                    Zakat Fitrah
+                                </button>
+                                <button type="button" @click="zakatMode = 'mal'; zakatJenis = 'mal'; programId = ''"
+                                    :class="zakatMode === 'mal' ? 'bg-emerald-600 text-white shadow-md' : 'bg-white text-emerald-700 border border-emerald-200 hover:bg-emerald-50'"
+                                    class="px-4 py-2 rounded-lg text-sm font-semibold transition-all">
+                                    Zakat Mal
+                                </button>
+                                <button type="button" @click="zakatMode = 'program'; zakatJenis = ''"
+                                    :class="zakatMode === 'program' ? 'bg-emerald-600 text-white shadow-md' : 'bg-white text-emerald-700 border border-emerald-200 hover:bg-emerald-50'"
+                                    class="px-4 py-2 rounded-lg text-sm font-semibold transition-all">
+                                    Zakat Program
+                                </button>
                             </div>
+                            <input type="hidden" name="zakat_jenis" :value="zakatJenis">
                         </div>
 
-                        <div x-show="zakatJenis === 'fitrah'">
+                        <!-- Zakat Program Dropdown -->
+                        <div x-show="zakatMode === 'program'" class="pt-2 animate-in fade-in slide-in-from-top-2">
+                            <label class="block text-sm font-medium text-emerald-800 mb-1.5">Pilih Program Zakat <span class="text-red-500">*</span></label>
+                            <select name="program_id" x-model="programId" :required="type === 'zakat' && zakatMode === 'program'"
+                                class="w-full px-4 py-2 rounded-lg border border-emerald-200 text-sm focus:ring-2 focus:ring-emerald-500 outline-none">
+                                <option value="">-- Pilih Program Zakat --</option>
+                                <template x-for="p in filteredPrograms" :key="p.id">
+                                    <option :value="p.id" x-text="p.nama" :selected="p.id == programId"></option>
+                                </template>
+                            </select>
+                        </div>
+
+                        <div x-show="zakatMode === 'fitrah'" class="animate-in fade-in slide-in-from-top-2">
                             <label class="block text-sm font-medium text-emerald-800 mb-1.5">Jumlah Jiwa</label>
                             <input type="number" name="jumlah_jiwa" value="{{ old('jumlah_jiwa', 1) }}" min="1"
                                 class="w-full max-w-[150px] px-4 py-2 rounded-lg border border-emerald-200 text-sm focus:ring-2 focus:ring-emerald-500 outline-none">
                         </div>
 
-                        <div x-show="zakatJenis === 'mal'">
+                        <div x-show="zakatMode === 'mal'" class="animate-in fade-in slide-in-from-top-2">
                             <label class="block text-sm font-medium text-emerald-800 mb-1.5">Nilai Harta (Rp)</label>
                             <input type="number" name="nilai_harta" value="{{ old('nilai_harta') }}" min="0"
                                 class="w-full px-4 py-2 rounded-lg border border-emerald-200 text-sm focus:ring-2 focus:ring-emerald-500 outline-none">
@@ -193,7 +224,7 @@
                 <!-- Bukti Transfer -->
                 <div class="bg-white rounded-2xl border border-gray-200 p-6">
                     <h3 class="font-semibold text-gray-900 text-sm mb-4">Bukti Transfer <span class="text-gray-400 font-normal">(opsional)</span></h3>
-                    
+
                     <label class="block w-full cursor-pointer">
                         <div class="border-2 border-dashed border-gray-300 rounded-xl p-6 text-center hover:border-emerald-400 hover:bg-emerald-50 transition-all">
                             <svg class="w-8 h-8 text-gray-300 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -228,8 +259,10 @@
     <script>
         function transactionForm(data) {
             return {
-                type: '{{ old('type', 'zakat') }}',
-                zakatJenis: '{{ old('zakat_jenis', 'fitrah') }}',
+                type: data.oldType || 'zakat',
+                zakatJenis: data.oldZakatJenis || (data.oldType === 'zakat' && !data.oldProgramId ? 'fitrah' : ''),
+                zakatMode: '', // Will be initialized in init
+                programId: data.oldProgramId || '',
                 kecamatanId: data.oldKecamatan || '',
                 desaId: data.oldDesa || '',
                 programs: data.programs,
@@ -238,9 +271,36 @@
                 filePreview: null,
 
                 init() {
+                    // Initialize zakatMode based on old values
+                    if (this.type === 'zakat') {
+                        if (this.programId) {
+                            this.zakatMode = 'program';
+                        } else if (this.zakatJenis === 'mal') {
+                            this.zakatMode = 'mal';
+                        } else {
+                            this.zakatMode = 'fitrah';
+                            this.zakatJenis = 'fitrah';
+                        }
+                    } else {
+                        this.zakatMode = 'fitrah'; // default
+                    }
+
                     if (this.kecamatanId) {
                         this.fetchDesa();
                     }
+
+                    // Watch type changes
+                    this.$watch('type', (value) => {
+                        if (value !== 'zakat') {
+                            this.zakatJenis = '';
+                        } else {
+                            // Reset to fitrah when switching back to zakat if nothing selected
+                            if (!this.zakatMode) {
+                                this.zakatMode = 'fitrah';
+                                this.zakatJenis = 'fitrah';
+                            }
+                        }
+                    });
                 },
 
                 get filteredPrograms() {

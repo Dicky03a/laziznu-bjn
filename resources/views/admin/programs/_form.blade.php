@@ -83,7 +83,7 @@
                                     </svg>
                               </span>
 
-                              <p class="font-bold text-gray-900 mb-1 leading-tight">Infaq Shodaqoh Peduli </p>
+                              <p class="font-bold text-gray-900 mb-1 leading-tight">Infaq Shodaqoh Peduli Bencana</p>
                               <p class="text-[10px] text-gray-500 leading-relaxed">
                                     Program Infaq Peduli Bencana dengan <strong>target dana</strong>.
                               </p>

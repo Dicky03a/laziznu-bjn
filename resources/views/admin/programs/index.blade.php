@@ -32,7 +32,7 @@
                         <select name="type" class="px-3 py-2 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:ring-emerald-500">
                               <option value="">Semua</option>
                               <option value="infaq" {{ request('type') === 'infaq' ? 'selected' : '' }}>DSKL</option>
-                              <option value="donasi" {{ request('type') === 'donasi' ? 'selected' : '' }}>Infaq & Donasi</option>
+                              <option value="donasi" {{ request('type') === 'donasi' ? 'selected' : '' }}>Infaq & Sodakoh</option>
                               <option value="zakat" {{ request('type') === 'zakat' ? 'selected' : '' }}>Zakat</option>
                         </select>
                   </div>
@@ -89,11 +89,19 @@
                                     </td>
                                     <td class="px-5 py-4">
                                           <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold
-                                {{ $program->type === 'infaq' ? 'bg-emerald-100 text-emerald-700' : 'bg-emerald-100 text-emerald-700' }}">
-                                                {{ ucfirst($program->type) }}
+        {{ $program->type === 'infaq' ? 'bg-emerald-100 text-emerald-700' : 'bg-emerald-100 text-emerald-700' }}">
+
+                                                {{
+            $program->type === 'infaq' ? 'DSKL' :
+            ($program->type === 'donasi' ? 'Infaq dan Sodakoh' : ucfirst($program->type))
+        }}
+
                                           </span>
+
                                           @if($program->is_featured)
-                                          <span class="ml-1 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-amber-100 text-amber-700">⭐ Featured</span>
+                                          <span class="ml-1 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-amber-100 text-amber-700">
+                                                ⭐ Featured
+                                          </span>
                                           @endif
                                     </td>
                                     <td class="px-5 py-4 text-right">

@@ -65,7 +65,17 @@ class TransactionService
                     'jenis' => 'mal',
                     'nilai_harta' => (int) ($data['nilai_harta'] ?? 0),
                 ];
+            } elseif (($data['zakat_jenis'] ?? '') === 'fitrah') {
+                $metadata = [
+                    'jenis' => 'fitrah',
+                    'jumlah_jiwa' => (int) ($data['jumlah_jiwa'] ?? 1),
+                ];
+            } elseif (! empty($data['program_id'])) {
+                $metadata = [
+                    'jenis' => 'program',
+                ];
             } else {
+                // Fallback to fitrah if no jenis and no program (though validation should prevent this)
                 $metadata = [
                     'jenis' => 'fitrah',
                     'jumlah_jiwa' => (int) ($data['jumlah_jiwa'] ?? 1),
