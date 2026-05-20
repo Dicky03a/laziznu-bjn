@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreInfaqRequest;
+use App\Models\Kecamatan;
 use App\Models\Program;
 use App\Services\TransactionService;
 
@@ -32,6 +33,8 @@ class InfaqController extends Controller
             ->where('slug', $slug)
             ->firstOrFail();
 
+        $kecamatans = Kecamatan::orderBy('nama')->get();
+
         $riwayatDonasi = $program->confirmedTransactions()
             ->latest()
             ->take(10)
@@ -42,6 +45,7 @@ class InfaqController extends Controller
 
         return view('pages.public.infaq.show', compact(
             'program',
+            'kecamatans',
             'riwayatDonasi',
             'totalTerkumpul',
             'totalDonatur'

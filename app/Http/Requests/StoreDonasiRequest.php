@@ -18,7 +18,8 @@ class StoreDonasiRequest extends FormRequest
             'nama_donatur' => ['required', 'string', 'max:100'],
             'email' => ['nullable', 'email', 'max:100'],
             'telepon' => ['nullable', 'string', 'max:20'],
-            'alamat' => ['nullable', 'string', 'max:500'],
+            'kecamatan_id' => ['required', 'exists:kecamatans,id'],
+            'desa_id' => ['required', 'exists:desas,id'],
             'is_anonim' => ['nullable', 'boolean'],
             'catatan' => ['nullable', 'string', 'max:500'],
         ];
@@ -30,6 +31,8 @@ class StoreDonasiRequest extends FormRequest
             'jumlah.required' => 'Masukkan jumlah donasi.',
             'jumlah.min' => 'Minimal donasi Rp 1.000.',
             'nama_donatur.required' => 'Nama wajib diisi.',
+            'kecamatan_id.required' => 'Kecamatan wajib dipilih.',
+            'desa_id.required' => 'Desa wajib dipilih.',
         ];
     }
 }

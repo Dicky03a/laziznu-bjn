@@ -145,7 +145,7 @@
                     </div>
                     @endif
 
-                    <form action="{{ route($program->type . '.store', $program->slug) }}" method="POST" data-payment-form="infaq">
+                    <form action="{{ route($program->type . '.store', $program->slug) }}" method="POST" data-payment-form="infaq" x-data="locationSelector()">
                         @csrf
 
                         <!-- $1 -->
@@ -207,6 +207,47 @@
                                     placeholder="08xxxxxxxxxx"
                                     class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500">
                             </div>
+
+                            <!-- Kecamatan -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1.5">Kecamatan <span class="text-red-500">*</span></label>
+                                <select name="kecamatan_id"
+                                    x-model="kecamatanId"
+                                    @change="loadDesa()"
+                                    class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500 bg-white text-gray-900 @error('kecamatan_id') border-red-500 @enderror"
+                                    required>
+                                    <option value="">-- Pilih Kecamatan --</option>
+                                    @forelse ($kecamatans as $kecamatan)
+                                    <option value="{{ $kecamatan->id }}" {{ old('kecamatan_id') == $kecamatan->id ? 'selected' : '' }}>
+                                        {{ $kecamatan->nama }}
+                                    </option>
+                                    @empty
+                                    <option disabled>Tidak ada kecamatan</option>
+                                    @endforelse
+                                </select>
+                                @error('kecamatan_id')
+                                <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <!-- $1 -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1.5">Desa / Kelurahan <span class="text-red-500">*</span></label>
+                                <select name="desa_id"
+                                    x-model="desaId"
+                                    :disabled="!desas.length"
+                                    class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500 bg-white text-gray-900 disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed @error('desa_id') border-red-500 @enderror"
+                                    required>
+                                    <option value="">-- Pilih Desa --</option>
+                                    <template x-for="desa in desas" :key="desa.id">
+                                        <option :value="desa.id" x-text="desa.nama"></option>
+                                    </template>
+                                </select>
+                                @error('desa_id')
+                                <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+                                @enderror
+                            </div>
+
                             <div class="sm:col-span-2">
                                 <label class="block text-sm font-medium text-gray-700 mb-1.5">Doa / Catatan (opsional)</label>
                                 <textarea name="catatan" rows="2"
@@ -319,6 +360,41 @@
 
 @push('scripts')
 <script>
+    function locationSelector() {
+        return {
+            kecamatanId: '{{ old("kecamatan_id") }}',
+            desaId: '{{ old("desa_id") }}',
+            desas: [],
+
+            async loadDesa() {
+                if (!this.kecamatanId) {
+                    this.desas = [];
+                    this.desaId = '';
+                    return;
+                }
+
+                try {
+                    const response = await fetch(`{{ url('/zakat/desa') }}/${this.kecamatanId}`);
+                    if (response.ok) {
+                        this.desas = await response.json();
+                        if (!this.desaId || !this.desas.find(d => d.id == this.desaId)) {
+                            this.desaId = '';
+                        }
+                    }
+                } catch (error) {
+                    console.error('Error loading desa:', error);
+                    this.desas = [];
+                }
+            },
+
+            init() {
+                if (this.kecamatanId) {
+                    this.loadDesa();
+                }
+            }
+        }
+    }
+
     function setNominal(amount) {
         document.getElementById('jumlah_input').value = amount;
         document.getElementById('summary-nominal').textContent = 'Rp ' + amount.toLocaleString('id-ID');

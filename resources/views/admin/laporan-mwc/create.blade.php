@@ -51,7 +51,7 @@
                                     </label>
                                     <input type="text" id="nama" name="nama"
                                           value="{{ old('nama') }}"
-                                          placeholder="Contoh: Laporan Tahunan 2024"
+                                          placeholder="Contoh: Laporan MWC 2024"
                                           required
                                           class="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 @error('nama') border-red-400 @enderror">
                                     <p class="mt-1 text-xs text-gray-400">Berikan nama deskriptif dan cantumkan tahun agar mudah dicari</p>

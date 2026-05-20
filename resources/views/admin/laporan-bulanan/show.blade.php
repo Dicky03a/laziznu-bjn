@@ -13,7 +13,7 @@
                         <h1 class="text-2xl font-bold text-gray-900">{{ $laporanBulanan->nama_laporan }}</h1>
                         <p class="text-sm text-gray-500 mt-0.5 flex items-center gap-1.5">
                               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2-2v12a2 2 0 002 2z" />
                               </svg>
                               Diupload {{ $laporanBulanan->created_at->format('d M Y') }}
                         </p>
@@ -21,7 +21,7 @@
             </div>
             <div class="flex items-center gap-2 flex-wrap">
                   @if($laporanBulanan->file_laporan)
-                  <a href="{{ asset('storage/laporan-bulanan/' . $laporanBulanan->file_laporan) }}"
+                  <a href="{{ asset('pdfjs/web/viewer.html') }}?file={{ asset('storage/laporan-bulanan/' . $laporanBulanan->file_laporan) }}"
                         target="_blank" rel="noopener noreferrer"
                         class="inline-flex items-center gap-2 px-3 py-2 text-sm border border-gray-300 text-gray-600 rounded-lg hover:bg-gray-50 transition-colors">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -73,7 +73,7 @@
 
                         <!-- $1 -->
                         <iframe
-                              src="{{ asset('storage/laporan-bulanan/' . $laporanBulanan->file_laporan) }}"
+                              src="{{ asset('pdfjs/web/viewer.html') }}?file={{ asset('storage/laporan-bulanan/' . $laporanBulanan->file_laporan) }}"
                               class="w-full border-none"
                               style="height: calc(100vh - 220px); min-height: 500px;"
                               loading="lazy">
@@ -94,7 +94,7 @@
                                     <span class="font-medium truncate max-w-xs">{{ $laporanBulanan->file_laporan }}</span>
                               </div>
                               <div class="flex gap-2 flex-shrink-0">
-                                    <a href="{{ asset('storage/laporan-bulanan/' . $laporanBulanan->file_laporan) }}"
+                                    <a href="{{ asset('pdfjs/web/viewer.html') }}?file={{ asset('storage/laporan-bulanan/' . $laporanBulanan->file_laporan) }}"
                                           target="_blank" rel="noopener noreferrer"
                                           class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs border border-gray-300 text-gray-600 rounded-lg hover:bg-white transition-colors">
                                           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -193,7 +193,7 @@
                                     </svg>
                                     Unduh PDF
                               </a>
-                              <a href="{{ asset('storage/laporan-bulanan/' . $laporanBulanan->file_laporan) }}"
+                              <a href="{{ asset('pdfjs/web/viewer.html') }}?file={{ asset('storage/laporan-bulanan/' . $laporanBulanan->file_laporan) }}"
                                     target="_blank" rel="noopener noreferrer"
                                     class="w-full py-2.5 border border-gray-300 text-gray-700 font-semibold rounded-lg text-sm hover:bg-gray-50 transition-colors flex items-center justify-center gap-2">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

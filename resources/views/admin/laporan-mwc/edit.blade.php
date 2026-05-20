@@ -9,7 +9,7 @@
                   </svg>
             </a>
             <div>
-                  <h1 class="text-2xl font-bold text-gray-900">Edit Laporan Tahunan</h1>
+                  <h1 class="text-2xl font-bold text-gray-900">Edit Laporan MWC</h1>
                   <p class="text-sm text-gray-500 mt-0.5">{{ $laporanMwc->nama }}</p>
             </div>
       </div>
@@ -51,7 +51,7 @@
                                     </label>
                                     <input type="text" id="nama" name="nama"
                                           value="{{ old('nama', $laporanMwc->nama) }}"
-                                          placeholder="Contoh: Laporan Tahunan 2024"
+                                          placeholder="Contoh: Laporan MWC 2024"
                                           required
                                           class="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 @error('nama') border-red-400 @enderror">
                                     @error('nama')
@@ -234,7 +234,7 @@
                         </div>
                         <div class="p-5">
                               <p class="text-xs text-gray-600 mb-3">Menghapus laporan tidak dapat dibatalkan.</p>
-                              <form method="POST" action="{{ route('laporan-bulanan.destroy', $laporanMwc->id) }}"
+                              <form method="POST" action="{{ route('laporan-mwc.destroy', $laporanMwc->id) }}"
                                     onsubmit="return confirm('Yakin ingin menghapus laporan ini? Tindakan ini tidak dapat dibatalkan.')">
                                     @csrf @method('DELETE')
                                     <button type="submit"

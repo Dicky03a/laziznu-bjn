@@ -9,7 +9,7 @@
     <flux:sidebar sticky collapsible="mobile" class="border-e border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
         <flux:sidebar.header>
             <!-- <x-app-logo :sidebar="true" href="{{ route('dashboard') }}" wire:navigate /> -->
-            <div class="flex items-center gap-1">
+            <div class="flex items-center ml-8 gap-1">
                 <img src="{{ asset('asset/laziznulogo.svg') }}" alt="Logo NU Care" class="h-12 w-auto">
                 <div class="">
                     <h2 class="font-bold text-xs text-green-800">NU CARE Lazisnu</h2>

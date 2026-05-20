@@ -13,7 +13,7 @@
                         <h1 class="text-2xl font-bold text-gray-900">{{ $laporanMwc->nama }}</h1>
                         <p class="text-sm text-gray-500 mt-0.5 flex items-center gap-1.5">
                               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2-2v12a2 2 0 002 2z" />
                               </svg>
                               Diupload {{ $laporanMwc->created_at->format('d M Y') }}
                         </p>
@@ -21,7 +21,7 @@
             </div>
             <div class="flex items-center gap-2 flex-wrap">
                   @if($laporanMwc->file_laporan)
-                  <a href="{{ asset('storage/laporan-mwc/' . $laporanMwc->file_laporan) }}"
+                  <a href="{{ asset('pdfjs/web/viewer.html') }}?file={{ asset('storage/laporan-mwc/' . $laporanMwc->file_laporan) }}"
                         target="_blank" rel="noopener noreferrer"
                         class="inline-flex items-center gap-2 px-3 py-2 text-sm border border-gray-300 text-gray-600 rounded-lg hover:bg-gray-50 transition-colors">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -73,13 +73,13 @@
 
                         <!-- $1 -->
                         <iframe
-                              src="{{ asset('storage/laporan-mwc/' . $laporanMwc->file_laporan) }}"
+                              src="{{ asset('pdfjs/web/viewer.html') }}?file={{ asset('storage/laporan-mwc/' . $laporanMwc->file_laporan) }}"
                               class="w-full border-none"
                               style="height: calc(100vh - 220px); min-height: 500px;"
                               loading="lazy">
                               <div class="p-8 text-center text-gray-500">
                                     <p class="text-sm">Browser Anda tidak mendukung tampilan PDF langsung.</p>
-                                    <a href="{{ asset('storage/laporan-bulanan/' . $laporanMwc->file_laporan) }}"
+                                    <a href="{{ asset('storage/laporan-mwc/' . $laporanMwc->file_laporan) }}"
                                           class="mt-2 inline-flex items-center gap-1 text-blue-600 hover:underline text-sm">
                                           Klik di sini untuk membuka file
                                     </a>
@@ -94,7 +94,7 @@
                                     <span class="font-medium truncate max-w-xs">{{ $laporanMwc->file_laporan }}</span>
                               </div>
                               <div class="flex gap-2 flex-shrink-0">
-                                    <a href="{{ asset('storage/laporan-bulanan/' . $laporanMwc->file_laporan) }}"
+                                    <a href="{{ asset('pdfjs/web/viewer.html') }}?file={{ asset('storage/laporan-mwc/' . $laporanMwc->file_laporan) }}"
                                           target="_blank" rel="noopener noreferrer"
                                           class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs border border-gray-300 text-gray-600 rounded-lg hover:bg-white transition-colors">
                                           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -102,7 +102,7 @@
                                           </svg>
                                           Buka
                                     </a>
-                                    <a href="{{ asset('storage/laporan-bulanan/' . $laporanMwc->file_laporan) }}"
+                                    <a href="{{ asset('storage/laporan-mwc/' . $laporanMwc->file_laporan) }}"
                                           download
                                           class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors">
                                           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -122,7 +122,7 @@
                         </div>
                         <h3 class="font-bold text-gray-700 mb-1">Belum Ada File PDF</h3>
                         <p class="text-sm text-gray-500 mb-4">File belum diunggah untuk laporan ini.</p>
-                        <a href="{{ route('laporan-bulanan.edit', $laporanMwc->id) }}"
+                        <a href="{{ route('laporan-mwc.edit', $laporanMwc->id) }}"
                               class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-lg transition-colors">
                               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
@@ -144,7 +144,7 @@
                         <div class="p-5 space-y-3 text-sm">
                               <div>
                                     <p class="text-xs text-gray-400 uppercase tracking-wide font-medium mb-1">Nama Laporan</p>
-                                    <p class="font-semibold text-gray-900">{{ $laporanMwc->nama_laporan }}</p>
+                                    <p class="font-semibold text-gray-900">{{ $laporanMwc->nama }}</p>
                               </div>
                               <div class="border-t border-gray-100 pt-3">
                                     <p class="text-xs text-gray-400 uppercase tracking-wide font-medium mb-1">Status File</p>
@@ -185,7 +185,7 @@
                         </div>
                         <div class="p-5 space-y-2.5">
                               @if($laporanMwc->file_laporan)
-                              <a href="{{ asset('storage/laporan-bulanan/' . $laporanMwc->file_laporan) }}"
+                              <a href="{{ asset('storage/laporan-mwc/' . $laporanMwc->file_laporan) }}"
                                     download
                                     class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg text-sm transition-colors flex items-center justify-center gap-2">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -193,7 +193,7 @@
                                     </svg>
                                     Unduh PDF
                               </a>
-                              <a href="{{ asset('storage/laporan-bulanan/' . $laporanMwc->file_laporan) }}"
+                              <a href="{{ asset('pdfjs/web/viewer.html') }}?file={{ asset('storage/laporan-mwc/' . $laporanMwc->file_laporan) }}"
                                     target="_blank" rel="noopener noreferrer"
                                     class="w-full py-2.5 border border-gray-300 text-gray-700 font-semibold rounded-lg text-sm hover:bg-gray-50 transition-colors flex items-center justify-center gap-2">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -202,14 +202,14 @@
                                     Buka di Tab Baru
                               </a>
                               @endif
-                              <a href="{{ route('laporan-bulanan.edit', $laporanMwc->id) }}"
+                              <a href="{{ route('laporan-mwc.edit', $laporanMwc->id) }}"
                                     class="w-full py-2.5 border border-amber-300 text-amber-700 font-semibold rounded-lg text-sm hover:bg-amber-50 transition-colors flex items-center justify-center gap-2">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                     </svg>
                                     Edit Laporan
                               </a>
-                              <form method="POST" action="{{ route('laporan-bulanan.destroy', $laporanMwc->id) }}"
+                              <form method="POST" action="{{ route('laporan-mwc.destroy', $laporanMwc->id) }}"
                                     onsubmit="return confirm('Yakin ingin menghapus laporan ini? Tindakan ini tidak dapat dibatalkan.')">
                                     @csrf @method('DELETE')
                                     <button type="submit"

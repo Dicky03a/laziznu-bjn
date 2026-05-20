@@ -249,11 +249,11 @@
                                                 <td class="px-6 py-4">
                                                       @if($item->status === 'aktif')
                                                       <span class="inline-flex px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700">
-                                                            ✓ Aktif
+                                                            Aktif
                                                       </span>
                                                       @else
                                                       <span class="inline-flex px-3 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-700">
-                                                            ✗ Nonaktif
+                                                            Nonaktif
                                                       </span>
                                                       @endif
                                                 </td>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreDonasiRequest;
+use App\Models\Kecamatan;
 use App\Models\Program;
 use App\Services\TransactionService;
 
@@ -32,6 +33,8 @@ class DonasiController extends Controller
             ->where('slug', $slug)
             ->firstOrFail();
 
+        $kecamatans = Kecamatan::orderBy('nama')->get();
+
         $riwayatDonasi = $program->confirmedTransactions()->latest()->take(10)->get();
         $totalTerkumpul = $program->total_terkumpul;
         $totalDonatur = $program->total_donatur;
@@ -39,6 +42,7 @@ class DonasiController extends Controller
 
         return view('pages.public.donasi.show', compact(
             'program',
+            'kecamatans',
             'riwayatDonasi',
             'totalTerkumpul',
             'totalDonatur',

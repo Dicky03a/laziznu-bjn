@@ -11,7 +11,7 @@
                               Laporan Tahunan
                         </h1>
                         <p class="text-lg text-slate-600  max-w-2xl mx-auto">
-                              Akses laporan dan informasi tahunan kami. Pilih kategori untuk melihat detail laporan.
+                              Formulir laporan tahunan untuk memberikan gambaran lengkap tentang kegiatan, keuangan, dan dampak yang telah dicapai oleh NU CARE Lazisnu Bojonegoro selama setahun terakhir.
                         </p>
                   </div>
             </div>
@@ -27,14 +27,13 @@
                         <a href="{{ $laporan->link_from }}" target="_blank" rel="noopener noreferrer"
                               class="group relative block">
 
-                              <div class="relative h-20 bg-gradient-to-br from-emerald-500 to-emerald-700 rounded-lg shadow-md hover:shadow-lg transform transition-all duration-200 hover:scale-105 flex items-center justify-center overflow-hidden">
+                              <div class="relative h-20 rounded-lg border-4 flex items-center justify-center overflow-hidden">
                                     <div class="relative z-10 flex items-center justify-center px-2">
-                                          <h3 class="text-center font-semibold text-amber-200 text-xl group-hover:text-white transition-colors duration-200">
+                                          <h3 class="text-center font-semibold text-black  text-xl">
                                                 {{ $laporan->nama }}
                                           </h3>
                                     </div>
-                                    <div class="absolute inset-0 bg-emerald-900/0 group-hover:bg-emerald-900/20 transition-colors duration-200">
-                                    </div>
+                                    
                               </div>
                         </a>
                         @endforeach

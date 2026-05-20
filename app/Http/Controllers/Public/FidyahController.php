@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreFidyahRequest;
+use App\Models\Kecamatan;
 use App\Models\Setting;
 use App\Models\Transaction;
 use App\Services\TransactionService;
@@ -21,7 +22,9 @@ class FidyahController extends Controller
         $totalTerkumpul = Transaction::ofType('fidyah')->confirmed()->sum('jumlah');
         $totalMembayar = Transaction::ofType('fidyah')->confirmed()->count();
 
-        return view('pages.public.fidyah.index', compact('hargaPerHari', 'totalTerkumpul', 'totalMembayar'));
+        $kecamatans = Kecamatan::orderBy('nama')->get();
+
+        return view('pages.public.fidyah.index', compact('hargaPerHari', 'totalTerkumpul', 'totalMembayar', 'kecamatans'));
     }
 
     public function store(StoreFidyahRequest $request)

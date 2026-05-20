@@ -149,11 +149,11 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
             </div>
-            <h3 class="text-lg font-bold text-gray-900 mb-1">Belum Ada Laporan Tahunan</h3>
+            <h3 class="text-lg font-bold text-gray-900 mb-1">Belum Ada Laporan MWC</h3>
             <p class="text-sm text-gray-500 mb-6 max-w-sm mx-auto">
-                  Mulai buat laporan bulanan pertama untuk mengelola data dengan lebih terorganisir.
+                  Mulai buat laporan MWC pertama untuk mengelola data dengan lebih terorganisir.
             </p>
-            <a href="{{ route('laporan-bulanan.create') }}"
+            <a href="{{ route('laporan-mwc.create') }}"
                   class="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-lg transition-colors shadow-sm">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
