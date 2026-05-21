@@ -1,5 +1,5 @@
 @extends('layouts.public.app')
-@section('title', 'Berita - LAZISNU Jepara')
+@section('title', 'Berita - LAZISNU Bojonegoro')
 
 @section('content')
 <div class="min-h-screen bg-gradient-to-b from-blue-50  to-white ">
@@ -10,7 +10,7 @@
                         Berita Terbaru
                   </h1>
                   <p class="text-base sm:text-lg text-emerald-100 max-w-2xl mx-auto">
-                        Dapatkan informasi terbaru seputar kegiatan, program, dan berita terkini dari LAZISNU Jepara.
+                        Dapatkan informasi terbaru seputar kegiatan, program, dan berita terkini dari LAZISNU Bojonegoro.
                   </p>
             </div>
       </section>

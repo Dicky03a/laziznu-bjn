@@ -1,5 +1,5 @@
 @extends('layouts.public.app')
-@section('title', $news->title . ' - LAZISNU Jepara')
+@section('title', $news->title . ' - LAZISNU Bojonegoro')
 
 @section('content')
 <article class="min-h-screen bg-gray-50 ">
