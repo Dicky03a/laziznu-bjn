@@ -8,7 +8,7 @@
                               Peta Sebaran Muzaki
                         </h1>
                         <p class="mt-2 text-slate-600 ">
-                              Visualisasi distribusi muzaki berdasarkan lokasi geografis (kecamatan & desa)
+                              Visualisasi distribusi muzaki berdasarkan lokasi geografis
                         </p>
                   </div>
 
@@ -18,9 +18,6 @@
                   <!-- Filter & Search Section -->
                   <div class="bg-white  rounded-2xl shadow-lg border border-slate-200  p-6">
                         <h2 class="text-xl font-bold text-slate-900  mb-6 flex items-center gap-2">
-                              <svg class="w-6 h-6 text-emerald-600 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
-                              </svg>
                               Filter & Pencarian Data
                         </h2>
 
@@ -89,9 +86,6 @@
                         <!-- Table Header with Export -->
                         <div class="px-6 py-4 border-b border-slate-200  bg-slate-50  flex items-center justify-between">
                               <h2 class="text-lg font-bold text-slate-900  flex items-center gap-2">
-                                    <svg class="w-6 h-6 text-blue-600 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                                    </svg>
                                     Data Muzaki {{ $muzakis->total() > 0 ? '(' . $muzakis->total() . ')' : '' }}
                               </h2>
 
@@ -206,9 +200,6 @@
                   @if (request('kecamatan_id') && $statistikDesa->count() > 0)
                   <div class="bg-white  rounded-2xl shadow-lg border border-slate-200  p-6">
                         <h2 class="text-xl font-bold text-slate-900  mb-6 flex items-center gap-2">
-                              <svg class="w-6 h-6 text-purple-600 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                              </svg>
                               Statistik Per Desa - {{ $kecamatans->find(request('kecamatan_id'))->nama ?? '' }}
                         </h2>
 
@@ -219,7 +210,7 @@
                                                 <th class="px-6 py-3 text-left text-sm font-semibold text-slate-900 ">Desa</th>
                                                 <th class="px-6 py-3 text-right text-sm font-semibold text-slate-900 ">Total Muzaki</th>
                                                 <th class="px-6 py-3 text-right text-sm font-semibold text-slate-900 ">Total Mustahik</th>
-                                                <th class="px-6 py-3 text-right text-sm font-semibold text-slate-900 ">Total Donasi</th>
+                                                <th class="px-6 py-3 text-right text-sm font-semibold text-slate-900 ">Total Dana</th>
                                                 <th class="px-6 py-3 text-right text-sm font-semibold text-slate-900 ">Rata-rata Donasi</th>
                                           </tr>
                                     </thead>
@@ -275,7 +266,7 @@
                         <div class="bg-white  rounded-2xl shadow-lg border border-slate-200  p-6 hover:shadow-xl transition-shadow">
                               <div class="flex items-start justify-between">
                                     <div>
-                                          <p class="text-slate-600  text-sm font-medium">Total Donasi</p>
+                                          <p class="text-slate-600  text-sm font-medium">Total Dana</p>
                                           <p class="text-3xl font-bold text-slate-900  mt-2">
                                                 <span class="text-lg">Rp</span> {{ number_format($totalDonasi / 1_000_000, 1) }}M
                                           </p>
@@ -315,9 +306,6 @@
                   <!-- Statistik by Kecamatan (Section) -->
                   <div class="bg-white  rounded-2xl shadow-lg border border-slate-200  p-6">
                         <h2 class="text-xl font-bold text-slate-900  mb-6 flex items-center gap-2">
-                              <svg class="w-6 h-6 text-blue-600 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                              </svg>
                               Statistik Per Kecamatan
                         </h2>
 
@@ -328,7 +316,7 @@
                                                 <th class="px-6 py-3 text-left text-sm font-semibold text-slate-900 ">Kecamatan</th>
                                                 <th class="px-6 py-3 text-right text-sm font-semibold text-slate-900 ">Total Muzaki</th>
                                                 <th class="px-6 py-3 text-right text-sm font-semibold text-slate-900 ">Total Mustahik</th>
-                                                <th class="px-6 py-3 text-right text-sm font-semibold text-slate-900 ">Total Donasi</th>
+                                                <th class="px-6 py-3 text-right text-sm font-semibold text-slate-900 ">Total Dana</th>
                                                 <th class="px-6 py-3 text-right text-sm font-semibold text-slate-900 ">Rata-rata Donasi</th>
                                           </tr>
                                     </thead>

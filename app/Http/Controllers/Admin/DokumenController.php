@@ -31,7 +31,7 @@ class DokumenController extends Controller
 
         $data['file'] = $file->storeAs(
             'dokumens',
-            Str::uuid() . '.' . $file->getClientOriginalExtension(),
+            Str::uuid().'.'.$file->getClientOriginalExtension(),
             'public'
         );
 
@@ -70,7 +70,7 @@ class DokumenController extends Controller
 
             $data['file'] = $file->storeAs(
                 'dokumens',
-                Str::uuid() . '.' . $file->getClientOriginalExtension(),
+                Str::uuid().'.'.$file->getClientOriginalExtension(),
                 'public'
             );
 
@@ -103,7 +103,7 @@ class DokumenController extends Controller
 
         return Storage::disk('public')->download(
             $dokumen->file,
-            $dokumen->nama_dokumen . '.' . pathinfo($dokumen->file, PATHINFO_EXTENSION)
+            $dokumen->nama_dokumen.'.'.pathinfo($dokumen->file, PATHINFO_EXTENSION)
         );
     }
 }

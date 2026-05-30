@@ -2,8 +2,8 @@
 
       <div class="flex items-center justify-between mb-6">
             <div>
-                  <h1 class="text-2xl font-bold text-gray-900">Program Infaq & Donasi</h1>
-                  <p class="text-sm text-gray-500 mt-1">Kelola semua program infaq dan donasi LAZIZNU</p>
+                  <h1 class="text-2xl font-bold text-gray-900">Program penggalangan dana</h1>
+                  <p class="text-sm text-gray-500 mt-1">Kelola semua program penggalangan dana Anda</p>
             </div>
             <a href="{{ route('programs.create') }}"
                   class="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-xl transition-all shadow-sm hover:shadow-md">

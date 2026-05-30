@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
+use App\Models\DistributionProgram;
 use App\Models\Dokuemen;
 use App\Models\LaporanBulanan;
 use App\Models\LaporanMwc;
@@ -121,7 +122,12 @@ class PublicController extends Controller
             ->take(5)
             ->get();
 
-        return view('pages.public.program', compact('programs', 'programUnggulan', 'donasiTerbaru'));
+        $distributionPrograms = DistributionProgram::active()
+            ->with('sourceProgram')
+            ->latest()
+            ->get();
+
+        return view('pages.public.program', compact('programs', 'programUnggulan', 'donasiTerbaru', 'distributionPrograms'));
     }
 
     public function laporanbulanan()

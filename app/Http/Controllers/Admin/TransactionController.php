@@ -22,20 +22,40 @@ class TransactionController extends Controller
     {
         $transactions = Transaction::query()
             ->with(['program', 'paymentConfirmation', 'kecamatan', 'desa'])
-            ->when($request->type, fn($q) => $q->ofType($request->type))
-            ->when($request->status, fn($q) => $q->withStatus($request->status))
-            ->when($request->search, fn($q) => $q->where(function ($q2) use ($request) {
-                $q2->where('kode_transaksi', 'like', '%' . $request->search . '%')
-                    ->orWhere('nama_donatur', 'like', '%' . $request->search . '%')
-                    ->orWhere('email', 'like', '%' . $request->search . '%');
+            ->when($request->types, function ($q) use ($request) {
+                $q->where(function ($sub) use ($request) {
+                    foreach ($request->types as $type) {
+                        if ($type === 'zakat') {
+                            $sub->orWhere(fn ($q2) => $q2->where('type', 'zakat')->whereNull('program_id'));
+                        } elseif ($type === 'zakat_program') {
+                            $sub->orWhere(fn ($q2) => $q2->where('type', 'zakat')->whereNotNull('program_id'));
+                        } else {
+                            $sub->orWhere('type', $type);
+                        }
+                    }
+                });
+            })
+            ->when($request->status, fn ($q) => $q->withStatus($request->status))
+            ->when($request->search, fn ($q) => $q->where(function ($q2) use ($request) {
+                $q2->where('kode_transaksi', 'like', '%'.$request->search.'%')
+                    ->orWhere('nama_donatur', 'like', '%'.$request->search.'%')
+                    ->orWhere('email', 'like', '%'.$request->search.'%');
             }))
-            ->when($request->tanggal_dari, fn($q) => $q->whereDate('created_at', '>=', $request->tanggal_dari))
-            ->when($request->tanggal_sampai, fn($q) => $q->whereDate('created_at', '<=', $request->tanggal_sampai))
+            ->when($request->tanggal_dari, fn ($q) => $q->whereDate('created_at', '>=', $request->tanggal_dari))
+            ->when($request->tanggal_sampai, fn ($q) => $q->whereDate('created_at', '<=', $request->tanggal_sampai))
             ->latest()
             ->paginate(20)
             ->withQueryString();
 
-        $stats = $this->transactionService->getTransactionStats();
+        // Pass request filters to service for dynamic stats
+        $filters = [
+            'types' => $request->types,
+            'status' => $request->status,
+            'search' => $request->search,
+            'tanggal_dari' => $request->tanggal_dari,
+            'tanggal_sampai' => $request->tanggal_sampai,
+        ];
+        $stats = $this->transactionService->getTransactionStats($filters);
 
         return view('admin.transactions.index', compact('transactions', 'stats'));
     }
@@ -117,14 +137,26 @@ class TransactionController extends Controller
     {
         $transactions = Transaction::query()
             ->with(['program', 'kecamatan', 'desa'])
-            ->when($request->type, fn($q) => $q->ofType($request->type))
-            ->when($request->status, fn($q) => $q->withStatus($request->status))
-            ->when($request->tanggal_dari, fn($q) => $q->whereDate('created_at', '>=', $request->tanggal_dari))
-            ->when($request->tanggal_sampai, fn($q) => $q->whereDate('created_at', '<=', $request->tanggal_sampai))
+            ->when($request->types, function ($q) use ($request) {
+                $q->where(function ($sub) use ($request) {
+                    foreach ($request->types as $type) {
+                        if ($type === 'zakat') {
+                            $sub->orWhere(fn ($q2) => $q2->where('type', 'zakat')->whereNull('program_id'));
+                        } elseif ($type === 'zakat_program') {
+                            $sub->orWhere(fn ($q2) => $q2->where('type', 'zakat')->whereNotNull('program_id'));
+                        } else {
+                            $sub->orWhere('type', $type);
+                        }
+                    }
+                });
+            })
+            ->when($request->status, fn ($q) => $q->withStatus($request->status))
+            ->when($request->tanggal_dari, fn ($q) => $q->whereDate('created_at', '>=', $request->tanggal_dari))
+            ->when($request->tanggal_sampai, fn ($q) => $q->whereDate('created_at', '<=', $request->tanggal_sampai))
             ->latest()
             ->get();
 
-        $filename = 'transaksi-laziznu-' . now()->format('Y-m-d') . '.csv';
+        $filename = 'transaksi-laziznu-'.now()->format('Y-m-d').'.csv';
 
         $headers = [
             'Content-Type' => 'text/csv',
@@ -193,24 +225,23 @@ class TransactionController extends Controller
                 }
 
                 // Total Zakat Biasa
-                if ($t->type === 'zakat' && !$t->program_id) {
+                if ($t->type === 'zakat' && ! $t->program_id) {
                     $totalZakat += $t->jumlah;
                 }
 
                 fputcsv($file, [
                     $t->kode_transaksi,
                     $t->created_at->format('d/m/Y H:i'),
-                    $typeLabel . ($t->subtype ? " ({$t->subtype})" : ''),
+                    $typeLabel.($t->subtype ? " ({$t->subtype})" : ''),
                     $t->program?->nama ?? '-',
                     $t->nama_tampil,
                     $t->email ?? '-',
                     $t->telepon ?? '-',
-                    'Rp ' . number_format($t->jumlah, 0, ',', '.'),
+                    'Rp '.number_format($t->jumlah, 0, ',', '.'),
                     $t->status_label,
                     $t->confirmed_at?->format('d/m/Y H:i') ?? '-',
                 ]);
             }
-
 
             fputcsv($file, []);
 
@@ -222,7 +253,7 @@ class TransactionController extends Controller
                 '',
                 '',
                 'TOTAL DANA DSKL',
-                'Rp ' . number_format($totalDSKL, 0, ',', '.'),
+                'Rp '.number_format($totalDSKL, 0, ',', '.'),
             ]);
 
             fputcsv($file, [
@@ -233,7 +264,7 @@ class TransactionController extends Controller
                 '',
                 '',
                 'TOTAL DANA INFAQ & SODAKOH',
-                'Rp ' . number_format($totalInfaqSodakoh, 0, ',', '.'),
+                'Rp '.number_format($totalInfaqSodakoh, 0, ',', '.'),
             ]);
 
             fputcsv($file, [
@@ -244,7 +275,7 @@ class TransactionController extends Controller
                 '',
                 '',
                 'TOTAL DANA ZAKAT',
-                'Rp ' . number_format($totalZakat, 0, ',', '.'),
+                'Rp '.number_format($totalZakat, 0, ',', '.'),
             ]);
 
             fputcsv($file, [
@@ -255,7 +286,7 @@ class TransactionController extends Controller
                 '',
                 '',
                 'TOTAL DANA ZAKAT PROGRAM',
-                'Rp ' . number_format($totalZakatProgram, 0, ',', '.'),
+                'Rp '.number_format($totalZakatProgram, 0, ',', '.'),
             ]);
 
             fputcsv($file, [
@@ -266,7 +297,7 @@ class TransactionController extends Controller
                 '',
                 '',
                 'TOTAL KESELURUHAN',
-                'Rp ' . number_format($totalDana, 0, ',', '.'),
+                'Rp '.number_format($totalDana, 0, ',', '.'),
             ]);
 
             fclose($file);

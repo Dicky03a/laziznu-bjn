@@ -248,13 +248,57 @@ class TransactionService
     /**
      * Get transaction statistics for admin dashboard.
      */
-    public function getTransactionStats(): array
+    public function getTransactionStats($filters = []): array
     {
-        $stats = Transaction::selectRaw('
+        $query = Transaction::query();
+
+        // Apply filters
+        if (! empty($filters['types']) && is_array($filters['types'])) {
+            $query->where(function ($q) use ($filters) {
+                foreach ($filters['types'] as $type) {
+                    if ($type === 'zakat') {
+                        $q->orWhere(fn ($q2) => $q2->where('type', 'zakat')->whereNull('program_id'));
+                    } elseif ($type === 'zakat_program') {
+                        $q->orWhere(fn ($q2) => $q2->where('type', 'zakat')->whereNotNull('program_id'));
+                    } else {
+                        $q->orWhere('type', $type);
+                    }
+                }
+            });
+        } elseif (! empty($filters['type'])) {
+            $query->ofType($filters['type']);
+        }
+
+        if (! empty($filters['status'])) {
+            $query->withStatus($filters['status']);
+        }
+
+        if (! empty($filters['search'])) {
+            $search = $filters['search'];
+            $query->where(function ($q) use ($search) {
+                $q->where('kode_transaksi', 'like', '%'.$search.'%')
+                    ->orWhere('nama_donatur', 'like', '%'.$search.'%')
+                    ->orWhere('email', 'like', '%'.$search.'%');
+            });
+        }
+
+        if (! empty($filters['tanggal_dari'])) {
+            $query->whereDate('created_at', '>=', $filters['tanggal_dari']);
+        }
+
+        if (! empty($filters['tanggal_sampai'])) {
+            $query->whereDate('created_at', '<=', $filters['tanggal_sampai']);
+        }
+
+        // Clone the filtered query for overall stats
+        $baseQuery = clone $query;
+
+        $stats = $baseQuery->selectRaw('
                 count(case when status = "pending" then 1 end) as total_pending,
                 count(case when status = "confirmed" then 1 end) as total_confirmed,
                 count(case when date(created_at) = ? then 1 end) as total_today,
-                sum(case when status = "confirmed" then jumlah else 0 end) as total_nominal
+                sum(case when status = "confirmed" then jumlah else 0 end) as total_nominal,
+                sum(jumlah) as total_all_nominal
             ', [today()->toDateString()])
             ->first();
 
@@ -263,6 +307,8 @@ class TransactionService
             'total_confirmed' => $stats->total_confirmed ?? 0,
             'total_today' => $stats->total_today ?? 0,
             'total_nominal' => $stats->total_nominal ?? 0,
+            'total_all_nominal' => $stats->total_all_nominal ?? 0,
+            'total_count' => $query->count(),
         ];
     }
 }

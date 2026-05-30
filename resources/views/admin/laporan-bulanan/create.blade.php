@@ -9,8 +9,8 @@
             </svg>
         </a>
         <div>
-            <h1 class="text-2xl font-bold text-gray-900">Tambah Laporan Tahunan</h1>
-            <p class="text-sm text-gray-500 mt-0.5">Unggah laporan tahunan baru dalam format PDF</p>
+            <h1 class="text-2xl font-bold text-gray-900">Tambah Laporan Bulanan</h1>
+            <p class="text-sm text-gray-500 mt-0.5">Unggah laporan bulanan baru dalam format PDF</p>
         </div>
     </div>
 
@@ -51,7 +51,6 @@
                         </label>
                         <input type="text" id="nama_laporan" name="nama_laporan"
                             value="{{ old('nama_laporan') }}"
-                            placeholder="Contoh: Laporan Tahunan 2024"
                             required
                             class="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 @error('nama_laporan') border-red-400 @enderror">
                         <p class="mt-1 text-xs text-gray-400">Berikan nama deskriptif dan cantumkan tahun agar mudah dicari</p>
@@ -154,44 +153,24 @@
                 </div>
                 <div class="p-5 space-y-3.5 text-sm">
                     <div class="flex items-start gap-2.5 pb-3.5 border-b border-gray-100">
-                        <div class="w-6 h-6 rounded bg-emerald-50 flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                        </div>
                         <div>
                             <p class="font-semibold text-gray-800 text-xs">Nama Laporan</p>
                             <p class="text-gray-500 text-xs mt-0.5">Gunakan nama deskriptif, cantumkan tahun agar mudah ditemukan</p>
                         </div>
                     </div>
                     <div class="flex items-start gap-2.5 pb-3.5 border-b border-gray-100">
-                        <div class="w-6 h-6 rounded bg-blue-50 flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <svg class="w-3.5 h-3.5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                        </div>
                         <div>
                             <p class="font-semibold text-gray-800 text-xs">Format File</p>
                             <p class="text-gray-500 text-xs mt-0.5">Hanya PDF yang didukung, ukuran maksimal 10MB</p>
                         </div>
                     </div>
                     <div class="flex items-start gap-2.5 pb-3.5 border-b border-gray-100">
-                        <div class="w-6 h-6 rounded bg-purple-50 flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <svg class="w-3.5 h-3.5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                        </div>
                         <div>
                             <p class="font-semibold text-gray-800 text-xs">Preview Otomatis</p>
                             <p class="text-gray-500 text-xs mt-0.5">Preview PDF muncul setelah file dipilih untuk verifikasi</p>
                         </div>
                     </div>
                     <div class="flex items-start gap-2.5">
-                        <div class="w-6 h-6 rounded bg-amber-50 flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <svg class="w-3.5 h-3.5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                        </div>
                         <div>
                             <p class="font-semibold text-gray-800 text-xs">File Final</p>
                             <p class="text-gray-500 text-xs mt-0.5">Pastikan file sudah versi final sebelum disimpan</p>

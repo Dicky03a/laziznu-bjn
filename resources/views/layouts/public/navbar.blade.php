@@ -95,6 +95,13 @@
                                           Program Zakat
                                     </a>
 
+                                    <a href="{{ route('zakat.index') }}"
+                                          class="block px-4 py-3 rounded-xl text-sm text-gray-600
+                           hover:bg-green-50 hover:text-green-600 hover:translate-x-1
+                           transition-all duration-200">
+                                          Zakat Mal & Fitrah
+                                    </a>
+
                                     <a href="{{ route('infaq.index') }}"
                                           class="block px-4 py-3 rounded-xl text-sm text-gray-600
                            hover:bg-green-50 hover:text-green-600 hover:translate-x-1
@@ -215,11 +222,11 @@
                         </button>
 
                         <div class="mobile-content hidden pl-4 mt-1 space-y-1">
-                              <a href="{{ route('profile') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Sekilas NU Care</a>
-                              <a href="{{ route('pengurus-laziznu-bojonegoro') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Pengurus Lazisnu</a>
+                              <a href="{{ route('profile') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Sekilas NU Care Lazisnu</a>
+                              <a href="{{ route('pengurus-laziznu-bojonegoro') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Pengurus Lazisnu PCNU Bojonegoro</a>
                               <a href="{{ route('rekening-lengkap') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Rekening Lengkap</a>
                               <a href="{{ route('dokumen') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Unduh Dokumen</a>
-                              <a href="{{ route('berita.public.index') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Berita</a>
+                              <a href="{{ route('berita.public.index') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Press Release</a>
                         </div>
                   </div>
 
@@ -244,10 +251,12 @@
                         </button>
 
                         <div class="mobile-content hidden pl-4 mt-1 space-y-1">
-                              <a href="{{ route('program-zakat.index') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Program Zakat Khusus</a>
+                              <a href="{{ route('program-zakat.index') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Program Zakat</a>
                               <a href="{{ route('zakat.index') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Zakat Mal & Fitrah</a>
-                              <a href="{{ route('infaq.index') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Infaq & Sedekah</a>
-                              <a href="{{ route('donasi.index') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Program Sosial</a>
+                              <a href="{{ route('infaq.index') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">DSKL Dana Sosial Keagamaan Lainya</a>
+                              <a href="{{ route('donasi.index') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Infaq Shodaqoh dan Peduli Bencana</a>
+                              <a href="{{ route('fidyah.index') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Fidyah</a>
+                              <a href="{{ route('qurban.index') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Qurban</a>
                         </div>
                   </div>
 
@@ -264,9 +273,9 @@
                         </button>
 
                         <div class="mobile-content hidden pl-4 mt-1 space-y-1">
-                              <a href="{{ route('laporan-tahunan.public') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Formulir Laporan</a>
                               <a href="{{ route('laporan-bulanan.public') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Laporan Bulanan</a>
-                              <a href="{{ route('status-mwc-ranting') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Status MWC & Ranting</a>
+                              <a href="{{ route('status-mwc-ranting') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Status Laporan MWC & Ranting</a>
+                              <a href="{{ route('laporan-tahunan.public') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Formulir Laporan Tahunan</a>
                         </div>
                   </div>
 

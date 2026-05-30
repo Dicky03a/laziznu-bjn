@@ -23,64 +23,133 @@
             </div>
       </div>
 
-      <!-- $1 -->
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-            @php
-            $statCards = [
-            ['label' => 'Menunggu Konfirmasi', 'value' => $stats['total_pending'], 'color' => 'yellow', 'prefix' => ''],
-            ['label' => 'Terkonfirmasi', 'value' => $stats['total_confirmed'], 'color' => 'emerald', 'prefix' => ''],
-            ['label' => 'Transaksi Hari Ini', 'value' => $stats['total_today'], 'color' => 'blue', 'prefix' => ''],
-            ['label' => 'Total Dana Masuk', 'value' => 'Rp ' . number_format($stats['total_nominal'], 0, ',', '.'), 'color' => 'purple', 'prefix' => ''],
-            ];
-            @endphp
-            @foreach($statCards as $card)
-            <div class="bg-white rounded-2xl border border-gray-200 p-5">
-                  <p class="text-xs text-gray-500 font-medium mb-1">{{ $card['label'] }}</p>
-                  <p class="text-xl font-bold text-{{ $card['color'] }}-600">{{ $card['value'] }}</p>
+      <!-- Statistik Dashboard -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+            <!-- Total Transaksi -->
+            <div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition">
+                  <div class="flex items-center justify-between mb-3">
+                        <h3 class="text-xs font-semibold text-gray-600 tracking-wider">Total Transaksi</h3>
+                  </div>
+                  <p class="text-2xl font-bold text-blue-600">{{ $stats['total_count'] }}</p>
+                  <p class="text-xs text-gray-500 mt-2">{{ $stats['total_confirmed'] }} dikonfirmasi, {{ $stats['total_pending'] }} menunggu</p>
             </div>
-            @endforeach
+
+            <!-- Menunggu Konfirmasi -->
+            <div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition">
+                  <div class="flex items-center justify-between mb-3">
+                        <h3 class="text-xs font-semibold text-gray-600 tracking-wider">Menunggu Konfirmasi</h3>
+                  </div>
+                  <p class="text-2xl font-bold text-yellow-600">{{ $stats['total_pending'] }}</p>
+                  <p class="text-xs text-gray-500 mt-2">Transaksi belum dikonfirmasi</p>
+            </div>
+
+            <!-- Terkonfirmasi -->
+            <div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition">
+                  <div class="flex items-center justify-between mb-3">
+                        <h3 class="text-xs font-semibold text-gray-600 tracking-wider">Terkonfirmasi</h3>
+                  </div>
+                  <p class="text-2xl font-bold text-emerald-600">{{ $stats['total_confirmed'] }}</p>
+                  <p class="text-xs text-gray-500 mt-2">Transaksi sudah dikonfirmasi</p>
+            </div>
+
+            <!-- Total Dana Masuk -->
+            <div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition">
+                  <div class="flex items-center justify-between mb-3">
+                        <h3 class="text-xs font-semibold text-gray-600 tracking-wider">Total Dana Masuk</h3>
+                  </div>
+                  <p class="text-2xl font-bold text-purple-600">Rp {{ number_format($stats['total_nominal'], 0, ',', '.') }}</p>
+                  <p class="text-xs text-gray-500 mt-2">Semua: Rp {{ number_format($stats['total_all_nominal'], 0, ',', '.') }}</p>
+            </div>
       </div>
 
-      <!-- $1 -->
-      <div class="bg-white rounded-2xl border border-gray-200 p-4 mb-5">
-            <form method="GET" action="{{ route('transactions.index') }}" class="flex flex-wrap gap-3 items-end">
+      <!-- Info Filter Status -->
+      @if(request()->hasAny(['types', 'type', 'status', 'search', 'tanggal_dari', 'tanggal_sampai']))
+      <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 mb-6 flex items-center gap-3">
+            <div class="p-2 bg-emerald-100 rounded-lg">
+                  <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                  </svg>
+            </div>
+            <div class="flex-1">
+                  <p class="text-sm font-semibold text-emerald-900">Statistik Terfilter</p>
+                  <p class="text-xs text-emerald-700">Data ditampilkan berdasarkan filter yang diterapkan</p>
+            </div>
+      </div>
+      @endif
+
+      <!-- Filter Section -->
+      <div class="bg-white rounded-2xl border border-gray-200 p-6 mb-5">
+            <form method="GET" action="{{ route('transactions.index') }}" class="space-y-5">
+                  <!-- Jenis Transaksi (Checkbox) -->
                   <div>
-                        <label class="block text-xs font-medium text-gray-600 mb-1">Jenis</label>
-                        <select name="type" class="px-3 py-2 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:ring-emerald-500">
-                              <option value="">Semua Jenis</option>
-                              @foreach(['zakat', 'infaq', 'donasi', 'fidyah'] as $t)
-                              <option value="{{ $t }}" {{ request('type') === $t ? 'selected' : '' }}>{{ ucfirst($t) }}</option>
+                        <label class="block text-sm font-semibold text-gray-900 mb-3">Jenis Transaksi</label>
+                        <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                              @php
+                              $transactionTypes = [
+                              ['value' => 'infaq', 'label' => 'DSKL'],
+                              ['value' => 'donasi', 'label' => 'Infaq & Sodakoh'],
+                              ['value' => 'zakat', 'label' => 'Zakat'],
+                              ['value' => 'zakat_program', 'label' => 'Zakat Program'],
+                              ['value' => 'fidyah', 'label' => 'Fidyah'],
+                              ];
+                              $selectedTypes = request()->has('types') ? (array) request()->input('types', []) : [];
+                              @endphp
+                              @foreach($transactionTypes as $type)
+                              <label class="flex items-center gap-3 p-3 rounded-lg border-2 cursor-pointer transition-all
+                                    {{ in_array($type['value'], $selectedTypes) ? 'border-emerald-500 bg-emerald-50' : 'border-gray-200 hover:border-gray-300' }}">
+                                    <input type="checkbox" name="types[]" value="{{ $type['value'] }}"
+                                          {{ in_array($type['value'], $selectedTypes) ? 'checked' : '' }}
+                                          class="w-4 h-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500">
+                                    <span class="font-medium text-gray-900">{{ $type['label'] }}</span>
+                              </label>
                               @endforeach
-                        </select>
+                        </div>
                   </div>
-                  <div>
-                        <label class="block text-xs font-medium text-gray-600 mb-1">Status</label>
-                        <select name="status" class="px-3 py-2 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:ring-emerald-500">
-                              <option value="">Semua Status</option>
-                              <option value="pending" {{ request('status') === 'pending' ? 'selected' : '' }}>Menunggu</option>
-                              <option value="confirmed" {{ request('status') === 'confirmed' ? 'selected' : '' }}>Dikonfirmasi</option>
-                              <option value="rejected" {{ request('status') === 'rejected' ? 'selected' : '' }}>Ditolak</option>
-                        </select>
+
+                  <!-- Status -->
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                        <div>
+                              <label class="block text-sm font-semibold text-gray-900 mb-2">Status</label>
+                              <select name="status" class="w-full px-3 py-2 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:ring-emerald-500">
+                                    <option value="">Semua Status</option>
+                                    <option value="pending" {{ request('status') === 'pending' ? 'selected' : '' }}>Menunggu</option>
+                                    <option value="confirmed" {{ request('status') === 'confirmed' ? 'selected' : '' }}>Dikonfirmasi</option>
+                                    <option value="rejected" {{ request('status') === 'rejected' ? 'selected' : '' }}>Ditolak</option>
+                              </select>
+                        </div>
+
+                        <div>
+                              <label class="block text-sm font-semibold text-gray-900 mb-2">Dari Tanggal</label>
+                              <input type="date" name="tanggal_dari" value="{{ request('tanggal_dari') }}"
+                                    class="w-full px-3 py-2 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:ring-emerald-500">
+                        </div>
+
+                        <div>
+                              <label class="block text-sm font-semibold text-gray-900 mb-2">Sampai Tanggal</label>
+                              <input type="date" name="tanggal_sampai" value="{{ request('tanggal_sampai') }}"
+                                    class="w-full px-3 py-2 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:ring-emerald-500">
+                        </div>
                   </div>
+
+                  <!-- Search -->
                   <div>
-                        <label class="block text-xs font-medium text-gray-600 mb-1">Cari</label>
+                        <label class="block text-sm font-semibold text-gray-900 mb-2">Pencarian</label>
                         <input type="text" name="search" value="{{ request('search') }}"
-                              placeholder="Kode / Nama / Email"
-                              class="px-3 py-2 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:ring-emerald-500 w-48">
+                              placeholder="Cari berdasarkan kode transaksi, nama donatur, atau email..."
+                              class="w-full px-4 py-2 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:ring-emerald-500">
                   </div>
-                  <div>
-                        <label class="block text-xs font-medium text-gray-600 mb-1">Dari Tanggal</label>
-                        <input type="date" name="tanggal_dari" value="{{ request('tanggal_dari') }}"
-                              class="px-3 py-2 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:ring-emerald-500">
-                  </div>
-                  <div>
-                        <label class="block text-xs font-medium text-gray-600 mb-1">Sampai Tanggal</label>
-                        <input type="date" name="tanggal_sampai" value="{{ request('tanggal_sampai') }}"
-                              class="px-3 py-2 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:ring-emerald-500">
-                  </div>
-                  <div class="flex gap-2">
-                        <button type="submit" class="px-4 py-2 bg-emerald-600 text-white text-sm font-semibold rounded-lg hover:bg-emerald-700 transition-all">Filter</button>
-                        <a href="{{ route('transactions.index') }}" class="px-4 py-2 bg-gray-100 text-gray-700 text-sm font-semibold rounded-lg hover:bg-gray-200 transition-all">Reset</a>
+
+                  <!-- Action Buttons -->
+                  <div class="flex gap-2 justify-end pt-3 border-t border-gray-100">
+                        <a href="{{ route('transactions.index') }}" class="px-5 py-2 bg-gray-100 text-gray-700 text-sm font-semibold rounded-lg hover:bg-gray-200 transition-all">
+                              Reset Filter
+                        </a>
+                        <button type="submit" class="px-5 py-2 bg-emerald-600 text-white text-sm font-semibold rounded-lg hover:bg-emerald-700 transition-all flex items-center gap-2">
+                              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                              </svg>
+                              Terapkan Filter
+                        </button>
                   </div>
             </form>
       </div>
@@ -123,12 +192,11 @@
                                           @endphp
 
                                           <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-{{ $color }}-100 text-{{ $color }}-700">
-
                                                 {{
-            $trx->type === 'infaq' ? 'DSKL' :
-            ($trx->type === 'donasi' ? 'Infaq dan Sodakoh' : $trx->type_label)
-        }}
-
+                                                      $trx->type === 'infaq' ? 'DSKL' :
+                                                      ($trx->type === 'donasi' ? 'Infaq dan Sodakoh' :
+                                                      ($trx->type === 'zakat' && $trx->program_id ? 'Zakat Program' : $trx->type_label))
+                                                }}
                                           </span>
 
                                           @if($trx->subtype)

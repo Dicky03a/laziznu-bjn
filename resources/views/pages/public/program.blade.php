@@ -229,4 +229,57 @@
       </div>
 </section>
 
+<section class="py-20 sm:py-24 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+
+            <div class="flex flex-col md:flex-row md:justify-between gap-6 mb-10 sm:mb-12">
+                  <div>
+                        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-2">
+                              Program Distribusi Dana
+                        </h2>
+                        <p class="text-gray-600">
+                              Daftar program distribusi yang menyalurkan dana dari program pengumpulan.
+                        </p>
+                  </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
+                  @forelse($distributionPrograms as $distribution)
+                  <div class="bg-white rounded-3xl shadow-md hover:shadow-xl transition overflow-hidden border border-gray-100">
+
+                        <div class="h-56 overflow-hidden">
+                              <img src="{{ $distribution->thumbnail_url }}"
+                                    class="w-full h-full object-cover hover:scale-110 transition duration-700">
+                        </div>
+
+                        <div class="p-5 sm:p-6">
+                              <h3 class="font-bold text-gray-900 text-lg sm:text-xl mb-3">
+                                    {{ $distribution->nama }}
+                              </h3>
+
+                              <p class="text-gray-600 text-sm mb-4">
+                                    {{ \Illuminate\Support\Str::limit($distribution->deskripsi, 100) }}
+                              </p>
+
+                              <div class="space-y-3 mb-4 text-sm text-gray-600">
+                                    <div class="flex justify-between">
+                                          <span>Sumber Dana</span>
+                                          <span class="font-semibold text-gray-900">{{ $distribution->sourceProgram->nama }}</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                          <span>Jumlah</span>
+                                          <span class="font-semibold text-gray-900">Rp {{ number_format($distribution->target_dana, 0, ',', '.') }}</span>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+                  @empty
+                  <p class="text-gray-500 col-span-3 text-center py-12">
+                        Belum ada program distribusi tersedia.
+                  </p>
+                  @endforelse
+            </div>
+      </div>
+</section>
+
 @endsection

@@ -45,6 +45,25 @@ class Program extends Model
         return $this->hasMany(Transaction::class)->where('status', 'confirmed');
     }
 
+    public function distributions(): HasMany
+    {
+        return $this->hasMany(DistributionProgram::class, 'source_program_id');
+    }
+
+    public function getTotalDistribusiDialokasikanAttribute(): int
+    {
+        if ($this->relationLoaded('distributions')) {
+            return $this->distributions->sum('target_dana');
+        }
+
+        return $this->distributions()->sum('target_dana');
+    }
+
+    public function getAvailableForDistributionAttribute(): int
+    {
+        return max(0, $this->total_terkumpul - $this->total_distribusi_dialokasikan);
+    }
+
     public function scopeActive(Builder $query): void
     {
         $query->where('is_active', true);

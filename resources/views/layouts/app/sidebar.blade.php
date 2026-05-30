@@ -48,6 +48,14 @@
                     Program
                 </flux:sidebar.item>
 
+                <flux:sidebar.item icon="arrow-path" href="{{ route('distribution-programs.index') }}">
+                    Program Distribusi
+                </flux:sidebar.item>
+
+                <flux:sidebar.item icon="cog-6-tooth" href="{{ route('program.edit') }}">
+                    Pengaturan Program
+                </flux:sidebar.item>
+
                 <flux:sidebar.item icon="banknotes" href="{{ route('transactions.index') }}">
                     Transaksi
                 </flux:sidebar.item>
@@ -56,9 +64,7 @@
                     Mustahik
                 </flux:sidebar.item>
 
-                <flux:sidebar.item icon="cog-6-tooth" href="{{ route('program.edit') }}">
-                    Pengaturan Program
-                </flux:sidebar.item>
+
 
                 <flux:sidebar.item icon="map" href="{{ route('peta-sebaran.index') }}">
                     Peta Sebaran

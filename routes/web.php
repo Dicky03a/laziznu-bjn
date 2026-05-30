@@ -1,6 +1,7 @@
 <?php
 
 // Admin Controllers
+use App\Http\Controllers\Admin\DistributionProgramController;
 use App\Http\Controllers\Admin\DokumenController as AdminDokumenController;
 use App\Http\Controllers\Admin\ExportReportController;
 use App\Http\Controllers\Admin\LaporanBulananController as AdminLaporanBulananController;
@@ -145,6 +146,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('programs', ProgramController::class);
         Route::patch('programs/{program}/toggle-active', [ProgramController::class, 'toggleActive'])
             ->name('programs.toggle-active');
+
+        Route::resource('distribution-programs', DistributionProgramController::class);
+        Route::patch('distribution-programs/{distributionProgram}/toggle-active', [DistributionProgramController::class, 'toggleActive'])
+            ->name('distribution-programs.toggle-active');
+
         Route::get('program/settings', [SettingControllerProgram::class, 'index'])->name('program.edit');
         Route::put('settings/program', [SettingControllerProgram::class, 'update'])->name('program.settings');
     });

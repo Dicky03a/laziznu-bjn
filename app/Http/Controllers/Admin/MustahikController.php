@@ -60,6 +60,9 @@ class MustahikController extends Controller
         $totalAktif = Mustahik::where('status', 'aktif')->count();
         $totalNonaktif = Mustahik::where('status', 'nonaktif')->count();
         $totalDesa = Desa::count();
+        $totalFidyah = \App\Models\Transaction::where('type', 'fidyah')
+            ->where('status', 'confirmed')
+            ->sum('jumlah');
 
         // Statistik Kecamatan
         $statistikKecamatan = Kecamatan::withCount([
@@ -96,6 +99,7 @@ class MustahikController extends Controller
             'totalAktif',
             'totalNonaktif',
             'totalDesa',
+            'totalFidyah',
             'statistikKecamatan',
             'statistikDesa',
             'statistikKategori'

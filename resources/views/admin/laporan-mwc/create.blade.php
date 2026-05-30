@@ -154,44 +154,24 @@
                         </div>
                         <div class="p-5 space-y-3.5 text-sm">
                               <div class="flex items-start gap-2.5 pb-3.5 border-b border-gray-100">
-                                    <div class="w-6 h-6 rounded bg-emerald-50 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                          <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                          </svg>
-                                    </div>
                                     <div>
                                           <p class="font-semibold text-gray-800 text-xs">Nama Laporan</p>
                                           <p class="text-gray-500 text-xs mt-0.5">Gunakan nama deskriptif, cantumkan tahun agar mudah ditemukan</p>
                                     </div>
                               </div>
                               <div class="flex items-start gap-2.5 pb-3.5 border-b border-gray-100">
-                                    <div class="w-6 h-6 rounded bg-blue-50 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                          <svg class="w-3.5 h-3.5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                          </svg>
-                                    </div>
                                     <div>
                                           <p class="font-semibold text-gray-800 text-xs">Format File</p>
                                           <p class="text-gray-500 text-xs mt-0.5">Hanya PDF yang didukung, ukuran maksimal 10MB</p>
                                     </div>
                               </div>
                               <div class="flex items-start gap-2.5 pb-3.5 border-b border-gray-100">
-                                    <div class="w-6 h-6 rounded bg-purple-50 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                          <svg class="w-3.5 h-3.5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                          </svg>
-                                    </div>
                                     <div>
                                           <p class="font-semibold text-gray-800 text-xs">Preview Otomatis</p>
                                           <p class="text-gray-500 text-xs mt-0.5">Preview PDF muncul setelah file dipilih untuk verifikasi</p>
                                     </div>
                               </div>
                               <div class="flex items-start gap-2.5">
-                                    <div class="w-6 h-6 rounded bg-amber-50 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                          <svg class="w-3.5 h-3.5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                          </svg>
-                                    </div>
                                     <div>
                                           <p class="font-semibold text-gray-800 text-xs">File Final</p>
                                           <p class="text-gray-500 text-xs mt-0.5">Pastikan file sudah versi final sebelum disimpan</p>

@@ -13,7 +13,7 @@
                   </div>
 
                   <!-- Statistics Cards -->
-                  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
                         <!-- Total Mustahik Card -->
                         <div class="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 hover:shadow-xl transition-shadow">
                               <div class="flex items-start justify-between">
@@ -69,6 +69,19 @@
                                     </div>
                               </div>
                         </div>
+
+                        <!-- Total Dana Fidyah -->
+                        <div class="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 hover:shadow-xl transition-shadow">
+                              <div class="flex items-start justify-between">
+                                    <div>
+                                          <p class="text-slate-600 text-sm font-medium">Total Dana Fidyah</p>
+                                          <p class="text-3xl font-bold text-slate-900 mt-2">
+                                                Rp {{ number_format($totalFidyah, 0, ',', '.') }}
+                                          </p>
+                                          <p class="text-xs text-slate-500 mt-2">Dana fidyah terkonfirmasi</p>
+                                    </div>
+                              </div>
+                        </div>
                   </div>
 
                   <!-- Success Message -->
@@ -84,9 +97,6 @@
                   <!-- Filter & Search Section -->
                   <div class="bg-white rounded-2xl shadow-lg border border-slate-200 p-6">
                         <h2 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                              <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
-                              </svg>
                               Filter & Pencarian Data
                         </h2>
 
@@ -190,9 +200,6 @@
                         <!-- Table Header with Create Button -->
                         <div class="px-6 py-4 border-b border-slate-200 bg-slate-50 flex items-center justify-between">
                               <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-                                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                                    </svg>
                                     Data Mustahik {{ $mustahiks->total() > 0 ? '(' . $mustahiks->total() . ')' : '' }}
                               </h2>
 
@@ -362,9 +369,6 @@
                   @if ($statistikKategori->count() > 0)
                   <div class="bg-white rounded-2xl shadow-lg border border-slate-200 p-6">
                         <h2 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                              <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                              </svg>
                               Statistik Per Kategori Asnaf
                         </h2>
 
@@ -389,9 +393,6 @@
                   <div class="bg-white rounded-2xl shadow-lg border border-slate-200 p-6" x-data="{ searchKecamatan: '' }">
                         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
                               <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
-                                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                                    </svg>
                                     Statistik Per Kecamatan
                               </h2>
 
@@ -401,12 +402,11 @@
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                           </svg>
                                     </div>
-                                    <input 
-                                          type="text" 
+                                    <input
+                                          type="text"
                                           x-model="searchKecamatan"
-                                          placeholder="Cari kecamatan..." 
-                                          class="block w-full pl-10 pr-3 py-2 border border-slate-200 rounded-xl leading-5 bg-slate-50 placeholder-slate-400 focus:outline-none focus:placeholder-slate-300 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-all"
-                                    >
+                                          placeholder="Cari kecamatan..."
+                                          class="block w-full pl-10 pr-3 py-2 border border-slate-200 rounded-xl leading-5 bg-slate-50 placeholder-slate-400 focus:outline-none focus:placeholder-slate-300 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-all">
                               </div>
                         </div>
 
@@ -422,10 +422,9 @@
                                     </thead>
                                     <tbody class="divide-y divide-slate-200">
                                           @forelse ($statistikKecamatan as $stat)
-                                          <tr 
+                                          <tr
                                                 class="hover:bg-slate-50 transition-colors data-row"
-                                                x-show="'{{ addslashes(strtolower($stat->nama)) }}'.includes(searchKecamatan.toLowerCase())"
-                                          >
+                                                x-show="'{{ addslashes(strtolower($stat->nama)) }}'.includes(searchKecamatan.toLowerCase())">
                                                 <td class="px-6 py-4 font-medium text-slate-900">
                                                       {{ $stat->nama }}
                                                 </td>

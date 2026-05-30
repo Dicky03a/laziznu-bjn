@@ -12,27 +12,6 @@
                         </div>
                   </div>
 
-                  <!-- Stats Cards -->
-                  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="bg-white  rounded-xl shadow-lg border border-slate-200  p-6 hover:shadow-xl transition-shadow duration-200">
-                              <div class="flex items-center gap-4">
-                                    <div>
-                                          <p class="text-sm text-slate-600  font-medium">Total Penerima</p>
-                                          <p class="text-2xl font-bold text-slate-900 ">{{ number_format($profiles->sum('penerima_manfaat'), 0, ',', '.') }}</p>
-                                    </div>
-                              </div>
-                        </div>
-
-                        <div class="bg-white  rounded-xl shadow-lg border border-slate-200  p-6 hover:shadow-xl transition-shadow duration-200">
-                              <div class="flex items-center gap-4">
-                                    <div>
-                                          <p class="text-sm text-slate-600  font-medium">Total Program</p>
-                                          <p class="text-2xl font-bold text-slate-900 ">{{ number_format($profiles->sum('program_tersalurkan'), 0, ',', '.') }}</p>
-                                    </div>
-                              </div>
-                        </div>
-                  </div>
-
                   <!-- Table Card -->
                   <div class="bg-white  rounded-2xl shadow-xl border border-slate-200  overflow-hidden">
 

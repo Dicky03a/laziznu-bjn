@@ -27,14 +27,9 @@
                         <a href="{{ $laporan->link_from }}" target="_blank" rel="noopener noreferrer"
                               class="group relative block">
 
-                              <div class="relative h-20 rounded-lg border-4 flex items-center justify-center overflow-hidden">
-                                    <div class="relative z-10 flex items-center justify-center px-2">
-                                          <h3 class="text-center font-semibold text-black  text-xl">
-                                                {{ $laporan->nama }}
-                                          </h3>
-                                    </div>
-                                    
-                              </div>
+                              <h3 class="text-center font-semibold text-black  text-xl">
+                                    {{ $laporan->nama }}
+                              </h3>
                         </a>
                         @endforeach
                   </div>
