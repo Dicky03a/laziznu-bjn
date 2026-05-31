@@ -113,47 +113,13 @@ class QurbanRegistrationController extends Controller
 
     public function export(Request $request)
     {
-        $registrations = QurbanRegistration::with(['hewan', 'period'])
-            ->when($request->period_id, fn ($q) => $q->ofPeriod($request->period_id))
-            ->when($request->status, fn ($q) => $q->where('status', $request->status))
-            ->latest()
-            ->get();
+        $filters = $request->only(['period_id', 'hewan_id', 'status', 'search']);
+        $filename = 'laporan-qurban-laziznu-'.now()->format('Y-m-d_His').'.xlsx';
 
-        $filename = 'qurban-laziznu-'.now()->format('Y-m-d').'.csv';
-
-        return response()->stream(function () use ($registrations) {
-            $file = fopen('php://output', 'w');
-            fputcsv($file, [
-                'Kode',
-                'Tanggal',
-                'Hewan',
-                'Jenis',
-                'Nama Peserta',
-                'Atas Nama',
-                'Telepon',
-                'Email',
-                'Total Bayar',
-                'Status',
-            ]);
-            foreach ($registrations as $r) {
-                fputcsv($file, [
-                    $r->kode_registrasi,
-                    $r->created_at->format('d/m/Y H:i'),
-                    $r->hewan?->nama,
-                    $r->hewan?->jenis_label,
-                    $r->nama_peserta,
-                    $r->atas_nama ?? '-',
-                    $r->telepon ?? '-',
-                    $r->email ?? '-',
-                    $r->total_bayar,
-                    $r->status_label,
-                ]);
-            }
-            fclose($file);
-        }, 200, [
-            'Content-Type' => 'text/csv',
-            'Content-Disposition' => "attachment; filename=\"{$filename}\"",
-        ]);
+        return \Maatwebsite\Excel\Facades\Excel::download(
+            new \App\Exports\Qurban\FilteredQurbanExport($filters),
+            $filename
+        );
     }
 
     public function reminder(QurbanRegistration $registration)

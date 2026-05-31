@@ -3,21 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Jobs\ExportReportJob;
+use App\Exports\ComprehensiveReportExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ExportReportController extends Controller
 {
-    public function exportDskl()
+    public function exportExcel()
     {
-        ExportReportJob::dispatch('dskl', auth()->user());
-
-        return back()->with('success', 'Laporan DSKL sedang diproses di latar belakang. Anda akan menerima notifikasi jika sudah selesai.');
-    }
-
-    public function exportInfaqShodaqah()
-    {
-        ExportReportJob::dispatch('infaq', auth()->user());
-
-        return back()->with('success', 'Laporan Infaq Shodaqoh sedang diproses di latar belakang. Anda akan menerima notifikasi jika sudah selesai.');
+        $fileName = 'Laporan_Komprehensif_LAZISNU_'.now()->format('d-m-Y_His').'.xlsx';
+        
+        return Excel::download(new ComprehensiveReportExport, $fileName);
     }
 }

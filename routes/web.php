@@ -202,8 +202,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Reports Management
     Route::middleware('can:manage-reports')->group(function () {
-        Route::get('laporan/export-dskl', [ExportReportController::class, 'exportDskl'])->name('laporan.export-dskl');
-        Route::get('laporan/export-infaq-shodaqah', [ExportReportController::class, 'exportInfaqShodaqah'])->name('laporan.export-infaq-shodaqah');
+        Route::get('laporan/export-excel', [ExportReportController::class, 'exportExcel'])->name('laporan.export-excel');
 
         Route::resource('laporan-bulanan', AdminLaporanBulananController::class)
             ->parameters(['laporan-bulanan' => 'laporanBulanan']);
