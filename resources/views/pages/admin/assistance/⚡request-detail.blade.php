@@ -16,6 +16,11 @@ new class extends Component
         $this->admin_notes = $request->admin_notes;
     }
 
+    public function rendering()
+    {
+        $this->request->load(['pillar', 'attachments.requirement']);
+    }
+
     public function updateStatus()
     {
         $this->request->update([
