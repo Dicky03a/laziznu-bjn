@@ -49,6 +49,15 @@ Route::controller(PublicController::class)->group(function () {
     Route::get('/disclaimer', 'disclaimer')->name('disclaimer');
     Route::get('/berita', 'berita')->name('berita.public.index');
     Route::get('/pembayaran-info', 'paymentInfo')->name('payment.info');
+
+    // Assistance Request Routes
+    Route::controller(\App\Http\Controllers\Public\AssistanceController::class)->group(function () {
+        Route::get('/pengajuan-bantuan', 'index')->name('assistance.request');
+        Route::post('/pengajuan-bantuan', 'store')->name('assistance.store');
+        Route::get('/pengajuan-bantuan/syarat/{pillar}', 'getRequirements');
+        Route::get('/pengajuan-bantuan/sukses/{ticket}', 'success')->name('assistance.success');
+        Route::get('/cek-pengajuan', 'check')->name('assistance.check');
+    });
 });
 
 // News & Dokumen Routes
@@ -211,6 +220,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('profiles', AdminProfileController::class);
         Route::resource('rekenings', AdminRekeningController::class);
         Route::resource('dokumens', AdminDokumenController::class);
+
+        // Assistance Management
+        Route::prefix('admin/pengajuan-bantuan')->name('admin.assistance.')->group(function () {
+            Route::livewire('/', 'pages::admin.assistance.request-list')->name('index');
+            Route::livewire('/syarat', 'pages::admin.assistance.requirement-manager')->name('requirements');
+            Route::livewire('/{request}', 'pages::admin.assistance.request-detail')->name('show');
+        });
 
         Route::resource('pengurus', PengurusController::class)
             ->parameters(['pengurus' => 'pengurus']);

@@ -17,61 +17,72 @@ class PublicController extends Controller
 {
     public function index()
     {
-        $profile = Profile::with(['pillars'])->latest()->first();
-        $news = News::whereNotNull('published_at')
-            ->where('published_at', '<=', now())
-            ->latest('published_at')
-            ->limit(3)
-            ->get();
-        $programs = \App\Models\Program::active()
-            ->ofType('infaq')
-            ->withCount(['confirmedTransactions as total_donatur'])
-            ->latest('is_featured')
-            ->latest()
-            ->limit(3)
-            ->get();
+        $profile = \Illuminate\Support\Facades\Cache::remember('public_profile_latest', 3600, function () {
+            return Profile::with(['pillars'])->latest()->first();
+        });
+
+        $news = \Illuminate\Support\Facades\Cache::remember('public_news_latest_3', 1800, function () {
+            return News::whereNotNull('published_at')
+                ->where('published_at', '<=', now())
+                ->latest('published_at')
+                ->limit(3)
+                ->get();
+        });
+
+        $programs = \Illuminate\Support\Facades\Cache::remember('public_programs_latest_3', 1800, function () {
+            return \App\Models\Program::active()
+                ->ofType('infaq')
+                ->withCount(['confirmedTransactions as total_donatur'])
+                ->latest('is_featured')
+                ->latest()
+                ->limit(3)
+                ->get();
+        });
 
         return view('pages.public.index', compact('profile', 'news', 'programs'));
     }
 
     public function paymentInfo()
     {
-        return view('pages.public.paymentinfo');
+        $rekenings = \App\Models\Rekening::all();
+
+        return view('pages.public.paymentinfo', compact('rekenings'));
     }
 
     public function profile()
     {
-        $profile = Profile::with(['missions', 'pillars'])->latest()->first();
+        $profile = \Illuminate\Support\Facades\Cache::remember('public_profile_full', 3600, function () {
+            return Profile::with(['missions', 'pillars'])->latest()->first();
+        });
 
         return view('pages.public.profil.profile', compact('profile'));
     }
 
     public function pengurus()
     {
-        $tahunSekarang = now()->year;
+        $periodeAktif = \Illuminate\Support\Facades\Cache::remember('public_pengurus_periode_aktif', 3600, function () {
+            return Pengurus::active()
+                ->selectRaw('CONCAT(masa_khidmat_mulai, "-", masa_khidmat_selesai) as periode, masa_khidmat_mulai, masa_khidmat_selesai')
+                ->orderByDesc('masa_khidmat_mulai')
+                ->first();
+        });
 
-        $pengurusList = Pengurus::active()
-            ->ordered()
-            ->get()
-            ->groupBy(fn ($p) => "{$p->masa_khidmat_mulai}-{$p->masa_khidmat_selesai}");
+        $pengurusByJabatan = \Illuminate\Support\Facades\Cache::remember('public_pengurus_by_jabatan', 3600, function () use ($periodeAktif) {
+            return Pengurus::active()
+                ->when(
+                    $periodeAktif,
+                    fn ($q) => $q
+                        ->where('masa_khidmat_mulai', $periodeAktif->masa_khidmat_mulai)
+                        ->where('masa_khidmat_selesai', $periodeAktif->masa_khidmat_selesai)
+                )
+                ->ordered()
+                ->get()
+                ->groupBy('jabatan');
+        });
 
-        $noSk = Pengurus::active()->value('no_sk');
-
-        $periodeAktif = Pengurus::active()
-            ->selectRaw('CONCAT(masa_khidmat_mulai, "-", masa_khidmat_selesai) as periode, masa_khidmat_mulai, masa_khidmat_selesai')
-            ->orderByDesc('masa_khidmat_mulai')
-            ->first();
-
-        $pengurusByJabatan = Pengurus::active()
-            ->when(
-                $periodeAktif,
-                fn ($q) => $q
-                    ->where('masa_khidmat_mulai', $periodeAktif->masa_khidmat_mulai)
-                    ->where('masa_khidmat_selesai', $periodeAktif->masa_khidmat_selesai)
-            )
-            ->ordered()
-            ->get()
-            ->groupBy('jabatan');
+        $noSk = \Illuminate\Support\Facades\Cache::remember('public_pengurus_no_sk', 3600, function () {
+            return Pengurus::active()->value('no_sk');
+        });
 
         return view('pages.public.profil.pengurus', compact(
             'pengurusByJabatan',
@@ -82,14 +93,18 @@ class PublicController extends Controller
 
     public function rekening()
     {
-        $rekenings = Rekening::latest()->get();
+        $rekenings = \Illuminate\Support\Facades\Cache::remember('public_rekenings_all', 3600, function () {
+            return Rekening::latest()->get();
+        });
 
         return view('pages.public.profil.rekeninglengkap', compact('rekenings'));
     }
 
     public function dokumen()
     {
-        $dokumens = Dokuemen::latest()->get();
+        $dokumens = \Illuminate\Support\Facades\Cache::remember('public_dokumens_all', 3600, function () {
+            return Dokuemen::latest()->get();
+        });
 
         return view('pages.public.profil.dokumen', compact('dokumens'));
     }
@@ -101,52 +116,66 @@ class PublicController extends Controller
 
     public function program()
     {
-        $programUnggulan = \App\Models\Program::active()
-            ->featured()
-            ->withSum('confirmedTransactions as total_terkumpul', 'jumlah')
-            ->withCount('confirmedTransactions as total_donatur')
-            ->latest()
-            ->first();
+        $programUnggulan = \Illuminate\Support\Facades\Cache::remember('public_program_unggulan', 1800, function () {
+            return \App\Models\Program::active()
+                ->featured()
+                ->withSum('confirmedTransactions as total_terkumpul', 'jumlah')
+                ->withCount('confirmedTransactions as total_donatur')
+                ->latest()
+                ->first();
+        });
 
-        $programs = \App\Models\Program::active()
-            ->withSum('confirmedTransactions as total_terkumpul', 'jumlah')
-            ->withCount('confirmedTransactions as total_donatur')
-            ->ofType('donasi')
-            ->latest()
-            ->get();
+        $programs = \Illuminate\Support\Facades\Cache::remember('public_programs_donasi', 1800, function () {
+            return \App\Models\Program::active()
+                ->withSum('confirmedTransactions as total_terkumpul', 'jumlah')
+                ->withCount('confirmedTransactions as total_donatur')
+                ->ofType('donasi')
+                ->latest()
+                ->get();
+        });
 
-        $donasiTerbaru = \App\Models\Transaction::where('status', 'confirmed')
-            ->where('type', 'donasi')
-            ->with('program')
-            ->latest()
-            ->take(5)
-            ->get();
+        $donasiTerbaru = \Illuminate\Support\Facades\Cache::remember('public_donasi_terbaru_5', 600, function () {
+            return \App\Models\Transaction::where('status', 'confirmed')
+                ->where('type', 'donasi')
+                ->with('program')
+                ->latest()
+                ->take(5)
+                ->get();
+        });
 
-        $distributionPrograms = DistributionProgram::active()
-            ->with('sourceProgram')
-            ->latest()
-            ->get();
+        $distributionPrograms = \Illuminate\Support\Facades\Cache::remember('public_distribution_programs_active', 1800, function () {
+            return DistributionProgram::active()
+                ->with('sourceProgram')
+                ->latest()
+                ->get();
+        });
 
         return view('pages.public.program', compact('programs', 'programUnggulan', 'donasiTerbaru', 'distributionPrograms'));
     }
 
     public function laporanbulanan()
     {
-        $laporanBulanan = LaporanBulanan::latest()->get();
+        $laporanBulanan = \Illuminate\Support\Facades\Cache::remember('public_laporan_bulanan_all', 3600, function () {
+            return LaporanBulanan::latest()->get();
+        });
 
         return view('pages.public.laporan.laporanbulanan', compact('laporanBulanan'));
     }
 
     public function laporantahunan()
     {
-        $laporanTahunans = LaporanTahunan::latest()->get() ?? collect();
+        $laporanTahunans = \Illuminate\Support\Facades\Cache::remember('public_laporan_tahunan_all', 3600, function () {
+            return LaporanTahunan::latest()->get() ?? collect();
+        });
 
         return view('pages.public.laporan.laporantahunan', compact('laporanTahunans'));
     }
 
     public function statusmwcranting()
     {
-        $laporanMwc = LaporanMwc::latest()->get();
+        $laporanMwc = \Illuminate\Support\Facades\Cache::remember('public_laporan_mwc_all', 3600, function () {
+            return LaporanMwc::latest()->get();
+        });
 
         return view('pages.public.laporan.statusmwcranting', compact('laporanMwc'));
     }

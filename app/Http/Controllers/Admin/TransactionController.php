@@ -308,9 +308,11 @@ class TransactionController extends Controller
 
     public function reminder(Transaction $transaction)
     {
-        if ($transaction->status !== Transaction::STATUS_PENDING) {
+        if ($transaction->status !== 'pending') {
             return back()->with('error', 'Hanya dapat mengirim pengingat untuk transaksi yang masih pending.');
         }
+
+        \App\Jobs\SendWhatsAppReminderJob::dispatch($transaction, 'transaction');
 
         $reminder = $this->whatsAppReminderService->generateReminder($transaction);
 

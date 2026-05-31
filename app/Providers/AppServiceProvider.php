@@ -77,6 +77,8 @@ class AppServiceProvider extends ServiceProvider
     {
         Date::use(CarbonImmutable::class);
 
+        \Illuminate\Database\Eloquent\Model::shouldBeStrict(! app()->isProduction());
+
         DB::prohibitDestructiveCommands(
             app()->isProduction(),
         );

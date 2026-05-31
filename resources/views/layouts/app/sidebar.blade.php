@@ -43,6 +43,17 @@
                 </flux:sidebar.item>
             </flux:sidebar.group>
 
+            <flux:sidebar.group expandable heading="Layanan Masyarakat" class="grid">
+                <flux:sidebar.item icon="hand-raised" href="{{ route('admin.assistance.index') }}">
+                    Pengajuan Layanan
+                </flux:sidebar.item>
+
+                <flux:sidebar.item icon="information-circle" href="{{ route('admin.assistance.requirements') }}">
+                    Syarat dan Ketentuan
+                </flux:sidebar.item>
+            </flux:sidebar.group>
+
+
             <flux:sidebar.group expandable heading="Zakat, Infaq, Donasi" class="grid">
                 <flux:sidebar.item icon="rectangle-stack" href="{{ route('programs.index') }}">
                     Program
@@ -63,8 +74,6 @@
                 <flux:sidebar.item icon="newspaper" href="{{ route('mustahiks.index') }}">
                     Mustahik
                 </flux:sidebar.item>
-
-
 
                 <flux:sidebar.item icon="map" href="{{ route('peta-sebaran.index') }}">
                     Peta Sebaran

@@ -129,6 +129,13 @@
                            transition-all duration-200">
                                           Qurban
                                     </a>
+
+                                    <a href="{{ route('assistance.request') }}"
+                                          class="block px-4 py-3 rounded-xl text-sm text-gray-900 font-bold
+                           hover:bg-emerald-50 hover:text-emerald-600 hover:translate-x-1
+                           transition-all duration-200 border-t border-gray-100 mt-1">
+                                          Pengajuan Bantuan
+                                    </a>
                               </div>
                         </div>
 
@@ -165,6 +172,35 @@
                            hover:bg-green-50 hover:text-green-600 hover:translate-x-1
                            transition-all duration-200">
                                           Formulir Laporan Tahunan
+                                    </a>
+                              </div>
+                        </div>
+
+                        <div class="relative group">
+                              <button class="relative text-gray-700 text-sm font-medium flex items-center gap-1 transition-colors duration-300 hover:text-green-600">
+                                    Pengajuan Pillar
+                                    <svg class="h-4 w-4 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                              </button>
+
+                              <div class="absolute left-0 mt-4 w-60 bg-white rounded-2xl shadow-xl
+                                opacity-0 invisible translate-y-3
+                                group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
+                                transition-all duration-300 ease-out p-2">
+
+                                    <a href="{{ route('assistance.request') }}"
+                                          class="block px-4 py-3 rounded-xl text-sm text-gray-600
+                           hover:bg-green-50 hover:text-green-600 hover:translate-x-1
+                           transition-all duration-200">
+                                          Pengajuan
+                                    </a>
+
+                                    <a href="{{ route('assistance.check') }}"
+                                          class="block px-4 py-3 rounded-xl text-sm text-gray-600
+                           hover:bg-green-50 hover:text-green-600 hover:translate-x-1
+                           transition-all duration-200">
+                                          Cek Tiket Pengajuan
                                     </a>
                               </div>
                         </div>
@@ -257,6 +293,7 @@
                               <a href="{{ route('donasi.index') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Infaq Shodaqoh dan Peduli Bencana</a>
                               <a href="{{ route('fidyah.index') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Fidyah</a>
                               <a href="{{ route('qurban.index') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Qurban</a>
+                              <a href="{{ route('assistance.request') }}" class="block px-4 py-2 rounded-lg text-emerald-600 font-bold hover:bg-emerald-50 transition">Pengajuan Bantuan</a>
                         </div>
                   </div>
 

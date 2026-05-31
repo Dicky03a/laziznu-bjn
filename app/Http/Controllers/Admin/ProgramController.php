@@ -13,7 +13,7 @@ class ProgramController extends Controller
         $programs = Program::query()
             ->when($request->type, fn ($q) => $q->ofType($request->type))
             ->when($request->search, fn ($q) => $q->where('nama', 'like', '%'.$request->search.'%'))
-            ->withCount(['confirmedTransactions as total_donatur'])
+            ->withCount(['confirmedTransactions as total_donatur', 'distributions'])
             ->withSum(['confirmedTransactions as total_terkumpul'], 'jumlah')
             ->latest()
             ->paginate(15)
@@ -99,6 +99,13 @@ class ProgramController extends Controller
 
     public function destroy(Program $program)
     {
+        // Cek apakah program ini memiliki relasi ke program distribusi
+        if ($program->distributions()->exists() && ! auth()->user()->hasRole('super-admin')) {
+            return redirect()
+                ->route('programs.index')
+                ->with('error', 'Program tidak dapat dihapus karena sudah terikat dengan Program Distribusi. Hanya Super Admin yang dapat menghapus program ini.');
+        }
+
         $program->delete();
 
         return redirect()

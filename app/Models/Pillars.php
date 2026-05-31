@@ -18,4 +18,9 @@ class Pillars extends Model
     {
         return $this->belongsTo(Profile::class);
     }
+
+    public function assistanceRequirements()
+    {
+        return $this->hasMany(AssistanceRequirement::class, 'pillar_id');
+    }
 }

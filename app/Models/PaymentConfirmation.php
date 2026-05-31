@@ -28,7 +28,7 @@ class PaymentConfirmation extends Model
 
     public function transaction(): BelongsTo
     {
-        return $this->belongsTo(Transaction::class);
+        return $this->belongsTo(Transaction::class)->withTrashed();
     }
 
     public function getBuktiUrlAttribute(): ?string

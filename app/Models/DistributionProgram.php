@@ -35,7 +35,7 @@ class DistributionProgram extends Model
 
     public function sourceProgram(): BelongsTo
     {
-        return $this->belongsTo(Program::class, 'source_program_id');
+        return $this->belongsTo(Program::class, 'source_program_id')->withTrashed();
     }
 
     public function scopeActive(Builder $query): void
@@ -60,15 +60,24 @@ class DistributionProgram extends Model
 
     public function getProgressPersenAttribute(): float
     {
-        if (! $this->target_dana || $this->target_dana === 0) {
+        if (! $this->target_dana || $this->target_dana === 0 || ! $this->sourceProgram) {
             return 0;
         }
 
-        return min(100, round(($this->target_dana / $this->sourceProgram->total_terkumpul) * 100, 1));
+        $totalTerkumpul = $this->sourceProgram->total_terkumpul;
+        if (! $totalTerkumpul || $totalTerkumpul === 0) {
+            return 0;
+        }
+
+        return min(100, round(($this->target_dana / $totalTerkumpul) * 100, 1));
     }
 
     public function getPersentaseFromSourceAttribute(): float
     {
+        if (! $this->sourceProgram) {
+            return 0;
+        }
+
         $totalAllocated = $this->sourceProgram->total_distribusi_dialokasikan;
         if (! $totalAllocated || $totalAllocated === 0) {
             return 0;

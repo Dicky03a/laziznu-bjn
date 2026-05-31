@@ -158,9 +158,11 @@ class QurbanRegistrationController extends Controller
 
     public function reminder(QurbanRegistration $registration)
     {
-        if ($registration->status !== QurbanRegistration::STATUS_PENDING) {
+        if ($registration->status !== 'pending') {
             return back()->with('error', 'Hanya dapat mengirim pengingat untuk registrasi yang masih pending.');
         }
+
+        \App\Jobs\SendWhatsAppReminderJob::dispatch($registration, 'qurban');
 
         $reminder = $this->whatsAppReminderService->generateReminderQurban($registration);
 

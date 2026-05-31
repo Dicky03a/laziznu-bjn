@@ -46,6 +46,18 @@
                                           Program
                                     </a>
                               </li>
+                              <li>
+                                    <a href="{{ route('assistance.request') }}" class="text-sm hover:text-green-400 transition duration-300 flex items-center group">
+                                          <span class="mr-2 text-green-500 group-hover:translate-x-1 transition-transform duration-300">›</span>
+                                          Pengajuan Bantuan
+                                    </a>
+                              </li>
+                              <li>
+                                    <a href="{{ route('assistance.check') }}" class="text-sm hover:text-green-400 transition duration-300 flex items-center group">
+                                          <span class="mr-2 text-green-500 group-hover:translate-x-1 transition-transform duration-300">›</span>
+                                          Cek Status Pengajuan
+                                    </a>
+                              </li>
                         </ul>
                   </div>
 

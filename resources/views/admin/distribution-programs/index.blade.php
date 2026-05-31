@@ -139,20 +139,33 @@
                                     </td>
                                     <td class="px-5 py-4">
                                           <div>
-                                                <p class="font-semibold text-gray-900 text-sm">{{ $distributionProgram->sourceProgram->nama }}</p>
-                                                <p class="text-xs text-gray-500">
-                                                      Dana Terkumpul: <span class="font-semibold">Rp {{ number_format($distributionProgram->sourceProgram->total_terkumpul, 0, ',', '.') }}</span>
-                                                </p>
+                                                @if($distributionProgram->sourceProgram)
+                                                      <p class="font-semibold text-gray-900 text-sm">
+                                                            {{ $distributionProgram->sourceProgram->nama }}
+                                                            @if($distributionProgram->sourceProgram->trashed())
+                                                                  <span class="ml-1 px-1.5 py-0.5 bg-red-100 text-red-600 text-[10px] rounded-md font-bold uppercase">Terhapus</span>
+                                                            @endif
+                                                      </p>
+                                                      <p class="text-xs text-gray-500">
+                                                            Dana Terkumpul: <span class="font-semibold">Rp {{ number_format($distributionProgram->sourceProgram->total_terkumpul, 0, ',', '.') }}</span>
+                                                      </p>
+                                                @else
+                                                      <p class="font-semibold text-red-600 text-sm">Program Sumber Tidak Ditemukan</p>
+                                                @endif
                                           </div>
                                     </td>
                                     <td class="px-5 py-4 text-right">
                                           <p class="font-bold text-gray-900 text-sm">Rp {{ number_format($distributionProgram->target_dana, 0, ',', '.') }}</p>
                                           <p class="text-xs text-gray-500">
-                                                @if($distributionProgram->sourceProgram->available_for_distribution < 0)
-                                                      <span class="text-red-600 font-semibold">Melampaui batas</span>
+                                                @if($distributionProgram->sourceProgram)
+                                                      @if($distributionProgram->sourceProgram->available_for_distribution < 0)
+                                                            <span class="text-red-600 font-semibold">Melampaui batas</span>
                                                       @else
-                                                      Sisa: Rp {{ number_format($distributionProgram->sourceProgram->available_for_distribution, 0, ',', '.') }}
+                                                            Sisa: Rp {{ number_format($distributionProgram->sourceProgram->available_for_distribution, 0, ',', '.') }}
                                                       @endif
+                                                @else
+                                                      -
+                                                @endif
                                           </p>
                                     </td>
                                     <td class="px-5 py-4">

@@ -24,6 +24,15 @@
       </div>
       @endif
 
+      @if(session('error'))
+      <div class="mb-5 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm flex items-center gap-2">
+            <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+            </svg>
+            {{ session('error') }}
+      </div>
+      @endif
+
       <!-- $1 -->
       <div class="bg-white rounded-2xl border border-gray-200 p-4 mb-5">
             <form method="GET" action="{{ route('programs.index') }}" class="flex flex-wrap gap-3 items-end">
@@ -141,10 +150,20 @@
                                                       </svg>
                                                 </a>
                                                 <form action="{{ route('programs.destroy', $program) }}" method="POST"
-                                                      onsubmit="return confirm('Hapus program {{ addslashes($program->nama) }}?')">
+                                                      @if($program->distributions_count > 0)
+                                                            @if(auth()->user()->hasRole('super-admin'))
+                                                                  onsubmit="return confirm('Peringatan: Program ini terikat dengan {{ $program->distributions_count }} program distribusi. Menghapus program ini akan mempengaruhi data distribusi. Tetap hapus?')"
+                                                            @else
+                                                                  onsubmit="alert('Program tidak dapat dihapus karena sudah terikat dengan program distribusi. Hubungi Super Admin untuk bantuan.'); return false;"
+                                                            @endif
+                                                      @else
+                                                            onsubmit="return confirm('Hapus program {{ addslashes($program->nama) }}?')"
+                                                      @endif
+                                                >
                                                       @csrf @method('DELETE')
                                                       <button type="submit"
-                                                            class="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all" title="Hapus">
+                                                            class="p-1.5 {{ $program->distributions_count > 0 && !auth()->user()->hasRole('super-admin') ? 'text-gray-300 cursor-not-allowed' : 'text-gray-400 hover:text-red-600 hover:bg-red-50' }} rounded-lg transition-all" 
+                                                            title="{{ $program->distributions_count > 0 && !auth()->user()->hasRole('super-admin') ? 'Tidak bisa dihapus (Terikat distribusi)' : 'Hapus' }}">
                                                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                                             </svg>
