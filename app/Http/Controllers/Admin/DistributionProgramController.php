@@ -70,6 +70,7 @@ class DistributionProgramController extends Controller
 
         DistributionProgram::create($validated);
 
+
         return redirect()
             ->route('distribution-programs.index')
             ->with('success', 'Program distribusi berhasil ditambahkan.');
@@ -105,6 +106,7 @@ class DistributionProgramController extends Controller
 
         $distributionProgram->update($validated);
 
+
         return redirect()
             ->route('distribution-programs.index')
             ->with('success', 'Program distribusi berhasil diperbarui.');
@@ -118,6 +120,7 @@ class DistributionProgramController extends Controller
 
         $distributionProgram->delete();
 
+
         return redirect()
             ->route('distribution-programs.index')
             ->with('success', 'Program distribusi berhasil dihapus.');
@@ -126,6 +129,7 @@ class DistributionProgramController extends Controller
     public function toggleActive(DistributionProgram $distributionProgram)
     {
         $distributionProgram->update(['is_active' => ! $distributionProgram->is_active]);
+
 
         return back()->with('success', 'Status program distribusi diperbarui.');
     }

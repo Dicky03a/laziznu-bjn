@@ -37,6 +37,7 @@ class LaporanBulananController extends Controller
 
             LaporanBulanan::create($validated);
 
+
             return redirect()
                 ->route('laporan-bulanan.index')
                 ->with('success', 'Laporan bulanan berhasil ditambahkan!');
@@ -78,6 +79,7 @@ class LaporanBulananController extends Controller
 
             $laporanBulanan->update($validated);
 
+
             return redirect()
                 ->route('laporan-bulanan.index')
                 ->with('success', 'Laporan bulanan berhasil diperbarui!');
@@ -96,6 +98,7 @@ class LaporanBulananController extends Controller
             }
 
             $laporanBulanan->delete();
+
 
             return redirect()
                 ->route('laporan-bulanan.index')

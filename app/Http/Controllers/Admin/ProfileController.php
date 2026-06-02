@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateProfileRequest;
 use App\Models\Profile;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Cache;
 
 class ProfileController extends Controller
 {
@@ -25,7 +26,8 @@ class ProfileController extends Controller
 
     public function store(StoreProfileRequest $request): RedirectResponse
     {
-        $profile = Profile::create($request->validated());
+        $profile = Profile::create($request->safe()->except(['missions', 'pillars']));
+
 
         if ($request->has('missions')) {
             foreach ($request->missions as $missionData) {
@@ -67,7 +69,8 @@ class ProfileController extends Controller
 
     public function update(UpdateProfileRequest $request, Profile $profile): RedirectResponse
     {
-        $profile->update($request->validated());
+        $profile->update($request->safe()->except(['missions', 'pillars']));
+
 
         $profile->missions()->delete();
 
@@ -100,6 +103,7 @@ class ProfileController extends Controller
     public function destroy(Profile $profile): RedirectResponse
     {
         $profile->delete();
+
 
         return redirect()
             ->route('profiles.index')

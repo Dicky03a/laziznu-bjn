@@ -37,6 +37,7 @@ class LaporanMwcController extends Controller
 
             LaporanMwc::create($validated);
 
+
             return redirect()
                 ->route('laporan-mwc.index')
                 ->with('success', 'Laporan MWC berhasil ditambahkan!');
@@ -78,6 +79,7 @@ class LaporanMwcController extends Controller
 
             $laporanMwc->update($validated);
 
+
             return redirect()
                 ->route('laporan-mwc.index')
                 ->with('success', 'Laporan MWC berhasil diperbarui!');
@@ -96,6 +98,7 @@ class LaporanMwcController extends Controller
             }
 
             $laporanMwc->delete();
+
 
             return redirect()
                 ->route('laporan-mwc.index')

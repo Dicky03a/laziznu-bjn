@@ -33,7 +33,9 @@ class RekeningController extends Controller
 
         Rekening::create($data);
 
-        return redirect()->route('rekenings.index')->with('success', 'Rekening berhasil ditambahkan');
+
+        return redirect()
+->route('rekenings.index')->with('success', 'Rekening berhasil ditambahkan');
     }
 
     public function show(Rekening $rekening)
@@ -69,6 +71,7 @@ class RekeningController extends Controller
 
         $rekening->update($data);
 
+
         return redirect()
             ->route('rekenings.index')
             ->with('success', 'Rekening berhasil diperbarui');
@@ -82,6 +85,8 @@ class RekeningController extends Controller
 
         $rekening->delete();
 
-        return redirect()->route('rekenings.index')->with('success', 'Rekening berhasil dihapus');
+
+        return redirect()
+->route('rekenings.index')->with('success', 'Rekening berhasil dihapus');
     }
 }

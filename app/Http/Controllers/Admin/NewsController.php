@@ -45,7 +45,9 @@ class NewsController extends Controller
 
         News::create($data);
 
-        return redirect()->route('news.index')->with('success', 'Berita berhasil ditambahkan');
+
+        return redirect()
+->route('news.index')->with('success', 'Berita berhasil ditambahkan');
     }
 
     public function show(News $news)
@@ -107,7 +109,9 @@ class NewsController extends Controller
 
         $news->update($data);
 
-        return redirect()->route('news.index')->with('success', 'Berita berhasil diperbarui');
+
+        return redirect()
+->route('news.index')->with('success', 'Berita berhasil diperbarui');
     }
 
     public function destroy(News $news)
@@ -118,6 +122,8 @@ class NewsController extends Controller
 
         $news->delete();
 
-        return redirect()->route('news.index')->with('success', 'Berita berhasil dihapus');
+
+        return redirect()
+->route('news.index')->with('success', 'Berita berhasil dihapus');
     }
 }

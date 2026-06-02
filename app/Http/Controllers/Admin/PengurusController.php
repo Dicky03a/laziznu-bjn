@@ -78,6 +78,7 @@ class PengurusController extends Controller
 
         Pengurus::create($data);
 
+
         return redirect()
             ->route('pengurus.index')
             ->with('success', 'Data pengurus berhasil ditambahkan.');
@@ -114,6 +115,7 @@ class PengurusController extends Controller
 
         $pengurus->update($data);
 
+
         return redirect()
             ->route('pengurus.index')
             ->with('success', 'Data pengurus berhasil diperbarui.');
@@ -124,6 +126,7 @@ class PengurusController extends Controller
         // Soft delete – foto tetap ada
         $pengurus->delete();
 
+
         return redirect()
             ->route('pengurus.index')
             ->with('success', 'Data pengurus berhasil dihapus.');
@@ -132,6 +135,7 @@ class PengurusController extends Controller
     public function toggleStatus(Pengurus $pengurus): RedirectResponse
     {
         $pengurus->update(['is_active' => ! $pengurus->is_active]);
+
 
         $status = $pengurus->is_active ? 'diaktifkan' : 'dinonaktifkan';
 

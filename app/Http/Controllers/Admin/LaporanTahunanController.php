@@ -26,6 +26,7 @@ class LaporanTahunanController extends Controller
         try {
             LaporanTahunan::create($request->validated());
 
+
             return redirect()
                 ->route('laporan-tahunans.index')
                 ->with('success', __('Laporan tahunan berhasil ditambahkan'));
@@ -49,6 +50,7 @@ class LaporanTahunanController extends Controller
         try {
             $laporanTahunan->update($request->validated());
 
+
             return redirect()
                 ->route('laporan-tahunans.show', $laporanTahunan)
                 ->with('success', __('Laporan tahunan berhasil diperbarui'));
@@ -61,6 +63,7 @@ class LaporanTahunanController extends Controller
     {
         try {
             $laporanTahunan->delete();
+
 
             return redirect()
                 ->route('laporan-tahunans.index')

@@ -40,6 +40,7 @@ class DokumenController extends Controller
 
         Dokuemen::create($data);
 
+
         return redirect()
             ->route('dokumens.index')
             ->with('success', 'Dokumen berhasil ditambahkan');
@@ -79,6 +80,7 @@ class DokumenController extends Controller
 
         $dokumen->update($data);
 
+
         return redirect()
             ->route('dokumens.index')
             ->with('success', 'Dokumen berhasil diperbarui');
@@ -91,6 +93,7 @@ class DokumenController extends Controller
         }
 
         $dokumen->delete();
+
 
         return redirect()
             ->route('dokumens.index')

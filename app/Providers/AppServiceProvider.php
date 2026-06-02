@@ -27,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->configureDefaults();
         $this->scheduleBackups();
+        $this->registerObservers();
 
         // Implicitly grant "super-admin" role all permissions
         // This works in the gate checks and in @can()
@@ -68,6 +69,23 @@ class AppServiceProvider extends ServiceProvider
                     Log::info('Old backups cleaned successfully');
                 });
         }
+    }
+
+    /**
+     * Register model observers.
+     */
+    protected function registerObservers(): void
+    {
+        \App\Models\Profile::observe(\App\Observers\ProfileObserver::class);
+        \App\Models\Pengurus::observe(\App\Observers\PengurusObserver::class);
+        \App\Models\News::observe(\App\Observers\NewsObserver::class);
+        \App\Models\Program::observe(\App\Observers\ProgramObserver::class);
+        \App\Models\Rekening::observe(\App\Observers\RekeningObserver::class);
+        \App\Models\Dokuemen::observe(\App\Observers\DokumenObserver::class);
+        \App\Models\LaporanBulanan::observe(\App\Observers\LaporanBulananObserver::class);
+        \App\Models\LaporanTahunan::observe(\App\Observers\LaporanTahunanObserver::class);
+        \App\Models\LaporanMwc::observe(\App\Observers\LaporanMwcObserver::class);
+        \App\Models\DistributionProgram::observe(\App\Observers\DistributionProgramObserver::class);
     }
 
     /**

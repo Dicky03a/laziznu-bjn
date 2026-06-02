@@ -1,7 +1,17 @@
 @extends('layouts.public.app')
-@section('title', $news->title . ' - LAZISNU Bojonegoro')
+@section('title', $news->title . ' - Lazisnu Bojonegoro')
+
+@push('meta')
+<meta property="og:title" content="{{ $news->title }}">
+<meta property="og:description" content="{{ $news->excerpt ?? Str::limit(strip_tags($news->content), 160) }}">
+<meta property="og:image" content="{{ asset('storage/' . $news->featured_image) }}">
+<meta property="og:url" content="{{ url()->current() }}">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+@endpush
 
 @section('content')
+
 <article class="min-h-screen bg-gray-50 ">
       <div class="max-w-7xl mx-auto px-4 py-6 md:py-8">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
@@ -21,9 +31,15 @@
                                           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                                           </svg>
+                                          @if($news->published_at)
                                           <time datetime="{{ $news->published_at->toIso8601String() }}">
                                                 {{ $news->published_at->format('d F Y') }}, {{ $news->published_at->format('H:i') }}
                                           </time>
+                                          @else
+                                          <time datetime="{{ $news->created_at->toIso8601String() }}">
+                                                {{ $news->created_at->format('d F Y') }}, {{ $news->created_at->format('H:i') }} (Draft)
+                                          </time>
+                                          @endif
                                     </div>
 
                                     <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-gray-100  rounded text-xs font-medium">
@@ -68,12 +84,12 @@
                               <!-- Article Body -->
                               <div class="prose prose-base prose-gray  max-w-none 
                                     prose-headings:font-bold prose-headings:text-gray-900  prose-headings:mb-4
-                                    prose-p:text-gray-700  prose-p:leading-relaxed prose-p:mb-4
+                                    prose-p:text-gray-700  prose-p:leading-relaxed prose-p:mb-4 prose-p:text-justify
                                     prose-a:text-blue-600  prose-a:no-underline hover:prose-a:underline
                                     prose-strong:text-gray-900  prose-strong:font-semibold
                                     prose-ul:my-4 prose-ol:my-4 prose-li:my-1
                                     prose-img:rounded-lg prose-img:shadow-md prose-img:border prose-img:border-gray-200  prose-img:my-6
-                                    tiptap-content">
+                                    text-justify tiptap-content">
                                     {!! $news->content !!}
                               </div>
                         </div>

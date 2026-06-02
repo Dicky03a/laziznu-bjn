@@ -18,7 +18,7 @@ class PublicController extends Controller
     public function index()
     {
         $profile = \Illuminate\Support\Facades\Cache::remember('public_profile_latest', 3600, function () {
-            return Profile::with(['pillars'])->latest()->first();
+            return Profile::with(['pillars'])->latest()->first() ?? new Profile();
         });
 
         $news = \Illuminate\Support\Facades\Cache::remember('public_news_latest_3', 1800, function () {
@@ -52,7 +52,7 @@ class PublicController extends Controller
     public function profile()
     {
         $profile = \Illuminate\Support\Facades\Cache::remember('public_profile_full', 3600, function () {
-            return Profile::with(['missions', 'pillars'])->latest()->first();
+            return Profile::with(['missions', 'pillars'])->latest()->first() ?? new Profile();
         });
 
         return view('pages.public.profil.profile', compact('profile'));
