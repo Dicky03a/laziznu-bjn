@@ -22,9 +22,9 @@
                   <div class="bg-white  rounded-2xl shadow-xl border border-slate-200  p-6 md:p-8 space-y-6">
 
                         <!-- File Section -->
-                        <div class="flex items-center justify-between p-6 bg-gradient-to-r from-blue-50 to-blue-100   rounded-xl border border-blue-200 ">
+                        <div class="flex items-center justify-between p-6 bg-gradient-to-r from-emerald-50 to-emerald-100   rounded-xl border border-emerald-200 ">
                               <div class="flex items-center gap-4">
-                                    <div class="w-16 h-16 bg-blue-500 rounded-lg flex items-center justify-center">
+                                    <div class="w-16 h-16 bg-emerald-600 rounded-lg flex items-center justify-center">
                                           <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
                                           </svg>
@@ -35,7 +35,7 @@
                                           <p class="text-xs text-slate-500  mt-1">{{ number_format($dokumen->ukuran_file / 1024, 2) }} KB</p>
                                     </div>
                               </div>
-                              <a href="{{ asset('storage/' . $dokumen->file) }}" download class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-200 shadow-lg">
+                              <a href="{{ asset('storage/' . $dokumen->file) }}" download class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-lg transition-all duration-200 shadow-lg">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                                     </svg>
@@ -72,7 +72,7 @@
 
                         <!-- Actions -->
                         <div class="flex gap-3 pt-6 border-t border-slate-200 ">
-                              <a href="{{ route('dokumens.edit', $dokumen) }}" class="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-medium rounded-lg transition-all duration-200 shadow-lg">
+                              <a href="{{ route('dokumens.edit', $dokumen) }}" class="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-emerald-600  text-white font-medium rounded-lg transition-all duration-200 shadow-lg">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                                     </svg>

@@ -1,4 +1,4 @@
-<x-layouts::app :title="__('Edit Laporan Tahunan')">
+<x-layouts::app :title="__('Edit Laporan Bulanan')">
 
       <!-- $1 -->
       <div class="flex items-center gap-3 mb-6">
@@ -9,7 +9,7 @@
                   </svg>
             </a>
             <div>
-                  <h1 class="text-2xl font-bold text-gray-900">Edit Laporan Tahunan</h1>
+                  <h1 class="text-2xl font-bold text-gray-900">Edit Laporan Bulanan</h1>
                   <p class="text-sm text-gray-500 mt-0.5">{{ $laporanBulanan->nama_laporan }}</p>
             </div>
       </div>
@@ -51,7 +51,7 @@
                                     </label>
                                     <input type="text" id="nama_laporan" name="nama_laporan"
                                           value="{{ old('nama_laporan', $laporanBulanan->nama_laporan) }}"
-                                          placeholder="Contoh: Laporan Tahunan 2024"
+                                          placeholder="Contoh: Laporan Bulanan 2024"
                                           required
                                           class="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 @error('nama_laporan') border-red-400 @enderror">
                                     @error('nama_laporan')

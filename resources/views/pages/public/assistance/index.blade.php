@@ -80,7 +80,6 @@
             <!-- Step 2: Berkas Pendukung -->
             <div class="bg-white rounded-3xl shadow-sm border border-gray-100 p-8" x-show="step === 2" x-transition x-cloak>
                 <div class="flex items-center gap-3 mb-6">
-                    <div class="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold">2</div>
                     <h2 class="text-xl font-bold text-gray-900">Lengkapi Berkas Pendukung</h2>
                 </div>
 
@@ -123,7 +122,6 @@
             <!-- Step 3: Data Diri -->
             <div class="bg-white rounded-3xl shadow-sm border border-gray-100 p-8" x-show="step === 3" x-transition x-cloak>
                 <div class="flex items-center gap-3 mb-6">
-                    <div class="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold">3</div>
                     <h2 class="text-xl font-bold text-gray-900">Data Diri & Alasan</h2>
                 </div>
 

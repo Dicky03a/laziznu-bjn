@@ -129,13 +129,6 @@
                            transition-all duration-200">
                                           Qurban
                                     </a>
-
-                                    <a href="{{ route('assistance.request') }}"
-                                          class="block px-4 py-3 rounded-xl text-sm text-gray-900 font-bold
-                           hover:bg-emerald-50 hover:text-emerald-600 hover:translate-x-1
-                           transition-all duration-200 border-t border-gray-100 mt-1">
-                                          Pengajuan Bantuan
-                                    </a>
                               </div>
                         </div>
 
@@ -293,7 +286,6 @@
                               <a href="{{ route('donasi.index') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Infaq Shodaqoh dan Peduli Bencana</a>
                               <a href="{{ route('fidyah.index') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Fidyah</a>
                               <a href="{{ route('qurban.index') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Qurban</a>
-                              <a href="{{ route('assistance.request') }}" class="block px-4 py-2 rounded-lg text-emerald-600 font-bold hover:bg-emerald-50 transition">Pengajuan Bantuan</a>
                         </div>
                   </div>
 
@@ -313,6 +305,24 @@
                               <a href="{{ route('laporan-bulanan.public') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Laporan Bulanan</a>
                               <a href="{{ route('status-mwc-ranting') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Status Laporan MWC & Ranting</a>
                               <a href="{{ route('laporan-tahunan.public') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Formulir Laporan Tahunan</a>
+                        </div>
+                  </div>
+
+                  <!-- Pengajuan Pillar Dropdown -->
+                  <div>
+                        <button class="mobile-dropdown flex justify-between items-center w-full px-4 py-3 rounded-xl text-gray-700 hover:bg-green-50 hover:text-green-600 transition-all duration-200">
+                              Pengajuan Pillar
+                              <svg class="mobile-icon h-4 w-4 transition-transform duration-300"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          stroke-width="2"
+                                          d="M19 9l-7 7-7-7" />
+                              </svg>
+                        </button>
+
+                        <div class="mobile-content hidden pl-4 mt-1 space-y-1">
+                              <a href="{{ route('assistance.request') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Pengajuan</a>
+                              <a href="{{ route('assistance.check') }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition">Cek Tiket Pengajuan</a>
                         </div>
                   </div>
 
