@@ -77,6 +77,8 @@ class AppServiceProvider extends ServiceProvider
     protected function registerObservers(): void
     {
         \App\Models\Profile::observe(\App\Observers\ProfileObserver::class);
+        \App\Models\Missions::observe(\App\Observers\MissionsObserver::class);
+        \App\Models\Pillars::observe(\App\Observers\PillarsObserver::class);
         \App\Models\Pengurus::observe(\App\Observers\PengurusObserver::class);
         \App\Models\News::observe(\App\Observers\NewsObserver::class);
         \App\Models\Program::observe(\App\Observers\ProgramObserver::class);

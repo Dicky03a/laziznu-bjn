@@ -8,6 +8,7 @@ use App\Models\DistributionProgram;
 use App\Models\Program;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\ValidationException;
 
 class DistributionProgramController extends Controller
 {
@@ -143,7 +144,9 @@ class DistributionProgramController extends Controller
         }
 
         if ($targetDana > $available) {
-            abort(422, 'Target dana melebihi sisa dana yang tersedia dari sumber program.');
+            throw ValidationException::withMessages([
+                'target_dana' => 'Target dana (Rp ' . number_format($targetDana, 0, ',', '.') . ') melebihi sisa dana yang tersedia dari program sumber (Rp ' . number_format($available, 0, ',', '.') . '). Silakan kurangi nominal atau pilih program sumber lain.',
+            ]);
         }
     }
 }

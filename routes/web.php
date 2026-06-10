@@ -126,8 +126,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Mustahik Management
     Route::middleware('can:manage-mustahiks')->group(function () {
-        Route::resource('mustahiks', MustahikController::class);
-
         Route::get('/mustahiks/getDesa/{kecamatan_id}', [MustahikController::class, 'getDesa'])
             ->name('mustahiks.getDesa');
 
@@ -136,6 +134,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
         Route::get('/mustahiks/statistik', [MustahikController::class, 'statistik'])
             ->name('mustahiks.statistik');
+
+        Route::resource('mustahiks', MustahikController::class);
     });
 
     // Transaction Management

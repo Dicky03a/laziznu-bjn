@@ -208,18 +208,19 @@
 
                               if (!this.kecamatanId) {
                                     this.desas = [];
+                                    this.desaId = '';
                                     return;
                               }
+
+                              this.desaId = '';
 
                               try {
 
                                     const response = await fetch(
-                                          `/mustahiks/desa/${this.kecamatanId}`
+                                          `/mustahiks/getDesa/${this.kecamatanId}`
                                     );
 
-                                    const data = await response.json();
-
-                                    this.desas = data;
+                                    this.desas = await response.json();
 
                               } catch (error) {
 
@@ -229,10 +230,13 @@
 
                         },
 
-                        init() {
+                        async init() {
 
                               if (this.kecamatanId) {
-                                    this.loadDesa();
+                                    const savedDesaId = this.desaId;
+                                    await this.loadDesa();
+                                    await this.$nextTick();
+                                    this.desaId = savedDesaId;
                               }
 
                         }

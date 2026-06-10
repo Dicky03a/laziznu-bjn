@@ -60,12 +60,13 @@ class PublicController extends Controller
 
     public function pengurus()
     {
-        $periodeAktif = \Illuminate\Support\Facades\Cache::remember('public_pengurus_periode_aktif', 3600, function () {
-            return Pengurus::active()
+        if (! \Illuminate\Support\Facades\Cache::has('public_pengurus_periode_aktif')) {
+            \Illuminate\Support\Facades\Cache::put('public_pengurus_periode_aktif', Pengurus::active()
                 ->selectRaw('CONCAT(masa_khidmat_mulai, "-", masa_khidmat_selesai) as periode, masa_khidmat_mulai, masa_khidmat_selesai')
                 ->orderByDesc('masa_khidmat_mulai')
-                ->first();
-        });
+                ->first(), 3600);
+        }
+        $periodeAktif = \Illuminate\Support\Facades\Cache::get('public_pengurus_periode_aktif');
 
         $pengurusByJabatan = \Illuminate\Support\Facades\Cache::remember('public_pengurus_by_jabatan', 3600, function () use ($periodeAktif) {
             return Pengurus::active()
@@ -80,9 +81,10 @@ class PublicController extends Controller
                 ->groupBy('jabatan');
         });
 
-        $noSk = \Illuminate\Support\Facades\Cache::remember('public_pengurus_no_sk', 3600, function () {
-            return Pengurus::active()->value('no_sk');
-        });
+        if (! \Illuminate\Support\Facades\Cache::has('public_pengurus_no_sk')) {
+            \Illuminate\Support\Facades\Cache::put('public_pengurus_no_sk', Pengurus::active()->value('no_sk'), 3600);
+        }
+        $noSk = \Illuminate\Support\Facades\Cache::get('public_pengurus_no_sk');
 
         return view('pages.public.profil.pengurus', compact(
             'pengurusByJabatan',
@@ -116,14 +118,15 @@ class PublicController extends Controller
 
     public function program()
     {
-        $programUnggulan = \Illuminate\Support\Facades\Cache::remember('public_program_unggulan', 1800, function () {
-            return \App\Models\Program::active()
+        if (! \Illuminate\Support\Facades\Cache::has('public_program_unggulan')) {
+            \Illuminate\Support\Facades\Cache::put('public_program_unggulan', \App\Models\Program::active()
                 ->featured()
                 ->withSum('confirmedTransactions as total_terkumpul', 'jumlah')
                 ->withCount('confirmedTransactions as total_donatur')
                 ->latest()
-                ->first();
-        });
+                ->first(), 1800);
+        }
+        $programUnggulan = \Illuminate\Support\Facades\Cache::get('public_program_unggulan');
 
         $programs = \Illuminate\Support\Facades\Cache::remember('public_programs_donasi', 1800, function () {
             return \App\Models\Program::active()
